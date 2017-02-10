@@ -11,8 +11,8 @@ import Foundation
 class Skydive: Model {
     
     //MARK: Properties
-    var description: String?
-    var date: Date
+    var skydive_description: String = ""
+    var date: Date?
     
     var dropzone_id,
         exit_altitude,
@@ -24,8 +24,5 @@ class Skydive: Model {
         suid_id: Int?
     
     var height_unit: Int = 0
-    
-    init(date: Date) {
-        self.date = date
-    }
+
 }

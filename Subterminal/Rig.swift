@@ -10,21 +10,21 @@ import Foundation
 
 class Rig: Model {
     
-    var container_manufacturer,
-    container_model,
-    container_serial,
-    container_date_in_use,
-    main_manufacturer,
-    main_model,
-    main_serial,
-    main_date_in_use,
-    reserve_manufacturer,
-    reserve_model,
-    reserve_serial,
-    reserve_date_in_use,
-    aad_manufacturer,
-    aad_model,
-    aad_serial,
-    aad_date_in_use: String?
+    private var container_manufacturer,
+        container_model,
+        container_serial,
+        container_date_in_use,
+        main_manufacturer,
+        main_model,
+        main_serial,
+        main_date_in_use,
+        reserve_manufacturer,
+        reserve_model,
+        reserve_serial,
+        reserve_date_in_use,
+        aad_manufacturer,
+        aad_model,
+        aad_serial,
+        aad_date_in_use: String?
     
 }

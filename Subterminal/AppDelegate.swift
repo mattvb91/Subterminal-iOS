@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import SharkORM
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        SharkORM.setDelegate(self)
+        SharkORM.openDatabaseNamed("Subterminal")
+        
         return true
     }
 

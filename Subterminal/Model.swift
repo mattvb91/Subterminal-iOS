@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import SharkORM
 
-class Model {
+class Model: SRKObject {
+    
+    //Wrapper for commit
+    open func save() {
+        super.commit()
+    }
     
 }

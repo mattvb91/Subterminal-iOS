@@ -104,9 +104,9 @@ class SkydiveTableViewController: UITableViewController {
     private func loadSampleSkydives() {
         
         
-        let skydive1 = Skydive(date: Date())
-        let skydive2 = Skydive(date: Date())
-        let skydive3 = Skydive(date: Date())
+        let skydive1 = Skydive()
+        let skydive2 = Skydive()
+        let skydive3 = Skydive()
         
         skydives += [skydive1, skydive2, skydive3]
         
