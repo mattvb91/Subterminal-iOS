@@ -60,6 +60,7 @@
                                     <outlet property="countLabel" destination="yUN-qg-kYt" id="56K-2C-FW7"/>
                                     <outlet property="delayLabel" destination="Hgn-we-YIH" id="BP2-xi-on1"/>
                                     <outlet property="dropzoneLabel" destination="YMa-7W-uUM" id="rSb-Ya-a7n"/>
+                                    <segue destination="yrE-2X-AkG" kind="show" id="ddn-MD-bF9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -80,6 +81,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JN3-8Z-36H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1989.5999999999999" y="-16.641679160419791"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sTP-Be-yUk">
+            <objects>
+                <viewController id="yrE-2X-AkG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zFA-sH-auZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aux-B4-par"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2VG-M6-Vkj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YIC-Ca-9y8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ZXe-q8-wsw">
+                            <connections>
+                                <segue destination="dkb-Xa-5yA" kind="presentation" id="gmQ-jN-4fW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ka0-I7-D0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2825" y="353"/>
         </scene>
         <!--Skydive-->
         <scene sceneID="SYd-jx-Qz0">
@@ -500,4 +526,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gmQ-jN-4fW"/>
+    </inferredMetricsTieBreakers>
 </document>
