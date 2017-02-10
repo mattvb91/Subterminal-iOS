@@ -8,6 +8,7 @@
 
 import UIKit
 import SharkORM
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -20,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
         
         SharkORM.setDelegate(self)
         SharkORM.openDatabaseNamed("Subterminal")
-        
+		
+		FIRApp.configure()
+
         return true
     }
 

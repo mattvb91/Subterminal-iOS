@@ -18,4 +18,5 @@ target 'Subterminal' do
   end
 
   pod "SharkORM"
+  pod 'Firebase/Core'
 end

@@ -25,6 +25,9 @@
 		8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */; };
 		8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */; };
 		8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */; };
+		8FF31AF51E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AF41E4E7A93003F3CFF /* GoogleService-Info.plist */; };
+		8FF31AF61E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AF41E4E7A93003F3CFF /* GoogleService-Info.plist */; };
+		8FF31AF71E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AF41E4E7A93003F3CFF /* GoogleService-Info.plist */; };
 		CA67CC7C29523F8C9ABEA786 /* Pods_SubterminalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD20F10CFCF8B3F7099ECF /* Pods_SubterminalTests.framework */; };
 		FFF7AF7B4F91C8544AB4151B /* Pods_SubterminalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71E0F2EC09FE7D96059970 /* Pods_SubterminalUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +76,7 @@
 		8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropzone.swift; sourceTree = "<group>"; };
 		8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearTableController.swift; sourceTree = "<group>"; };
 		8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigTableViewCell.swift; sourceTree = "<group>"; };
+		8FF31AF41E4E7A93003F3CFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A71EEBDBC3917D07F3DDDF5A /* Pods-SubterminalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalTests/Pods-SubterminalTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE12793D9BB4E6DA2C24DB37 /* Pods-Subterminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Subterminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Subterminal/Pods-Subterminal.debug.xcconfig"; sourceTree = "<group>"; };
 		ED504E0B7D1A370F280DA0C5 /* Pods_Subterminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Subterminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +155,7 @@
 				8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */,
 				8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */,
 				8FF31AB41E4DE7AD003F3CFF /* Info.plist */,
+				8FF31AF41E4E7A93003F3CFF /* GoogleService-Info.plist */,
 			);
 			path = Subterminal;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FF31AB31E4DE7AD003F3CFF /* LaunchScreen.storyboard in Resources */,
+				8FF31AF51E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */,
 				8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */,
 				8FF31AAE1E4DE7AD003F3CFF /* Main.storyboard in Resources */,
 			);
@@ -369,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF31AF61E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF31AF71E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
