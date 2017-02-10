@@ -18,8 +18,9 @@
 		8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADF1E4E0EA9003F3CFF /* Skydive.swift */; };
 		8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE11E4E27A4003F3CFF /* Rig.swift */; };
 		8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE41E4E2A4D003F3CFF /* SkydiveForm.swift */; };
-		8FF31AE71E4E2B53003F3CFF /* BaseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE61E4E2B53003F3CFF /* BaseForm.swift */; };
+		8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE61E4E2B53003F3CFF /* Form.swift */; };
 		8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */; };
+		8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEC1E4E2D32003F3CFF /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +58,9 @@
 		8FF31ADF1E4E0EA9003F3CFF /* Skydive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skydive.swift; sourceTree = "<group>"; };
 		8FF31AE11E4E27A4003F3CFF /* Rig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rig.swift; sourceTree = "<group>"; };
 		8FF31AE41E4E2A4D003F3CFF /* SkydiveForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveForm.swift; sourceTree = "<group>"; };
-		8FF31AE61E4E2B53003F3CFF /* BaseForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseForm.swift; sourceTree = "<group>"; };
+		8FF31AE61E4E2B53003F3CFF /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearForm.swift; sourceTree = "<group>"; };
+		8FF31AEC1E4E2D32003F3CFF /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		8FF31AA51E4DE7AD003F3CFF /* Subterminal */ = {
 			isa = PBXGroup;
 			children = (
+				8FF31AEB1E4E2CB3003F3CFF /* Base */,
 				8FF31AD71E4E0B74003F3CFF /* Skydive */,
 				8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */,
 				8FF31AAC1E4DE7AD003F3CFF /* Main.storyboard */,
@@ -177,10 +180,18 @@
 			isa = PBXGroup;
 			children = (
 				8FF31AE41E4E2A4D003F3CFF /* SkydiveForm.swift */,
-				8FF31AE61E4E2B53003F3CFF /* BaseForm.swift */,
 				8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */,
 			);
 			name = Forms;
+			sourceTree = "<group>";
+		};
+		8FF31AEB1E4E2CB3003F3CFF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8FF31AE61E4E2B53003F3CFF /* Form.swift */,
+				8FF31AEC1E4E2D32003F3CFF /* Model.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
-				8FF31AE71E4E2B53003F3CFF /* BaseForm.swift in Sources */,
+				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
 				8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,

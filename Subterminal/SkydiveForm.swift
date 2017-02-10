@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkydiveForm: BaseForm {
+class SkydiveForm: Form {
 
     override func viewDidLoad() {
         super.viewDidLoad()

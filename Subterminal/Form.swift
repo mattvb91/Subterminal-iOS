@@ -8,8 +8,10 @@
 
 import UIKit
 
-class BaseForm: UIViewController, UITextFieldDelegate {
+class Form: UIViewController, UITextFieldDelegate {
 
+    private var _entity: Model?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Skydive {
+class Skydive: Model {
     
     //MARK: Properties
     var description: String?

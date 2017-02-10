@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Rig {
+class Rig: Model {
     
     var container_manufacturer,
     container_model,

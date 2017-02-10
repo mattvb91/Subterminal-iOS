@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GearForm: BaseForm {
+class GearForm: Form {
 
     override func viewDidLoad() {
         super.viewDidLoad()
