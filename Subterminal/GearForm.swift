@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import os.log
 
 class GearForm: Form {
 
+	//MARK: Properties
+	@IBOutlet weak var containerManufacturer: UITextField!
+	@IBOutlet weak var containerModel: UITextField!
+	@IBOutlet weak var containerSerial: UITextField!
+	@IBOutlet weak var containerDateInUse: UITextField!
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
+		
         // Do any additional setup after loading the view.
     }
 
@@ -32,4 +41,19 @@ class GearForm: Form {
     }
     */
 
+	@IBAction func save(_ sender: UIBarButtonItem) {
+		
+		let rig = Rig()
+		
+		rig.container_manufacturer = containerManufacturer.text
+		rig.container_model = containerModel.text
+		rig.container_serial = containerSerial.text
+		rig.container_date_in_use = containerDateInUse.text
+		
+		if rig.save() {
+			os_log("saved")
+		}
+		
+		dismiss(animated: true, completion: nil)
+	}
 }

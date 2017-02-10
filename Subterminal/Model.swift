@@ -12,8 +12,8 @@ import SharkORM
 class Model: SRKObject {
     
     //Wrapper for commit
-    open func save() {
-        super.commit()
+    open func save() -> Bool {
+        return super.commit()
     }
     
 }

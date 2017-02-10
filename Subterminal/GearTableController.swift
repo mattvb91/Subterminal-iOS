@@ -1,5 +1,5 @@
 //
-//  SkydiveTableViewController.swift
+//  GearTableController.swift
 //  Subterminal
 //
 //  Created by Matthias von Bargen on 10/02/2017.
@@ -7,17 +7,17 @@
 //
 
 import UIKit
-import os.log
+import SharkORM
 
-class SkydiveTableViewController: UITableViewController {
+class GearTableController: UITableViewController {
 
-    var skydives = [Skydive]()
-    
+	var items: SRKResultSet?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadSampleSkydives()
-        
+		items = Rig.query().fetch()
+		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,22 +37,20 @@ class SkydiveTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skydives.count
+        return (items?.count)!
     }
 
-    
+	
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "skydiveTableViewCell", for: indexPath) as? SkydiveTableViewCell else {
-                fatalError("The cell is not an instance of SkydiveTableViewCell")
-        }
-        
-        let skydive = skydives[indexPath.row]
-        
-        cell.dropzoneLabel.text = "Test " + String(indexPath.row)
-        cell.countLabel.text = String(indexPath.row)
-        
-        // Configure the cell...
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "rigTableViewCell", for: indexPath) as? RigTableViewCell else {
+			fatalError("Could not get cell")
+		}
 
+        // Configure the cell...
+		let rig = items?.object(at: indexPath.row) as? Rig
+		
+		cell.containerModelLabel.text = rig?.container_model
+		
         return cell
     }
 
@@ -91,40 +89,14 @@ class SkydiveTableViewController: UITableViewController {
     }
     */
 
-	
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-		
-		switch(segue.identifier ?? "") {
-			case "add":
-				os_log("Adding an item")
-				break;
-			case "show":
-				os_log("Showing item")
-				break;
-			case "edit":
-				os_log("Editing an item")
-		
-		default:
-			os_log("Undefined controller action")
-		}
     }
-
-    
-    //MARK: Private Methods
-    private func loadSampleSkydives() {
-        
-        
-        let skydive1 = Skydive()
-        let skydive2 = Skydive()
-        let skydive3 = Skydive()
-        
-        skydives += [skydive1, skydive2, skydive3]
-        
-    }
+    */
 
 }

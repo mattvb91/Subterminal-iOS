@@ -23,6 +23,8 @@
 		8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */; };
 		8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEC1E4E2D32003F3CFF /* Model.swift */; };
 		8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */; };
+		8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */; };
+		8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */; };
 		CA67CC7C29523F8C9ABEA786 /* Pods_SubterminalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCD20F10CFCF8B3F7099ECF /* Pods_SubterminalTests.framework */; };
 		FFF7AF7B4F91C8544AB4151B /* Pods_SubterminalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71E0F2EC09FE7D96059970 /* Pods_SubterminalUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearForm.swift; sourceTree = "<group>"; };
 		8FF31AEC1E4E2D32003F3CFF /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropzone.swift; sourceTree = "<group>"; };
+		8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearTableController.swift; sourceTree = "<group>"; };
+		8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigTableViewCell.swift; sourceTree = "<group>"; };
 		A71EEBDBC3917D07F3DDDF5A /* Pods-SubterminalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalTests/Pods-SubterminalTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE12793D9BB4E6DA2C24DB37 /* Pods-Subterminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Subterminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Subterminal/Pods-Subterminal.debug.xcconfig"; sourceTree = "<group>"; };
 		ED504E0B7D1A370F280DA0C5 /* Pods_Subterminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Subterminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				8FF31AD91E4E0BA0003F3CFF /* SkydiveTableViewCell.swift */,
+				8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */,
+				8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -520,12 +526,14 @@
 			files = (
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
+				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
 				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
 				8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
+				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
 			);

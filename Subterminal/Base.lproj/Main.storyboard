@@ -60,7 +60,7 @@
                                     <outlet property="countLabel" destination="yUN-qg-kYt" id="56K-2C-FW7"/>
                                     <outlet property="delayLabel" destination="Hgn-we-YIH" id="BP2-xi-on1"/>
                                     <outlet property="dropzoneLabel" destination="YMa-7W-uUM" id="rSb-Ya-a7n"/>
-                                    <segue destination="yrE-2X-AkG" kind="show" id="ddn-MD-bF9"/>
+                                    <segue destination="yrE-2X-AkG" kind="show" identifier="show" id="ddn-MD-bF9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" title="Skydives" id="Jqe-Me-Bwd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wsS-Pa-LDD">
                             <connections>
-                                <segue destination="dkb-Xa-5yA" kind="show" id="wcy-V7-zbR"/>
+                                <segue destination="dkb-Xa-5yA" kind="show" identifier="add" id="wcy-V7-zbR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -98,14 +98,14 @@
                     <navigationItem key="navigationItem" id="YIC-Ca-9y8">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ZXe-q8-wsw">
                             <connections>
-                                <segue destination="dkb-Xa-5yA" kind="presentation" id="gmQ-jN-4fW"/>
+                                <segue destination="dkb-Xa-5yA" kind="presentation" identifier="edit" id="gmQ-jN-4fW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ka0-I7-D0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2825" y="353"/>
+            <point key="canvasLocation" x="2836" y="412"/>
         </scene>
         <!--Skydive-->
         <scene sceneID="SYd-jx-Qz0">
@@ -212,6 +212,7 @@
                                 <rect key="frame" x="16" y="373" width="343" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -243,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3n-Yk-JJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3764" y="-407.0464767616192"/>
+            <point key="canvasLocation" x="4639" y="-17"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -304,19 +305,31 @@
         <!--Gear-->
         <scene sceneID="lSe-59-cOR">
             <objects>
-                <tableViewController id="Jnn-Gk-Ogf" sceneMemberID="viewController">
+                <tableViewController id="Jnn-Gk-Ogf" customClass="GearTableController" customModule="Subterminal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ivf-h7-bh8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="b7C-ws-nws">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rigTableViewCell" id="b7C-ws-nws" customClass="RigTableViewCell" customModule="Subterminal" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7C-ws-nws" id="cy5-ZD-FRu">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKa-Nt-Ip4">
+                                            <rect key="frame" x="8" y="8" width="48" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="containerModelLabel" destination="PKa-Nt-Ip4" id="RLZ-yr-LX0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -334,7 +347,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfL-1F-k8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="-808"/>
+            <point key="canvasLocation" x="1292" y="-817"/>
         </scene>
         <!--Gear-->
         <scene sceneID="AAZ-AO-WVW">
@@ -392,8 +405,18 @@
                                 <action selector="cancelAction:" destination="2Hg-oE-pfP" id="KrM-Er-uZw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dss-ZC-enQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dss-ZC-enQ">
+                            <connections>
+                                <action selector="save:" destination="2Hg-oE-pfP" id="Gef-HY-teE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="containerDateInUse" destination="fPU-Zt-dnp" id="RtH-be-7kc"/>
+                        <outlet property="containerManufacturer" destination="Ucz-RQ-0W0" id="GMw-5w-RX8"/>
+                        <outlet property="containerModel" destination="VGF-gF-PO4" id="ipL-oO-GQZ"/>
+                        <outlet property="containerSerial" destination="5nq-W0-r3x" id="RD9-So-gTB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfw-SL-u1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -519,7 +542,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKG-BM-oCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824.8000000000002" y="-407.0464767616192"/>
+            <point key="canvasLocation" x="3662" y="-17"/>
         </scene>
     </scenes>
     <resources>
@@ -527,6 +550,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gmQ-jN-4fW"/>
+        <segue reference="wcy-V7-zbR"/>
     </inferredMetricsTieBreakers>
 </document>

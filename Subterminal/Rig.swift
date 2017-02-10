@@ -10,7 +10,7 @@ import Foundation
 
 class Rig: Model {
     
-    private var container_manufacturer,
+    dynamic var container_manufacturer,
         container_model,
         container_serial,
         container_date_in_use,
