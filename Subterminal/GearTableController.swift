@@ -13,7 +13,7 @@ import NotificationCenter
 
 class GearTableController: UITableViewController {
 
-	var items: SRKResultSet?
+	var items: SRKResultSet = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +21,15 @@ class GearTableController: UITableViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
 		
 		loadData(notification: nil);
-		
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 	
 	func loadData(notification: NSNotification?) {
 		items = Rig.query().fetch()
 		self.tableView.reloadData()
+		
+		if(items.count > 0) {
+			self.navigationItem.leftBarButtonItem = self.editButtonItem
+		}
 	}
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +44,7 @@ class GearTableController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (items?.count)!
+        return items.count
     }
 
 	
@@ -56,7 +54,7 @@ class GearTableController: UITableViewController {
 		}
 
         // Configure the cell...
-		let rig = items?.object(at: indexPath.row) as? Rig
+		let rig = items.object(at: indexPath.row) as? Rig
 		
 		cell.containerModelLabel.text = rig?.container_model
 		
@@ -72,17 +70,23 @@ class GearTableController: UITableViewController {
     }
     */
 
-    /*
+	
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+			
+			// Delete the row from the data source
+			let rig = items.object(at: indexPath.row) as? Rig
+			rig?.remove()
+			
+			items = Rig.query().fetch()
             tableView.deleteRows(at: [indexPath], with: .fade)
+
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+	
 
     /*
     // Override to support rearranging the table view.
@@ -130,7 +134,7 @@ class GearTableController: UITableViewController {
 					fatalError("The selcted cell is not being displayed by the table")
 				}
 				
-				gearForm.item = items?.object(at: indexPath.row) as? Rig
+				gearForm.item = items.object(at: indexPath.row) as? Rig
 			
 		default:
 			os_log("Undefined controller action")
