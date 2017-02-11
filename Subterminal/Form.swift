@@ -35,7 +35,8 @@ class Form: UIViewController, UITextFieldDelegate {
     */
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+		navigationController?.popViewController(animated: true)
+		dismiss(animated: true, completion: nil)
     }
 
 }

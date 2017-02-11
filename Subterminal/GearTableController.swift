@@ -8,6 +8,7 @@
 
 import UIKit
 import SharkORM
+import os.log
 
 class GearTableController: UITableViewController {
 
@@ -89,14 +90,42 @@ class GearTableController: UITableViewController {
     }
     */
 
-    /*
+	
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		// Get the new view controller using segue.destinationViewController.
+		// Pass the selected object to the new view controller.
+		
+		switch(segue.identifier ?? "") {
+			case "add":
+				os_log("Adding an item", log: OSLog.default, type: .debug)
+				break;
+			case "show":
+				os_log("Showing item", log: OSLog.default, type: .debug)
+				break;
+			case "edit":
+			
+				os_log("Editing an item", log: OSLog.default, type: .debug)
+			
+				guard let gearForm = segue.destination as? GearForm else {
+					fatalError("Unexpected destination: \(segue.destination)")
+				}
+			
+				guard let selectedGearCell = sender as? RigTableViewCell else {
+					fatalError("Unexpected sender: \(sender)")
+				}
+				
+				guard let indexPath = tableView.indexPath(for: selectedGearCell) else {
+					fatalError("The selcted cell is not being displayed by the table")
+				}
+				
+				gearForm.item = items?.object(at: indexPath.row) as? Rig
+			
+		default:
+			os_log("Undefined controller action")
+		}
+	}
 
 }

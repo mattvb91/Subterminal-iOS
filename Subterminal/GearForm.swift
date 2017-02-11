@@ -11,6 +11,8 @@ import os.log
 
 class GearForm: Form {
 
+	var item: Rig?
+	
 	//MARK: Properties
 	@IBOutlet weak var containerManufacturer: UITextField!
 	@IBOutlet weak var containerModel: UITextField!
@@ -21,7 +23,12 @@ class GearForm: Form {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		
+		if let item = item {
+			containerManufacturer.text = item.container_manufacturer
+			containerModel.text = item.container_model
+			containerSerial.text = item.container_serial
+			containerDateInUse.text = item.container_date_in_use
+		}
         // Do any additional setup after loading the view.
     }
 
@@ -41,19 +48,24 @@ class GearForm: Form {
     }
     */
 
+	//MARK: Actions
+	
 	@IBAction func save(_ sender: UIBarButtonItem) {
 		
-		let rig = Rig()
+		if item == nil {
+			item = Rig()
+		}
 		
-		rig.container_manufacturer = containerManufacturer.text
-		rig.container_model = containerModel.text
-		rig.container_serial = containerSerial.text
-		rig.container_date_in_use = containerDateInUse.text
+		item?.container_manufacturer = containerManufacturer.text
+		item?.container_model = containerModel.text
+		item?.container_serial = containerSerial.text
+		item?.container_date_in_use = containerDateInUse.text
 		
-		if rig.save() {
+		if (item?.save())! {
 			os_log("saved")
 		}
 		
+		navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)
 	}
 }

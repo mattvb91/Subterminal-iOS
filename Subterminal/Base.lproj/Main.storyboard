@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RcF-8U-H3F" id="xN3-am-N4G">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUN-qg-kYt">
@@ -315,7 +315,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7C-ws-nws" id="cy5-ZD-FRu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKa-Nt-Ip4">
@@ -329,6 +329,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="containerModelLabel" destination="PKa-Nt-Ip4" id="RLZ-yr-LX0"/>
+                                    <segue destination="2Hg-oE-pfP" kind="show" identifier="edit" id="Vss-yN-T2Q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -340,14 +341,14 @@
                     <navigationItem key="navigationItem" title="Gear" id="dQc-AT-YY6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fhR-w0-ryz">
                             <connections>
-                                <segue destination="HbZ-dC-Lel" kind="show" id="Wkp-ih-0ZD"/>
+                                <segue destination="HbZ-dC-Lel" kind="show" identifier="add" id="Wkp-ih-0ZD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfL-1F-k8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="-817"/>
+            <point key="canvasLocation" x="1265" y="-950"/>
         </scene>
         <!--Gear-->
         <scene sceneID="AAZ-AO-WVW">
@@ -402,12 +403,12 @@
                     <navigationItem key="navigationItem" title="Gear" id="ccQ-9T-Yds">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KPv-aJ-IQA">
                             <connections>
-                                <action selector="cancelAction:" destination="2Hg-oE-pfP" id="KrM-Er-uZw"/>
+                                <action selector="cancelAction:" destination="2Hg-oE-pfP" id="Gzb-Tc-GtK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="dss-ZC-enQ">
                             <connections>
-                                <action selector="save:" destination="2Hg-oE-pfP" id="Gef-HY-teE"/>
+                                <action selector="save:" destination="2Hg-oE-pfP" id="4Wh-vQ-l5X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -420,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfw-SL-u1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3164" y="-1121.2893553223389"/>
+            <point key="canvasLocation" x="3020" y="-950"/>
         </scene>
         <!--Skydives-->
         <scene sceneID="zw6-xw-j3t">
@@ -454,7 +455,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yzp-V5-z9z" id="3AE-0N-Xr9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -524,7 +525,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryX-h4-Zw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224.8000000000002" y="-1121.2893553223389"/>
+            <point key="canvasLocation" x="2148" y="-594"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2lE-sW-LoU">
@@ -550,6 +551,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Vss-yN-T2Q"/>
         <segue reference="wcy-V7-zbR"/>
     </inferredMetricsTieBreakers>
 </document>
