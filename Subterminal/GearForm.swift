@@ -65,6 +65,8 @@ class GearForm: Form {
 			os_log("saved")
 		}
 		
+		NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: nil)
+
 		navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)
 	}

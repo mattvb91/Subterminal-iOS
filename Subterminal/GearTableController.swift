@@ -9,6 +9,7 @@
 import UIKit
 import SharkORM
 import os.log
+import NotificationCenter
 
 class GearTableController: UITableViewController {
 
@@ -16,8 +17,10 @@ class GearTableController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		items = Rig.query().fetch()
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
+		
+		loadData(notification: nil);
 		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,6 +28,11 @@ class GearTableController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+	
+	func loadData(notification: NSNotification?) {
+		items = Rig.query().fetch()
+		self.tableView.reloadData()
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,6 +62,7 @@ class GearTableController: UITableViewController {
 		
         return cell
     }
+
 
     /*
     // Override to support conditional editing of the table view.
