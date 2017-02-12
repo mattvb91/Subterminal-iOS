@@ -8,6 +8,7 @@
 
 import UIKit
 import SharkORM
+import os.log
 
 class DropzoneTableController: UITableViewController {
 
@@ -16,7 +17,7 @@ class DropzoneTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		items = Dropzone.query().fetch()
+		items = Dropzone.query().fetchLightweight()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -92,14 +93,38 @@ class DropzoneTableController: UITableViewController {
     }
     */
 
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		switch(segue.identifier ?? "") {
+		case "add":
+			os_log("Adding an item", log: OSLog.default, type: .debug)
+			break;
+		case "show":
+			
+			os_log("showing an item", log: OSLog.default, type: .debug)
+			
+			guard let view = segue.destination as? DropzoneViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+			
+			guard let selectedCell = sender as? DropzoneTableViewCell else {
+				fatalError("Unexpected sender: \(sender)")
+			}
+			
+			guard let indexPath = tableView.indexPath(for: selectedCell) else {
+				fatalError("The selcted cell is not being displayed by the table")
+			}
+			
+			view.item = items.object(at: indexPath.row) as? Dropzone
+			
+		default:
+			os_log("Undefined controller action")
+		}
+
     }
-    */
+	
 
 }
