@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Dropzone: Model {
     
-    private var dropzone_description,
+    dynamic var dropzone_description,
         name,
         website,
         phone,
@@ -19,7 +20,25 @@ class Dropzone: Model {
         local,
         country: String?
     
-    private var latitude,
-        longtitude: Double?
-    
+	dynamic var latitude: Double = 0.0
+	dynamic var longtitude: Double = 0.0
+	
+	class func build(json: JSON) -> Dropzone {
+		var dropzone = Dropzone()
+		
+		dropzone.id = json["id"].intValue as NSNumber!
+		dropzone.dropzone_description = json["description"].string
+		dropzone.name = json["name"].string
+		dropzone.website = json["website"].string
+		dropzone.phone = json["phone"].string
+		dropzone.email = json["email"].string
+		dropzone.formatted_address = json["formatted_address"].string
+		dropzone.local = json["local"].string
+		dropzone.country = json["country"].string
+		dropzone.latitude = json["latitude"].doubleValue
+		dropzone.longtitude = json["longtitude"].doubleValue
+		
+		return dropzone
+	}
+	
 }

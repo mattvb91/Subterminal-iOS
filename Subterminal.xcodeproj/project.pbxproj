@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8C76CB2DF3B97EDF5C989627 /* Pods_Subterminal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED504E0B7D1A370F280DA0C5 /* Pods_Subterminal.framework */; };
+		8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */; };
+		8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */; };
+		8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
+		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
+		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */; };
 		8FF31AAE1E4DE7AD003F3CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAC1E4DE7AD003F3CFF /* Main.storyboard */; };
 		8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */; };
@@ -53,6 +58,9 @@
 		047623246BFF1A233CCC7345 /* Pods-SubterminalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalUITests/Pods-SubterminalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F5E13494507B978B02E1EAB /* Pods-SubterminalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalUITests/Pods-SubterminalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6AD2567EB3A82DBD63672323 /* Pods-SubterminalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalTests/Pods-SubterminalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableController.swift; sourceTree = "<group>"; };
+		8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableViewCell.swift; sourceTree = "<group>"; };
+		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF31AAD1E4DE7AD003F3CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +131,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8FDADDAF1E4F9FE100A33F59 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8FDADDAD1E4F9E7C00A33F59 /* API.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		8FF31A9A1E4DE7AD003F3CFF = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +164,7 @@
 		8FF31AA51E4DE7AD003F3CFF /* Subterminal */ = {
 			isa = PBXGroup;
 			children = (
+				8FDADDAF1E4F9FE100A33F59 /* Utils */,
 				8FF31AEB1E4E2CB3003F3CFF /* Base */,
 				8FF31AD71E4E0B74003F3CFF /* Skydive */,
 				8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */,
@@ -194,6 +211,7 @@
 			children = (
 				8FF31AD91E4E0BA0003F3CFF /* SkydiveTableViewCell.swift */,
 				8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */,
+				8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -203,6 +221,7 @@
 			children = (
 				8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */,
 				8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */,
+				8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -535,11 +554,14 @@
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
+				8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
+				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
 				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
 				8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */,
+				8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
 				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
@@ -551,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FDADDB21E4FA10300A33F59 /* API.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FDADDB31E4FA10300A33F59 /* API.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

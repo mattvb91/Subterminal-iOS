@@ -19,4 +19,7 @@ target 'Subterminal' do
 
   pod "SharkORM"
   pod 'Firebase/Core'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'Alamofire', '~> 4.3'
+
 end

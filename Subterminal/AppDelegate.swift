@@ -9,6 +9,7 @@
 import UIKit
 import SharkORM
 import Firebase
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -23,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
         SharkORM.openDatabaseNamed("Subterminal")
 		
 		FIRApp.configure()
-
+		
+		//API.instance.getDropzones()
+		
         return true
     }
 
