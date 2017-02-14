@@ -8,19 +8,21 @@
 
 import UIKit
 
-class RigTableViewCell: UITableViewCell {
+class RigTableViewCell: BaseTableCell {
 
-	@IBOutlet weak var containerModelLabel: UILabel!
+	var containerModelLabel = UILabel()
+	var containerManufacturerLabel = UILabel()
 	
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	override func addSubviews() {
+		containerManufacturerLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+		self.contentView.addSubview(containerManufacturerLabel)
+		self.contentView.addSubview(containerModelLabel)
+	}
+	
+	override func setupConstraints() {
+		containerManufacturerLabel.autoPinEdge(.left, to: .left, of: self, withOffset: 20)
+		containerModelLabel.autoPinEdge(.top, to: .top, of: containerManufacturerLabel, withOffset: 10)
+	}
+	
 }

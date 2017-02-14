@@ -20,8 +20,23 @@ class GearTableController: UITableViewController {
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
 		
+		let add = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+		
+		self.navigationItem.rightBarButtonItem = add
+	
 		loadData(notification: nil);
     }
+	
+	func addTapped() {
+		let transition = CATransition()
+		transition.duration = 0.5
+		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		transition.type = kCATransitionPush;
+		transition.subtype = kCATransitionFromTop
+		
+		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+		self.navigationController?.pushViewController(GearForm(),animated: false)
+	}
 	
 	func loadData(notification: NSNotification?) {
 		items = Rig.query().fetch()
@@ -57,19 +72,10 @@ class GearTableController: UITableViewController {
 		let rig = items.object(at: indexPath.row) as? Rig
 		
 		cell.containerModelLabel.text = rig?.container_model
+		cell.containerManufacturerLabel.text = rig?.container_manufacturer
 		
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
 	
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -86,59 +92,4 @@ class GearTableController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-	
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-	
-    // MARK: - Navigation
-
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		// Get the new view controller using segue.destinationViewController.
-		// Pass the selected object to the new view controller.
-		
-		switch(segue.identifier ?? "") {
-			case "add":
-				os_log("Adding an item", log: OSLog.default, type: .debug)
-				break;
-			case "show":
-				os_log("Showing item", log: OSLog.default, type: .debug)
-				break;
-			case "edit":
-			
-				os_log("Editing an item", log: OSLog.default, type: .debug)
-			
-				guard let gearForm = segue.destination as? GearForm else {
-					fatalError("Unexpected destination: \(segue.destination)")
-				}
-			
-				guard let selectedGearCell = sender as? RigTableViewCell else {
-					fatalError("Unexpected sender: \(sender)")
-				}
-				
-				guard let indexPath = tableView.indexPath(for: selectedGearCell) else {
-					fatalError("The selcted cell is not being displayed by the table")
-				}
-				
-				gearForm.item = items.object(at: indexPath.row) as? Rig
-			
-		default:
-			os_log("Undefined controller action")
-		}
-	}
-
 }

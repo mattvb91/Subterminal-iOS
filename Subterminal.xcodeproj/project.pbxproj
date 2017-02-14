@@ -14,6 +14,8 @@
 		8FA739731E50CA6E00A08D6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA739721E50CA6E00A08D6A /* MapKit.framework */; };
 		8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CC1E52066F00E88E97 /* TabBarController.swift */; };
 		8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */; };
+		8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70701E5383C800CFC903 /* BaseTableCell.swift */; };
+		8FCA70731E5394A200CFC903 /* GearFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70721E5394A200CFC903 /* GearFormView.swift */; };
 		8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
@@ -69,6 +71,8 @@
 		8FAD28CC1E52066F00E88E97 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneView.swift; sourceTree = "<group>"; };
 		8FAD28D01E522B4800E88E97 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Subterminal-dhxzvxkuztqbeggqslgyresukmil/Build/Products/Debug-iphonesimulator/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
+		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
+		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +145,14 @@
 				FE71E0F2EC09FE7D96059970 /* Pods_SubterminalUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FCA706F1E5383A100CFC903 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA70701E5383C800CFC903 /* BaseTableCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		8FDADDAF1E4F9FE100A33F59 /* Utils */ = {
@@ -225,6 +237,7 @@
 				8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */,
 				8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */,
 				8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */,
+				8FCA70721E5394A200CFC903 /* GearFormView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		8FF31AEB1E4E2CB3003F3CFF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA706F1E5383A100CFC903 /* Views */,
 				8FDE7B4D1E51F09E00140144 /* DashboardController.swift */,
 				8FF31AE61E4E2B53003F3CFF /* Form.swift */,
 				8FF31AEC1E4E2D32003F3CFF /* Model.swift */,
@@ -565,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCA70731E5394A200CFC903 /* GearFormView.swift in Sources */,
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
@@ -582,6 +597,7 @@
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
 				8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */,
 				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
+				8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
 			);

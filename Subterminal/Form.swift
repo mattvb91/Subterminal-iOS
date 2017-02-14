@@ -10,33 +10,40 @@ import UIKit
 
 class Form: UIViewController, UITextFieldDelegate {
 
-    private var _entity: Model?
-    
+    var entity: Model?
+	
+	/*
+	 * Add cancel/save buttons
+	 */
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		
+		let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveAction))
+		
+		let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+		
+		self.navigationItem.rightBarButtonItem = saveButton
+		self.navigationItem.leftBarButtonItem = cancelButton
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	func saveAction() {
+		
+	}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-		navigationController?.popViewController(animated: true)
-		dismiss(animated: true, completion: nil)
+    func cancelAction() {
+		
+		let transition = CATransition()
+		transition.duration = 0.5
+		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		transition.type = kCATransitionPush;
+		transition.subtype = kCATransitionFromBottom
+		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+		self.navigationController?.popViewController(animated: false)
     }
 
 }

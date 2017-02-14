@@ -23,6 +23,10 @@ class DropzoneTableController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		tableView.register(DropzoneTableViewCell.self, forCellReuseIdentifier: "dropzoneTableViewCell")
+		
+		if self.tableView.indexPathForSelectedRow != nil {
+			self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
+		}
 	}
 	
     // MARK: - Table view data source
