@@ -12,11 +12,13 @@
 		8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */; };
 		8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */; };
 		8FA739731E50CA6E00A08D6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA739721E50CA6E00A08D6A /* MapKit.framework */; };
+		8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CC1E52066F00E88E97 /* TabBarController.swift */; };
+		8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */; };
 		8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
+		8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
 		8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */; };
-		8FF31AAE1E4DE7AD003F3CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAC1E4DE7AD003F3CFF /* Main.storyboard */; };
 		8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */; };
 		8FF31AB31E4DE7AD003F3CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */; };
 		8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ABD1E4DE7AD003F3CFF /* SubterminalTests.swift */; };
@@ -64,10 +66,13 @@
 		8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableViewCell.swift; sourceTree = "<group>"; };
 		8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneViewController.swift; sourceTree = "<group>"; };
 		8FA739721E50CA6E00A08D6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8FAD28CC1E52066F00E88E97 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneView.swift; sourceTree = "<group>"; };
+		8FAD28D01E522B4800E88E97 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Subterminal-dhxzvxkuztqbeggqslgyresukmil/Build/Products/Debug-iphonesimulator/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8FF31AAD1E4DE7AD003F3CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FF31AB21E4DE7AD003F3CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FF31AB41E4DE7AD003F3CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 		40BD3AB32E42F6D84C68C6F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FAD28D01E522B4800E88E97 /* PureLayout.framework */,
 				8FA739721E50CA6E00A08D6A /* MapKit.framework */,
 				ED504E0B7D1A370F280DA0C5 /* Pods_Subterminal.framework */,
 				FFCD20F10CFCF8B3F7099ECF /* Pods_SubterminalTests.framework */,
@@ -174,7 +180,6 @@
 				8FF31AEB1E4E2CB3003F3CFF /* Base */,
 				8FF31AD71E4E0B74003F3CFF /* Skydive */,
 				8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */,
-				8FF31AAC1E4DE7AD003F3CFF /* Main.storyboard */,
 				8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */,
 				8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */,
 				8FF31AB41E4DE7AD003F3CFF /* Info.plist */,
@@ -219,6 +224,7 @@
 				8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */,
 				8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */,
 				8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */,
+				8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,8 +261,10 @@
 		8FF31AEB1E4E2CB3003F3CFF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8FDE7B4D1E51F09E00140144 /* DashboardController.swift */,
 				8FF31AE61E4E2B53003F3CFF /* Form.swift */,
 				8FF31AEC1E4E2D32003F3CFF /* Model.swift */,
+				8FAD28CC1E52066F00E88E97 /* TabBarController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -393,7 +401,6 @@
 				8FF31AB31E4DE7AD003F3CFF /* LaunchScreen.storyboard in Resources */,
 				8FF31AF51E4E7A93003F3CFF /* GoogleService-Info.plist in Resources */,
 				8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */,
-				8FF31AAE1E4DE7AD003F3CFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,16 +568,19 @@
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
+				8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */,
 				8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
+				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
 				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
 				8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */,
 				8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
+				8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */,
 				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
@@ -611,14 +621,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8FF31AAC1E4DE7AD003F3CFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FF31AAD1E4DE7AD003F3CFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

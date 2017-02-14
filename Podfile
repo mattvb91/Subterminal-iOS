@@ -21,5 +21,6 @@ target 'Subterminal' do
   pod 'Firebase/Core'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Alamofire', '~> 4.3'
+  pod 'PureLayout', '~> 3.0.2'
 
 end

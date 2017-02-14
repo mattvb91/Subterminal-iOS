@@ -17,7 +17,9 @@ class SkydiveTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadSampleSkydives()
-        
+		
+		self.title = "Dropzones"
+		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,6 +27,10 @@ class SkydiveTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+	
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.register(SkydiveTableViewCell.self, forCellReuseIdentifier: "skydiveTableViewCell")
+	}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,12 +53,10 @@ class SkydiveTableViewController: UITableViewController {
         }
         
         let skydive = skydives[indexPath.row]
-        
-        cell.dropzoneLabel.text = "Test " + String(indexPath.row)
-        cell.countLabel.text = String(indexPath.row)
-        
+		
         // Configure the cell...
-
+		cell.dropzone.text = "dropzone"
+		
         return cell
     }
 

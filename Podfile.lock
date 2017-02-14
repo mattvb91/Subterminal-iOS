@@ -20,12 +20,14 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - PureLayout (3.0.2)
   - SharkORM (2.1.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - Firebase/Core
+  - PureLayout (~> 3.0.2)
   - SharkORM
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -47,9 +49,10 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SharkORM: 272d0e4fa7ecd0dd4ee20a1ab040ca5a3be18949
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 085103522d8df6255038ae5958f63b73dfa4c78b
+PODFILE CHECKSUM: b3ca931312c4f178c8eb42a14ce1b38493bf9b27
 
 COCOAPODS: 1.2.0

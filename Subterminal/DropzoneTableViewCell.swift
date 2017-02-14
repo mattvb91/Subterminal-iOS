@@ -10,17 +10,36 @@ import UIKit
 
 class DropzoneTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var nameLabel: UILabel!
+	var nameLabel = UILabel()
+	var countryLabel = UILabel()
 	
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	var didSetupConstraints: Bool = false
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
+		nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		countryLabel.font = UIFont.systemFont(ofSize: 12)
+		
+		self.contentView.addSubview(nameLabel)
+		self.contentView.addSubview(countryLabel)
+		
+		self.setNeedsUpdateConstraints()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	override func updateConstraints() {
+		if(!didSetupConstraints) {
+			nameLabel.autoPinEdge(.left, to: .left, of: self, withOffset: 20)
+			nameLabel.autoPinEdge(.top, to: .top, of: self.contentView, withOffset: 10)
+			countryLabel.autoPinEdge(.top, to: .bottom, of: nameLabel, withOffset: 10)
+			countryLabel.autoPinEdge(.left, to: .left, of: nameLabel)
+		}
+		
+		super.updateConstraints()
+	}
 	
 }

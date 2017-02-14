@@ -18,19 +18,13 @@ class DropzoneTableController: UITableViewController {
         super.viewDidLoad()
 
 		items = Dropzone.query().fetchLightweight()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+		self.tableView.rowHeight = 70
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.register(DropzoneTableViewCell.self, forCellReuseIdentifier: "dropzoneTableViewCell")
+	}
+	
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,10 +47,18 @@ class DropzoneTableController: UITableViewController {
 		let dropzone = items.object(at: indexPath.row) as? Dropzone
 		
 		cell.nameLabel.text = dropzone?.name
+		cell.countryLabel.text = dropzone?.country
 
         return cell
     }
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let dropzoneController = DropzoneViewController()
+		dropzoneController.item = items.object(at: indexPath.row) as? Dropzone
+		
+		self.navigationController?.pushViewController(dropzoneController, animated: true)
+	}
+
 
     /*
     // Override to support conditional editing of the table view.

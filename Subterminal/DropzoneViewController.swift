@@ -13,21 +13,19 @@ class DropzoneViewController: UIViewController {
 
 	var item: Dropzone?
 	
-	@IBOutlet weak var dropzoneDescription: UITextView!
-	@IBOutlet weak var website: UILabel!
-	@IBOutlet weak var phone: UILabel!
-	@IBOutlet weak var email: UILabel!
-	@IBOutlet weak var map: MKMapView!
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		let dropzoneView = DropzoneView.newAutoLayout()
+		
 		if let item = item {
-			dropzoneDescription.text = item.dropzone_description
-			dropzoneDescription.sizeToFit()
-			website.text = item.website
-			phone.text = item.phone
-			email.text = item.email
+			dropzoneView.dropzone = item
+			
+			dropzoneView.dropzoneDescription.text = item.dropzone_description
+			dropzoneView.dropzoneDescription.sizeToFit()
+			dropzoneView.website.text = item.website
+			dropzoneView.phone.text = item.phone
+			dropzoneView.email.text = item.email
 			
 			let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
 		
@@ -35,31 +33,17 @@ class DropzoneViewController: UIViewController {
 			pin.coordinate = location
 			pin.title = item.name
 			
-			map.mapType = MKMapType.satellite
-			map.addAnnotation(pin)
-			map.centerCoordinate = location
+			dropzoneView.map.mapType = MKMapType.satellite
+			dropzoneView.map.addAnnotation(pin)
+			dropzoneView.map.centerCoordinate = location
 			let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
 			let region = MKCoordinateRegion(center: pin.coordinate, span: span)
-			map.setRegion(region, animated: true)
+			dropzoneView.map.setRegion(region, animated: true)
 			
 			navigationItem.title = item.name
+			
+			self.view.addSubview(dropzoneView)
 		}
+	
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

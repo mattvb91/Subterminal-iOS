@@ -9,15 +9,21 @@
 import UIKit
 
 class SkydiveTableViewCell: UITableViewCell {
-
-    //MARK: Properties
-    @IBOutlet weak var dropzoneLabel: UILabel!
-    @IBOutlet weak var delayLabel: UILabel!
-    @IBOutlet weak var aircraftLabel: UILabel!
-    //@IBOutlet weak var thumbnail: UIImageView!
-    @IBOutlet weak var countLabel: UILabel!
-
-    
+	
+	var dropzone = UILabel()
+	var aircraft = UILabel()
+	var delay = UILabel()
+	
+	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
+		self.contentView.addSubview(dropzone)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +34,11 @@ class SkydiveTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		dropzone.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+		
+	}
 }
