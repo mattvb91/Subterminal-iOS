@@ -39,7 +39,7 @@ class TableController: UITableViewController {
     }
 
 	override func viewWillAppear(_ animated: Bool) {
-		tableView.register(RigTableViewCell.self, forCellReuseIdentifier: self.getViewCellIdentifier())
+		tableView.register(type(of: self.getViewCellClass()), forCellReuseIdentifier: self.getViewCellIdentifier())
 		
 		if self.tableView.indexPathForSelectedRow != nil {
 			self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
@@ -80,6 +80,14 @@ class TableController: UITableViewController {
         return cell
     }
 	
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+		if self.canEditItems {
+			return UITableViewCellEditingStyle.delete
+		}
+		
+		return UITableViewCellEditingStyle.none
+	}
+	
 	// Override to support editing the table view.
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
@@ -94,6 +102,10 @@ class TableController: UITableViewController {
 		} else if editingStyle == .insert {
 			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 		}
+	}
+	
+	func getViewCellClass() -> UITableViewCell {
+		fatalError("getViewCellClass() not implemented")
 	}
 	
 	func assignModelToController(controller: UIViewController) {

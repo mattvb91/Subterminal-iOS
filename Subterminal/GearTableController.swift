@@ -35,6 +35,10 @@ class GearTableController: TableController {
 		return GearForm()
 	}
 	
+	override func getViewCellClass() -> RigTableViewCell {
+		return RigTableViewCell()
+	}
+	
 	override func assignModelToController(controller: UIViewController) {
 		let controller = controller as? GearForm
 		controller?.item = getAssignedModel()
