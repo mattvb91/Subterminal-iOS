@@ -11,76 +11,41 @@ import SharkORM
 import os.log
 import NotificationCenter
 
-class GearTableController: UITableViewController {
-
-	var items: SRKResultSet = []
+class GearTableController: TableController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: GearForm.NOTIFICATION_NAME), object: nil)
-		
-		let add = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-		
-		self.navigationItem.rightBarButtonItem = add
-	
-		loadData(notification: nil);
+		self.tableView.rowHeight = 60
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		tableView.register(RigTableViewCell.self, forCellReuseIdentifier: "rigTableViewCell")
-		
-		if self.tableView.indexPathForSelectedRow != nil {
-			self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
-		}
+	override func getNotificationName() -> String {
+		return GearForm.NOTIFICATION_NAME
 	}
 	
-	func addTapped() {
-		let transition = CATransition()
-		transition.duration = 0.5
-		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-		transition.type = kCATransitionPush;
-		transition.subtype = kCATransitionFromTop
-		
-		let gearController = GearForm()
-		gearController.item = Rig()
-		
-		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
-		self.navigationController?.pushViewController(gearController,animated: false)
+	override func getViewCellIdentifier() -> String {
+		return "rigTableViewCell"
 	}
 	
-	func loadData(notification: NSNotification?) {
-		items = Rig.query().fetch()
-		self.tableView.reloadData()
-		
-		if(items.count > 0) {
-			self.navigationItem.leftBarButtonItem = self.editButtonItem
-		}
+	override func getAssignedModel() -> Rig {
+		return Rig()
 	}
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-
 	
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "rigTableViewCell", for: indexPath) as? RigTableViewCell else {
-			fatalError("Could not get cell")
-		}
-
-        // Configure the cell...
-		let rig = items.object(at: indexPath.row) as? Rig
+	override func getAssignedController() -> UIViewController {
+		return GearForm()
+	}
+	
+	override func assignModelToController(controller: UIViewController) {
+		let controller = controller as? GearForm
+		controller?.item = getAssignedModel()
+	}
+	
+	override func configureViewCell(cell: UITableViewCell, item: Model) {
+		let rig = item as? Rig
+		let cell = cell as? RigTableViewCell
 		
-		cell.containerModelLabel.text = rig?.container_model
-		cell.containerManufacturerLabel.text = rig?.container_manufacturer
-		
-        return cell
+		cell?.containerModelLabel.text = rig?.container_model
+		cell?.containerManufacturerLabel.text = rig?.container_manufacturer
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -89,20 +54,4 @@ class GearTableController: UITableViewController {
 		
 		self.navigationController?.pushViewController(rigForm, animated: true)
 	}
-
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-			
-			// Delete the row from the data source
-			let rig = items.object(at: indexPath.row) as? Rig
-			rig?.remove()
-			
-			items = Rig.query().fetch()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
 }

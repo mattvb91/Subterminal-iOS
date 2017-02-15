@@ -27,6 +27,7 @@ class TabBarController: UITabBarController {
 		let gearController = GearTableController()
 		let gearNavController = UINavigationController(rootViewController: gearController)
 		gearNavController.tabBarItem.title = "Gear"
+		gearController.title = "Gear"
 		gearNavController.tabBarItem.image = UIImage(named: "first")
 		
 		let dropzoneController = DropzoneTableController()

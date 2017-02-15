@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		window?.makeKeyAndVisible()
 		window?.rootViewController = TabBarController()
 		
+		window?.backgroundColor = UIColor.white
+		
         SharkORM.setDelegate(self)
         SharkORM.openDatabaseNamed("Subterminal")
 		

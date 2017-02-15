@@ -22,7 +22,8 @@ class RigTableViewCell: BaseTableCell {
 	
 	override func setupConstraints() {
 		containerManufacturerLabel.autoPinEdge(.left, to: .left, of: self, withOffset: 20)
-		containerModelLabel.autoPinEdge(.top, to: .top, of: containerManufacturerLabel, withOffset: 10)
+		containerModelLabel.autoPinEdge(.top, to: .bottom, of: containerManufacturerLabel, withOffset: 5)
+		containerModelLabel.autoPinEdge(.left, to: .left, of: containerManufacturerLabel)
 	}
 	
 }
