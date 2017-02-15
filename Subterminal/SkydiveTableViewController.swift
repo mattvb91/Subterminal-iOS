@@ -9,14 +9,10 @@
 import UIKit
 import os.log
 
-class SkydiveTableViewController: UITableViewController {
-
-    var skydives = [Skydive]()
-    
+class SkydiveTableViewController: TableController {
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadSampleSkydives()
 		
 		self.title = "Skydives"
 		
@@ -24,49 +20,38 @@ class SkydiveTableViewController: UITableViewController {
 		self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
-	
-	override func viewWillAppear(_ animated: Bool) {
-		tableView.register(SkydiveTableViewCell.self, forCellReuseIdentifier: "skydiveTableViewCell")
+	override func getViewCellIdentifier() -> String {
+		return "skydiveTableViewCell"
 	}
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skydives.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "skydiveTableViewCell", for: indexPath) as? SkydiveTableViewCell else {
-                fatalError("The cell is not an instance of SkydiveTableViewCell")
-        }
-        
-        let skydive = skydives[indexPath.row]
+	
+	override func configureViewCell(cell: UITableViewCell, item: Model)
+	{
+		let cell = cell as? SkydiveTableViewCell
+		let item = item as? Skydive
 		
         // Configure the cell...
-		cell.dropzone.text = "dropzone"
-		
-        return cell
+		cell?.dropzone.text = "dropzone"
     }
-    
-    //MARK: Private Methods
-    private func loadSampleSkydives() {
-        
-        
-        let skydive1 = Skydive()
-        let skydive2 = Skydive()
-        let skydive3 = Skydive()
-        
-        skydives += [skydive1, skydive2, skydive3]
-        
-    }
-
+	
+	override func getNotificationName() -> String {
+		return SkydiveForm.NOTIFICATION_NAME
+	}
+	
+	override func getAssignedModel() -> Model {
+		return Skydive()
+	}
+	
+	override func getViewCellClass() -> SkydiveTableViewCell {
+		return SkydiveTableViewCell()
+	}
+	
+	override func getAssignedController() -> SkydiveForm {
+		return SkydiveForm()
+	}
+	
+	override func assignModelToController(controller: UIViewController)
+	{
+		let controller = controller as? SkydiveForm
+		controller?.item = getAssignedModel()
+	}
 }

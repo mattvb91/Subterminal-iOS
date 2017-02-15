@@ -10,15 +10,12 @@ import UIKit
 
 class SkydiveForm: Form {
 
+	public static let NOTIFICATION_NAME = "skydive_data_changed"
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		self.formView = SkydiveFormView.newAutoLayout()
+		self.view.addSubview(self.getFormView())
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-  
 }

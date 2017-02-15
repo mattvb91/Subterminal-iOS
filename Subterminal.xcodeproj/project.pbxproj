@@ -20,6 +20,7 @@
 		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8A1E549B74005543C1 /* TableController.swift */; };
+		8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
 		8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
 		8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */; };
 		8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveFormView.swift; sourceTree = "<group>"; };
 		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */,
 				8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */,
 				8FCA70721E5394A200CFC903 /* GearFormView.swift */,
+				8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
+				8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
 				8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */,
 				8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */,
