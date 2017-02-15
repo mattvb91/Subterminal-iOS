@@ -18,7 +18,7 @@ class GearTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: GearForm.NOTIFICATION_NAME), object: nil)
 		
 		let add = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
 		
@@ -27,6 +27,14 @@ class GearTableController: UITableViewController {
 		loadData(notification: nil);
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.register(RigTableViewCell.self, forCellReuseIdentifier: "rigTableViewCell")
+		
+		if self.tableView.indexPathForSelectedRow != nil {
+			self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
+		}
+	}
+	
 	func addTapped() {
 		let transition = CATransition()
 		transition.duration = 0.5
@@ -34,8 +42,11 @@ class GearTableController: UITableViewController {
 		transition.type = kCATransitionPush;
 		transition.subtype = kCATransitionFromTop
 		
+		let gearController = GearForm()
+		gearController.item = Rig()
+		
 		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
-		self.navigationController?.pushViewController(GearForm(),animated: false)
+		self.navigationController?.pushViewController(gearController,animated: false)
 	}
 	
 	func loadData(notification: NSNotification?) {
@@ -46,11 +57,6 @@ class GearTableController: UITableViewController {
 			self.navigationItem.leftBarButtonItem = self.editButtonItem
 		}
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
@@ -77,6 +83,13 @@ class GearTableController: UITableViewController {
         return cell
     }
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let rigForm = GearForm()
+		rigForm.item = items.object(at: indexPath.row) as? Rig
+		
+		self.navigationController?.pushViewController(rigForm, animated: true)
+	}
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

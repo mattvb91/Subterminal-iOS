@@ -10,42 +10,43 @@ import UIKit
 import os.log
 
 class GearForm: Form {
-
-	var item: Rig?
+	
+	public static let NOTIFICATION_NAME = "gear_data_changed"
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let formView = GearFormView.newAutoLayout()
+		self.formView = GearFormView.newAutoLayout()
 		
-		if let item = item {
-			formView.containerManufacturer.text = item.container_manufacturer
-			formView.containerModel.text = item.container_model
-			formView.containerSerial.text = item.container_serial
-			formView.containerDateInUse.text = item.container_date_in_use
+		if getItem().id != nil {
+			getFormView().containerManufacturer.text = getItem().container_manufacturer
+			getFormView().containerModel.text = getItem().container_model
+			getFormView().containerSerial.text = getItem().container_serial
+			getFormView().containerDateInUse.text = getItem().container_date_in_use
 		}
 		
-		self.view.addSubview(formView)
+		self.view.addSubview(getFormView())
     }
 	
-	//MARK: Actions
+	override func getItem() -> Rig {
+		return (super.getItem() as? Rig)!
+	}
 	
-	@IBAction func save(_ sender: UIBarButtonItem) {
-		
-		/*
-		if item == nil {
-			item = Rig()
-		}
-		
-		
-		if (item?.save())! {
-			os_log("saved")
-		}
-*/
-		
-		NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: nil)
-
-		navigationController?.popViewController(animated: true)
-		dismiss(animated: true, completion: nil)
+	override func formIsValid() -> Bool {
+		return true
+	}
+	
+	override func assignFormToEntity() {
+		getItem().container_manufacturer = self.getFormView().containerManufacturer.text
+		getItem().container_model = self.getFormView().containerModel.text
+		getItem().container_serial = self.getFormView().containerSerial.text
+	}
+	
+	override func getFormView() -> GearFormView {
+		return super.getFormView() as! GearFormView
+	}
+	
+	override func getNotificationName() -> String {
+		return GearForm.NOTIFICATION_NAME
 	}
 }

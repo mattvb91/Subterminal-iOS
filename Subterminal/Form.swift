@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import os.log
 
 class Form: UIViewController, UITextFieldDelegate {
 
-    var entity: Model?
+    var item: Model?
+	var formView: UIView?
 	
 	/*
 	 * Add cancel/save buttons
@@ -25,25 +27,66 @@ class Form: UIViewController, UITextFieldDelegate {
 		self.navigationItem.rightBarButtonItem = saveButton
 		self.navigationItem.leftBarButtonItem = cancelButton
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 	
+	/*
+	 * Check form is valid, Assign form to entity, save the entity
+	 */
 	func saveAction() {
-		
+		if formIsValid() {
+			assignFormToEntity()
+			self.getItem().save()
+			
+			NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.getNotificationName()), object: nil)
+			
+			cancelAction()
+		}
 	}
 
+	/*
+	 * Slide down
+     */
     func cancelAction() {
 		
-		let transition = CATransition()
-		transition.duration = 0.5
-		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-		transition.type = kCATransitionPush;
-		transition.subtype = kCATransitionFromBottom
-		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
-		self.navigationController?.popViewController(animated: false)
-    }
+		if(getItem().id == nil) {
+			let transition = CATransition()
+			transition.duration = 0.5
+			transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+			transition.type = kCATransitionPush;
+			transition.subtype = kCATransitionFromBottom
+			self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+			self.navigationController?.popViewController(animated: false)
+		} else {
+			self.navigationController?.popViewController(animated: true)
+			dismiss(animated: true, completion: nil)
+		}
+	}
+	
+	/*
+	 * Get the current active item
+	 */
+	func getItem() -> Model {
+		return self.item!
+	}
 
+	/*
+	 * Override to validate
+	 */
+	func formIsValid() -> Bool {
+		return false
+	}
+	
+	func getFormView() -> UIView {
+		return self.formView!
+	}
+	
+	/*
+	 * Get the input values back over to the entity
+	 */
+	func assignFormToEntity() {
+		fatalError("assignFormToEntity() not implemented")
+	}
+	
+	func getNotificationName() -> String {
+		fatalError("getNotificationName() not implemented")
+	}
 }
