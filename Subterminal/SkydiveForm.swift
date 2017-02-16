@@ -16,6 +16,29 @@ class SkydiveForm: Form {
         super.viewDidLoad()
 
 		self.formView = SkydiveFormView.newAutoLayout()
-		self.view.addSubview(self.getFormView())
+		self.view.addSubview(self.formView!)
     }
+	
+	override func formIsValid() -> Bool {
+		return true
+	}
+	
+	override func assignFormToEntity() {
+		getItem().delay = Int(getFormView().delay.text!)
+		getItem().exit_altitude = Int(getFormView().exitAlt.text!)
+		getItem().deploy_altidude = Int(getFormView().deployAlt.text!)
+		getItem().skydive_description = getFormView().descriptionInput.text
+	}
+	
+	override func getItem() -> Skydive {
+		return (super.getItem() as? Skydive)!
+	}
+	
+	override func getFormView() -> SkydiveFormView {
+		return (super.getFormView() as? SkydiveFormView)!
+	}
+	
+	override func getNotificationName() -> String {
+		return SkydiveForm.NOTIFICATION_NAME
+	}
 }
