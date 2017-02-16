@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.3.0)
+  - ElValidator (1.1.2)
   - Firebase/Core (3.12.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.7)
@@ -26,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
+  - ElValidator
   - Firebase/Core
   - PureLayout (~> 3.0.2)
   - SharkORM
@@ -42,6 +44,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  ElValidator: ee1cc9daba7bc816691d717e29bd528bc6eff967
   Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
@@ -53,6 +56,6 @@ SPEC CHECKSUMS:
   SharkORM: 272d0e4fa7ecd0dd4ee20a1ab040ca5a3be18949
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: b3ca931312c4f178c8eb42a14ce1b38493bf9b27
+PODFILE CHECKSUM: 8058b7bd3f657e47e53529b6e783321ad765ad01
 
 COCOAPODS: 1.2.0

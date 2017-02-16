@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import ElValidator
 
-class GearFormView: UIView {
+class GearFormView: UIView, UITextFieldDelegate {
 	
 	var didSetupConstraints: Bool = false
-	
+	var requiredBlock:((_: [Error]) -> Void)?
+
 	//MARK: Properties
-	var containerManufacturer = UITextField()
+	var containerManufacturer = TextFieldValidator()
 	var containerModel = UITextField()
 	var containerSerial = UITextField()
 	var containerDateInUse = UITextField()
@@ -28,16 +30,32 @@ class GearFormView: UIView {
 		
 		self.backgroundColor = UIColor.white
 		
+		requiredBlock = { [weak self] (errors: [Error]) -> Void in
+			if errors.first != nil {
+				self?.containerManufacturer.layer.shadowColor = UIColor.red.cgColor
+			} else {
+				self?.containerManufacturer.layer.shadowColor = UIColor.gray.cgColor
+			}
+		}
+		
 		labelContainerManufacturer.text = "Manufacturer"
 		labelContainerModel.text = "Model"
 		labelContainerSerial.text = "Serial"
 		labelContainerDateInUse.text = "Date in use"
-		
-		containerManufacturer.borderStyle = UITextBorderStyle.roundedRect
-		containerModel.borderStyle = UITextBorderStyle.roundedRect
-		containerSerial.borderStyle = UITextBorderStyle.roundedRect
-		containerDateInUse.borderStyle = UITextBorderStyle.roundedRect
+	
+		containerManufacturer.delegate = self
+		containerManufacturer.add(validator: LenghtValidator(validationEvent: .perCharacter, min: 1))
+		containerManufacturer.validationBlock = requiredBlock
 
+		containerManufacturer.setBottomBorder()
+		containerModel.setBottomBorder()
+		containerSerial.setBottomBorder()
+		containerDateInUse.setBottomBorder()
+		
+		containerManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
+		containerModel.clearButtonMode = UITextFieldViewMode.whileEditing
+		containerSerial.clearButtonMode = UITextFieldViewMode.whileEditing
+		
 		self.addSubview(containerManufacturer)
 		self.addSubview(containerModel)
 		self.addSubview(containerSerial)

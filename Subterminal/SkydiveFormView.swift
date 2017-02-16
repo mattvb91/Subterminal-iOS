@@ -13,13 +13,16 @@ class SkydiveFormView: UIView {
 	var didSetupConstraints: Bool = false
 
 	var dropzoneLabel = UILabel()
+	var dateLabel = UILabel()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		dropzoneLabel.text = "Dropzone"
+		dateLabel.text = "Date"
 	
 		self.addSubview(dropzoneLabel)
+		self.addSubview(dateLabel)
 		setNeedsUpdateConstraints()
 	}
 	
@@ -33,6 +36,9 @@ class SkydiveFormView: UIView {
 			
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 80)
+			
+			dateLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
+			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 40)
 			
 			self.didSetupConstraints = true
 		}
