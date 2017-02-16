@@ -21,7 +21,6 @@ class Form: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 		
 		let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveAction))
-		
 		let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
 		
 		self.navigationItem.rightBarButtonItem = saveButton

@@ -24,6 +24,8 @@
 		8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8A1E549B74005543C1 /* TableController.swift */; };
 		8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
 		8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
+		8FE80AB71E56304F0081EA56 /* SkydiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */; };
+		8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
 		8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */; };
 		8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */; };
 		8FF31AB31E4DE7AD003F3CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */; };
@@ -83,6 +85,8 @@
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveFormView.swift; sourceTree = "<group>"; };
 		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveViewController.swift; sourceTree = "<group>"; };
+		8FE80AB81E56311A0081EA56 /* SkydiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveView.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */,
 				8FCA70721E5394A200CFC903 /* GearFormView.swift */,
 				8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */,
+				8FE80AB81E56311A0081EA56 /* SkydiveView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */,
 				8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */,
 				8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */,
+				8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FE80AB71E56304F0081EA56 /* SkydiveViewController.swift in Sources */,
 				8FCA70731E5394A200CFC903 /* GearFormView.swift in Sources */,
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */,
@@ -602,6 +609,7 @@
 				8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
+				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,

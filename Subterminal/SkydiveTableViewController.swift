@@ -33,6 +33,13 @@ class SkydiveTableViewController: TableController {
 		cell?.dropzone.text = "dropzone"
     }
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let skydiveController = SkydiveViewController()
+		skydiveController.item = items.object(at: indexPath.row) as? Skydive
+		
+		self.navigationController?.pushViewController(skydiveController, animated: true)
+	}
+	
 	override func getNotificationName() -> String {
 		return SkydiveForm.NOTIFICATION_NAME
 	}
