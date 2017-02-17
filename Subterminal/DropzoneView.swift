@@ -24,6 +24,8 @@ class DropzoneView: UIView {
 	var emailLabel = UILabel()
 	var phoneLabel = UILabel()
 
+	var shadowView = ShadowView()
+
 	var dropzone: Dropzone?
 	
 	override init(frame: CGRect) {
@@ -50,6 +52,9 @@ class DropzoneView: UIView {
 		self.addSubview(dropzoneDescription)
 		self.addSubview(map)
 		
+		self.addSubview(shadowView)
+		self.sendSubview(toBack: shadowView)
+		
 		self.setNeedsUpdateConstraints()
 	}
 	
@@ -60,9 +65,9 @@ class DropzoneView: UIView {
 
 			websiteLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 80)
 			websiteLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
-			emailLabel.autoPinEdge(ALEdge.top, to: ALEdge.bottom, of: websiteLabel, withOffset: 10.0)
+			emailLabel.autoPinEdge(.top, to: .bottom, of: websiteLabel, withOffset: 10.0)
 			emailLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
-			phoneLabel.autoPinEdge(ALEdge.top, to: ALEdge.bottom, of: emailLabel, withOffset: 10)
+			phoneLabel.autoPinEdge(.top, to: .bottom, of: emailLabel, withOffset: 10)
 			phoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			
 			website.autoPinEdge(.left, to: .right, of: websiteLabel, withOffset: 20)
@@ -82,6 +87,11 @@ class DropzoneView: UIView {
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
 			
+			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
+			shadowView.autoPinEdge(.bottom, to: .bottom, of: dropzoneDescription, withOffset: 4)
+			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 4)
+			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 4)
+
 			map.autoPinEdge(.top, to: .bottom, of: dropzoneDescription, withOffset: 20.0)
 			map.autoPinEdge(.left, to: .left, of: dropzoneDescription)
 			map.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
