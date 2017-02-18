@@ -32,6 +32,9 @@ class DropzoneViewController: UIViewController {
 			dropzoneView.phone.text = item.phone
 			dropzoneView.email.text = item.email
 			
+			let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageFullSize))
+			dropzoneView.images.addGestureRecognizer(gestureRecognizer)
+			
 			let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
 		
 			let pin = MKPointAnnotation()
@@ -51,6 +54,10 @@ class DropzoneViewController: UIViewController {
 		}
 	
     }
+	
+	func imageFullSize() {
+		dropzoneView.images.presentFullScreenController(from: self)
+	}
 	
 	func updateImages() {
 		if((item?.images?.count)! > 0) {
