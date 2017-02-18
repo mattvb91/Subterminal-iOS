@@ -9,12 +9,11 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-
-typealias ServiceResponse = (JSON, NSError) -> Void
+import ImageSlideshow
 
 class API: NSObject {
 	
-	let headesrs: HTTPHeaders = [
+	let headerss: HTTPHeaders = [
 		"accept": "",
 		"apiappkey": ""
 	]
@@ -22,20 +21,39 @@ class API: NSObject {
 	static let instance = API()
 	let baseURL = "http://192.168.1.11/api/"
 
-	func getDropzones() {
-		var test = Alamofire.request(baseURL + "dropzone", parameters: ["last_sync": "2000-01-01"], headers: headesrs).responseJSON { response in
-			print(response.request)  // original URL request
-			print(response.response) // HTTP URL response
-			print(response.data)     // server data
-			print(response.result)   // result of response serialization
-			
+	func getDropzones() -> Void {
+		Alamofire.request(baseURL + "dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
 			if let result = response.result.value {
 				let items = result as! NSArray
 				
 				for item in items as! [NSDictionary] {
 					let dropzone = Dropzone.build(json: JSON(item))
-					dropzone.save()
+					_ = dropzone.save()
 				}
+			}
+		}
+	}
+	
+	func getDropzoneImages(dropzone: Dropzone!) {
+		let url = baseURL + "dropzone/" + dropzone.id.stringValue + "/images"
+		
+		Alamofire.request(url, headers: headerss).responseJSON { response in
+			if let result = response.result.value {
+				debugPrint(response)
+				let items = result as! NSArray
+				
+				var images = [AlamofireSource]()
+				for item in items as! [NSDictionary] {
+					debugPrint(item)
+					
+					let data = JSON(item)
+					let url = "https://skydivelocations.com/image/" + data["filename"].string! + "?full=true"
+					
+					images.append(AlamofireSource(urlString: url)!)
+				}
+			
+				dropzone.images = images
+				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneImages"), object: nil)
 			}
 		}
 	}

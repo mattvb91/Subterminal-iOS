@@ -13,13 +13,18 @@ class DropzoneViewController: UIViewController {
 
 	var item: Dropzone?
 	
+	let dropzoneView = DropzoneView.newAutoLayout()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		let dropzoneView = DropzoneView.newAutoLayout()
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.updateImages), name: NSNotification.Name(rawValue: "dropzoneImages"), object: nil)
+
 		if let item = item {
 			dropzoneView.dropzone = item
+			
+			API.instance.getDropzoneImages(dropzone: item)
 			
 			dropzoneView.dropzoneDescription.text = item.dropzone_description
 			dropzoneView.dropzoneDescription.sizeToFit()
@@ -46,4 +51,14 @@ class DropzoneViewController: UIViewController {
 		}
 	
     }
+	
+	func updateImages() {
+		if((item?.images?.count)! > 0) {
+			dropzoneView.images.setImageInputs((item?.images)!)
+		}else {
+			dropzoneView.images.removeFromSuperview()
+			dropzoneView.didSetupConstraints = false
+			dropzoneView.setNeedsUpdateConstraints()
+		}
+	}
 }

@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import PureLayout
+import ImageSlideshow
+import AlamofireImage
 
 class DropzoneView: UIView {
 
@@ -25,13 +27,19 @@ class DropzoneView: UIView {
 	var phoneLabel = UILabel()
 
 	var shadowView = ShadowView()
-
+	
+	var images = ImageSlideshow()
+	
 	var dropzone: Dropzone?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		self.backgroundColor = UIColor.white
+		
+		images.contentScaleMode = UIViewContentMode.scaleAspectFill
+		images.slideshowInterval = 5
+		self.addSubview(images)
 		
 		websiteLabel.text = "Website:"
 		websiteLabel.font = UIFont.boldSystemFont(ofSize: 16)
@@ -62,8 +70,15 @@ class DropzoneView: UIView {
 		if(!didSetupConstraints) {
 			
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-
-			websiteLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 80)
+			
+			if(images.superview === self) {
+				images.autoPinEdge(toSuperviewEdge: .top, withInset: 60)
+				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
+				websiteLabel.autoPinEdge(.top, to: .bottom, of: images, withOffset: 20)
+			}else {
+				websiteLabel.autoPinEdge(.top, to: .top, of: self, withOffset: 80)
+			}
+			
 			websiteLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			emailLabel.autoPinEdge(.top, to: .bottom, of: websiteLabel, withOffset: 10.0)
 			emailLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)

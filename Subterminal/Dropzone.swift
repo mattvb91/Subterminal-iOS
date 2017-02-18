@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import ImageSlideshow
 
 class Dropzone: Model {
     
@@ -22,6 +23,9 @@ class Dropzone: Model {
     
 	dynamic var latitude: Double = 0.0
 	dynamic var longtitude: Double = 0.0
+	
+	var images: [AlamofireSource]?
+	
 	
 	class func build(json: JSON) -> Dropzone {
 		var dropzone = Dropzone()

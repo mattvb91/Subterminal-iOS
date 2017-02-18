@@ -26,5 +26,5 @@ class Rig: Model {
         aad_model,
         aad_serial,
         aad_date_in_use: String?
-    
+	
 }
