@@ -18,13 +18,15 @@ class DropzoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		
 		NotificationCenter.default.addObserver(self, selector: #selector(self.updateImages), name: NSNotification.Name(rawValue: "dropzoneImages"), object: nil)
 
+		NotificationCenter.default.addObserver(self, selector: #selector(self.updateServices), name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
+		
 		if let item = item {
 			dropzoneView.dropzone = item
 			
 			API.instance.getDropzoneImages(dropzone: item)
+			API.instance.getDropzoneServices(dropzone: item)
 			
 			dropzoneView.dropzoneDescription.text = item.dropzone_description
 			dropzoneView.dropzoneDescription.sizeToFit()
@@ -68,4 +70,11 @@ class DropzoneViewController: UIViewController {
 			dropzoneView.setNeedsUpdateConstraints()
 		}
 	}
+	
+	func updateServices() {
+		if((item?.services?.count)! > 0) {
+			dropzoneView.tagview_data = (item?.services)!
+			dropzoneView.tagview.reloadData()
+		}
+	}	
 }

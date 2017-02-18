@@ -25,7 +25,7 @@ class Dropzone: Model {
 	dynamic var longtitude: Double = 0.0
 	
 	var images: [AlamofireSource]?
-	
+	var services: [String]?
 	
 	class func build(json: JSON) -> Dropzone {
 		var dropzone = Dropzone()

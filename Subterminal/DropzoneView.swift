@@ -11,8 +11,9 @@ import MapKit
 import PureLayout
 import ImageSlideshow
 import AlamofireImage
+import HTagView
 
-class DropzoneView: UIView {
+class DropzoneView: UIView, HTagViewDataSource {
 
 	var didSetupConstraints: Bool = false
 	
@@ -29,6 +30,9 @@ class DropzoneView: UIView {
 	var shadowView = ShadowView()
 	
 	var images = ImageSlideshow()
+	var tagview = HTagView()
+	
+	var tagview_data = [String]()
 	
 	var dropzone: Dropzone?
 	
@@ -60,6 +64,10 @@ class DropzoneView: UIView {
 		self.addSubview(dropzoneDescription)
 		self.addSubview(map)
 		
+		tagview.dataSource = self
+		tagview.tagSecondBackColor = UIColor(red: 121/255, green: 196/255, blue: 1, alpha: 1)
+		
+		self.addSubview(tagview)
 		self.addSubview(shadowView)
 		self.sendSubview(toBack: shadowView)
 		
@@ -102,12 +110,16 @@ class DropzoneView: UIView {
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
 			
+			tagview.autoPinEdge(.top, to: .bottom, of: dropzoneDescription)
+			tagview.autoPinEdge(toSuperviewEdge: .right)
+			tagview.autoPinEdge(toSuperviewEdge: .left)
+			
 			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
-			shadowView.autoPinEdge(.bottom, to: .bottom, of: dropzoneDescription, withOffset: 4)
+			shadowView.autoPinEdge(.bottom, to: .bottom, of: tagview, withOffset: 4)
 			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 4)
 			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 4)
 
-			map.autoPinEdge(.top, to: .bottom, of: dropzoneDescription, withOffset: 20.0)
+			map.autoPinEdge(.top, to: .bottom, of: tagview, withOffset: 20.0)
 			map.autoPinEdge(.left, to: .left, of: dropzoneDescription)
 			map.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
 			map.autoSetDimension(.height, toSize: 200)
@@ -121,5 +133,17 @@ class DropzoneView: UIView {
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	
+	}
+	
+	func numberOfTags(_ tagView: HTagView) -> Int {
+		return tagview_data.count
+	}
+	
+	func tagView(_ tagView: HTagView, titleOfTagAtIndex index: Int) -> String {
+		return tagview_data[index]
+	}
+	
+	func tagView(_ tagView: HTagView, tagTypeAtIndex index: Int) -> HTagType {
+		return HTagType.select
 	}
 }

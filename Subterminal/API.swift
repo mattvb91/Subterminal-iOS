@@ -57,4 +57,17 @@ class API: NSObject {
 			}
 		}
 	}
+	
+	func getDropzoneServices(dropzone: Dropzone!) {
+		let url = baseURL + "dropzone/" + dropzone.id.stringValue + "/services"
+		
+		Alamofire.request(url, headers: headerss).responseJSON { response in
+			if let result = response.result.value {
+				debugPrint(response)
+				let items = result as! NSArray
+				dropzone.services = items as! [String]
+				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
+			}
+		}
+	}
 }
