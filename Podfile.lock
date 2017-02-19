@@ -32,6 +32,7 @@ PODS:
     - ImageSlideshow/Core
   - ImageSlideshow/Core (1.0.0)
   - PureLayout (3.0.2)
+  - RAMAnimatedTabBarController (2.0.13)
   - SharkORM (2.1.1)
   - SwiftyJSON (3.1.4)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.0.0)
   - ImageSlideshow/Alamofire
   - PureLayout (~> 3.0.2)
+  - RAMAnimatedTabBarController (~> 2.0.13)
   - SharkORM
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -72,9 +74,10 @@ SPEC CHECKSUMS:
   HTagView: 1fd0b80e7a9326fbe22e2a6a7c8b3230baaff8b8
   ImageSlideshow: 2787e10e202b79ecf5348a205c539fcc5bb8e62b
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
   SharkORM: 272d0e4fa7ecd0dd4ee20a1ab040ca5a3be18949
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 61aa1955feec29486b05f5e3be1bd47fbeb80fcc
+PODFILE CHECKSUM: ed83a6a9ff60699d7a1502998fcf6ae500020b3f
 
 COCOAPODS: 1.2.0

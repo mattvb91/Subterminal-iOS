@@ -28,4 +28,5 @@ target 'Subterminal' do
   pod 'ImageSlideshow/Alamofire'
   pod 'HTagView'
   pod 'DropDown'
+  pod 'RAMAnimatedTabBarController', '~> 2.0.13'
 end

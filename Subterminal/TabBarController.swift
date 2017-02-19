@@ -8,34 +8,43 @@
 
 import Foundation
 import UIKit
+import RAMAnimatedTabBarController
 
-class TabBarController: UITabBarController {
+class TabBarController: RAMAnimatedTabBarController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		let dashboardController = DashboardController()
 		let dashboardNavController = UINavigationController(rootViewController: dashboardController)
-		dashboardNavController.tabBarItem.image = UIImage(named: "first")
+		
+		let tabBarIconDashboard: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dashboard", image: #imageLiteral(resourceName: "first").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "first"))
+		tabBarIconDashboard.animation = RAMBounceAnimation()
+		dashboardNavController.tabBarItem = tabBarIconDashboard
 		
 		let skydiveController = SkydiveTableViewController()
 		skydiveController.title = "Skydives"
 		let skydiveNavController = UINavigationController(rootViewController: skydiveController)
-		skydiveNavController.tabBarItem.title = "Skydives"
-		skydiveNavController.tabBarItem.image = UIImage(named: "second")
 		
+		let tabBarIconSkydive: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Skydives", image: #imageLiteral(resourceName: "second").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "second"))
+		tabBarIconSkydive.animation = RAMBounceAnimation()
+		skydiveController.tabBarItem = tabBarIconSkydive
+
 		let gearController = GearTableController()
 		let gearNavController = UINavigationController(rootViewController: gearController)
-		gearNavController.tabBarItem.title = "Gear"
-		gearController.title = "Gear"
-		gearNavController.tabBarItem.image = UIImage(named: "first")
-		
+
+		let tabBarIconGear: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Gear", image: #imageLiteral(resourceName: "first").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "first"))
+		tabBarIconGear.animation = RAMBounceAnimation()
+		gearController.tabBarItem = tabBarIconGear
+
 		let dropzoneController = DropzoneTableController()
 		dropzoneController.title = "Dropzones"
 		let dropzoneNavController = UINavigationController(rootViewController: dropzoneController)
-		dropzoneNavController.tabBarItem.title = "Dropzones"
-		dropzoneNavController.tabBarItem.image = UIImage(named: "second")
-		dropzoneNavController.navigationBar.backgroundColor = UIColor.white
+		
+		let tabBarIconDropzone: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dropzone", image: #imageLiteral(resourceName: "second").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "second"))
+		tabBarIconDropzone.animation = RAMBounceAnimation()
+		dropzoneController.tabBarItem = tabBarIconDropzone
+
 		
 		viewControllers = [dashboardNavController, skydiveNavController, gearNavController, dropzoneNavController]
 	}
