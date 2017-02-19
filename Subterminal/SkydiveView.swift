@@ -25,6 +25,7 @@ class SkydiveView: UIView {
 	var deployAltLabel = UILabel()
 	var delayLabel = UILabel()
 	
+	var aircraft = UILabel()
 	var exitAlt = UILabel()
 	var deployAlt = UILabel()
 	var delay = UILabel()
@@ -69,6 +70,7 @@ class SkydiveView: UIView {
 		self.addSubview(deployAltLabel)
 		self.addSubview(delayLabel)
 		
+		self.addSubview(aircraft)
 		self.addSubview(exitAlt)
 		self.addSubview(deployAlt)
 		self.addSubview(delay)
@@ -101,6 +103,9 @@ class SkydiveView: UIView {
 			
 			aircraftLabel.autoPinEdge(.left, to: .left, of: rigLabel)
 			aircraftLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 15)
+			
+			aircraft.autoPinEdge(.left, to: .right, of: aircraftLabel, withOffset: 50)
+			aircraft.autoPinEdge(.top, to: .top, of: aircraftLabel)
 			
 			typeLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			typeLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 15)

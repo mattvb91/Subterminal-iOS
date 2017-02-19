@@ -18,6 +18,8 @@ class SkydiveTableViewController: TableController {
 		
         self.clearsSelectionOnViewWillAppear = false
 		self.navigationItem.leftBarButtonItem = self.editButtonItem
+		
+		self.tableView.rowHeight = 80
     }
 
 	override func getViewCellIdentifier() -> String {
@@ -30,7 +32,9 @@ class SkydiveTableViewController: TableController {
 		let item = item as? Skydive
 		
         // Configure the cell...
-		cell?.dropzone.text = "dropzone"
+		cell?.dropzone.text = "Irish Parachute Club"
+		cell?.aircraft.text = item?.aircraft()?.name
+		cell?.delay.text = (item?.delay?.stringValue)! + "s"
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

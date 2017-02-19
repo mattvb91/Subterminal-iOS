@@ -34,6 +34,8 @@ class SkydiveViewController: UIViewController {
 			if let delay = item.delay {
 				skydiveView.delay.text = String(describing: delay)
 			}
+			
+			skydiveView.aircraft.text = item.aircraft()?.name
 		}
 		
 		self.view.addSubview(skydiveView)

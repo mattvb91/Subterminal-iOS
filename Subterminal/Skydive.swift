@@ -25,4 +25,11 @@ class Skydive: Model {
 	
     dynamic var height_unit: Int = 0
 
+	func aircraft() -> Aircraft? {
+		if self.aircraft_id != nil {
+			return (Aircraft.object(withPrimaryKeyValue: self.aircraft_id) as? Aircraft)!
+		}
+		
+		return nil
+	}
 }

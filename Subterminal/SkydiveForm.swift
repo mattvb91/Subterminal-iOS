@@ -28,6 +28,10 @@ class SkydiveForm: Form {
 		getItem().exit_altitude = NSNumber(value: Int(getFormView().exitAlt.text!)!)
 		getItem().deploy_altidude = NSNumber(value: Int(getFormView().deployAlt.text!)!)
 		getItem().skydive_description = getFormView().descriptionInput.text
+		
+		let aircraft = getFormView().aircraft.selectedItem
+		let aircraftDB = Aircraft.query().where(withFormat: "name = %@", withParameters: [aircraft]).fetch().firstObject as? Aircraft
+		getItem().aircraft_id = aircraftDB?.id
 	}
 	
 	override func getItem() -> Skydive {
