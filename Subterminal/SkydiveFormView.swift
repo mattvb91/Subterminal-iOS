@@ -27,7 +27,11 @@ class SkydiveFormView: UIView {
 	var	descriptionLabel = Label(text: "Description")
 	
 	var aircraft = DropDown()
+	var type = DropDown()
 	
+	var aircraftSelectedLabel = UILabel()
+	var typeSelectedLabel = UILabel()
+
 	var exitAlt = UITextField()
 	var deployAlt = UITextField()
 	var delay = UITextField()
@@ -50,17 +54,38 @@ class SkydiveFormView: UIView {
 		descriptionInput.layer.borderWidth = 1
 		descriptionInput.layer.cornerRadius = 5
 		
-		aircraft.anchorView = aircraftLabel
+		aircraft.anchorView = aircraftSelectedLabel
 		aircraft.dataSource = Aircraft.getForSelect()
 		
-		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapResponse))
+		aircraft.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.aircraftSelectedLabel.text = self.aircraft.selectedItem
+		}
+		
+		aircraftSelectedLabel.text = " - select -"
+		
+		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapAircrafts))
 		tapGesture.numberOfTapsRequired = 1
-		aircraftLabel.isUserInteractionEnabled =  true
-		aircraftLabel.addGestureRecognizer(tapGesture)
+		aircraftSelectedLabel.isUserInteractionEnabled =  true
+		aircraftSelectedLabel.addGestureRecognizer(tapGesture)
+		
+		typeSelectedLabel.text = " - select -"
+		
+		type.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.typeSelectedLabel.text = self.type.selectedItem
+		}
+		
+		let typeGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapType))
+		tapGesture.numberOfTapsRequired = 1
+		typeSelectedLabel.isUserInteractionEnabled =  true
+		typeSelectedLabel.addGestureRecognizer(typeGesture)
+		type.dataSource = Skydive.getTypesForSelect()
+		type.anchorView = typeSelectedLabel
 		
 		self.addSubview(aircraft)
+		self.addSubview(typeSelectedLabel)
 		
 		self.addSubview(dropzoneLabel)
+		self.addSubview(aircraftSelectedLabel)
 		self.addSubview(dateLabel)
 		self.addSubview(aircraftLabel)
 		self.addSubview(rigLabel)
@@ -102,11 +127,17 @@ class SkydiveFormView: UIView {
 			aircraft.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 10)
 			aircraft.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			
+			aircraftSelectedLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 8)
+			aircraftSelectedLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
+			
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 40)
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			
 			typeLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			typeLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 40)
+			
+			typeSelectedLabel.autoPinEdge(.left, to: .left, of: typeLabel)
+			typeSelectedLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 8)
 			
 			heightUnitLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 40)
 			heightUnitLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
@@ -148,8 +179,11 @@ class SkydiveFormView: UIView {
 		super.updateConstraints()
 	}
 	
-	func tapResponse(recognizer: UITapGestureRecognizer) {
-		print("tap")
+	func tapAircrafts(recognizer: UITapGestureRecognizer) {
 		aircraft.show()
+	}
+	
+	func tapType(recognizer: UITapGestureRecognizer) {
+		type.show()
 	}
 }

@@ -36,6 +36,7 @@ class SkydiveViewController: UIViewController {
 			}
 			
 			skydiveView.aircraft.text = item.aircraft()?.name
+			skydiveView.type.text = item.getFormattedType()
 		}
 		
 		self.view.addSubview(skydiveView)

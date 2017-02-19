@@ -32,6 +32,14 @@ class SkydiveForm: Form {
 		let aircraft = getFormView().aircraft.selectedItem
 		let aircraftDB = Aircraft.query().where(withFormat: "name = %@", withParameters: [aircraft]).fetch().firstObject as? Aircraft
 		getItem().aircraft_id = aircraftDB?.id
+		
+		if getFormView().type.indexForSelectedRow != nil {
+			let selectedType = getFormView().type.indexForSelectedRow
+			let type = Skydive.getKeysForTypes()[selectedType!]
+			
+			getItem().jump_type = NSNumber(value: type)
+		}
+		
 	}
 	
 	override func getItem() -> Skydive {
