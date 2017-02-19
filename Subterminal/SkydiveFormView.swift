@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SharkORM
+import DropDown
 
 class SkydiveFormView: UIView {
 
 	var didSetupConstraints: Bool = false
-
+	
 	var dropzoneLabel = Label(text: "Dropzone")
 	var	dateLabel = Label(text: "Date")
 	var	aircraftLabel = Label(text: "Aircraft")
@@ -23,6 +25,8 @@ class SkydiveFormView: UIView {
 	var	deployAltitudeLabel = Label(text: "Deploy Alt.")
 	var	delayLabel = Label(text: "Delay")
 	var	descriptionLabel = Label(text: "Description")
+	
+	var aircraft = DropDown()
 	
 	var exitAlt = UITextField()
 	var deployAlt = UITextField()
@@ -46,6 +50,16 @@ class SkydiveFormView: UIView {
 		descriptionInput.layer.borderWidth = 1
 		descriptionInput.layer.cornerRadius = 5
 		
+		aircraft.anchorView = aircraftLabel
+		aircraft.dataSource = Aircraft.getForSelect()
+		
+		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapResponse))
+		tapGesture.numberOfTapsRequired = 1
+		aircraftLabel.isUserInteractionEnabled =  true
+		aircraftLabel.addGestureRecognizer(tapGesture)
+		
+		self.addSubview(aircraft)
+		
 		self.addSubview(dropzoneLabel)
 		self.addSubview(dateLabel)
 		self.addSubview(aircraftLabel)
@@ -63,12 +77,11 @@ class SkydiveFormView: UIView {
 		self.addSubview(delay)
 		
 		self.addSubview(heightUnit)
-		
 		self.addSubview(descriptionInput)
 
 		setNeedsUpdateConstraints()
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
@@ -85,6 +98,9 @@ class SkydiveFormView: UIView {
 			
 			aircraftLabel.autoPinEdge(.top, to: .top, of: dateLabel)
 			aircraftLabel.autoPinEdge(.left, to: .right, of: dateLabel, withOffset: 180)
+			
+			aircraft.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 10)
+			aircraft.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 40)
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
@@ -130,5 +146,10 @@ class SkydiveFormView: UIView {
 		}
 		
 		super.updateConstraints()
+	}
+	
+	func tapResponse(recognizer: UITapGestureRecognizer) {
+		print("tap")
+		aircraft.show()
 	}
 }

@@ -11,6 +11,14 @@
 		8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F180C511E5795FE006966A2 /* ShadowView.swift */; };
 		8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */; };
 		8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */; };
+		8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C14861E59AE8A00AC4856 /* Router.swift */; };
+		8F8C14881E59B06C00AC4856 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C14861E59AE8A00AC4856 /* Router.swift */; };
+		8F8C14891E59B06C00AC4856 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C14861E59AE8A00AC4856 /* Router.swift */; };
+		8F8C148B1E59B23800AC4856 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C148A1E59B23800AC4856 /* Aircraft.swift */; };
+		8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C148A1E59B23800AC4856 /* Aircraft.swift */; };
+		8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C148A1E59B23800AC4856 /* Aircraft.swift */; };
+		8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
+		8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
 		8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */; };
 		8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */; };
@@ -74,6 +82,8 @@
 		4F5E13494507B978B02E1EAB /* Pods-SubterminalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalUITests/Pods-SubterminalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6AD2567EB3A82DBD63672323 /* Pods-SubterminalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubterminalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubterminalTests/Pods-SubterminalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F180C511E5795FE006966A2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		8F8C14861E59AE8A00AC4856 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8F8C148A1E59B23800AC4856 /* Aircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
 		8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldStyle.swift; sourceTree = "<group>"; };
 		8F980D5C1E55DD4800CDC497 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableController.swift; sourceTree = "<group>"; };
@@ -178,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				8FDADDAD1E4F9E7C00A33F59 /* API.swift */,
+				8F8C14861E59AE8A00AC4856 /* Router.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 				8FF31ADF1E4E0EA9003F3CFF /* Skydive.swift */,
 				8FF31AE11E4E27A4003F3CFF /* Rig.swift */,
 				8FF31AEE1E4E32FC003F3CFF /* Dropzone.swift */,
+				8F8C148A1E59B23800AC4856 /* Aircraft.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -619,10 +631,12 @@
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
+				8F8C148B1E59B23800AC4856 /* Aircraft.swift in Sources */,
 				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
 				8FF31AEA1E4E2BAC003F3CFF /* GearForm.swift in Sources */,
 				8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */,
 				8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */,
+				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
 				8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */,
@@ -637,7 +651,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
+				8F8C14881E59B06C00AC4856 /* Router.swift in Sources */,
 				8FDADDB21E4FA10300A33F59 /* API.swift in Sources */,
+				8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
 			);
@@ -647,7 +664,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
+				8F8C14891E59B06C00AC4856 /* Router.swift in Sources */,
 				8FDADDB31E4FA10300A33F59 /* API.swift in Sources */,
+				8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
 			);

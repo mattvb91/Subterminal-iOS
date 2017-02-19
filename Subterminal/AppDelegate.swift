@@ -10,6 +10,7 @@ import UIKit
 import SharkORM
 import Firebase
 import SwiftyJSON
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -29,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		
 		FIRApp.configure()
 		
-		//API.instance.getDropzones()
+		API.instance.getAircraft()
+		
+		DropDown.startListeningToKeyboard()
 		
         return true
     }

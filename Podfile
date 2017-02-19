@@ -27,5 +27,5 @@ target 'Subterminal' do
   pod 'AlamofireImage', '~> 3.1'
   pod 'ImageSlideshow/Alamofire'
   pod 'HTagView'
-
+  pod 'DropDown'
 end

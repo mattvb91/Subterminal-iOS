@@ -21,6 +21,23 @@ class API: NSObject {
 	static let instance = API()
 	let baseURL = "http://192.168.1.11/api/"
 
+	func getAircraft() -> Void {
+		Alamofire.request(Router.getAircraft()).responseJSON { response in
+			if let result = response.result.value {
+				let items = result as! NSArray
+				
+				for item in items as! [NSDictionary] {
+					let data = JSON(item)
+
+					var aircraft = Aircraft()
+					aircraft.id = data["id"].numberValue
+					aircraft.name = data["name"].string
+					aircraft.save()
+				}
+			}
+		}
+	}
+	
 	func getDropzones() -> Void {
 		Alamofire.request(baseURL + "dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
 			if let result = response.result.value {
