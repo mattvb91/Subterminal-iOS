@@ -24,9 +24,9 @@ class SkydiveForm: Form {
 	}
 	
 	override func assignFormToEntity() {
-		getItem().delay = Int(getFormView().delay.text!)
-		getItem().exit_altitude = Int(getFormView().exitAlt.text!)
-		getItem().deploy_altidude = Int(getFormView().deployAlt.text!)
+		getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
+		getItem().exit_altitude = NSNumber(value: Int(getFormView().exitAlt.text!)!)
+		getItem().deploy_altidude = NSNumber(value: Int(getFormView().deployAlt.text!)!)
 		getItem().skydive_description = getFormView().descriptionInput.text
 	}
 	

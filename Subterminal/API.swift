@@ -65,7 +65,9 @@ class API: NSObject {
 			if let result = response.result.value {
 				debugPrint(response)
 				let items = result as! NSArray
+				
 				dropzone.services = items as! [String]
+
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
 			}
 		}

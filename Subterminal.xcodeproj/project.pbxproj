@@ -254,7 +254,6 @@
 				8FF31AD91E4E0BA0003F3CFF /* SkydiveTableViewCell.swift */,
 				8FF31AF21E4E5DA3003F3CFF /* RigTableViewCell.swift */,
 				8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */,
-				8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */,
 				8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */,
 				8FCA70721E5394A200CFC903 /* GearFormView.swift */,
 				8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */,
@@ -266,6 +265,7 @@
 		8FF31ADB1E4E0E49003F3CFF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */,
 				8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */,
 				8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */,
 				8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */,
