@@ -19,6 +19,9 @@
 		8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8C148A1E59B23800AC4856 /* Aircraft.swift */; };
 		8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
 		8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
+		8F92B88D1E5B5F3000E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
+		8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
+		8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
 		8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */; };
 		8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */; };
@@ -84,6 +87,7 @@
 		8F180C511E5795FE006966A2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8F8C14861E59AE8A00AC4856 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8F8C148A1E59B23800AC4856 /* Aircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
+		8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subterminal.swift; sourceTree = "<group>"; };
 		8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldStyle.swift; sourceTree = "<group>"; };
 		8F980D5C1E55DD4800CDC497 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableController.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				8FDADDAD1E4F9E7C00A33F59 /* API.swift */,
 				8F8C14861E59AE8A00AC4856 /* Router.swift */,
+				8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */,
 				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
+				8F92B88D1E5B5F3000E749A8 /* Subterminal.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
 				8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */,
 				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
@@ -651,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14881E59B06C00AC4856 /* Router.swift in Sources */,
 				8FDADDB21E4FA10300A33F59 /* API.swift in Sources */,
@@ -664,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14891E59B06C00AC4856 /* Router.swift in Sources */,
 				8FDADDB31E4FA10300A33F59 /* API.swift in Sources */,

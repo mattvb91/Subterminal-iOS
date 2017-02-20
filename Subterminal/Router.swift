@@ -43,8 +43,8 @@ enum Router: URLRequestConvertible {
 			break
 		}
 		
-		urlRequest.setValue("", forHTTPHeaderField: "accept")
-		urlRequest.setValue("", forHTTPHeaderField: "apiappkey")
+		urlRequest.setValue(Subterminal.getKey(key: "apiaccept"), forHTTPHeaderField: "accept")
+		urlRequest.setValue(Subterminal.getKey(key: "apikey"), forHTTPHeaderField: "apiappkey")
 		
 		return urlRequest
 	}

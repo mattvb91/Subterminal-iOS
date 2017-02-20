@@ -14,8 +14,8 @@ import ImageSlideshow
 class API: NSObject {
 	
 	let headerss: HTTPHeaders = [
-		"accept": "",
-		"apiappkey": ""
+		"accept": Subterminal.getKey(key: "apiaccept"),
+		"apiappkey": Subterminal.getKey(key: "apikey")
 	]
 	
 	static let instance = API()
