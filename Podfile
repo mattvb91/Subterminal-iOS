@@ -29,4 +29,7 @@ target 'Subterminal' do
   pod 'HTagView'
   pod 'DropDown'
   pod 'RAMAnimatedTabBarController', '~> 2.0.13'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 end
