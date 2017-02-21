@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import SharkORM
 
 class SkydiveTableViewController: TableController {
 	
@@ -21,6 +22,10 @@ class SkydiveTableViewController: TableController {
 		
 		self.tableView.rowHeight = 80
     }
+
+	override func fetchQuery() -> SRKQuery {
+		return super.fetchQuery().order(byDescending: "date")
+	}
 
 	override func getViewCellIdentifier() -> String {
 		return "skydiveTableViewCell"

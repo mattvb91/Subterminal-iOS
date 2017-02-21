@@ -47,13 +47,17 @@ class TableController: UITableViewController {
 	}
 	
 	func loadData(notification: NSNotification?) {
-		items = type(of: getAssignedModel()).query().fetch()
+		items = fetchQuery().fetch()
 		
 		self.tableView.reloadData()
 		
 		if(items.count > 0 && self.canEditItems) {
 			self.navigationItem.leftBarButtonItem = self.editButtonItem
 		}
+	}
+	
+	func fetchQuery() -> SRKQuery {
+		return type(of: getAssignedModel()).query()
 	}
 	
 	//The user pressed the add button
