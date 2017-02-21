@@ -9,6 +9,7 @@
 import UIKit
 import SharkORM
 import DropDown
+import SearchTextField
 
 class SkydiveFormView: UIView, GMDatePickerDelegate {
 
@@ -43,6 +44,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	var datePicker = GMDatePicker()
 	var dateSelectedLabel = UILabel()
 	
+	var dropzone = SearchTextField()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -58,6 +61,14 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		
 		dateSelectedLabel.text = DateHelper.dateToString(date: Date())
 		self.addSubview(dateSelectedLabel)
+
+		dropzone.placeholder = "Search dropzones..."
+		dropzone.filterStrings(Dropzone.getOptionsForSelect())
+		dropzone.maxNumberOfResults = 10
+		dropzone.maxResultsListHeight = 200
+		dropzone.theme = SearchTextFieldTheme.darkTheme()
+		dropzone.accessibilityTraits = UIAccessibilityTraits.allZeros
+		self.addSubview(dropzone)
 		
 		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
 		dateGesture.numberOfTapsRequired = 1
@@ -117,7 +128,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		
 		self.addSubview(heightUnit)
 		self.addSubview(descriptionInput)
-
+		
 		setNeedsUpdateConstraints()
 	}
 
@@ -131,6 +142,10 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 40)
+			
+			dropzone.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 8)
+			dropzone.autoPinEdge(.left, to: .left, of: dropzoneLabel)
+			dropzone.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 4, height: 31))
 			
 			dateLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 40)

@@ -32,4 +32,5 @@ target 'Subterminal' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'SearchTextField'
 end

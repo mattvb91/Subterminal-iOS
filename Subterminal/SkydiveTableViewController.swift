@@ -14,9 +14,7 @@ class SkydiveTableViewController: TableController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		self.title = "Skydives"
-		
+				
         self.clearsSelectionOnViewWillAppear = false
 		self.navigationItem.leftBarButtonItem = self.editButtonItem
 		

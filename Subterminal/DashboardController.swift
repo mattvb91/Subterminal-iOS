@@ -13,7 +13,6 @@ class DashboardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.title = "Dashboard"
 		self.view.backgroundColor = UIColor.lightGray
     }
 }

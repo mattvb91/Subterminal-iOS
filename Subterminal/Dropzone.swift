@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import ImageSlideshow
+import SharkORM
 
 class Dropzone: Model {
     
@@ -43,6 +44,18 @@ class Dropzone: Model {
 		dropzone.longtitude = json["longtitude"].doubleValue
 		
 		return dropzone
+	}
+	
+	//Fetch all names for selection
+	static func getOptionsForSelect() -> [String] {
+		var results = [String]()
+		
+		for item in Dropzone.query().fetch() as SRKResultSet {
+			var item = item as? Dropzone
+			results.append((item?.name!)!)
+		}
+		
+		return results
 	}
 	
 }
