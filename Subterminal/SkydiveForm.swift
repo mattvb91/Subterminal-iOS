@@ -40,6 +40,9 @@ class SkydiveForm: Form {
 			getItem().jump_type = NSNumber(value: type)
 		}
 		
+		let date = DateHelper.stringToDate(string: getFormView().dateSelectedLabel.text!)
+		
+		getItem().date = date
 	}
 	
 	override func getItem() -> Skydive {

@@ -14,6 +14,8 @@ class SkydiveTableViewCell: BaseTableCell {
 	var aircraft = UILabel()
 	var delay = UILabel()
 	
+	var timeAgo = UILabel()
+	
 	var aircraftLabel = Label(text: "Aircraft:")
 	var delayLabel = Label(text: "Delay:")
 	
@@ -23,6 +25,7 @@ class SkydiveTableViewCell: BaseTableCell {
 		self.contentView.addSubview(delay)
 		self.contentView.addSubview(aircraftLabel)
 		self.contentView.addSubview(delayLabel)
+		self.contentView.addSubview(timeAgo)
 		
 		dropzone.font = UIFont.boldSystemFont(ofSize: 16)
 		
@@ -31,6 +34,8 @@ class SkydiveTableViewCell: BaseTableCell {
 		
 		delayLabel.font = UIFont.systemFont(ofSize: 14)
 		delay.font = UIFont.systemFont(ofSize: 14)
+		
+		timeAgo.font = UIFont.systemFont(ofSize: 14)
 	}
 	
 	override func setupConstraints() {
@@ -48,6 +53,9 @@ class SkydiveTableViewCell: BaseTableCell {
 		
 		delay.autoPinEdge(.left, to: .left, of: aircraft)
 		delay.autoPinEdge(.top, to: .top, of: delayLabel)
+		
+		timeAgo.autoPinEdge(.top, to: .top, of: delay)
+		timeAgo.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
 	}
 
 }

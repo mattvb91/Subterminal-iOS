@@ -35,6 +35,10 @@ class SkydiveTableViewController: TableController {
 		cell?.dropzone.text = "Irish Parachute Club"
 		cell?.aircraft.text = item?.aircraft()?.name
 		cell?.delay.text = (item?.delay?.stringValue)! + "s"
+		
+		if item?.date != nil {
+			cell?.timeAgo.text = DateHelper.timeAgoSince(date: (item?.date)!)
+		}
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

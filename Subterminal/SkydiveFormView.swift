@@ -10,7 +10,7 @@ import UIKit
 import SharkORM
 import DropDown
 
-class SkydiveFormView: UIView {
+class SkydiveFormView: UIView, GMDatePickerDelegate {
 
 	var didSetupConstraints: Bool = false
 	
@@ -40,6 +40,9 @@ class SkydiveFormView: UIView {
 	
 	var descriptionInput = UITextView()
 	
+	var datePicker = GMDatePicker()
+	var dateSelectedLabel = UILabel()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -50,10 +53,21 @@ class SkydiveFormView: UIView {
 		delay.setBottomBorder()
 		delay.placeholder = "60"
 		
+		datePicker.delegate = self
+		datePicker.config.startDate = NSDate() as Date
+		
+		dateSelectedLabel.text = DateHelper.dateToString(date: Date())
+		self.addSubview(dateSelectedLabel)
+		
+		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		dateGesture.numberOfTapsRequired = 1
+		dateSelectedLabel.isUserInteractionEnabled =  true
+		dateSelectedLabel.addGestureRecognizer(dateGesture)
+		
 		descriptionInput.layer.borderColor = UIColor.gray.cgColor
 		descriptionInput.layer.borderWidth = 1
 		descriptionInput.layer.cornerRadius = 5
-		
+
 		aircraft.anchorView = aircraftSelectedLabel
 		aircraft.dataSource = Aircraft.getForSelect()
 		
@@ -121,6 +135,9 @@ class SkydiveFormView: UIView {
 			dateLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 40)
 			
+			dateSelectedLabel.autoPinEdge(.left, to: .left, of: dateLabel)
+			dateSelectedLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 8)
+			
 			aircraftLabel.autoPinEdge(.top, to: .top, of: dateLabel)
 			aircraftLabel.autoPinEdge(.left, to: .right, of: dateLabel, withOffset: 180)
 			
@@ -186,4 +203,17 @@ class SkydiveFormView: UIView {
 	func tapType(recognizer: UITapGestureRecognizer) {
 		type.show()
 	}
+	
+	func tapDate(recognizer: UITapGestureRecognizer) {
+		datePicker.show(inVC: (self.window?.rootViewController)!)
+	}
+	
+	func gmDatePicker(_ gmDatePicker: GMDatePicker, didSelect date: Date) {
+		dateSelectedLabel.text = DateHelper.dateToString(date: date)
+	}
+
+	func gmDatePickerDidCancelSelection(_ gmDatePicker: GMDatePicker) {
+		// Do something then user tapped the cancel button
+	}
+	
 }
