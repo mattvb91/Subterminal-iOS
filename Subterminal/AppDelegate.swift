@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		
 		FIRApp.configure()
 		
-		API.instance.getAircraft()
+		API.initAPI()
 		
 		DropDown.startListeningToKeyboard()
 		

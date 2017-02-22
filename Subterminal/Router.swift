@@ -10,12 +10,13 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
 	case getAircraft()
+	case getGear()
 	
 	static let baseURL = "http://192.168.1.11/api"
 	
 	var method: HTTPMethod {
 		switch self {
-		case .getAircraft():
+		case .getAircraft(), .getGear():
 			return .get
 		}
 	}
@@ -24,6 +25,8 @@ enum Router: URLRequestConvertible {
 		switch self {
 		case .getAircraft():
 			return "/aircraft"
+		case .getGear():
+			return "/user/gear"
 		}
 	}
 	

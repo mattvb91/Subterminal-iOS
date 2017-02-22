@@ -38,6 +38,27 @@ class API: NSObject {
 		}
 	}
 	
+	static func initAPI() {
+		API.instance.getAircraft()
+		API.instance.downloadModel(model: Rig())
+	}
+	
+	//Download the data for passed in model
+	func downloadModel(model: Synchronizable) -> Void {
+		
+		Alamofire.request(model.getDownloadEndpoint()).responseJSON { response in
+			if response.result.isSuccess, let result = response.result.value {
+				let items = result as! NSArray
+				
+				for item in items as! [NSDictionary] {
+					let syncClass = type(of: model)
+					let syncItem = syncClass.build(json: JSON(item))
+					syncItem.markSynced()
+				}
+			}
+		}
+	}
+	
 	func getDropzones() -> Void {
 		Alamofire.request(baseURL + "dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
 			if let result = response.result.value {

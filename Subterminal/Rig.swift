@@ -7,8 +7,28 @@
 //
 
 import Foundation
+import Alamofire
 
-class Rig: Model {
+class Rig: Synchronizable {
+	
+	override internal func getSyncIdentifier() -> String {
+		return ""
+	}
+
+	override internal func getDownloadEndpoint() -> URLRequestConvertible {
+		return Router.getGear()
+	}
+
+	
+	override internal func getDeleteEndpoint() -> URLRequestConvertible {
+		return Router.getGear()
+	}
+
+	
+	override internal func getSyncEndpoint() -> URLRequestConvertible {
+		return Router.getGear()
+	}
+
     
     dynamic var container_manufacturer,
         container_model,
@@ -26,5 +46,4 @@ class Rig: Model {
         aad_model,
         aad_serial,
         aad_date_in_use: String?
-	
 }
