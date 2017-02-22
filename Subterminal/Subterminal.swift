@@ -9,7 +9,9 @@
 import Foundation
 
 class Subterminal {
-
+	
+	public static var user = User()
+	
 	static func getKey(key: String) -> String {
 		if let path = Bundle.main.path(forResource: "Info", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
 			// use swift dictionary as normal

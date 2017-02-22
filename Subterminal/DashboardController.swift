@@ -8,11 +8,52 @@
 
 import UIKit
 
-class DashboardController: UIViewController {
+import FBSDKLoginKit
+
+class DashboardController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		self.view.backgroundColor = UIColor.lightGray
+		
+		if (FBSDKAccessToken.current() != nil)
+		{
+			// User is already logged in, do work such as go to next view controller.
+		}
+		else
+		{
+			let loginView : FBSDKLoginButton = FBSDKLoginButton()
+			self.view.addSubview(loginView)
+			loginView.center = self.view.center
+			loginView.readPermissions = ["public_profile", "email", "user_friends"]
+			loginView.delegate = self
+		}
     }
+	
+	func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+		debugPrint("User Logged In")
+		
+		if ((error) != nil)
+		{
+			// Process error
+		}
+		else if result.isCancelled {
+			// Handle cancellations
+			debugPrint("Cancelled")
+		}
+		else {
+			// If you ask for multiple permissions at once, you
+			// should check if specific permissions missing
+			if result.grantedPermissions.contains("email")
+			{
+				// Do work
+				Subterminal.user.setFacebookUserData()
+			}
+		}
+	}
+	
+	func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+		debugPrint("User Logged Out")
+	}
 }

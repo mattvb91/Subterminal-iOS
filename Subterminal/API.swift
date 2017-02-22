@@ -40,7 +40,10 @@ class API: NSObject {
 	
 	static func initAPI() {
 		API.instance.getAircraft()
-		API.instance.downloadModel(model: Rig())
+		
+		if Subterminal.user.isLoggedIn() {
+			API.instance.downloadModel(model: Rig())
+		}
 	}
 	
 	//Download the data for passed in model
@@ -55,6 +58,16 @@ class API: NSObject {
 					let syncItem = syncClass.build(json: JSON(item))
 					syncItem.markSynced()
 				}
+			} else {
+				debugPrint("Request Failed")
+			}
+		}
+	}
+	
+	func createOrUpdateRemoveUser() {
+		Alamofire.request(Router.updateUser()).responseJSON { response in
+			if response.result.isSuccess, let result = response.result.value {
+				API.initAPI()
 			}
 		}
 	}

@@ -34,6 +34,9 @@
 		8FA4E8BB1E5DE29B0015549A /* SyncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */; };
 		8FA4E8BC1E5DE29B0015549A /* SyncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */; };
 		8FA4E8BD1E5DE29B0015549A /* SyncProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */; };
+		8FA4E8BF1E5E0BA60015549A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BE1E5E0BA60015549A /* User.swift */; };
+		8FA4E8C01E5E0BA60015549A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BE1E5E0BA60015549A /* User.swift */; };
+		8FA4E8C11E5E0BA60015549A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E8BE1E5E0BA60015549A /* User.swift */; };
 		8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */; };
 		8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */; };
 		8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */; };
@@ -106,6 +109,7 @@
 		8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldStyle.swift; sourceTree = "<group>"; };
 		8F980D5C1E55DD4800CDC497 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncProtocol.swift; sourceTree = "<group>"; };
+		8FA4E8BE1E5E0BA60015549A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8FA7396A1E50B60800A08D6A /* DropzoneTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableController.swift; sourceTree = "<group>"; };
 		8FA7396C1E50B69F00A08D6A /* DropzoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTableViewCell.swift; sourceTree = "<group>"; };
 		8FA739701E50BE6200A08D6A /* DropzoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				8FF31AEC1E4E2D32003F3CFF /* Model.swift */,
 				8FB3D9E81E5D98A80085263A /* Synchronizable.swift */,
 				8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */,
+				8FA4E8BE1E5E0BA60015549A /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */,
 				8FF31AF11E4E5AC5003F3CFF /* GearTableController.swift in Sources */,
 				8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */,
+				8FA4E8BF1E5E0BA60015549A /* User.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
 				8F92B8911E5B6CFC00E749A8 /* GMDatePicker.swift in Sources */,
@@ -691,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA4E8C01E5E0BA60015549A /* User.swift in Sources */,
 				8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14881E59B06C00AC4856 /* Router.swift in Sources */,
@@ -710,6 +717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA4E8C11E5E0BA60015549A /* User.swift in Sources */,
 				8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14891E59B06C00AC4856 /* Router.swift in Sources */,
