@@ -10,15 +10,16 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
 	case getAircraft()
-	case getGear()
+	case getSkyGear()
+	case getSkydives()
 	
 	case updateUser()
 	
-	static let baseURL = "http://192.168.1.11/api"
+	static let baseURL = "http://192.168.1.5/api"
 	
 	var method: HTTPMethod {
 		switch self {
-		case .getAircraft(), .getGear():
+		case .getAircraft(), .getSkyGear(), .getSkydives():
 			return .get
 		case .updateUser():
 			return .post
@@ -30,8 +31,11 @@ enum Router: URLRequestConvertible {
 		case .getAircraft():
 			return "/aircraft"
 			
-		case .getGear():
-			return "/user/gear"
+		case .getSkyGear():
+			return "/user/rigs"
+			
+		case .getSkydives():
+			return "/user/skydives"
 		
 		case .updateUser():
 			return "/user"
@@ -55,7 +59,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: ["token": Subterminal.user.facebook_token], options: [])
 			urlRequest.httpBody = data
 			
-		case .getGear():
+		case .getSkyGear(), .getSkydives():
 			urlRequest = try URLEncoding.default.encode(urlRequest, with: ["last_sync": "2001-01-01"])
 			
 		default:

@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import SwiftyJSON
+import Alamofire
 
-class Skydive: Model {
+class Skydive: Synchronizable {
     
     //MARK: Properties
     dynamic var skydive_description: String?
@@ -23,7 +25,7 @@ class Skydive: Model {
         rig_id,
         suid_id: NSNumber?
 	
-    dynamic var height_unit: Int = 0
+    dynamic var height_unit: NSNumber = 0
 	
 	//Skydive Types
 	static let SKYDIVE_TYPE_BELLY = 1;
@@ -122,6 +124,14 @@ class Skydive: Model {
 		return nil
 	}
 	
+	func dropzone() -> Dropzone? {
+		if self.dropzone_id != nil {
+			return (Dropzone.object(withPrimaryKeyValue: self.dropzone_id) as? Dropzone)!
+		}
+		
+		return nil
+	}
+	
 	//Get the skydive types available for select
 	static func getTypesForSelect() -> [String] {
 		var results = [String]()
@@ -151,5 +161,40 @@ class Skydive: Model {
 		}
 		
 		return nil
+	}
+	
+	override func getSyncEndpoint() -> URLRequestConvertible {
+		return Router.getSkydives()
+	}
+	
+	override  func getDeleteEndpoint() -> URLRequestConvertible {
+		return Router.getSkydives()
+	}
+	
+	override func getDownloadEndpoint() -> URLRequestConvertible {
+		return Router.getSkydives()
+	}
+	
+	override  func getSyncIdentifier() -> String {
+		fatalError("not implemented")
+	}
+	
+	override  class func build(json: JSON) -> Skydive {
+		let skydive = Skydive()
+			
+		skydive.id = json["remote_id"].intValue as NSNumber!
+		skydive.date = DateHelper.stringToDate(string: json["date"].stringValue)
+		skydive.dropzone_id = json["dropzone_id"].intValue as NSNumber!
+		skydive.exit_altitude = json["exit_altitude"].intValue as NSNumber!
+		skydive.deploy_altidude = json["deploy_altitude"].intValue as NSNumber!
+		skydive.delay = json["delay"].intValue as NSNumber!
+		skydive.jump_type = json["jump_type"].intValue as NSNumber!
+		skydive.aircraft_id = json["aircraft_id"].intValue as NSNumber!
+		skydive.rig_id = json["rig_id"].intValue as NSNumber!
+		skydive.height_unit = json["height_unit"].intValue as NSNumber!
+		skydive.suid_id = json["suit_id"].intValue as NSNumber!
+		skydive.skydive_description = json["description"].stringValue
+
+		return skydive
 	}
 }

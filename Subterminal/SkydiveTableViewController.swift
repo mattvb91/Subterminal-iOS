@@ -35,7 +35,7 @@ class SkydiveTableViewController: TableController {
 		let item = item as? Skydive
 		
         // Configure the cell...
-		cell?.dropzone.text = "Irish Parachute Club"
+		cell?.dropzone.text = item?.dropzone()?.name
 		cell?.aircraft.text = item?.aircraft()?.name
 		cell?.delay.text = (item?.delay?.stringValue)! + "s"
 		

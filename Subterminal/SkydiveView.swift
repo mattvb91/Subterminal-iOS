@@ -30,7 +30,8 @@ class SkydiveView: UIView {
 	var deployAlt = UILabel()
 	var delay = UILabel()
 	var type = UILabel()
-		
+	var dropzone = UILabel()
+	
 	var skydiveDescription = UITextView()
 	
 	override init(frame: CGRect) {
@@ -76,6 +77,7 @@ class SkydiveView: UIView {
 		self.addSubview(deployAlt)
 		self.addSubview(delay)
 		self.addSubview(type)
+		self.addSubview(dropzone)
 
 		self.addSubview(skydiveDescription)
 		
@@ -99,6 +101,9 @@ class SkydiveView: UIView {
 			
 			dropzoneLabel.autoPinEdge(.top, to: .top, of: shadowView, withOffset: 15)
 			dropzoneLabel.autoPinEdge(.left, to: .left, of: shadowView, withOffset: 10)
+			
+			dropzone.autoPinEdge(.left, to: .right, of: dropzoneLabel, withOffset: 40)
+			dropzone.autoPinEdge(.top, to: .top, of: dropzoneLabel)
 
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 15)
@@ -106,7 +111,7 @@ class SkydiveView: UIView {
 			aircraftLabel.autoPinEdge(.left, to: .left, of: rigLabel)
 			aircraftLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 15)
 			
-			aircraft.autoPinEdge(.left, to: .right, of: aircraftLabel, withOffset: 50)
+			aircraft.autoPinEdge(.left, to: .left, of: dropzone)
 			aircraft.autoPinEdge(.top, to: .top, of: aircraftLabel)
 			
 			typeLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)

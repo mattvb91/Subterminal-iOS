@@ -36,7 +36,7 @@ class Synchronizable: Model, SyncProtocol {
 		fatalError("not implemented")
 	}
 	
-	static func build(json: JSON) -> Synchronizable {
+	class func build(json: JSON) -> Synchronizable {
 		fatalError("not implemented")
 	}
 	

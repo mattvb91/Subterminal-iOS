@@ -19,7 +19,7 @@ class API: NSObject {
 	]
 	
 	static let instance = API()
-	let baseURL = "http://192.168.1.11/api/"
+	let baseURL = "http://192.168.1.5/api/"
 
 	func getAircraft() -> Void {
 		Alamofire.request(Router.getAircraft()).responseJSON { response in
@@ -43,6 +43,7 @@ class API: NSObject {
 		
 		if Subterminal.user.isLoggedIn() {
 			API.instance.downloadModel(model: Rig())
+			API.instance.downloadModel(model: Skydive())
 		}
 	}
 	
