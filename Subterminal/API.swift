@@ -44,6 +44,7 @@ class API: NSObject {
 		if Subterminal.user.isLoggedIn() {
 			API.instance.downloadModel(model: Rig())
 			API.instance.downloadModel(model: Skydive())
+			API.instance.downloadModel(model: Suit())
 		}
 	}
 	
