@@ -132,6 +132,14 @@ class Skydive: Synchronizable {
 		return nil
 	}
 	
+	func rig() -> Rig? {
+		if self.rig_id != nil {
+			return (Rig.object(withPrimaryKeyValue: self.rig_id) as? Rig)!
+		}
+		
+		return nil
+	}
+	
 	//Get the skydive types available for select
 	static func getTypesForSelect() -> [String] {
 		var results = [String]()

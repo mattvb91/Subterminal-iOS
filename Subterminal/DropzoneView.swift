@@ -22,10 +22,12 @@ class DropzoneView: UIView, HTagViewDataSource {
 	var phone: UILabel = UILabel()
 	var email: UILabel = UILabel()
 	var map: MKMapView = MKMapView()
+	var aircraft = UILabel()
 	
 	var websiteLabel = UILabel()
 	var emailLabel = UILabel()
 	var phoneLabel = UILabel()
+	var aircraftLabel = UILabel()
 
 	var shadowView = ShadowView()
 	
@@ -51,6 +53,8 @@ class DropzoneView: UIView, HTagViewDataSource {
 		emailLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		phoneLabel.text = "Phone:"
 		phoneLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		aircraftLabel.text = "Aircraft:"
+		aircraftLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
 		self.addSubview(websiteLabel)
 		self.addSubview(website)
@@ -58,6 +62,8 @@ class DropzoneView: UIView, HTagViewDataSource {
 		self.addSubview(email)
 		self.addSubview(phoneLabel)
 		self.addSubview(phone)
+		self.addSubview(aircraftLabel)
+		self.addSubview(aircraft)
 		
 		dropzoneDescription.text = dropzone?.dropzone_description
 		dropzoneDescription.isScrollEnabled = false
@@ -105,7 +111,12 @@ class DropzoneView: UIView, HTagViewDataSource {
 			phone.autoPinEdge(.top, to: .top, of: phoneLabel)
 			phone.autoSetDimension(.height, toSize: 25.0)
 			
-			dropzoneDescription.autoPinEdge(.top, to: .bottom, of: phoneLabel, withOffset: 20)
+			aircraftLabel.autoPinEdge(.left, to: .left, of: phoneLabel)
+			aircraftLabel.autoPinEdge(.top, to: .bottom, of: phoneLabel, withOffset: 10)
+			aircraft.autoPinEdge(.left, to: .left, of: website)
+			aircraft.autoPinEdge(.top, to: .top, of: aircraftLabel)
+			
+			dropzoneDescription.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 20)
 			dropzoneDescription.autoSetDimension(.height, toSize: dropzoneDescription.contentSize.height)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)

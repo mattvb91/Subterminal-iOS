@@ -40,6 +40,7 @@ class API: NSObject {
 	
 	static func initAPI() {
 		API.instance.getAircraft()
+		API.instance.getDropzones()
 		
 		if Subterminal.user.isLoggedIn() {
 			API.instance.downloadModel(model: Rig())
@@ -81,7 +82,9 @@ class API: NSObject {
 				
 				for item in items as! [NSDictionary] {
 					let dropzone = Dropzone.build(json: JSON(item))
-					_ = dropzone.save()
+					if dropzone.save() {
+						dropzone.updateAircraft(json: JSON(item))
+					}
 				}
 			}
 		}

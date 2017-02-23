@@ -41,7 +41,7 @@ class TabBarController: RAMAnimatedTabBarController {
 		dropzoneController.title = "Dropzones"
 		let dropzoneNavController = UINavigationController(rootViewController: dropzoneController)
 		
-		let tabBarIconDropzone: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dropzone", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
+		let tabBarIconDropzone: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dropzones", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
 		tabBarIconDropzone.animation = RAMBounceAnimation()
 		dropzoneController.tabBarItem = tabBarIconDropzone
 

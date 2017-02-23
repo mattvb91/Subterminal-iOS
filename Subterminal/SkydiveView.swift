@@ -31,6 +31,7 @@ class SkydiveView: UIView {
 	var delay = UILabel()
 	var type = UILabel()
 	var dropzone = UILabel()
+	var rig = UILabel()
 	
 	var skydiveDescription = UITextView()
 	
@@ -78,6 +79,7 @@ class SkydiveView: UIView {
 		self.addSubview(delay)
 		self.addSubview(type)
 		self.addSubview(dropzone)
+		self.addSubview(rig)
 
 		self.addSubview(skydiveDescription)
 		
@@ -107,6 +109,9 @@ class SkydiveView: UIView {
 
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 15)
+			
+			rig.autoPinEdge(.left, to: .left, of: dropzone)
+			rig.autoPinEdge(.top, to: .top, of: rigLabel)
 			
 			aircraftLabel.autoPinEdge(.left, to: .left, of: rigLabel)
 			aircraftLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 15)

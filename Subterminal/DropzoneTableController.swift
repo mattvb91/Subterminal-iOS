@@ -59,6 +59,7 @@ class DropzoneTableController: TableController, UISearchResultsUpdating, UISearc
 		
 		cell?.nameLabel.text = dropzone?.name
 		cell?.countryLabel.text = dropzone?.country
+		cell?.aircraftLabel.text = (dropzone?.aircraftCount().description)! + " Aircraft"
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

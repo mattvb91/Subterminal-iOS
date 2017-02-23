@@ -46,6 +46,38 @@ class Dropzone: Model {
 		return dropzone
 	}
 	
+	func updateAircraft(json: JSON) {
+		var items = json["dropzone_aircraft"].array
+		
+		for item in items! {
+			let aircraft_id = item["aircraft_id"].intValue
+			
+			if DzAircraft.query().where(withFormat: "aircraft_id = %@ AND dropzone_id = %@", withParameters: [aircraft_id, self.id]).fetch().count == 0 {
+				let dzAircraft = DzAircraft()
+				dzAircraft.dropzone_id = self.id
+				dzAircraft.aircraft_id = aircraft_id as NSNumber?
+				dzAircraft.save()
+			}
+		}
+	}
+	
+	func aircraftCount() -> Int {
+		return DzAircraft.query().where(withFormat: "dropzone_id = %@", withParameters: [self.id]).fetch().count
+	}
+	
+	func getFormattedAircrafts() -> String {
+		let dzAircrafts = DzAircraft.query().where(withFormat: "dropzone_id = %@", withParameters: [self.id]).fetch() as? SRKResultSet
+		
+		var result = ""
+		for dzAircraft in dzAircrafts! {
+			let dzAircraft = dzAircraft as? DzAircraft
+			let aircraft = Aircraft.object(withPrimaryKeyValue: dzAircraft?.aircraft_id) as? Aircraft
+			result = result + (aircraft?.name!)! + ", "
+		}
+		
+		return result
+	}
+	
 	//Fetch all names for selection
 	static func getOptionsForSelect() -> [String] {
 		var results = [String]()

@@ -34,6 +34,8 @@ class DropzoneViewController: UIViewController {
 			dropzoneView.phone.text = item.phone
 			dropzoneView.email.text = item.email
 			
+			dropzoneView.aircraft.text = item.getFormattedAircrafts()
+			
 			let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageFullSize))
 			dropzoneView.images.addGestureRecognizer(gestureRecognizer)
 			
