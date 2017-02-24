@@ -64,13 +64,15 @@ class DropzoneViewController: UIViewController {
 	}
 	
 	func updateImages() {
+		dropzoneView.didSetupConstraints = false
+		
 		if((item?.images?.count)! > 0) {
 			dropzoneView.images.setImageInputs((item?.images)!)
 		}else {
 			dropzoneView.images.removeFromSuperview()
-			dropzoneView.didSetupConstraints = false
-			dropzoneView.setNeedsUpdateConstraints()
 		}
+		
+		dropzoneView.setNeedsUpdateConstraints()
 	}
 	
 	func updateServices() {

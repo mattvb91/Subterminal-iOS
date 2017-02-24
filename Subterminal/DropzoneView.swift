@@ -38,6 +38,9 @@ class DropzoneView: UIView, HTagViewDataSource {
 	
 	var dropzone: Dropzone?
 	
+	var scrollView = UIScrollView.newAutoLayout()
+	var contentView = UIView()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -45,7 +48,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 		
 		images.contentScaleMode = UIViewContentMode.scaleAspectFill
 		images.slideshowInterval = 5
-		self.addSubview(images)
+		contentView.addSubview(images)
 		
 		websiteLabel.text = "Website:"
 		websiteLabel.font = UIFont.boldSystemFont(ofSize: 16)
@@ -56,30 +59,34 @@ class DropzoneView: UIView, HTagViewDataSource {
 		aircraftLabel.text = "Aircraft:"
 		aircraftLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
-		self.addSubview(websiteLabel)
-		self.addSubview(website)
-		self.addSubview(emailLabel)
-		self.addSubview(email)
-		self.addSubview(phoneLabel)
-		self.addSubview(phone)
-		self.addSubview(aircraftLabel)
-		self.addSubview(aircraft)
+		contentView.addSubview(websiteLabel)
+		contentView.addSubview(website)
+		contentView.addSubview(emailLabel)
+		contentView.addSubview(email)
+		contentView.addSubview(phoneLabel)
+		contentView.addSubview(phone)
+		contentView.addSubview(aircraftLabel)
+		contentView.addSubview(aircraft)
 		
 		dropzoneDescription.text = dropzone?.dropzone_description
 		dropzoneDescription.isScrollEnabled = false
 		dropzoneDescription.isUserInteractionEnabled = false
 		dropzoneDescription.font = UIFont.systemFont(ofSize: 16)
 		
-		self.addSubview(dropzoneDescription)
-		self.addSubview(map)
+		contentView.addSubview(dropzoneDescription)
+		contentView.addSubview(map)
 		
 		tagview.dataSource = self
 		tagview.tagSecondBackColor = UIColor(red: 121/255, green: 196/255, blue: 1, alpha: 1)
 		
-		self.addSubview(tagview)
-		self.addSubview(shadowView)
-		self.sendSubview(toBack: shadowView)
+		contentView.addSubview(tagview)
+		contentView.addSubview(shadowView)
+		contentView.sendSubview(toBack: shadowView)
 		
+		contentView.isUserInteractionEnabled = true
+		scrollView.addSubview(contentView)
+		self.addSubview(scrollView)
+
 		self.setNeedsUpdateConstraints()
 	}
 	
@@ -87,13 +94,19 @@ class DropzoneView: UIView, HTagViewDataSource {
 		if(!didSetupConstraints) {
 			
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-			
-			if(images.superview === self) {
-				images.autoPinEdge(toSuperviewEdge: .top, withInset: 60)
+			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+			scrollView.contentSize = size
+			scrollView.autoSetDimensions(to: size)
+
+			if(images.superview === contentView) {
+				images.autoPinEdge(.top, to: .top, of: contentView)
 				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
 				websiteLabel.autoPinEdge(.top, to: .bottom, of: images, withOffset: 20)
 			}else {
-				websiteLabel.autoPinEdge(.top, to: .top, of: self, withOffset: 80)
+				websiteLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20)
 			}
 			
 			websiteLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
@@ -128,7 +141,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 			tagview.autoPinEdge(toSuperviewEdge: .right)
 			tagview.autoPinEdge(toSuperviewEdge: .left)
 			
-			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
+			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 15)
 			shadowView.autoPinEdge(.bottom, to: .bottom, of: tagview, withOffset: 4)
 			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 4)
 			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 4)
@@ -136,7 +149,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 			map.autoPinEdge(.top, to: .bottom, of: tagview, withOffset: 20.0)
 			map.autoPinEdge(.left, to: .left, of: dropzoneDescription)
 			map.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
-			map.autoSetDimension(.height, toSize: 200)
+			map.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 20, height: 200))
 
 			self.didSetupConstraints = true
 		}
