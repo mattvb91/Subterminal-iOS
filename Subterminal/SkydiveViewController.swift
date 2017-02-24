@@ -35,7 +35,9 @@ class SkydiveViewController: UIViewController {
 				skydiveView.delay.text = String(describing: delay)
 			}
 			
-			skydiveView.rig.text = (item.rig()?.container_manufacturer!)! + " - " + (item.rig()?.container_model!)!
+			if let rig = item.rig() {
+				skydiveView.rig.text = (item.rig()?.container_manufacturer!)! + " - " + (item.rig()?.container_model!)!
+			}
 			skydiveView.dropzone.text = item.dropzone()?.name
 			skydiveView.aircraft.text = item.aircraft()?.name
 			skydiveView.type.text = item.getFormattedType()

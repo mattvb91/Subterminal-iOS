@@ -133,7 +133,7 @@ class Skydive: Synchronizable {
 	}
 	
 	func rig() -> Rig? {
-		if self.rig_id != nil {
+		if self.rig_id?.intValue != 0 {
 			return (Rig.object(withPrimaryKeyValue: self.rig_id) as? Rig)!
 		}
 		
