@@ -67,6 +67,9 @@ class DropzoneView: UIView, HTagViewDataSource {
 		
 		dropzoneDescription.text = dropzone?.dropzone_description
 		dropzoneDescription.isScrollEnabled = false
+		dropzoneDescription.isUserInteractionEnabled = false
+		dropzoneDescription.font = UIFont.systemFont(ofSize: 16)
+		
 		self.addSubview(dropzoneDescription)
 		self.addSubview(map)
 		

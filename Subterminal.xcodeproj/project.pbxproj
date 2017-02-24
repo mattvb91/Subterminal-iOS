@@ -63,6 +63,14 @@
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8A1E549B74005543C1 /* TableController.swift */; };
 		8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */; };
+		8FDCFA891E6080CA00BE92C5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */; };
+		8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */; };
+		8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */; };
+		8FDCFA8C1E60812800BE92C5 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
+		8FDCFA8D1E60812800BE92C5 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
+		8FDCFA8F1E60871D00BE92C5 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */; };
+		8FDCFA901E60871D00BE92C5 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */; };
+		8FDCFA911E60871D00BE92C5 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */; };
 		8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
 		8FE80AB71E56304F0081EA56 /* SkydiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */; };
 		8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
@@ -136,6 +144,8 @@
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveFormView.swift; sourceTree = "<group>"; };
+		8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
 		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveViewController.swift; sourceTree = "<group>"; };
 		8FE80AB81E56311A0081EA56 /* SkydiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveView.swift; sourceTree = "<group>"; };
@@ -231,6 +241,7 @@
 				8F980D5C1E55DD4800CDC497 /* Label.swift */,
 				8F180C511E5795FE006966A2 /* ShadowView.swift */,
 				8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */,
+				8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 				8FF31AE61E4E2B53003F3CFF /* Form.swift */,
 				8FAD28CC1E52066F00E88E97 /* TabBarController.swift */,
 				8FDBAB8A1E549B74005543C1 /* TableController.swift */,
+				8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -687,6 +699,7 @@
 				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
+				8FDCFA891E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
 				8F8C148B1E59B23800AC4856 /* Aircraft.swift in Sources */,
@@ -698,6 +711,7 @@
 				8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */,
 				8FA4A8DB1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
+				8FDCFA8F1E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
 				8F92B88D1E5B5F3000E749A8 /* Subterminal.swift in Sources */,
 				8FF31AE51E4E2A4D003F3CFF /* SkydiveForm.swift in Sources */,
@@ -720,13 +734,16 @@
 				8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14881E59B06C00AC4856 /* Router.swift in Sources */,
+				8FDCFA8C1E60812800BE92C5 /* DashboardController.swift in Sources */,
 				8FDADDB21E4FA10300A33F59 /* API.swift in Sources */,
 				8F49B1BE1E5F538100AA5179 /* DzAircraft.swift in Sources */,
 				8FA4E8BC1E5DE29B0015549A /* SyncProtocol.swift in Sources */,
 				8FA4A8D81E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8FA4A8DC1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FA4E8B61E5DE1E20015549A /* Rig.swift in Sources */,
+				8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */,
+				8FDCFA901E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 				8FA4E8B81E5DE22B0015549A /* Synchronizable.swift in Sources */,
 				8FCE364D1E5C480E00B03F67 /* DateHelper.swift in Sources */,
@@ -743,13 +760,16 @@
 				8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
 				8F8C14891E59B06C00AC4856 /* Router.swift in Sources */,
+				8FDCFA8D1E60812800BE92C5 /* DashboardController.swift in Sources */,
 				8FDADDB31E4FA10300A33F59 /* API.swift in Sources */,
 				8F49B1BF1E5F538100AA5179 /* DzAircraft.swift in Sources */,
 				8FA4E8BD1E5DE29B0015549A /* SyncProtocol.swift in Sources */,
 				8FA4A8D91E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8FA4A8DD1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FA4E8B71E5DE1E30015549A /* Rig.swift in Sources */,
+				8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */,
+				8FDCFA911E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
 				8FA4E8B91E5DE22B0015549A /* Synchronizable.swift in Sources */,
 				8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */,

@@ -63,6 +63,7 @@ class SkydiveView: UIView {
 		
 		skydiveDescription.isScrollEnabled = false
 		skydiveDescription.text = skydive?.skydive_description
+		skydiveDescription.font = UIFont.systemFont(ofSize: 16)
 		skydiveDescription.isUserInteractionEnabled = false
 			
 		self.addSubview(dropzoneLabel)

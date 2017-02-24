@@ -12,6 +12,7 @@ import Firebase
 import SwiftyJSON
 import DropDown
 import FBSDKLoginKit
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-		
+		STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
+		STPPaymentConfiguration.shared().smsAutofillDisabled = true
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()

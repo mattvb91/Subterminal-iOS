@@ -17,19 +17,18 @@ class DashboardController: UIViewController, FBSDKLoginButtonDelegate {
 		
 		self.view.backgroundColor = UIColor.lightGray
 		
-		if (FBSDKAccessToken.current() != nil)
-		{
-			// User is already logged in, do work such as go to next view controller.
-		}
-		else
-		{
-			let loginView : FBSDKLoginButton = FBSDKLoginButton()
-			self.view.addSubview(loginView)
-			loginView.center = self.view.center
-			loginView.readPermissions = ["public_profile", "email", "user_friends"]
-			loginView.delegate = self
-		}
+		var dashboardView = DashboardView.newAutoLayout()
+		dashboardView.loginView.readPermissions = ["public_profile", "email", "user_friends"]
+		dashboardView.loginView.delegate = self
+		
+		dashboardView.premiumButton.addTarget(self, action: #selector(self.premium(_:)), for: .touchUpInside)
+		
+		self.view.addSubview(dashboardView)
     }
+	
+	@objc func premium(_ sender: AnyObject?) {
+		self.navigationController?.pushViewController(PremiumController(), animated: true)
+	}
 	
 	func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
 		debugPrint("User Logged In")
