@@ -39,7 +39,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	var deployAlt = UITextField()
 	var delay = UITextField()
 	
-	var heightUnit = UISwitch()
+	var cutaway = UISwitch()
 	
 	var descriptionInput = UITextView()
 	
@@ -47,6 +47,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	var dateSelectedLabel = UILabel()
 	
 	var dropzone = SearchTextField()
+	
+	var scrollView = UIScrollView()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -62,7 +64,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		datePicker.config.startDate = NSDate() as Date
 		
 		dateSelectedLabel.text = DateHelper.dateToString(date: Date())
-		self.addSubview(dateSelectedLabel)
+		scrollView.addSubview(dateSelectedLabel)
 
 		dropzone.placeholder = "Search dropzones..."
 		dropzone.filterItems(Dropzone.getOptionsForSelect())
@@ -75,7 +77,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			self.dropzoneId = Int(item.subtitle!)!
 		}
 		
-		self.addSubview(dropzone)
+		scrollView.addSubview(dropzone)
 		
 		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
 		dateGesture.numberOfTapsRequired = 1
@@ -117,28 +119,30 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		deployAlt.keyboardType = UIKeyboardType.numberPad
 		delay.keyboardType = UIKeyboardType.numberPad
 
-		self.addSubview(aircraft)
-		self.addSubview(typeSelectedLabel)
+		scrollView.addSubview(aircraft)
+		scrollView.addSubview(typeSelectedLabel)
 		
-		self.addSubview(dropzoneLabel)
-		self.addSubview(aircraftSelectedLabel)
-		self.addSubview(dateLabel)
-		self.addSubview(aircraftLabel)
-		self.addSubview(rigLabel)
-		self.addSubview(typeLabel)
-		self.addSubview(heightUnitLabel)
-		self.addSubview(cutawayLabel)
-		self.addSubview(exitAltitudeLabel)
-		self.addSubview(deployAltitudeLabel)
-		self.addSubview(delayLabel)
-		self.addSubview(descriptionLabel)
+		scrollView.addSubview(dropzoneLabel)
+		scrollView.addSubview(aircraftSelectedLabel)
+		scrollView.addSubview(dateLabel)
+		scrollView.addSubview(aircraftLabel)
+		scrollView.addSubview(rigLabel)
+		scrollView.addSubview(typeLabel)
+		scrollView.addSubview(heightUnitLabel)
+		scrollView.addSubview(cutawayLabel)
+		scrollView.addSubview(exitAltitudeLabel)
+		scrollView.addSubview(deployAltitudeLabel)
+		scrollView.addSubview(delayLabel)
+		scrollView.addSubview(descriptionLabel)
 		
-		self.addSubview(exitAlt)
-		self.addSubview(deployAlt)
-		self.addSubview(delay)
+		scrollView.addSubview(exitAlt)
+		scrollView.addSubview(deployAlt)
+		scrollView.addSubview(delay)
 		
-		self.addSubview(heightUnit)
-		self.addSubview(descriptionInput)
+		scrollView.addSubview(cutaway)
+		scrollView.addSubview(descriptionInput)
+		
+		self.addSubview(scrollView)
 		
 		setNeedsUpdateConstraints()
 	}
@@ -149,10 +153,16 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	override func updateConstraints() {
 		if(!didSetupConstraints) {
-			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5))
+			
+			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
+			scrollView.contentSize = size
+			scrollView.autoSetDimensions(to: size)
 			
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
-			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 80)
+			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 10)
 			dropzoneLabel.autoSetDimensions(to: CGSize(width: 150, height: 31))
 			
 			dropzone.autoPinEdge(.top, to: .bottom, of: dropzoneLabel)
@@ -160,13 +170,14 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			dropzone.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 25, height: 31))
 			
 			dateLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
-			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 40)
-			
+			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzone, withOffset: 10)
+			dateLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
+
 			dateSelectedLabel.autoPinEdge(.left, to: .left, of: dateLabel)
 			dateSelectedLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 8)
 			
 			aircraftLabel.autoPinEdge(.top, to: .top, of: dateLabel)
-			aircraftLabel.autoPinEdge(.left, to: .right, of: dateLabel, withOffset: 180)
+			aircraftLabel.autoPinEdge(.left, to: .right, of: dateLabel, withOffset: 120)
 			
 			aircraft.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 10)
 			aircraft.autoPinEdge(.left, to: .left, of: aircraftLabel)
@@ -176,6 +187,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 40)
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
+			rigLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
 			
 			typeLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			typeLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 40)
@@ -185,11 +197,15 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			heightUnitLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 40)
 			heightUnitLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
-			
+			heightUnitLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
+
 			cutawayLabel.autoPinEdge(.left, to: .left, of: typeLabel)
 			cutawayLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 40)
 			
-			exitAltitudeLabel.autoPinEdge(.top, to: .bottom, of: heightUnitLabel, withOffset: 40)
+			cutaway.autoPinEdge(.top, to: .bottom, of: cutawayLabel, withOffset: 8)
+			cutaway.autoPinEdge(.left, to: .left, of: cutawayLabel)
+
+			exitAltitudeLabel.autoPinEdge(.top, to: .bottom, of: heightUnitLabel, withOffset: 50)
 			exitAltitudeLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			
 			exitAlt.autoPinEdge(.top, to: .bottom, of: exitAltitudeLabel, withOffset: 4)
@@ -197,7 +213,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			exitAlt.autoSetDimensions(to: CGSize(width: 100, height: 31))
 
 			deployAltitudeLabel.autoPinEdge(.top, to: .top, of: exitAltitudeLabel)
-			deployAltitudeLabel.autoCenterInSuperview()
+			deployAltitudeLabel.autoPinEdge(.left, to: .right, of: exitAlt, withOffset: 50)
 			
 			deployAlt.autoPinEdge(.top, to: .bottom, of: deployAltitudeLabel, withOffset: 4)
 			deployAlt.autoPinEdge(.left, to: .left, of: deployAltitudeLabel)
