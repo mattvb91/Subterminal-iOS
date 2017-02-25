@@ -43,6 +43,7 @@ PODS:
     - AlamofireImage (~> 3.0)
     - ImageSlideshow/Core
   - ImageSlideshow/Core (1.0.0)
+  - IQKeyboardManagerSwift (4.0.8)
   - PureLayout (3.0.2)
   - RAMAnimatedTabBarController (2.0.13)
   - SearchTextField (1.0.4)
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - HTagView
   - ImageSlideshow (~> 1.0.0)
   - ImageSlideshow/Alamofire
+  - IQKeyboardManagerSwift
   - PureLayout (~> 3.0.2)
   - RAMAnimatedTabBarController (~> 2.0.13)
   - SearchTextField
@@ -98,6 +100,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HTagView: 1fd0b80e7a9326fbe22e2a6a7c8b3230baaff8b8
   ImageSlideshow: 2787e10e202b79ecf5348a205c539fcc5bb8e62b
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
   SearchTextField: 211b82b521d867d609a4df07f47e0bcc65b1559d
@@ -106,6 +109,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 6a6df6128f103b308cc43f9a352301165710649e
+PODFILE CHECKSUM: 8961ee1c6223de3dd16d652b9defa95ecda94bbb
 
 COCOAPODS: 1.2.0

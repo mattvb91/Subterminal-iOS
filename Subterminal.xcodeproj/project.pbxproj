@@ -58,6 +58,8 @@
 		8FCE364C1E5C465D00B03F67 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE364B1E5C465D00B03F67 /* DateHelper.swift */; };
 		8FCE364D1E5C480E00B03F67 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE364B1E5C465D00B03F67 /* DateHelper.swift */; };
 		8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE364B1E5C465D00B03F67 /* DateHelper.swift */; };
+		8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
+		8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
@@ -748,6 +750,7 @@
 				8FA4E8B81E5DE22B0015549A /* Synchronizable.swift in Sources */,
 				8FCE364D1E5C480E00B03F67 /* DateHelper.swift in Sources */,
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
+				8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8921E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +777,7 @@
 				8FA4E8B91E5DE22B0015549A /* Synchronizable.swift in Sources */,
 				8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */,
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
+				8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8931E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

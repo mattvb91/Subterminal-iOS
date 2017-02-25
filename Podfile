@@ -35,4 +35,6 @@ target 'Subterminal' do
   pod 'SearchTextField'
   pod 'Stripe'
   pod 'SwiftSpinner'
+  pod 'IQKeyboardManagerSwift'
+  
 end

@@ -13,6 +13,7 @@ import SwiftyJSON
 import DropDown
 import FBSDKLoginKit
 import Stripe
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+		IQKeyboardManager.sharedManager().enable = true
+		
 		STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
 		STPPaymentConfiguration.shared().smsAutofillDisabled = true
 		

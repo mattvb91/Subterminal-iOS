@@ -66,7 +66,6 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		dropzone.filterStrings(Dropzone.getOptionsForSelect())
 		dropzone.maxNumberOfResults = 10
 		dropzone.maxResultsListHeight = 200
-		dropzone.theme = SearchTextFieldTheme.darkTheme()
 		dropzone.accessibilityTraits = UIAccessibilityTraits.allZeros
 		self.addSubview(dropzone)
 		
