@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import ImageSlideshow
 import SharkORM
+import SearchTextField
 
 class Dropzone: Model {
     
@@ -79,12 +80,12 @@ class Dropzone: Model {
 	}
 	
 	//Fetch all names for selection
-	static func getOptionsForSelect() -> [String] {
-		var results = [String]()
+	static func getOptionsForSelect() -> [SearchTextFieldItem] {
+		var results = [SearchTextFieldItem]()
 		
 		for item in Dropzone.query().fetch() as SRKResultSet {
-			var item = item as? Dropzone
-			results.append((item?.name!)!)
+			var item = item as! Dropzone
+			results.append(SearchTextFieldItem(title: item.name!, subtitle: item.id.description))
 		}
 		
 		return results

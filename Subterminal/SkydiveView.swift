@@ -65,7 +65,12 @@ class SkydiveView: UIView {
 		skydiveDescription.text = skydive?.skydive_description
 		skydiveDescription.font = UIFont.systemFont(ofSize: 16)
 		skydiveDescription.isUserInteractionEnabled = false
-			
+		
+		dropzone.textColor = self.tintColor
+		let tap = UITapGestureRecognizer(target: self, action: #selector(openDropzone))
+		dropzone.isUserInteractionEnabled = true
+		dropzone.addGestureRecognizer(tap)
+		
 		self.addSubview(dropzoneLabel)
 		self.addSubview(rigLabel)
 		self.addSubview(aircraftLabel)
@@ -88,6 +93,12 @@ class SkydiveView: UIView {
 		self.sendSubview(toBack: shadowView)
 		
 		self.setNeedsUpdateConstraints()
+	}
+	
+	func openDropzone(sender:UITapGestureRecognizer) {
+		let dropzoneController = DropzoneViewController()
+		dropzoneController.item = skydive?.dropzone()
+		superview?.viewController()?.navigationController?.show(dropzoneController, sender: nil)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

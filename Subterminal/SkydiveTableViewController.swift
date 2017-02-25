@@ -37,7 +37,10 @@ class SkydiveTableViewController: TableController {
         // Configure the cell...
 		cell?.dropzone.text = item?.dropzone()?.name
 		cell?.aircraft.text = item?.aircraft()?.name
-		cell?.delay.text = (item?.delay?.stringValue)! + "s"
+		
+		if item?.delay != nil {
+			cell?.delay.text = (item?.delay?.stringValue)! + "s"
+		}
 		
 		if item?.date != nil {
 			cell?.timeAgo.text = DateHelper.timeAgoSince(date: (item?.date)!)

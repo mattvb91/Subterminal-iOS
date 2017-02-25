@@ -30,6 +30,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	var aircraft = DropDown()
 	var type = DropDown()
 	
+	var dropzoneId: Int?
+	
 	var aircraftSelectedLabel = UILabel()
 	var typeSelectedLabel = UILabel()
 
@@ -63,10 +65,16 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		self.addSubview(dateSelectedLabel)
 
 		dropzone.placeholder = "Search dropzones..."
-		dropzone.filterStrings(Dropzone.getOptionsForSelect())
+		dropzone.filterItems(Dropzone.getOptionsForSelect())
 		dropzone.maxNumberOfResults = 10
 		dropzone.maxResultsListHeight = 200
+		dropzone.clearButtonMode = UITextFieldViewMode.whileEditing
 		dropzone.accessibilityTraits = UIAccessibilityTraits.allZeros
+		dropzone.itemSelectionHandler = { item in
+			self.dropzone.text = item.title
+			self.dropzoneId = Int(item.subtitle!)!
+		}
+		
 		self.addSubview(dropzone)
 		
 		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
@@ -105,6 +113,10 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		type.dataSource = Skydive.getTypesForSelect()
 		type.anchorView = typeSelectedLabel
 		
+		exitAlt.keyboardType = UIKeyboardType.numberPad
+		deployAlt.keyboardType = UIKeyboardType.numberPad
+		delay.keyboardType = UIKeyboardType.numberPad
+
 		self.addSubview(aircraft)
 		self.addSubview(typeSelectedLabel)
 		
@@ -137,14 +149,15 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	override func updateConstraints() {
 		if(!didSetupConstraints) {
-			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5))
 			
 			dropzoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
-			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 40)
+			dropzoneLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 80)
+			dropzoneLabel.autoSetDimensions(to: CGSize(width: 150, height: 31))
 			
-			dropzone.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 8)
+			dropzone.autoPinEdge(.top, to: .bottom, of: dropzoneLabel)
 			dropzone.autoPinEdge(.left, to: .left, of: dropzoneLabel)
-			dropzone.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 4, height: 31))
+			dropzone.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 25, height: 31))
 			
 			dateLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			dateLabel.autoPinEdge(.top, to: .bottom, of: dropzoneLabel, withOffset: 40)
@@ -195,14 +208,14 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			delay.autoPinEdge(.top, to: .bottom, of: delayLabel, withOffset: 4)
 			delay.autoPinEdge(.left, to: .left, of: delayLabel)
-			delay.autoSetDimensions(to: CGSize(width: 100, height: 31))
+			delay.autoSetDimensions(to: CGSize(width: 70, height: 31))
 
 			descriptionLabel.autoPinEdge(.top, to: .bottom, of: exitAltitudeLabel, withOffset: 50)
 			descriptionLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 
 			descriptionInput.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			descriptionInput.autoPinEdge(.top, to: .bottom, of: descriptionLabel, withOffset: 4)
-			descriptionInput.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 10, height: 150))
+			descriptionInput.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width - 25, height: 150))
 			
 			self.didSetupConstraints = true
 		}
@@ -229,5 +242,4 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	func gmDatePickerDidCancelSelection(_ gmDatePicker: GMDatePicker) {
 		// Do something then user tapped the cancel button
 	}
-	
 }

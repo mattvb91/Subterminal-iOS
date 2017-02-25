@@ -24,14 +24,28 @@ class SkydiveForm: Form {
 	}
 	
 	override func assignFormToEntity() {
-		getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
-		getItem().exit_altitude = NSNumber(value: Int(getFormView().exitAlt.text!)!)
-		getItem().deploy_altidude = NSNumber(value: Int(getFormView().deployAlt.text!)!)
+		
+		if getFormView().delay.text?.isEmpty == false {
+			getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
+		}
+		
+		if getFormView().exitAlt.text?.isEmpty == false {
+			getItem().exit_altitude = NSNumber(value: Int(getFormView().exitAlt.text!)!)
+		}
+		
+		if getFormView().deployAlt.text?.isEmpty == false {
+			getItem().deploy_altidude = NSNumber(value: Int(getFormView().deployAlt.text!)!)
+		}
+		
 		getItem().skydive_description = getFormView().descriptionInput.text
 		
 		let aircraft = getFormView().aircraft.selectedItem
 		let aircraftDB = Aircraft.query().where(withFormat: "name = %@", withParameters: [aircraft]).fetch().firstObject as? Aircraft
 		getItem().aircraft_id = aircraftDB?.id
+		
+		if getFormView().dropzoneId != nil {
+			getItem().dropzone_id = NSNumber(value: getFormView().dropzoneId!)
+		}
 		
 		if getFormView().type.indexForSelectedRow != nil {
 			let selectedType = getFormView().type.indexForSelectedRow
