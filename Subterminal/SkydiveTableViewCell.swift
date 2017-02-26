@@ -19,6 +19,8 @@ class SkydiveTableViewCell: BaseTableCell {
 	var aircraftLabel = Label(text: "Aircraft:")
 	var delayLabel = Label(text: "Delay:")
 	
+	var thumb = UIImageView()
+	
 	override func addSubviews() {
 		self.contentView.addSubview(dropzone)
 		self.contentView.addSubview(aircraft)
@@ -26,7 +28,8 @@ class SkydiveTableViewCell: BaseTableCell {
 		self.contentView.addSubview(aircraftLabel)
 		self.contentView.addSubview(delayLabel)
 		self.contentView.addSubview(timeAgo)
-		
+		self.contentView.addSubview(thumb)
+
 		dropzone.font = UIFont.boldSystemFont(ofSize: 16)
 		
 		aircraftLabel.font = UIFont.systemFont(ofSize: 14)
@@ -38,8 +41,21 @@ class SkydiveTableViewCell: BaseTableCell {
 		timeAgo.font = UIFont.systemFont(ofSize: 14)
 	}
 	
+	override func prepareForReuse() {
+		thumb.image = nil
+		super.prepareForReuse()
+	}
+	
 	override func setupConstraints() {
-		dropzone.autoPinEdge(.left, to: .left, of: self, withOffset: 20)
+
+		if thumb.image != nil {
+			thumb.autoSetDimensions(to: CGSize(width: 50, height: 50))
+			thumb.autoPinEdge(.left, to: .left, of: self, withOffset: 5)
+			thumb.autoPinEdge(.top, to: .top, of: self, withOffset: 15)
+			dropzone.autoPinEdge(.left, to: .right, of: thumb, withOffset: 10)
+		} else {
+			dropzone.autoPinEdge(.left, to: .left, of: self, withOffset: 20)
+		}
 		dropzone.autoPinEdge(.top, to: .top, of: self, withOffset: 5)
 		
 		aircraftLabel.autoPinEdge(.top, to: .bottom, of: dropzone, withOffset: 8)

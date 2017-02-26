@@ -25,6 +25,7 @@ class Skydive: Synchronizable {
         rig_id,
         suid_id: NSNumber?
 	
+	dynamic var cutaway: NSNumber = 0
     dynamic var height_unit: NSNumber = 0
 	
 	//Skydive Types

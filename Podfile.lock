@@ -37,6 +37,7 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - HTagView (2.1.1)
+  - ImagePicker (2.0.0)
   - ImageSlideshow (1.0.0):
     - ImageSlideshow/Core (= 1.0.0)
   - ImageSlideshow/Alamofire (1.0.0):
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase/Core
   - HTagView
+  - ImagePicker
   - ImageSlideshow (~> 1.0.0)
   - ImageSlideshow/Alamofire
   - IQKeyboardManagerSwift
@@ -99,6 +101,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HTagView: 1fd0b80e7a9326fbe22e2a6a7c8b3230baaff8b8
+  ImagePicker: 81175d36c2852cb543cb4f5d6c19e28f3e8d90eb
   ImageSlideshow: 2787e10e202b79ecf5348a205c539fcc5bb8e62b
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
@@ -109,6 +112,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 8961ee1c6223de3dd16d652b9defa95ecda94bbb
+PODFILE CHECKSUM: b5e2a6d2e410fe4d947710855d0c13f39e17d24c
 
 COCOAPODS: 1.2.0

@@ -54,6 +54,10 @@ class SkydiveForm: Form {
 			getItem().jump_type = NSNumber(value: type)
 		}
 		
+		if getFormView().cutaway.isOn {
+			getItem().cutaway = 1
+		}
+		
 		let date = DateHelper.stringToDate(string: getFormView().dateSelectedLabel.text!)
 		
 		getItem().date = date

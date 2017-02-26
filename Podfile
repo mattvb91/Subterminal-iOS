@@ -36,5 +36,6 @@ target 'Subterminal' do
   pod 'Stripe'
   pod 'SwiftSpinner'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'ImagePicker'
+
 end

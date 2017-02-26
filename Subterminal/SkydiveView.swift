@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ImagePicker
+import ImageSlideshow
 
 class SkydiveView: UIView {
 	
@@ -32,6 +34,9 @@ class SkydiveView: UIView {
 	var type = UILabel()
 	var dropzone = UILabel()
 	var rig = UILabel()
+	
+	var images = ImageSlideshow()
+	var imageButton = UIButton(type: UIButtonType.roundedRect)
 	
 	var skydiveDescription = UITextView()
 	
@@ -71,6 +76,15 @@ class SkydiveView: UIView {
 		dropzone.isUserInteractionEnabled = true
 		dropzone.addGestureRecognizer(tap)
 		
+		imageButton.setTitle("Add Image", for: .normal)
+		let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageSelect))
+		imageButton.isUserInteractionEnabled = true
+		imageButton.layer.borderWidth = 1
+		imageButton.layer.cornerRadius = 5
+		imageButton.layer.borderColor = UIColor.lightGray.cgColor
+		imageButton.addGestureRecognizer(imageTap)
+		self.addSubview(imageButton)
+		
 		self.addSubview(dropzoneLabel)
 		self.addSubview(rigLabel)
 		self.addSubview(aircraftLabel)
@@ -92,13 +106,30 @@ class SkydiveView: UIView {
 		self.addSubview(shadowView)
 		self.sendSubview(toBack: shadowView)
 		
+		images.contentScaleMode = UIViewContentMode.scaleAspectFill
+		images.slideshowInterval = 5
+		
+		let imageFullscreen = UITapGestureRecognizer(target: self, action: #selector(openImageFullscreen))
+		images.addGestureRecognizer(imageFullscreen)
+		
+		
 		self.setNeedsUpdateConstraints()
+	}
+	
+	func openImageFullscreen() {
+		images.presentFullScreenController(from: (self.superview?.viewController())!)
 	}
 	
 	func openDropzone(sender:UITapGestureRecognizer) {
 		let dropzoneController = DropzoneViewController()
 		dropzoneController.item = skydive?.dropzone()
 		superview?.viewController()?.navigationController?.show(dropzoneController, sender: nil)
+	}
+	
+	func imageSelect(sender:UITapGestureRecognizer) {
+		let imagePickerController = ImagePickerController()
+		imagePickerController.delegate = self.superview?.viewController() as! ImagePickerDelegate?
+		superview?.viewController()?.present(imagePickerController, animated: true, completion: nil)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -161,6 +192,16 @@ class SkydiveView: UIView {
 			skydiveDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
 			
 			shadowView.autoPinEdge(.bottom, to: .bottom, of: skydiveDescription, withOffset: 20)
+			
+			imageButton.autoPinEdge(.top, to: .bottom, of: shadowView, withOffset: 20)
+			imageButton.autoPinEdge(.left, to: .left, of: dropzoneLabel)
+			imageButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
+
+			if images.superview === self {
+				images.autoPinEdge(.top, to: .bottom, of: imageButton, withOffset: 20)
+				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
+			}
+			
 			self.didSetupConstraints = true
 		}
 		

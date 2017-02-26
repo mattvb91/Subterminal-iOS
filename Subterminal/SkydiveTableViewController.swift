@@ -38,6 +38,10 @@ class SkydiveTableViewController: TableController {
 		cell?.dropzone.text = item?.dropzone()?.name
 		cell?.aircraft.text = item?.aircraft()?.name
 		
+		if let image = Image.getThumbnailImageForEntity(entity: item!) as? Image {
+			cell?.thumb.image = image.getUIImage().thumbnailImage(50, transparentBorder:1, cornerRadius:5,interpolationQuality:CGInterpolationQuality.low)
+		}
+		
 		if item?.delay != nil {
 			cell?.delay.text = (item?.delay?.stringValue)! + "s"
 		}

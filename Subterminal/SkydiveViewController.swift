@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import ImagePicker
+import ImageSlideshow
 
-class SkydiveViewController: UIViewController {
+class SkydiveViewController: UIViewController, ImagePickerDelegate {
 
 	var item: Skydive?
-	
+	let skydiveView = SkydiveView.newAutoLayout()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let skydiveView = SkydiveView.newAutoLayout()
 		
 		if let item = item {
 			skydiveView.skydive = item
@@ -41,8 +42,46 @@ class SkydiveViewController: UIViewController {
 			skydiveView.dropzone.text = item.dropzone()?.name
 			skydiveView.aircraft.text = item.aircraft()?.name
 			skydiveView.type.text = item.getFormattedType()
+			
+			loadImages()
 		}
 		
 		self.view.addSubview(skydiveView)
+	}
+	
+	func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		
+	}
+	
+	func loadImages() {
+		var images = Image.getImagesForEntity(entity: self.item!)
+		if images.count > 0 {
+			var imageSources = [ImageSource]()
+			
+			for image in images {
+				let image = image as? Image
+				imageSources.append(ImageSource(image: image!.getUIImage()))
+			}
+			
+			skydiveView.images.setImageInputs(imageSources)
+			skydiveView.addSubview(skydiveView.images)
+		}
+	}
+	
+	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		imagePicker.dismiss(animated: true, completion: nil)
+		
+		for image in images {
+			Image.createImageForEntity(entity: self.item!, uiImage: image)
+		}
+		
+		loadImages()
+		
+		skydiveView.didSetupConstraints = false
+		skydiveView.setNeedsUpdateConstraints()
+	}
+	
+	func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+		imagePicker.dismiss(animated: true, completion: nil)
 	}
 }

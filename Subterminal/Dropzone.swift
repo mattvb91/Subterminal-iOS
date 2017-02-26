@@ -26,6 +26,8 @@ class Dropzone: Model {
 	dynamic var latitude: Double = 0.0
 	dynamic var longtitude: Double = 0.0
 	
+	dynamic var featured: NSNumber = 0
+	
 	var images: [AlamofireSource]?
 	var services: [String]?
 	
