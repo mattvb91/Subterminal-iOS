@@ -124,6 +124,11 @@ class GearTableController: TableController {
 			rigForm.item = items.object(at: indexPath.row) as? Rig
 		
 			self.navigationController?.pushViewController(rigForm, animated: true)
+		} else {
+			let suitForm = SuitForm()
+			suitForm.item = suits.object(at: indexPath.row) as? Suit
+			
+			self.navigationController?.pushViewController(suitForm, animated: true)
 		}
 	}
 	

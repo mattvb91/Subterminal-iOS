@@ -28,6 +28,12 @@
 		8F90E6411E634AD400CAF8A3 /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */; };
 		8F90E6421E634AD400CAF8A3 /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */; };
 		8F90E6431E634AD400CAF8A3 /* UIImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */; };
+		8F90E6451E636A6700CAF8A3 /* SuitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6441E636A6700CAF8A3 /* SuitFormView.swift */; };
+		8F90E6461E636A6700CAF8A3 /* SuitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6441E636A6700CAF8A3 /* SuitFormView.swift */; };
+		8F90E6471E636A6700CAF8A3 /* SuitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6441E636A6700CAF8A3 /* SuitFormView.swift */; };
+		8F90E6491E636C4500CAF8A3 /* SuitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6481E636C4500CAF8A3 /* SuitForm.swift */; };
+		8F90E64A1E636C4500CAF8A3 /* SuitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6481E636C4500CAF8A3 /* SuitForm.swift */; };
+		8F90E64B1E636C4500CAF8A3 /* SuitForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90E6481E636C4500CAF8A3 /* SuitForm.swift */; };
 		8F92B88D1E5B5F3000E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
 		8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
 		8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */; };
@@ -134,6 +140,8 @@
 		8F8C148A1E59B23800AC4856 /* Aircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
 		8F90E63C1E632DAF00CAF8A3 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageResize.swift; sourceTree = "<group>"; };
+		8F90E6441E636A6700CAF8A3 /* SuitFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitFormView.swift; sourceTree = "<group>"; };
+		8F90E6481E636C4500CAF8A3 /* SuitForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitForm.swift; sourceTree = "<group>"; };
 		8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subterminal.swift; sourceTree = "<group>"; };
 		8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMDatePicker.swift; sourceTree = "<group>"; };
 		8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldStyle.swift; sourceTree = "<group>"; };
@@ -348,6 +356,7 @@
 				8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */,
 				8FE80AB81E56311A0081EA56 /* SkydiveView.swift */,
 				8FA4A8DA1E5F308600DDB962 /* SuitTableViewCell.swift */,
+				8F90E6441E636A6700CAF8A3 /* SuitFormView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -381,6 +390,7 @@
 			children = (
 				8FF31AE41E4E2A4D003F3CFF /* SkydiveForm.swift */,
 				8FF31AE91E4E2BAC003F3CFF /* GearForm.swift */,
+				8F90E6481E636C4500CAF8A3 /* SuitForm.swift */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -711,6 +721,7 @@
 				8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
+				8F90E6491E636C4500CAF8A3 /* SuitForm.swift in Sources */,
 				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
@@ -725,6 +736,7 @@
 				8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */,
 				8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */,
 				8FA4A8DB1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
+				8F90E6451E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
 				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
 				8FDCFA8F1E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
@@ -747,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA4E8C01E5E0BA60015549A /* User.swift in Sources */,
+				8F90E6461E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
 				8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F90E6421E634AD400CAF8A3 /* UIImageResize.swift in Sources */,
 				8F8C148E1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
@@ -760,6 +773,7 @@
 				8FA4A8DC1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FA4E8B61E5DE1E20015549A /* Rig.swift in Sources */,
 				8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
+				8F90E64A1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
 				8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FDCFA901E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
@@ -777,6 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA4E8C11E5E0BA60015549A /* User.swift in Sources */,
+				8F90E6471E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
 				8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F90E6431E634AD400CAF8A3 /* UIImageResize.swift in Sources */,
 				8F8C148F1E59C00000AC4856 /* SkydiveFormView.swift in Sources */,
@@ -790,6 +805,7 @@
 				8FA4A8DD1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FA4E8B71E5DE1E30015549A /* Rig.swift in Sources */,
 				8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
+				8F90E64B1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
 				8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FDCFA911E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
