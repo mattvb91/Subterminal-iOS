@@ -16,6 +16,23 @@ class SkydiveForm: Form {
         super.viewDidLoad()
 
 		self.formView = SkydiveFormView.newAutoLayout()
+		
+		if getItem().id != nil {
+			
+			if getItem().dropzone_id != nil {
+				getFormView().dropzoneId = Int(getItem().dropzone_id!)
+				getFormView().dropzone.text = getItem().dropzone()?.name
+			}
+			
+			getFormView().dateSelectedLabel.text = DateHelper.dateToString(date: getItem().date!)
+			getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
+			getFormView().typeLabel.text = getItem().getFormattedType()
+			getFormView().exitAlt.text = getItem().exit_altitude?.description
+			getFormView().deployAlt.text = getItem().deploy_altidude?.description
+			getFormView().delay.text = getItem().delay?.description
+			getFormView().descriptionInput.text = getItem().skydive_description
+		}
+		
 		self.view.addSubview(self.formView!)
     }
 	

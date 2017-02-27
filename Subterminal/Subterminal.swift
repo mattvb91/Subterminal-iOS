@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class Subterminal {
+	
+	static let MODE_SKYDIVE = 0
+	static let MODE_BASE = 1
+	
+	public static var mode = 0
 	
 	public static var user = User()
 	
@@ -19,5 +25,12 @@ class Subterminal {
 		}
 		
 		return ""
+	}
+	
+	static func changeMode(mode: Int) {
+		Subterminal.mode = mode
+		
+		let appDelegate = UIApplication.shared.delegate as? AppDelegate
+		appDelegate?.window!.rootViewController = TabBarController()
 	}
 }

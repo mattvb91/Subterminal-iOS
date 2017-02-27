@@ -41,11 +41,13 @@ class API: NSObject {
 	static func initAPI() {
 		API.instance.getAircraft()
 		API.instance.getDropzones()
+		API.instance.getPublicExits()
 		
 		if Subterminal.user.isLoggedIn() {
 			API.instance.downloadModel(model: Rig())
 			API.instance.downloadModel(model: Skydive())
 			API.instance.downloadModel(model: Suit())
+			API.instance.downloadModel(model: Exit())
 		}
 	}
 	
@@ -89,6 +91,22 @@ class API: NSObject {
 			}
 		}
 	}
+	
+	func getPublicExits() -> Void {
+		Alamofire.request(Router.getPublicExits()).responseJSON { response in
+			if let result = response.result.value {
+				let items = result as! NSArray
+				
+				for item in items as! [NSDictionary] {
+					let exit = Exit.build(json: JSON(item))
+					if exit.save() {
+						//exit.updateDetails(json: JSON(item))
+					}
+				}
+			}
+		}
+	}
+
 	
 	func getDropzoneImages(dropzone: Dropzone!) {
 		let url = baseURL + "dropzone/" + dropzone.id.stringValue + "/images"

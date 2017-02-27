@@ -17,17 +17,28 @@ class DashboardController: UIViewController, FBSDKLoginButtonDelegate {
 		
 		self.view.backgroundColor = UIColor.lightGray
 		
-		var dashboardView = DashboardView.newAutoLayout()
+		let dashboardView = DashboardView.newAutoLayout()
 		dashboardView.loginView.readPermissions = ["public_profile", "email", "user_friends"]
 		dashboardView.loginView.delegate = self
 		
 		dashboardView.premiumButton.addTarget(self, action: #selector(self.premium(_:)), for: .touchUpInside)
 		
+		let segment: UISegmentedControl = UISegmentedControl(items: ["Skydive", "B.A.S.E."])
+		segment.selectedSegmentIndex = Subterminal.mode
+		segment.sizeToFit()
+		segment.tintColor = self.view.tintColor
+		segment.addTarget(self, action: #selector(changeMode), for: .valueChanged)
+
+		self.navigationItem.titleView = segment
 		self.view.addSubview(dashboardView)
     }
 	
 	@objc func premium(_ sender: AnyObject?) {
 		self.navigationController?.pushViewController(PremiumController(), animated: true)
+	}
+	
+	@objc func changeMode(segment: UISegmentedControl) {
+		Subterminal.changeMode(mode: (segment.selectedSegmentIndex))
 	}
 	
 	func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

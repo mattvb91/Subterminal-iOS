@@ -18,6 +18,9 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
+		self.navigationItem.rightBarButtonItem = editButton
+
 		if let item = item {
 			skydiveView.skydive = item
 			
@@ -47,6 +50,13 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 		}
 		
 		self.view.addSubview(skydiveView)
+	}
+	
+	func editAction() {
+		var formController = SkydiveForm()
+		formController.item = self.item
+		
+		self.navigationController?.pushViewController(formController, animated: true)
 	}
 	
 	func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {

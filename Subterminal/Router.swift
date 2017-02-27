@@ -13,7 +13,9 @@ enum Router: URLRequestConvertible {
 	case getSkyGear()
 	case getSkydives()
 	case getSuits()
+	case getExits()
 	case payment(token: String)
+	case getPublicExits()
 	
 	case updateUser()
 	
@@ -21,7 +23,7 @@ enum Router: URLRequestConvertible {
 	
 	var method: HTTPMethod {
 		switch self {
-		case .getAircraft, .getSkyGear, .getSkydives, .getSuits:
+		case .getAircraft, .getSkyGear, .getSkydives, .getSuits, .getPublicExits, .getExits():
 			return .get
 		case .updateUser, .payment:
 			return .post
@@ -41,6 +43,12 @@ enum Router: URLRequestConvertible {
 		
 		case .getSuits():
 			return "/user/suits"
+			
+		case .getExits():
+			return "/user/exits"
+		
+		case .getPublicExits():
+			return "exit"
 			
 		case .updateUser():
 			return "/user"
@@ -70,7 +78,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: ["token": Subterminal.user.facebook_token], options: [])
 			urlRequest.httpBody = data
 			
-		case .getSkyGear(), .getSkydives(), .getSuits():
+		case .getSkyGear(), .getSkydives(), .getSuits(), .getExits():
 			urlRequest = try URLEncoding.default.encode(urlRequest, with: ["last_sync": "2001-01-01"])
 			
 		case .payment(let token):

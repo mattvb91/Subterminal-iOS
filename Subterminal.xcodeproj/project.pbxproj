@@ -64,6 +64,22 @@
 		8FA739731E50CA6E00A08D6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA739721E50CA6E00A08D6A /* MapKit.framework */; };
 		8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CC1E52066F00E88E97 /* TabBarController.swift */; };
 		8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */; };
+		8FB15F9A1E649F9400685A53 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CC1E52066F00E88E97 /* TabBarController.swift */; };
+		8FB15F9B1E649F9400685A53 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD28CC1E52066F00E88E97 /* TabBarController.swift */; };
+		8FB15F9F1E64A8B700685A53 /* ExitsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15F9E1E64A8B700685A53 /* ExitsTableController.swift */; };
+		8FB15FA01E64A8B700685A53 /* ExitsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15F9E1E64A8B700685A53 /* ExitsTableController.swift */; };
+		8FB15FA11E64A8B700685A53 /* ExitsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15F9E1E64A8B700685A53 /* ExitsTableController.swift */; };
+		8FB15FA31E64AB8800685A53 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA21E64AB8800685A53 /* Exit.swift */; };
+		8FB15FA41E64AB8800685A53 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA21E64AB8800685A53 /* Exit.swift */; };
+		8FB15FA51E64AB8800685A53 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA21E64AB8800685A53 /* Exit.swift */; };
+		8FB15FA81E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */; };
+		8FB15FA91E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */; };
+		8FB15FAA1E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */; };
+		8FB15FAD1E64AE1100685A53 /* ExitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FAC1E64AE1100685A53 /* ExitDetails.swift */; };
+		8FB15FAE1E64AE1100685A53 /* ExitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FAC1E64AE1100685A53 /* ExitDetails.swift */; };
+		8FB15FAF1E64AE1100685A53 /* ExitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB15FAC1E64AE1100685A53 /* ExitDetails.swift */; };
+		8FB15FB01E64AE6800685A53 /* GearTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */; };
+		8FB15FB11E64AE6800685A53 /* GearTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AF01E4E5AC5003F3CFF /* GearTableController.swift */; };
 		8FB3D9E91E5D98A80085263A /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3D9E81E5D98A80085263A /* Synchronizable.swift */; };
 		8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
@@ -157,6 +173,10 @@
 		8FAD28CC1E52066F00E88E97 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8FAD28CE1E52169F00E88E97 /* DropzoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneView.swift; sourceTree = "<group>"; };
 		8FAD28D01E522B4800E88E97 /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Subterminal-dhxzvxkuztqbeggqslgyresukmil/Build/Products/Debug-iphonesimulator/PureLayout/PureLayout.framework"; sourceTree = "<group>"; };
+		8FB15F9E1E64A8B700685A53 /* ExitsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitsTableController.swift; sourceTree = "<group>"; };
+		8FB15FA21E64AB8800685A53 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
+		8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
+		8FB15FAC1E64AE1100685A53 /* ExitDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitDetails.swift; sourceTree = "<group>"; };
 		8FB3D9E81E5D98A80085263A /* Synchronizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
@@ -241,6 +261,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8FB15F9C1E64A87E00685A53 /* BASE */ = {
+			isa = PBXGroup;
+			children = (
+				8FB15FAB1E64AE0500685A53 /* Models */,
+				8FB15FA61E64ACB900685A53 /* Views */,
+				8FB15F9D1E64A89B00685A53 /* Controllers */,
+			);
+			name = BASE;
+			sourceTree = "<group>";
+		};
+		8FB15F9D1E64A89B00685A53 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8FB15F9E1E64A8B700685A53 /* ExitsTableController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8FB15FA61E64ACB900685A53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8FB15FAB1E64AE0500685A53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8FB15FA21E64AB8800685A53 /* Exit.swift */,
+				8FB15FAC1E64AE1100685A53 /* ExitDetails.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8FB3D9E71E5D98910085263A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,8 +360,9 @@
 			isa = PBXGroup;
 			children = (
 				8FDADDAF1E4F9FE100A33F59 /* Utils */,
-				8FF31AEB1E4E2CB3003F3CFF /* Base */,
+				8FF31AEB1E4E2CB3003F3CFF /* _base */,
 				8FF31AD71E4E0B74003F3CFF /* Skydive */,
+				8FB15F9C1E64A87E00685A53 /* BASE */,
 				8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */,
 				8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */,
 				8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */,
@@ -395,7 +451,7 @@
 			name = Forms;
 			sourceTree = "<group>";
 		};
-		8FF31AEB1E4E2CB3003F3CFF /* Base */ = {
+		8FF31AEB1E4E2CB3003F3CFF /* _base */ = {
 			isa = PBXGroup;
 			children = (
 				8FB3D9E71E5D98910085263A /* Models */,
@@ -406,7 +462,7 @@
 				8FDBAB8A1E549B74005543C1 /* TableController.swift */,
 				8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */,
 			);
-			name = Base;
+			name = _base;
 			sourceTree = "<group>";
 		};
 		F72FDEA5F219D58967687F09 /* Pods */ = {
@@ -716,11 +772,13 @@
 				8F90E63D1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
+				8FB15FAD1E64AE1100685A53 /* ExitDetails.swift in Sources */,
 				8FAD28CD1E52066F00E88E97 /* TabBarController.swift in Sources */,
 				8FA7396D1E50B69F00A08D6A /* DropzoneTableViewCell.swift in Sources */,
 				8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */,
 				8FF31AEF1E4E32FC003F3CFF /* Dropzone.swift in Sources */,
 				8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */,
+				8FB15FA81E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */,
 				8F90E6491E636C4500CAF8A3 /* SuitForm.swift in Sources */,
 				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
@@ -737,6 +795,7 @@
 				8F180C521E5795FE006966A2 /* ShadowView.swift in Sources */,
 				8FA4A8DB1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8F90E6451E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
+				8FB15FA31E64AB8800685A53 /* Exit.swift in Sources */,
 				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
 				8FDCFA8F1E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
@@ -748,6 +807,7 @@
 				8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */,
 				8FA4E8BF1E5E0BA60015549A /* User.swift in Sources */,
 				8FF31AE01E4E0EA9003F3CFF /* Skydive.swift in Sources */,
+				8FB15F9F1E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
 				8F92B8911E5B6CFC00E749A8 /* GMDatePicker.swift in Sources */,
 				8F49B1BD1E5F538100AA5179 /* DzAircraft.swift in Sources */,
@@ -759,6 +819,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA4E8C01E5E0BA60015549A /* User.swift in Sources */,
+				8FB15FA91E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */,
+				8FB15F9A1E649F9400685A53 /* TabBarController.swift in Sources */,
 				8F90E6461E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
 				8F92B88E1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F90E6421E634AD400CAF8A3 /* UIImageResize.swift in Sources */,
@@ -768,9 +830,11 @@
 				8FDADDB21E4FA10300A33F59 /* API.swift in Sources */,
 				8F49B1BE1E5F538100AA5179 /* DzAircraft.swift in Sources */,
 				8FA4E8BC1E5DE29B0015549A /* SyncProtocol.swift in Sources */,
+				8FB15FA41E64AB8800685A53 /* Exit.swift in Sources */,
 				8FA4A8D81E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8F90E63E1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FA4A8DC1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
+				8FB15FB01E64AE6800685A53 /* GearTableController.swift in Sources */,
 				8FA4E8B61E5DE1E20015549A /* Rig.swift in Sources */,
 				8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64A1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
@@ -779,7 +843,9 @@
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 				8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */,
 				8FA4E8B81E5DE22B0015549A /* Synchronizable.swift in Sources */,
+				8FB15FAE1E64AE1100685A53 /* ExitDetails.swift in Sources */,
 				8FCE364D1E5C480E00B03F67 /* DateHelper.swift in Sources */,
+				8FB15FA01E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8921E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
@@ -791,6 +857,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA4E8C11E5E0BA60015549A /* User.swift in Sources */,
+				8FB15FAA1E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */,
+				8FB15F9B1E649F9400685A53 /* TabBarController.swift in Sources */,
 				8F90E6471E636A6700CAF8A3 /* SuitFormView.swift in Sources */,
 				8F92B88F1E5B60C700E749A8 /* Subterminal.swift in Sources */,
 				8F90E6431E634AD400CAF8A3 /* UIImageResize.swift in Sources */,
@@ -800,9 +868,11 @@
 				8FDADDB31E4FA10300A33F59 /* API.swift in Sources */,
 				8F49B1BF1E5F538100AA5179 /* DzAircraft.swift in Sources */,
 				8FA4E8BD1E5DE29B0015549A /* SyncProtocol.swift in Sources */,
+				8FB15FA51E64AB8800685A53 /* Exit.swift in Sources */,
 				8FA4A8D91E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8F90E63F1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FA4A8DD1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
+				8FB15FB11E64AE6800685A53 /* GearTableController.swift in Sources */,
 				8FA4E8B71E5DE1E30015549A /* Rig.swift in Sources */,
 				8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64B1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
@@ -811,7 +881,9 @@
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
 				8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */,
 				8FA4E8B91E5DE22B0015549A /* Synchronizable.swift in Sources */,
+				8FB15FAF1E64AE1100685A53 /* ExitDetails.swift in Sources */,
 				8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */,
+				8FB15FA11E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8931E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,

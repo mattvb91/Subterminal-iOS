@@ -53,6 +53,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
+		self.backgroundColor = UIColor.white
+		
 		exitAlt.setBottomBorder()
 		exitAlt.placeholder = "13000"
 		deployAlt.setBottomBorder()

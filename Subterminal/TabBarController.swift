@@ -21,31 +21,47 @@ class TabBarController: RAMAnimatedTabBarController {
 		let tabBarIconDashboard: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dashboard", image: #imageLiteral(resourceName: "dashboard").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "dashboard"))
 		tabBarIconDashboard.animation = RAMBounceAnimation()
 		dashboardNavController.tabBarItem = tabBarIconDashboard
-		
-		let skydiveController = SkydiveTableViewController()
-		skydiveController.title = "Skydives"
-		let skydiveNavController = UINavigationController(rootViewController: skydiveController)
-		
-		let tabBarIconSkydive: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Skydives", image: #imageLiteral(resourceName: "skydive").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "skydive"))
-		tabBarIconSkydive.animation = RAMBounceAnimation()
-		skydiveController.tabBarItem = tabBarIconSkydive
-
-		let gearController = GearTableController()
-		let gearNavController = UINavigationController(rootViewController: gearController)
-
-		let tabBarIconGear: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Gear", image: #imageLiteral(resourceName: "rig").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "rig"))
-		tabBarIconGear.animation = RAMBounceAnimation()
-		gearController.tabBarItem = tabBarIconGear
-
-		let dropzoneController = DropzoneTableController()
-		dropzoneController.title = "Dropzones"
-		let dropzoneNavController = UINavigationController(rootViewController: dropzoneController)
-		
-		let tabBarIconDropzone: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dropzones", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
-		tabBarIconDropzone.animation = RAMBounceAnimation()
-		dropzoneController.tabBarItem = tabBarIconDropzone
 
 		
-		viewControllers = [dashboardNavController, skydiveNavController, gearNavController, dropzoneNavController]
+		if Subterminal.mode == Subterminal.MODE_SKYDIVE {
+		
+			let skydiveController = SkydiveTableViewController()
+			skydiveController.title = "Skydives"
+			let skydiveNavController = UINavigationController(rootViewController: skydiveController)
+		
+			let tabBarIconSkydive: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Skydives", image: #imageLiteral(resourceName: "skydive").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "skydive"))
+			tabBarIconSkydive.animation = RAMBounceAnimation()
+			skydiveController.tabBarItem = tabBarIconSkydive
+			
+			let gearController = GearTableController()
+			let gearNavController = UINavigationController(rootViewController: gearController)
+
+			let tabBarIconGear: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Gear", image: #imageLiteral(resourceName: "rig").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "rig"))
+			tabBarIconGear.animation = RAMBounceAnimation()
+			gearController.tabBarItem = tabBarIconGear
+
+			
+			let dropzoneController = DropzoneTableController()
+			dropzoneController.title = "Dropzones"
+			let dropzoneNavController = UINavigationController(rootViewController: dropzoneController)
+		
+			let tabBarIconDropzone: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Dropzones", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
+			tabBarIconDropzone.animation = RAMBounceAnimation()
+			dropzoneController.tabBarItem = tabBarIconDropzone
+			
+			viewControllers = [dashboardNavController, skydiveNavController, gearNavController, dropzoneNavController]
+		} else {
+			
+			let exitsController = ExitsTableController()
+			exitsController.title = "Exits"
+			let exitsNavController = UINavigationController(rootViewController: exitsController)
+			
+			let tabBarIconExits: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Exits", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
+			tabBarIconExits.animation = RAMBounceAnimation()
+			exitsController.tabBarItem = tabBarIconExits
+
+			
+			viewControllers = [dashboardNavController, exitsNavController]
+		}
 	}
 }
