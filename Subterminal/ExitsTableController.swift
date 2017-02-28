@@ -42,6 +42,13 @@ class ExitsTableController: TableController {
 		}
 	}
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let exitController = ExitViewController()
+		exitController.item = items.object(at: indexPath.row) as? Exit
+		
+		self.navigationController?.pushViewController(exitController, animated: true)
+	}
+	
 	override func getNotificationName() -> String {
 		return "exit_notification"
 	}

@@ -84,4 +84,8 @@ class Exit: Synchronizable {
 			
 		return nil
 	}
+	
+	func isGlobal() -> Bool {
+		return self.global_id?.isEmpty == false
+	}
 }
