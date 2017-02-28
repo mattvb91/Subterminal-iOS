@@ -18,6 +18,7 @@ class DateHelper {
 	static func stringToDate(string: String) -> Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = dateFormat
+		let string = string.substring(to: string.index(string.startIndex, offsetBy: 10))
 		return dateFormatter.date(from: string)!
 	}
 	

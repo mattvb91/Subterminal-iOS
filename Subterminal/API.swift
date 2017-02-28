@@ -48,6 +48,8 @@ class API: NSObject {
 			API.instance.downloadModel(model: Skydive())
 			API.instance.downloadModel(model: Suit())
 			API.instance.downloadModel(model: Exit())
+			API.instance.downloadModel(model: BASERig())
+			API.instance.downloadModel(model: Jump())
 		}
 	}
 	

@@ -61,7 +61,24 @@ class TabBarController: RAMAnimatedTabBarController {
 			exitsController.tabBarItem = tabBarIconExits
 
 			
-			viewControllers = [dashboardNavController, exitsNavController]
+			let gearController = BaseGearTableController()
+			let gearNavController = UINavigationController(rootViewController: gearController)
+			
+			let tabBarIconGear: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Gear", image: #imageLiteral(resourceName: "rig").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "rig"))
+			tabBarIconGear.animation = RAMBounceAnimation()
+			gearController.tabBarItem = tabBarIconGear
+
+			
+			let jumpsController = JumpTableController()
+			let jumpsNavController = UINavigationController(rootViewController: jumpsController)
+			
+			let tabBarIconJumps: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Jumps", image: #imageLiteral(resourceName: "skydive").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "skydive"))
+			tabBarIconJumps.animation = RAMBounceAnimation()
+			jumpsController.tabBarItem = tabBarIconJumps
+			
+
+			
+			viewControllers = [dashboardNavController, jumpsNavController, gearNavController, exitsNavController]
 		}
 	}
 }
