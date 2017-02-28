@@ -17,6 +17,15 @@ class JumpViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		if let item = item {
+			jumpView.exit.text = item.exit()?.name
+			jumpView.delay.text = item.delay?.description
+			jumpView.pc.text = item.pc_size?.description
+			jumpView.slider.text = item.getFormattedSlider()
+			jumpView.jumpDescription.text = item.jump_description
+			jumpView.jumpDescription.sizeToFit()
+		}
+		
 		self.view.addSubview(jumpView)
 	}
 }

@@ -14,6 +14,7 @@ import DropDown
 import FBSDKLoginKit
 import Stripe
 import IQKeyboardManagerSwift
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
 		STPPaymentConfiguration.shared().smsAutofillDisabled = true
 		
+		GADMobileAds.configure(withApplicationID: Subterminal.getKey(key: "admob_appid"))
+
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()
 		window?.rootViewController = TabBarController()

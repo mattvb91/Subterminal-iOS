@@ -27,6 +27,15 @@ class JumpView: UIView {
 	var pcLabel = UILabel()
 	var sliderLabel = UILabel()
 	
+	var exit = UILabel()
+	var rig = UILabel()
+	var type = UILabel()
+	var delay = UILabel()
+	var pc = UILabel()
+	var slider = UILabel()
+	
+	var jumpDescription = UITextView.newAutoLayout()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -38,6 +47,10 @@ class JumpView: UIView {
 		delayLabel.text = "Delay:"
 		pcLabel.text = "PC:"
 		sliderLabel.text = "Slider:"
+		
+		jumpDescription.isScrollEnabled = false
+		jumpDescription.isUserInteractionEnabled = false
+		jumpDescription.font = UIFont.systemFont(ofSize: 16)
 		
 		exitLabel.font = UIFont.boldSystemFont(ofSize: 15)
 		rigLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -52,7 +65,15 @@ class JumpView: UIView {
 		contentView.addSubview(delayLabel)
 		contentView.addSubview(pcLabel)
 		contentView.addSubview(sliderLabel)
+		
+		contentView.addSubview(exit)
+		contentView.addSubview(rig)
+		contentView.addSubview(type)
+		contentView.addSubview(delay)
+		contentView.addSubview(pc)
+		contentView.addSubview(slider)
 
+		contentView.addSubview(jumpDescription)
 		contentView.addSubview(shadowView)
 		contentView.sendSubview(toBack: shadowView)
 
@@ -78,26 +99,47 @@ class JumpView: UIView {
 			exitLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20)
 			exitLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20)
 			
+			exit.autoPinEdge(.left, to: .right, of: exitLabel, withOffset: 40)
+			exit.autoPinEdge(.top, to: .top, of: exitLabel)
+			
 			rigLabel.autoPinEdge(.top, to: .bottom, of: exitLabel, withOffset: 15)
 			rigLabel.autoPinEdge(.left, to: .left, of: exitLabel)
+			
+			rig.autoPinEdge(.top, to: .top, of: rigLabel)
+			rig.autoPinEdge(.left, to: .left, of: exit)
 			
 			typeLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 15)
 			typeLabel.autoPinEdge(.left, to: .left, of: exitLabel)
 			
+			type.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 10)
+			type.autoPinEdge(.left, to: .left, of: typeLabel, withOffset: 20)
+			
 			delayLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 60)
 			delayLabel.autoPinEdge(.top, to: .top, of: typeLabel)
+			
+			delay.autoPinEdge(.top, to: .top, of: type)
+			delay.autoPinEdge(.left, to: .left, of: delayLabel, withOffset: 10)
 			
 			pcLabel.autoPinEdge(.left, to: .right, of: delayLabel, withOffset: 60)
 			pcLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
+			pc.autoPinEdge(.top, to: .top, of: type)
+			pc.autoPinEdge(.left, to: .left, of: pcLabel, withOffset: 5)
+			
 			sliderLabel.autoPinEdge(.left, to: .right, of: pcLabel, withOffset: 60)
 			sliderLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
+			slider.autoPinEdge(.top, to: .top, of: type)
+			slider.autoPinEdge(.left, to: .left, of: sliderLabel, withOffset: 10)
+			
+			jumpDescription.autoPinEdge(.top, to: .bottom, of: type, withOffset: 20)
+			jumpDescription.autoPinEdge(.left, to: .left, of: exitLabel)
+
 			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 15)
-			shadowView.autoPinEdge(.bottom, to: .bottom, of: sliderLabel, withOffset: 10)
+			shadowView.autoPinEdge(.bottom, to: .bottom, of: jumpDescription, withOffset: 20)
 			shadowView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 8)
 			shadowView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -8)
-			
+
 			self.didSetupConstraints = true
 		}
 		
