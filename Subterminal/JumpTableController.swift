@@ -26,6 +26,14 @@ class JumpTableController: TableController {
 		return JumpTableViewCell()
 	}
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let controller = JumpViewController()
+		controller.item = items.object(at: indexPath.row) as? Jump
+			
+		self.navigationController?.pushViewController(controller, animated: true)
+	}
+
+	
 	override func assignModelToController(controller: UIViewController) {
 		fatalError("assignModelToController() not implemented")
 	}

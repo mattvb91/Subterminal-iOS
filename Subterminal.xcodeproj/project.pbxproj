@@ -106,6 +106,12 @@
 		8FB4905C1E65F71200CB89DF /* JumpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */; };
 		8FB4905D1E65F71200CB89DF /* JumpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */; };
 		8FB4905E1E65F71200CB89DF /* JumpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */; };
+		8FB490601E660FD900CB89DF /* JumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905F1E660FD900CB89DF /* JumpViewController.swift */; };
+		8FB490611E660FD900CB89DF /* JumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905F1E660FD900CB89DF /* JumpViewController.swift */; };
+		8FB490621E660FD900CB89DF /* JumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4905F1E660FD900CB89DF /* JumpViewController.swift */; };
+		8FB490641E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
+		8FB490651E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
+		8FB490661E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
 		8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70701E5383C800CFC903 /* BaseTableCell.swift */; };
@@ -210,6 +216,8 @@
 		8FB490531E65F28700CB89DF /* Jump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jump.swift; sourceTree = "<group>"; };
 		8FB490571E65F5CB00CB89DF /* JumpTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTableController.swift; sourceTree = "<group>"; };
 		8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTableViewCell.swift; sourceTree = "<group>"; };
+		8FB4905F1E660FD900CB89DF /* JumpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpViewController.swift; sourceTree = "<group>"; };
+		8FB490631E6610DF00CB89DF /* JumpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpView.swift; sourceTree = "<group>"; };
 		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -310,6 +318,7 @@
 				8FB4903D1E6586EE00CB89DF /* ExitViewController.swift */,
 				8FB4904B1E65D30600CB89DF /* BaseGearTableController.swift */,
 				8FB490571E65F5CB00CB89DF /* JumpTableController.swift */,
+				8FB4905F1E660FD900CB89DF /* JumpViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +329,7 @@
 				8FB15FA71E64ACCC00685A53 /* ExitTableViewCell.swift */,
 				8FB490411E65875C00CB89DF /* ExitView.swift */,
 				8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */,
+				8FB490631E6610DF00CB89DF /* JumpView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -825,6 +835,7 @@
 				8F90E6491E636C4500CAF8A3 /* SuitForm.swift in Sources */,
 				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
+				8FB490641E6610DF00CB89DF /* JumpView.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
 				8FDCFA891E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
@@ -855,6 +866,7 @@
 				8FB15F9F1E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8FB4903E1E6586EE00CB89DF /* ExitViewController.swift in Sources */,
 				8FF31AE21E4E27A4003F3CFF /* Rig.swift in Sources */,
+				8FB490601E660FD900CB89DF /* JumpViewController.swift in Sources */,
 				8F92B8911E5B6CFC00E749A8 /* GMDatePicker.swift in Sources */,
 				8F49B1BD1E5F538100AA5179 /* DzAircraft.swift in Sources */,
 			);
@@ -886,6 +898,7 @@
 				8F90E63E1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FA4A8DC1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FB15FB01E64AE6800685A53 /* GearTableController.swift in Sources */,
+				8FB490611E660FD900CB89DF /* JumpViewController.swift in Sources */,
 				8FA4E8B61E5DE1E20015549A /* Rig.swift in Sources */,
 				8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64A1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
@@ -903,6 +916,7 @@
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8921E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
+				8FB490651E6610DF00CB89DF /* JumpView.swift in Sources */,
 				8FB490451E65A13500CB89DF /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -933,6 +947,7 @@
 				8F90E63F1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FA4A8DD1E5F308600DDB962 /* SuitTableViewCell.swift in Sources */,
 				8FB15FB11E64AE6800685A53 /* GearTableController.swift in Sources */,
+				8FB490621E660FD900CB89DF /* JumpViewController.swift in Sources */,
 				8FA4E8B71E5DE1E30015549A /* Rig.swift in Sources */,
 				8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64B1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
@@ -950,6 +965,7 @@
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */,
 				8F92B8931E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
+				8FB490661E6610DF00CB89DF /* JumpView.swift in Sources */,
 				8FB490461E65A13500CB89DF /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
