@@ -33,17 +33,17 @@ class JumpTableController: TableController {
 		self.navigationController?.pushViewController(controller, animated: true)
 	}
 
-	
 	override func assignModelToController(controller: UIViewController) {
-		fatalError("assignModelToController() not implemented")
+		let jumpForm = controller as? JumpForm
+		jumpForm?.item = self.getAssignedModel()
 	}
 	
 	override func getNotificationName() -> String {
 		return "NOTIFICATION_BASEJUMP"
 	}
 	
-	override func getAssignedController() -> UIViewController {
-		fatalError("getAssignedController() not implemented")
+	override func getAssignedController() -> JumpForm {
+		return JumpForm()
 	}
 	
 	override func getAssignedModel() -> Jump {

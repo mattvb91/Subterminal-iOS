@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import SearchTextField
+import SharkORM
 
 class Exit: Synchronizable {
 	
@@ -87,5 +89,17 @@ class Exit: Synchronizable {
 	
 	func isGlobal() -> Bool {
 		return self.global_id?.isEmpty == false
+	}
+	
+	//Fetch all names for selection
+	static func getOptionsForSelect() -> [SearchTextFieldItem] {
+		var results = [SearchTextFieldItem]()
+		
+		for item in Exit.query().fetch() as SRKResultSet {
+			var item = item as! Exit
+			results.append(SearchTextFieldItem(title: item.name!, subtitle: item.id.description))
+		}
+		
+		return results
 	}
 }

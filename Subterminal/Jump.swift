@@ -33,6 +33,17 @@ class Jump: Synchronizable {
 		SLIDER_OFF: "Off"
 	]
 	
+	//Get the skydive types available for select
+	static func getSliderConfigForDropdown() -> [String] {
+		var results = [String]()
+		
+		for type in slider_config {
+			results.append(type.value)
+		}
+		
+		return results
+	}
+	
 	func getFormattedSlider() -> String? {
 		if self.slider != nil {
 			return Jump.slider_config[(self.slider?.intValue)!]!
@@ -41,7 +52,28 @@ class Jump: Synchronizable {
 		return nil
 	}
 	
-	static let pc_sizes = [32, 36, 38, 40, 42, 46, 48]
+	static let TYPE_SLICK = 0;
+	static let TYPE_TRACKING = 1;
+	static let TYPE_WINGSUIT = 2;
+	
+	static var jump_type = [
+		TYPE_SLICK: "Slick",
+		TYPE_TRACKING: "Tracking",
+		TYPE_WINGSUIT: "Wingsuit"
+	]
+	
+	//Get the skydive types available for select
+	static func getTypesForSelect() -> [String] {
+		var results = [String]()
+		
+		for type in jump_type {
+			results.append(type.value)
+		}
+		
+		return results
+	}
+	
+	static let pc_sizes = ["32", "36", "38", "40", "42", "46", "48"]
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")

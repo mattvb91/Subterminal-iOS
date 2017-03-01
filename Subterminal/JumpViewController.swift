@@ -17,6 +17,9 @@ class JumpViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
+		self.navigationItem.rightBarButtonItem = editButton
+		
 		if let item = item {
 			jumpView.exit.text = item.exit()?.name
 			jumpView.delay.text = item.delay?.description
@@ -27,5 +30,13 @@ class JumpViewController: UIViewController {
 		}
 		
 		self.view.addSubview(jumpView)
+	}
+	
+	
+	func editAction() {
+		var formController = JumpForm()
+		formController.item = self.item
+		
+		self.navigationController?.pushViewController(formController, animated: true)
 	}
 }
