@@ -39,7 +39,7 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 				skydiveView.delay.text = String(describing: delay)
 			}
 			
-			if let rig = item.rig() {
+			if item.rig() != nil {
 				skydiveView.rig.text = (item.rig()?.container_manufacturer!)! + " - " + (item.rig()?.container_model!)!
 			}
 			skydiveView.dropzone.text = item.dropzone()?.name
@@ -53,7 +53,7 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 	}
 	
 	func editAction() {
-		var formController = SkydiveForm()
+		let formController = SkydiveForm()
 		formController.item = self.item
 		
 		self.navigationController?.pushViewController(formController, animated: true)
@@ -64,13 +64,13 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 	}
 	
 	func loadImages() {
-		var images = Image.getImagesForEntity(entity: self.item!)
+		let images = Image.getImagesForEntity(entity: self.item!)
 		if images.count > 0 {
 			var imageSources = [ImageSource]()
 			
 			for image in images {
-				let image = image as? Image
-				imageSources.append(ImageSource(image: image!.getUIImage()))
+				let image = image
+				imageSources.append(ImageSource(image: image.getUIImage()))
 			}
 			
 			skydiveView.images.setImageInputs(imageSources)

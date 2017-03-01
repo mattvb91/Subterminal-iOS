@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import ImagePicker
+import AlamofireImage
+import ImageSlideshow
 
-class JumpViewController: UIViewController {
+class JumpViewController: UIViewController, ImagePickerDelegate {
 	
 	var item: Jump!
 	let jumpView = JumpView.newAutoLayout()
@@ -27,6 +30,8 @@ class JumpViewController: UIViewController {
 			jumpView.slider.text = item.getFormattedSlider()
 			jumpView.jumpDescription.text = item.jump_description
 			jumpView.jumpDescription.sizeToFit()
+			
+			loadImages()
 		}
 		
 		self.view.addSubview(jumpView)
@@ -34,9 +39,45 @@ class JumpViewController: UIViewController {
 	
 	
 	func editAction() {
-		var formController = JumpForm()
+		let formController = JumpForm()
 		formController.item = self.item
 		
 		self.navigationController?.pushViewController(formController, animated: true)
+	}
+	
+	func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		
+	}
+	
+	func loadImages() {
+		let images = Image.getImagesForEntity(entity: self.item!)
+		if images.count > 0 {
+			var imageSources = [ImageSource]()
+			
+			for image in images {
+				let image = image
+				imageSources.append(ImageSource(image: image.getUIImage()))
+			}
+			
+			jumpView.images.setImageInputs(imageSources)
+			jumpView.contentView.addSubview(jumpView.images)
+		}
+	}
+	
+	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		imagePicker.dismiss(animated: true, completion: nil)
+		
+		for image in images {
+			Image.createImageForEntity(entity: self.item!, uiImage: image)
+		}
+		
+		loadImages()
+		
+		jumpView.didSetupConstraints = false
+		jumpView.setNeedsUpdateConstraints()
+	}
+	
+	func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+		imagePicker.dismiss(animated: true, completion: nil)
 	}
 }

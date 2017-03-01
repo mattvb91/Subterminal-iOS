@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 import PureLayout
-import MapKit
+import ImageSlideshow
+import ImagePicker
 
 class JumpView: UIView {
 	var jump: Jump!
@@ -33,6 +34,9 @@ class JumpView: UIView {
 	var delay = UILabel()
 	var pc = UILabel()
 	var slider = UILabel()
+	
+	var images = ImageSlideshow()
+	var imageButton = UIButton(type: UIButtonType.roundedRect)
 	
 	var jumpDescription = UITextView.newAutoLayout()
 	
@@ -74,9 +78,33 @@ class JumpView: UIView {
 		contentView.addSubview(slider)
 
 		contentView.addSubview(jumpDescription)
+		
 		contentView.addSubview(shadowView)
 		contentView.sendSubview(toBack: shadowView)
+		
+		imageButton.setTitle("Add Image", for: .normal)
+		let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageSelect))
+		imageButton.isUserInteractionEnabled = true
+		imageButton.layer.borderWidth = 1
+		imageButton.layer.cornerRadius = 5
+		imageButton.layer.borderColor = UIColor.lightGray.cgColor
+		imageButton.addGestureRecognizer(imageTap)
+		imageTap.cancelsTouchesInView = false
+		scrollView.addSubview(imageButton)
 
+		images.contentScaleMode = UIViewContentMode.scaleAspectFill
+		images.slideshowInterval = 5
+		
+		contentView.bringSubview(toFront: imageButton)
+		
+		let imageFullscreen = UITapGestureRecognizer(target: self, action: #selector(openImageFullscreen))
+		images.addGestureRecognizer(imageFullscreen)
+
+		scrollView.isUserInteractionEnabled = true
+		scrollView.alwaysBounceVertical = true
+		
+		contentView.isUserInteractionEnabled = false
+		
 		scrollView.addSubview(contentView)
 		self.addSubview(scrollView)
 		self.setNeedsUpdateConstraints()
@@ -90,13 +118,13 @@ class JumpView: UIView {
 		if(!didSetupConstraints) {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			
-			let size = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			exitLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 20)
+			exitLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15)
 			exitLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20)
 			
 			exit.autoPinEdge(.left, to: .right, of: exitLabel, withOffset: 40)
@@ -135,14 +163,35 @@ class JumpView: UIView {
 			jumpDescription.autoPinEdge(.top, to: .bottom, of: type, withOffset: 20)
 			jumpDescription.autoPinEdge(.left, to: .left, of: exitLabel)
 
-			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 15)
+			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
+			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 5)
+			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 5)
 			shadowView.autoPinEdge(.bottom, to: .bottom, of: jumpDescription, withOffset: 20)
-			shadowView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 8)
-			shadowView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -8)
 
+			imageButton.autoPinEdge(.top, to: .bottom, of: shadowView, withOffset: 20)
+			imageButton.autoPinEdge(.left, to: .left, of: exitLabel)
+			imageButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
+			
+			if images.superview === contentView {
+				images.autoPinEdge(.top, to: .bottom, of: imageButton, withOffset: 20)
+				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
+			}
+			
 			self.didSetupConstraints = true
 		}
 		
 		super.updateConstraints()
 	}
+	
+	func openImageFullscreen() {
+		images.presentFullScreenController(from: (self.superview?.viewController())!)
+	}
+	
+	func imageSelect(sender:UITapGestureRecognizer) {
+		debugPrint("HERE")
+		let imagePickerController = ImagePickerController()
+		imagePickerController.delegate = self.superview?.viewController() as! ImagePickerDelegate?
+		superview?.viewController()?.present(imagePickerController, animated: true, completion: nil)
+	}
+	
 }

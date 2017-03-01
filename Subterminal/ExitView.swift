@@ -80,6 +80,7 @@ class ExitView: UIView {
 		contentView.addSubview(shadowView)
 		contentView.sendSubview(toBack: shadowView)
 
+		scrollView.alwaysBounceVertical = true
 		contentView.isUserInteractionEnabled = true
 		scrollView.addSubview(contentView)
 		
@@ -98,9 +99,9 @@ class ExitView: UIView {
 		if(!didSetupConstraints) {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			
-			let size = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			

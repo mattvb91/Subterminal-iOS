@@ -29,10 +29,10 @@ class API: NSObject {
 				for item in items as! [NSDictionary] {
 					let data = JSON(item)
 
-					var aircraft = Aircraft()
+					let aircraft = Aircraft()
 					aircraft.id = data["id"].numberValue
 					aircraft.name = data["name"].string
-					aircraft.save()
+					_ = aircraft.save()
 				}
 			}
 		}
@@ -63,7 +63,7 @@ class API: NSObject {
 				for item in items as! [NSDictionary] {
 					let syncClass = type(of: model)
 					let syncItem = syncClass.build(json: JSON(item))
-					syncItem.markSynced()
+					_ = syncItem.markSynced()
 				}
 			} else {
 				debugPrint("Request Failed")
@@ -73,7 +73,7 @@ class API: NSObject {
 	
 	func createOrUpdateRemoveUser() {
 		Alamofire.request(Router.updateUser()).responseJSON { response in
-			if response.result.isSuccess, let result = response.result.value {
+			if response.result.isSuccess, let _ = response.result.value {
 				API.initAPI()
 			}
 		}
@@ -142,7 +142,7 @@ class API: NSObject {
 				debugPrint(response)
 				let items = result as! NSArray
 				
-				dropzone.services = items as! [String]
+				dropzone.services = items as? [String]
 
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
 			}

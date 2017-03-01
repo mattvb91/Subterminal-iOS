@@ -17,7 +17,7 @@ class JumpFormView: UIView {
 	var didSetupConstraints: Bool = false
 	var requiredBlock:((_: [Error]) -> Void)?
 	
-	var scrollView = UIScrollView()
+	var scrollView = UIScrollView.newAutoLayout()
 	
 	var exitLabel = Label(text: "Exit")
 	var dateLabel = Label(text: "Date")
@@ -145,7 +145,7 @@ class JumpFormView: UIView {
 
 		self.addSubview(scrollView)
 		
-		setNeedsUpdateConstraints()
+		self.setNeedsUpdateConstraints()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
