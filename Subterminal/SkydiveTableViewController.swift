@@ -16,7 +16,6 @@ class SkydiveTableViewController: TableController {
         super.viewDidLoad()
 				
         self.clearsSelectionOnViewWillAppear = false
-		self.navigationItem.leftBarButtonItem = self.editButtonItem
 		
 		self.tableView.rowHeight = 80
     }
@@ -29,15 +28,24 @@ class SkydiveTableViewController: TableController {
 		return "skydiveTableViewCell"
 	}
 	
-	override func configureViewCell(cell: UITableViewCell, item: Model)
-	{
-		let cell = cell as? SkydiveTableViewCell
-		let item = item as? Skydive
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: self.getViewCellIdentifier(), for: indexPath) as? SkydiveTableViewCell
+		
+		let item = items.object(at: indexPath.row) as? Skydive
+		
+		var position = indexPath.row
+		if position == 0 {
+			position = items.count
+		} else {
+			position = items.count - position
+		}
+
 		
         // Configure the cell...
 		cell?.dropzone.text = item?.dropzone()?.name
 		cell?.aircraft.text = item?.aircraft()?.name
-		
+		cell?.count.text = "#" + position.description
+
 		if let image = Image.getThumbnailImageForEntity(entity: item!) as? Image {
 			cell?.thumb.image = image.getUIImage().thumbnailImage(50, transparentBorder:1, cornerRadius:5,interpolationQuality:CGInterpolationQuality.low)
 		}
@@ -49,6 +57,8 @@ class SkydiveTableViewController: TableController {
 		if item?.date != nil {
 			cell?.timeAgo.text = DateHelper.timeAgoSince(date: (item?.date)!)
 		}
+		
+		return cell!
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

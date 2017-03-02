@@ -85,10 +85,6 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 		items = fetchQuery().fetch()
 		
 		self.tableView.reloadData()
-		
-		if(items.count > 0 && self.canEditItems) {
-			self.navigationItem.leftBarButtonItem = self.editButtonItem
-		}
 	}
 	
 	func fetchQuery() -> SRKQuery {

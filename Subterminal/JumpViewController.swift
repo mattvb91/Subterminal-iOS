@@ -30,6 +30,7 @@ class JumpViewController: UIViewController, ImagePickerDelegate {
 			jumpView.slider.text = item.getFormattedSlider()
 			jumpView.jumpDescription.text = item.jump_description
 			jumpView.jumpDescription.sizeToFit()
+			jumpView.type.text = item.getFormattedType()
 			
 			loadImages()
 		}
@@ -60,7 +61,7 @@ class JumpViewController: UIViewController, ImagePickerDelegate {
 			}
 			
 			jumpView.images.setImageInputs(imageSources)
-			jumpView.contentView.addSubview(jumpView.images)
+			jumpView.scrollView.addSubview(jumpView.images)
 		}
 	}
 	

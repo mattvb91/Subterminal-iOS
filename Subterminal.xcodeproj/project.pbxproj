@@ -120,6 +120,9 @@
 		8FB490641E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
 		8FB490651E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
 		8FB490661E6610DF00CB89DF /* JumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB490631E6610DF00CB89DF /* JumpView.swift */; };
+		8FBA1A521E688987009EA0A2 /* DropdownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */; };
+		8FBA1A531E688987009EA0A2 /* DropdownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */; };
+		8FBA1A541E688987009EA0A2 /* DropdownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */; };
 		8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70701E5383C800CFC903 /* BaseTableCell.swift */; };
@@ -228,6 +231,7 @@
 		8FB4905B1E65F71200CB89DF /* JumpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpTableViewCell.swift; sourceTree = "<group>"; };
 		8FB4905F1E660FD900CB89DF /* JumpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpViewController.swift; sourceTree = "<group>"; };
 		8FB490631E6610DF00CB89DF /* JumpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpView.swift; sourceTree = "<group>"; };
+		8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownHelper.swift; sourceTree = "<group>"; };
 		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */,
 				8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */,
 				8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */,
+				8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 				8FF31AED1E4E2D32003F3CFF /* Model.swift in Sources */,
 				8FDBAB8B1E549B74005543C1 /* TableController.swift in Sources */,
 				8FF31ADD1E4E0E67003F3CFF /* SkydiveTableViewController.swift in Sources */,
+				8FBA1A521E688987009EA0A2 /* DropdownHelper.swift in Sources */,
 				8FA4A8D71E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8F90E63D1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */,
@@ -940,6 +946,7 @@
 				8FB4903B1E65863400CB89DF /* TableController.swift in Sources */,
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */,
+				8FBA1A531E688987009EA0A2 /* DropdownHelper.swift in Sources */,
 				8F92B8921E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
 				8FB490651E6610DF00CB89DF /* JumpView.swift in Sources */,
 				8FB490451E65A13500CB89DF /* ShadowView.swift in Sources */,
@@ -992,6 +999,7 @@
 				8FB4903C1E65863400CB89DF /* TableController.swift in Sources */,
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
 				8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */,
+				8FBA1A541E688987009EA0A2 /* DropdownHelper.swift in Sources */,
 				8F92B8931E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */,
 				8FB490661E6610DF00CB89DF /* JumpView.swift in Sources */,
 				8FB490461E65A13500CB89DF /* ShadowView.swift in Sources */,

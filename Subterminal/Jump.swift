@@ -62,6 +62,15 @@ class Jump: Synchronizable {
 		TYPE_WINGSUIT: "Wingsuit"
 	]
 	
+	func getFormattedType() -> String? {
+		if self.type != nil {
+			return Jump.jump_type[(self.type?.intValue)!]!
+		}
+		
+		return nil
+	}
+
+	
 	//Get the skydive types available for select
 	static func getTypesForSelect() -> [String] {
 		var results = [String]()

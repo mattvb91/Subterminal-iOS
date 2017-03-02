@@ -19,7 +19,6 @@ class JumpView: UIView {
 	var shadowView = ShadowView()
 	
 	var scrollView = UIScrollView.newAutoLayout()
-	var contentView = UIView()
 	
 	var exitLabel = UILabel()
 	var rigLabel = UILabel()
@@ -63,24 +62,24 @@ class JumpView: UIView {
 		pcLabel.font = UIFont.boldSystemFont(ofSize: 15)
 		sliderLabel.font = UIFont.boldSystemFont(ofSize: 15)
 
-		contentView.addSubview(exitLabel)
-		contentView.addSubview(rigLabel)
-		contentView.addSubview(typeLabel)
-		contentView.addSubview(delayLabel)
-		contentView.addSubview(pcLabel)
-		contentView.addSubview(sliderLabel)
+		scrollView.addSubview(exitLabel)
+		scrollView.addSubview(rigLabel)
+		scrollView.addSubview(typeLabel)
+		scrollView.addSubview(delayLabel)
+		scrollView.addSubview(pcLabel)
+		scrollView.addSubview(sliderLabel)
 		
-		contentView.addSubview(exit)
-		contentView.addSubview(rig)
-		contentView.addSubview(type)
-		contentView.addSubview(delay)
-		contentView.addSubview(pc)
-		contentView.addSubview(slider)
+		scrollView.addSubview(exit)
+		scrollView.addSubview(rig)
+		scrollView.addSubview(type)
+		scrollView.addSubview(delay)
+		scrollView.addSubview(pc)
+		scrollView.addSubview(slider)
 
-		contentView.addSubview(jumpDescription)
+		scrollView.addSubview(jumpDescription)
 		
-		contentView.addSubview(shadowView)
-		contentView.sendSubview(toBack: shadowView)
+		scrollView.addSubview(shadowView)
+		scrollView.sendSubview(toBack: shadowView)
 		
 		imageButton.setTitle("Add Image", for: .normal)
 		let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageSelect))
@@ -95,7 +94,7 @@ class JumpView: UIView {
 		images.contentScaleMode = UIViewContentMode.scaleAspectFill
 		images.slideshowInterval = 5
 		
-		contentView.bringSubview(toFront: imageButton)
+		scrollView.bringSubview(toFront: imageButton)
 		
 		let imageFullscreen = UITapGestureRecognizer(target: self, action: #selector(openImageFullscreen))
 		images.addGestureRecognizer(imageFullscreen)
@@ -103,9 +102,6 @@ class JumpView: UIView {
 		scrollView.isUserInteractionEnabled = true
 		scrollView.alwaysBounceVertical = true
 		
-		contentView.isUserInteractionEnabled = false
-		
-		scrollView.addSubview(contentView)
 		self.addSubview(scrollView)
 		self.setNeedsUpdateConstraints()
 	}
@@ -118,14 +114,13 @@ class JumpView: UIView {
 		if(!didSetupConstraints) {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
-			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			
 			let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			exitLabel.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15)
-			exitLabel.autoPinEdge(.left, to: .left, of: contentView, withOffset: 20)
+			exitLabel.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 15)
+			exitLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 20)
 			
 			exit.autoPinEdge(.left, to: .right, of: exitLabel, withOffset: 40)
 			exit.autoPinEdge(.top, to: .top, of: exitLabel)
@@ -140,7 +135,7 @@ class JumpView: UIView {
 			typeLabel.autoPinEdge(.left, to: .left, of: exitLabel)
 			
 			type.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 10)
-			type.autoPinEdge(.left, to: .left, of: typeLabel, withOffset: 20)
+			type.autoPinEdge(.left, to: .left, of: typeLabel)
 			
 			delayLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 60)
 			delayLabel.autoPinEdge(.top, to: .top, of: typeLabel)
@@ -172,7 +167,7 @@ class JumpView: UIView {
 			imageButton.autoPinEdge(.left, to: .left, of: exitLabel)
 			imageButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
 			
-			if images.superview === contentView {
+			if images.superview === scrollView {
 				images.autoPinEdge(.top, to: .bottom, of: imageButton, withOffset: 20)
 				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
 			}

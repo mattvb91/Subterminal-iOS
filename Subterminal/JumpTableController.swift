@@ -39,7 +39,7 @@ class JumpTableController: TableController {
 	}
 	
 	override func getNotificationName() -> String {
-		return "NOTIFICATION_BASEJUMP"
+		return JumpForm.NOTIFICATION_NAME
 	}
 	
 	override func getAssignedController() -> JumpForm {
@@ -66,6 +66,7 @@ class JumpTableController: TableController {
 			position = items.count - position
 		}
 	
+		cell.thumb.image = nil
 		cell.count.text = "#" + position.description
 		cell.exitName.text = jump.exit()?.name
 		
@@ -81,7 +82,9 @@ class JumpTableController: TableController {
 			cell.slider.text = "Slider: " + jump.getFormattedSlider()!
 		}
 		
-		cell.timeAgo.text = DateHelper.timeAgoSince(date: jump.date!)
+		if jump.date != nil {
+			cell.timeAgo.text = DateHelper.timeAgoSince(date: jump.date!)
+		}
 		
 		return cell
 	}

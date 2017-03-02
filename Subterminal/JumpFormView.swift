@@ -12,7 +12,7 @@ import ElValidator
 import SearchTextField
 import DropDown
 
-class JumpFormView: UIView {
+class JumpFormView: UIView, GMDatePickerDelegate {
 	
 	var didSetupConstraints: Bool = false
 	var requiredBlock:((_: [Error]) -> Void)?
@@ -36,11 +36,20 @@ class JumpFormView: UIView {
 	var slider = UILabel()
 	var rig = UILabel()
 	
+	var arrowImage = UIImage(named: "arrow_down")
+	var typeArrow = UIImageView()
+	var pcArrow = UIImageView()
+	var sliderArrow = UIImageView()
+	var rigArrow = UIImageView()
+	var dateArrow = UIImageView()
+
 	var typeDropdown = DropDown()
 	var pcDropdown = DropDown()
 	var sliderDropdown = DropDown()
 	var rigDropdown = DropDown()
 	
+	var datePicker = GMDatePicker()
+
 	var jumpDescription = UITextView()
 	
 	var exit = SearchTextField()
@@ -52,6 +61,9 @@ class JumpFormView: UIView {
 		super.init(frame: frame)
 		
 		self.backgroundColor = UIColor.white
+		
+		datePicker.delegate = self
+		datePicker.config.startDate = NSDate() as Date
 		
 		requiredBlock = { [weak self] (errors: [Error]) -> Void in
 			if errors.first != nil {
@@ -80,10 +92,28 @@ class JumpFormView: UIView {
 		
 		date.text = DateHelper.dateToString(date: Date())
 		
+		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		dateGesture.numberOfTapsRequired = 1
+		date.isUserInteractionEnabled =  true
+		date.addGestureRecognizer(dateGesture)
+
+		
 		delay.setBottomBorder()
 		delay.keyboardType = UIKeyboardType.numberPad
 		delay.placeholder = "5"
 		
+		typeArrow.image = arrowImage
+		pcArrow.image = arrowImage
+		sliderArrow.image = arrowImage
+		rigArrow.image = arrowImage
+		dateArrow.image = arrowImage
+
+		scrollView.addSubview(typeArrow)
+		scrollView.addSubview(pcArrow)
+		scrollView.addSubview(sliderArrow)
+		scrollView.addSubview(rigArrow)
+		scrollView.addSubview(dateArrow)
+
 		scrollView.addSubview(exit)
 		
 		scrollView.addSubview(exitLabel)
@@ -99,8 +129,6 @@ class JumpFormView: UIView {
 		scrollView.addSubview(delay)
 		scrollView.addSubview(jumpDescription)
 		
-		type.text = "- Select - "
-		
 		typeDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
 			self.type.text = item
 		}
@@ -112,7 +140,7 @@ class JumpFormView: UIView {
 		typeDropdown.dataSource = Jump.getTypesForSelect()
 		typeDropdown.anchorView = type
 		
-		pc.text = "- Select - "
+		pc.text = "36"
 		pcDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
 			self.pc.text = item
 		}
@@ -123,8 +151,8 @@ class JumpFormView: UIView {
 		pc.addGestureRecognizer(pcGesture)
 		pcDropdown.dataSource = Jump.pc_sizes
 		pcDropdown.anchorView = pc
+		pcDropdown.selectRow(at: 1)
 		
-		slider.text = "- Select - "
 		sliderDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
 			self.slider.text = item
 		}
@@ -162,7 +190,7 @@ class JumpFormView: UIView {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			let textFieldSize = CGSize(width: 140, height: 31)
+			let textFieldSize = CGSize(width: 120, height: 31)
 
 			exitLabel.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 20)
 			exitLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 10)
@@ -177,31 +205,41 @@ class JumpFormView: UIView {
 			date.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 8)
 			date.autoPinEdge(.left, to: .left, of: dateLabel)
 			date.autoSetDimensions(to: textFieldSize)
+			dateArrow.autoPinEdge(.top, to: .top, of: date, withOffset: 8)
+			dateArrow.autoPinEdge(.left, to: .right, of: date, withOffset: 5)
 			
 			typeLabel.autoPinEdge(.top, to: .bottom, of: exitLabel, withOffset: 60)
 			typeLabel.autoPinEdge(.left, to: .left, of: exitLabel)
 			
 			type.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 8)
 			type.autoPinEdge(.left, to: .left, of: typeLabel)
+			typeArrow.autoPinEdge(.top, to: .top, of: type, withOffset: 8)
+			typeArrow.autoPinEdge(.left, to: .right, of: type, withOffset: 5)
 			
 			pcLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 80)
 			pcLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
 			pc.autoPinEdge(.top, to: .bottom, of: pcLabel, withOffset: 8)
 			pc.autoPinEdge(.left, to: .left, of: pcLabel)
+			pcArrow.autoPinEdge(.top, to: .top, of: pc, withOffset: 8)
+			pcArrow.autoPinEdge(.left, to: .right, of: pc, withOffset: 5)
 			
 			sliderLabel.autoPinEdge(.left, to: .right, of: pcLabel, withOffset: 80)
 			sliderLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
 			slider.autoPinEdge(.top, to: .bottom, of: sliderLabel, withOffset: 8)
 			slider.autoPinEdge(.left, to: .left, of: sliderLabel)
-			
+			sliderArrow.autoPinEdge(.top, to: .top, of: slider, withOffset: 8)
+			sliderArrow.autoPinEdge(.left, to: .right, of: slider, withOffset: 5)
+
 			rigLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 50)
 			rigLabel.autoPinEdge(.left, to: .left, of: typeLabel)
 			
 			rig.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 8)
 			rig.autoPinEdge(.left, to: .left, of: rigLabel)
-			
+			rigArrow.autoPinEdge(.top, to: .top, of: rig, withOffset: 8)
+			rigArrow.autoPinEdge(.left, to: .right, of: rig, withOffset: 5)
+
 			delayLabel.autoPinEdge(.top, to: .top, of: rigLabel)
 			delayLabel.autoPinEdge(.left, to: .right, of: rigLabel, withOffset: 200)
 			
@@ -232,5 +270,17 @@ class JumpFormView: UIView {
 	
 	func tapSlider(recognizer: UITapGestureRecognizer) {
 		sliderDropdown.show()
+	}
+
+	func tapDate(recognizer: UITapGestureRecognizer) {
+		datePicker.show(inVC: (self.window?.rootViewController)!)
+	}
+	
+	func gmDatePicker(_ gmDatePicker: GMDatePicker, didSelect date: Date) {
+		self.date.text = DateHelper.dateToString(date: date)
+	}
+	
+	func gmDatePickerDidCancelSelection(_ gmDatePicker: GMDatePicker) {
+		// Do something then user tapped the cancel button
 	}
 }
