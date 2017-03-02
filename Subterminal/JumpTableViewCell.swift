@@ -18,6 +18,8 @@ class JumpTableViewCell: BaseTableCell {
 	var count = UILabel()
 	var timeAgo = UILabel()
 	
+	var thumb = UIImageView()
+
 	override func addSubviews() {
 		
 		count.font = UIFont.boldSystemFont(ofSize: 24)
@@ -32,14 +34,28 @@ class JumpTableViewCell: BaseTableCell {
 		self.contentView.addSubview(delay)
 		self.contentView.addSubview(slider)
 		self.contentView.addSubview(timeAgo)
+		self.contentView.addSubview(thumb)
 	}
 	
+	override func prepareForReuse() {
+		thumb.image = nil
+		super.prepareForReuse()
+	}
+
 	override func setupConstraints() {
 		count.autoPinEdge(.left, to: .left, of: self, withOffset: 10)
 		count.autoPinEdge(.top, to: .top, of: self, withOffset: 25)
 		
+		if thumb.image != nil {
+			thumb.autoSetDimensions(to: CGSize(width: 50, height: 50))
+			thumb.autoPinEdge(.left, to: .right, of: count, withOffset: 5)
+			thumb.autoPinEdge(.top, to: .top, of: self, withOffset: 15)
+			exitName.autoPinEdge(.left, to: .right, of: thumb, withOffset: 10)
+		} else {
+			exitName.autoPinEdge(.left, to: .right, of: count, withOffset: 10)
+		}
+
 		exitName.autoPinEdge(.top, to: .top, of: self, withOffset: 5)
-		exitName.autoPinEdge(.left, to: .right, of: count, withOffset: 10)
 		
 		delay.autoPinEdge(.top, to: .bottom, of: exitName, withOffset: 5)
 		delay.autoPinEdge(.left, to: .left, of: exitName)

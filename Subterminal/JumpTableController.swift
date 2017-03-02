@@ -69,6 +69,10 @@ class JumpTableController: TableController {
 		cell.count.text = "#" + position.description
 		cell.exitName.text = jump.exit()?.name
 		
+		if let image = Image.getThumbnailImageForEntity(entity: jump) as? Image {
+			cell.thumb.image = image.getUIImage().thumbnailImage(50, transparentBorder:1, cornerRadius:5,interpolationQuality:CGInterpolationQuality.low)
+		}
+		
 		if jump.delay != nil {
 			cell.delay.text = "Delay: " + (jump.delay?.description)! + "s"
 		}
