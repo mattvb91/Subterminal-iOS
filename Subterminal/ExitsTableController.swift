@@ -65,6 +65,11 @@ class ExitsTableController: TableController {
 		return "exitTableViewCell"
 	}
 	
+	override func assignModelToController(controller: UIViewController) {
+		let controller = controller as! ExitForm
+		controller.item = self.getAssignedModel()
+	}
+	
 	override func configureViewCell(cell: UITableViewCell, item: Model) {
 		let exit = item as? Exit
 		let cell = cell as? ExitTableViewCell
@@ -72,5 +77,9 @@ class ExitsTableController: TableController {
 		cell?.name.text = exit?.name
 		cell?.height.text = exit?.rockdrop_distance?.description
 		cell?.objectType.text = exit?.getFormattedType()
+	}
+	
+	override func getAssignedController() -> ExitForm {
+		return ExitForm()
 	}
 }

@@ -12,8 +12,10 @@ import FBSDKLoginKit
 
 class DashboardView: UIView {
 	
-	var loginView : FBSDKLoginButton = FBSDKLoginButton()
+	var loginView = FBSDKLoginButton()
 	var premiumButton = UIButton()
+	
+	var scrollView = UIScrollView.newAutoLayout()
 	
 	var didSetupConstraints: Bool = false
 	
@@ -25,13 +27,16 @@ class DashboardView: UIView {
 		if (FBSDKAccessToken.current() != nil) {
 			// User is already logged in, do work such as go to next view controller.
 		} else {
-			self.addSubview(loginView)
+			scrollView.addSubview(loginView)
 		}
 		
 		premiumButton.setTitle("GO PREMIUM", for: .normal)
 		premiumButton.backgroundColor = UIColor.init(cgColor: (loginView.backgroundColor?.cgColor)!)
-		
-		self.addSubview(premiumButton)
+	
+		scrollView.addSubview(premiumButton)
+		self.addSubview(scrollView)
+
+		self.setNeedsUpdateConstraints()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -41,13 +46,19 @@ class DashboardView: UIView {
 	override func updateConstraints() {
 		if(!didSetupConstraints) {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			
-			loginView.autoPinEdge(.right, to: .right, of: self, withOffset: -15)
-			loginView.autoPinEdge(.top, to: .top, of: self, withOffset: 80)
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
+			scrollView.contentSize = size
+			scrollView.autoSetDimensions(to: size)
 			
-			premiumButton.autoPinEdge(.top, to: .top, of: loginView)
-			premiumButton.autoPinEdge(.right, to: .left, of: loginView, withOffset: -30)
+			premiumButton.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 20)
+			premiumButton.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 30)
 			premiumButton.autoSetDimensions(to: CGSize(width: 150, height: 30))
+
+			
+			loginView.autoPinEdge(.left, to: .right, of: premiumButton, withOffset: 40)
+			loginView.autoPinEdge(.top, to: .top, of: premiumButton)
 			
 			self.didSetupConstraints = true
 		}

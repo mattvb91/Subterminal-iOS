@@ -14,7 +14,11 @@ class Subterminal {
 	static let MODE_SKYDIVE = 0
 	static let MODE_BASE = 1
 	
-	public static var mode = 0
+	static let HEIGHT_UNIT_METRIC = 0
+	static let HEIGHT_UNIT_IMPERIAL = 1
+	
+	public static var mode = Subterminal.MODE_SKYDIVE
+	public static var heightUnit = Subterminal.HEIGHT_UNIT_IMPERIAL
 	
 	public static var user = User()
 	

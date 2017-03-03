@@ -17,6 +17,8 @@ class JumpForm: Form {
 		
 		self.formView = JumpFormView.newAutoLayout()
 		
+		self.title = "Edit Exit"
+		
 		if getItem().id != nil {
 			self.getFormView().date.text = DateHelper.dateToString(date: self.getItem().date!)
 			self.getFormView().exitId = getItem().exit()?.id as Int?
@@ -41,7 +43,9 @@ class JumpForm: Form {
 	
 	override func assignFormToEntity() {
 		
-		self.getItem().exit_id = NSNumber(value: getFormView().exitId!)
+		if getFormView().exitId != nil {
+			self.getItem().exit_id = NSNumber(value: getFormView().exitId!)
+		}
 		
 		self.getItem().type = NSNumber(value: getFormView().typeDropdown.getKeyForDataFromSelectedRow(data: Jump.jump_type)!)
 		self.getItem().pc_size = NSNumber(value: Int(self.getFormView().pcDropdown.selectedItem!)!)

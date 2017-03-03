@@ -40,6 +40,16 @@ class Exit: Synchronizable {
 		TYPE_OTHER: "Other",
 	]
 	
+	static func getTypesForSelect() -> [String] {
+		var res = [String]()
+		
+		for type in types {
+			res.append(type.value)
+		}
+		
+		return res
+	}
+	
 	override func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
 	}
@@ -96,7 +106,7 @@ class Exit: Synchronizable {
 		var results = [SearchTextFieldItem]()
 		
 		for item in Exit.query().fetch() as SRKResultSet {
-			var item = item as! Exit
+			let item = item as! Exit
 			results.append(SearchTextFieldItem(title: item.name!, subtitle: item.id.description))
 		}
 		
