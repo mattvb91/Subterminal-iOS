@@ -20,6 +20,11 @@ class ExitViewController: UIViewController {
 		
 		self.title = item.name
 		
+		if !item.isGlobal() {
+			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
+			self.navigationItem.rightBarButtonItem = editButton
+		}
+		
 		exitView.exitInfo.text = item.exit_description
 		exitView.exitInfo.sizeToFit()
 		
@@ -42,5 +47,13 @@ class ExitViewController: UIViewController {
 
 		self.view.addSubview(exitView)
 	}
+	
+	func editAction() {
+		let formController = ExitForm()
+		formController.item = self.item
+		
+		self.navigationController?.pushViewController(formController, animated: true)
+	}
+	
 }
 
