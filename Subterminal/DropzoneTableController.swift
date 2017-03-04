@@ -44,6 +44,10 @@ class DropzoneTableController: TableController, UISearchResultsUpdating, UISearc
 		}
 	}
 	
+	override func fetchQuery() -> SRKQuery {
+		return type(of: getAssignedModel()).query().order(byDescending: "featured")
+	}
+	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		searchBar.text = nil
 		searchBar.showsCancelButton = false
@@ -54,12 +58,18 @@ class DropzoneTableController: TableController, UISearchResultsUpdating, UISearc
 	}
 
 	override func configureViewCell(cell: UITableViewCell, item: Model) {
-		let dropzone = item as? Dropzone
-		let cell = cell as? DropzoneTableViewCell
+		let dropzone = item as! Dropzone
+		let cell = cell as! DropzoneTableViewCell
 		
-		cell?.nameLabel.text = dropzone?.name
-		cell?.countryLabel.text = dropzone?.country
-		cell?.aircraftLabel.text = (dropzone?.aircraftCount().description)! + " Aircraft"
+		cell.backgroundColor = UIColor.white
+		
+		if dropzone.featured == 1 {
+			cell.backgroundColor = UIColor(red:0.88, green:0.97, blue:0.85, alpha:1.0)
+		}
+		
+		cell.nameLabel.text = dropzone.name
+		cell.countryLabel.text = dropzone.country
+		cell.aircraftLabel.text = (dropzone.aircraftCount().description) + " Aircraft"
     }
 	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

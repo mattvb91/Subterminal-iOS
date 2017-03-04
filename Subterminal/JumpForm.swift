@@ -52,7 +52,11 @@ class JumpForm: Form {
 		self.getItem().slider = NSNumber(value: getFormView().sliderDropdown.getKeyForDataFromSelectedRow(data: Jump.slider_config)!)
 		
 		self.getItem().date = DateHelper.stringToDate(string: getFormView().date.text!)
-		self.getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
+		
+		if getFormView().delay.text?.isEmpty == false {
+			self.getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
+		}
+		
 		self.getItem().jump_description = getFormView().jumpDescription.text
 	}
 	

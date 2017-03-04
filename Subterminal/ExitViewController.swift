@@ -58,9 +58,14 @@ class ExitViewController: UIViewController {
 		exitView.exitInfo.text = item.exit_description
 		exitView.exitInfo.sizeToFit()
 		
-		exitView.rockdrop.text = Subterminal.convertToDefaultUnit(distance: Double(item.rockdrop_distance!), fromUnit: Int(item.height_unit!))
-		exitView.rockdropTime.text = item.getFormattedRockdropTime()
-		exitView.altitudeToLanding.text = Subterminal.convertToDefaultUnit(distance: Double(item.altitude_to_landing!), fromUnit: Int(item.height_unit!))
+		if item.rockdrop_distance != nil {
+			exitView.rockdrop.text = Subterminal.convertToDefaultUnit(distance: Double(item.rockdrop_distance!), fromUnit: Int(item.height_unit!))
+			exitView.rockdropTime.text = item.getFormattedRockdropTime()
+		}
+		
+		if item.altitude_to_landing != nil {
+			exitView.altitudeToLanding.text = Subterminal.convertToDefaultUnit(distance: Double(item.altitude_to_landing!), fromUnit: Int(item.height_unit!))
+		}
 		
 		let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
 		

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftSpinner
 import CoreLocation
+import DropDown
 
 class ExitFormView: UIView {
 	
@@ -28,6 +29,7 @@ class ExitFormView: UIView {
 	var arrowImage = UIImage(named: "arrow_down")
 	
 	var typeArrow = UIImageView()
+	var typeDropdown = DropDown()
 	
 	var name = UITextField()
 	var type = UILabel()
@@ -57,7 +59,7 @@ class ExitFormView: UIView {
 		scrollView.addSubview(longtitudeLabel)
 		
 		name.setBottomBorder()
-		type.text = Exit.types[0]?.description
+		type.text = Exit.types[0]
 		
 		rockdrop.keyboardType = UIKeyboardType.numberPad
 		rockdrop.setBottomBorder()
@@ -68,7 +70,19 @@ class ExitFormView: UIView {
 		altitudeToLanding.placeholder = "0"
 			
 		typeArrow.image = arrowImage
+
+		typeDropdown.anchorView = type
+		typeDropdown.dataSource = Exit.getTypesForSelect()
 		
+		typeDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.type.text = item
+		}
+		
+		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapType))
+		tapGesture.numberOfTapsRequired = 1
+		type.isUserInteractionEnabled =  true
+		type.addGestureRecognizer(tapGesture)
+
 		scrollView.addSubview(name)
 		scrollView.addSubview(type)
 		scrollView.addSubview(typeArrow)
@@ -100,6 +114,11 @@ class ExitFormView: UIView {
 		scrollView.addSubview(longtitude)
 		
 		scrollView.isUserInteractionEnabled = true
+		scrollView.delaysContentTouches = false
+		scrollView.canCancelContentTouches = false
+		
+		scrollView.bringSubview(toFront: heightUnit)
+		
 		self.addSubview(scrollView)
 		
 		self.setNeedsUpdateConstraints()
@@ -138,7 +157,7 @@ class ExitFormView: UIView {
 			unitLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 160)
 			unitLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
-			heightUnit.autoPinEdge(.left, to: .left, of: unitLabel)
+			heightUnit.autoPinEdge(.left, to: .left, of: unitLabel, withOffset: -40)
 			heightUnit.autoPinEdge(.top, to: .bottom, of: unitLabel, withOffset: 8)
 			
 			rockdropLabel.autoPinEdge(.top, to: .bottom, of: type, withOffset: 20)
@@ -182,5 +201,9 @@ class ExitFormView: UIView {
 		}
 		
 		super.updateConstraints()
+	}
+	
+	func tapType(recognizer: UITapGestureRecognizer) {
+		typeDropdown.show()
 	}
 }

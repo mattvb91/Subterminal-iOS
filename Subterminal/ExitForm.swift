@@ -32,6 +32,9 @@ class ExitForm: Form, CLLocationManagerDelegate {
 			getFormView().exitDescription.text = self.getItem().exit_description
 			getFormView().latitude.text = self.getItem().latitude.description
 			getFormView().longtitude.text = self.getItem().longtitude.description
+			self.getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Int(self.getItem().object_type!), data: Exit.types, label: getFormView().type)
+		} else {
+			self.getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Exit.TYPE_BUILDING, data: Exit.types, label: getFormView().type)
 		}
 		
 		self.view.addSubview(getFormView())
@@ -78,6 +81,8 @@ class ExitForm: Form, CLLocationManagerDelegate {
 		if self.getFormView().longtitude.text?.isEmpty == false {
 			self.getItem().longtitude = Double(self.getFormView().longtitude.text!)!
 		}
+		
+		self.getItem().object_type = NSNumber(value: getFormView().typeDropdown.getKeyForDataFromSelectedRow(data: Exit.types)!)
 	}
 	
 	override func getItem() -> Exit {
