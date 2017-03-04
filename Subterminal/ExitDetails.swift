@@ -23,6 +23,33 @@ class ExitDetails: Model {
 	
 	dynamic var rules: String!
 	
+	static let DIFFICULTY_BEGINNER = 1;
+	static let DIFFICULTY_INTERMEDIATE = 2;
+	static let DIFFICULTY_ADVANCED = 3;
+	static let DIFFICULTY_EXPERT = 4;
+	
+	static let difficulties = [
+		DIFFICULTY_BEGINNER: "Beginner",
+		DIFFICULTY_INTERMEDIATE: "Intermediate",
+		DIFFICULTY_ADVANCED: "Advanced",
+		DIFFICULTY_EXPERT: "Expert"
+	]
+	
+	static let difficultyColors = [
+		DIFFICULTY_BEGINNER: UIColor.green,
+		DIFFICULTY_INTERMEDIATE: UIColor.blue,
+		DIFFICULTY_ADVANCED: UIColor.red,
+		DIFFICULTY_EXPERT: UIColor.black
+	]
+	
+	static func getFormattedDifficulty(difficulty: Int) -> String {
+		return ExitDetails.difficulties[difficulty]!
+	}
+	
+	static func getDifficultyColor(difficulty: Int) -> UIColor {
+		return ExitDetails.difficultyColors[difficulty]!
+	}
+	
 	class func build(json: JSON) -> ExitDetails {
 		let details = ExitDetails()
 		

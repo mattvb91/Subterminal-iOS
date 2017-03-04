@@ -112,7 +112,12 @@ class ExitsTableController: TableController {
 		let cell = cell as? ExitTableViewCell
 		
 		cell?.name.text = exit?.name
-		cell?.height.text = exit?.rockdrop_distance?.description
+		
+		if exit?.rockdrop_distance != nil {
+			cell?.height.text = "Rockdrop: " + Subterminal.convertToDefaultUnit(distance: exit?.rockdrop_distance as! Double, fromUnit: exit!.height_unit as! Int)
+			cell?.time.text = "Rockdrop Time: " + (exit?.getFormattedRockdropTime())!
+		}
+	
 		cell?.objectType.text = exit?.getFormattedType()
 	}
 	

@@ -14,14 +14,18 @@ class ExitTableViewCell: BaseTableCell {
 	var objectType = UILabel()
 	var name = UILabel()
 	var height = UILabel()
+	var time = UILabel()
 	
 	override func addSubviews() {
 		objectType.font = UIFont.boldSystemFont(ofSize: 14)
 		name.font = UIFont.boldSystemFont(ofSize: 16)
-		
+		height.font = UIFont.systemFont(ofSize: 14)
+		time.font = UIFont.systemFont(ofSize: 14)
+
 		self.contentView.addSubview(objectType)
 		self.contentView.addSubview(name)
 		self.contentView.addSubview(height)
+		self.contentView.addSubview(time)
 	}
 	
 	override func setupConstraints() {
@@ -33,5 +37,8 @@ class ExitTableViewCell: BaseTableCell {
 		
 		objectType.autoPinEdge(.top, to: .top, of: name)
 		objectType.autoPinEdge(.right, to: .right, of: self, withOffset: -20)
+		
+		time.autoPinEdge(.top, to: .bottom, of: height, withOffset: 5)
+		time.autoPinEdge(.left, to: .left, of: height)
 	}
 }

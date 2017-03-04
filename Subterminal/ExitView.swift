@@ -240,17 +240,17 @@ class ExitView: UIView {
 				
 				difficultyTrackingFreefall.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyTrackingFreefall.autoPinEdge(.top, to: .bottom, of: difficultyTrackingExit, withOffset: 5)
-				difficultyTrackingFreefallValue.autoPinEdge(.left, to: .right, of: difficultyTrackingFreefall, withOffset: 160)
+				difficultyTrackingFreefallValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyTrackingFreefallValue.autoPinEdge(.top, to: .top, of: difficultyTrackingFreefall)
 				
 				difficultyTrackingLanding.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyTrackingLanding.autoPinEdge(.top, to: .bottom, of: difficultyTrackingFreefall, withOffset: 5)
-				difficultyTrackingLandingValue.autoPinEdge(.left, to: .right, of: difficultyTrackingLanding, withOffset: 160)
+				difficultyTrackingLandingValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyTrackingLandingValue.autoPinEdge(.top, to: .top, of: difficultyTrackingLanding)
 
 				difficultyTrackingOverall.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyTrackingOverall.autoPinEdge(.top, to: .bottom, of: difficultyTrackingLanding, withOffset: 5)
-				difficultyTrackingOverallValue.autoPinEdge(.left, to: .right, of: difficultyTrackingOverall, withOffset: 160)
+				difficultyTrackingOverallValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyTrackingOverallValue.autoPinEdge(.top, to: .top, of: difficultyTrackingOverall)
 				
 				//Wingsuit difficulties
@@ -259,22 +259,22 @@ class ExitView: UIView {
 				
 				difficultyWingsuitExit.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyWingsuitExit.autoPinEdge(.top, to: .bottom, of: wingsuitTitle, withOffset: 15)
-				difficultyWingsuitExitValue.autoPinEdge(.left, to: .right, of: difficultyWingsuitExit, withOffset: 160)
+				difficultyWingsuitExitValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyWingsuitExitValue.autoPinEdge(.top, to: .top, of: difficultyWingsuitExit)
 				
 				difficultyWingsuitFreefall.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyWingsuitFreefall.autoPinEdge(.top, to: .bottom, of: difficultyWingsuitExit, withOffset: 5)
-				difficultyWingsuitFreefallValue.autoPinEdge(.left, to: .right, of: difficultyWingsuitFreefall, withOffset: 160)
+				difficultyWingsuitFreefallValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyWingsuitFreefallValue.autoPinEdge(.top, to: .top, of: difficultyWingsuitFreefall)
 				
 				difficultyWingsuitLanding.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyWingsuitLanding.autoPinEdge(.top, to: .bottom, of: difficultyWingsuitFreefall, withOffset: 5)
-				difficultyWingsuitLandingValue.autoPinEdge(.left, to: .right, of: difficultyWingsuitLanding, withOffset: 160)
+				difficultyWingsuitLandingValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyWingsuitLandingValue.autoPinEdge(.top, to: .top, of: difficultyWingsuitLanding)
 				
 				difficultyWingsuitOverall.autoPinEdge(.left, to: .left, of: trackingTitle)
 				difficultyWingsuitOverall.autoPinEdge(.top, to: .bottom, of: difficultyWingsuitLanding, withOffset: 5)
-				difficultyWingsuitOverallValue.autoPinEdge(.left, to: .right, of: difficultyWingsuitOverall, withOffset: 160)
+				difficultyWingsuitOverallValue.autoPinEdge(.left, to: .left, of: difficultyTrackingExitValue)
 				difficultyWingsuitOverallValue.autoPinEdge(.top, to: .top, of: difficultyWingsuitOverall)
 		
 				map.autoPinEdge(.top, to: .bottom, of: detailView, withOffset: 20.0)

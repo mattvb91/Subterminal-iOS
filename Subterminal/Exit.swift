@@ -52,6 +52,18 @@ class Exit: Synchronizable {
 		return res
 	}
 	
+	//Calculate rockdrop time
+	func getFormattedRockdropTime() -> String {
+		if self.rockdrop_distance == nil {
+			return ""
+		}
+		
+		let time = sqrt(2 * Double(self.rockdrop_distance!) / 9.8) as Double
+
+		
+		return time.roundTo(places: 1).description + "s"
+	}
+	
 	override func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
 	}

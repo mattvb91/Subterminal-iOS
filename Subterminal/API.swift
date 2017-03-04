@@ -19,7 +19,6 @@ class API: NSObject {
 	]
 	
 	static let instance = API()
-	let baseURL = "http://192.168.1.5/api/"
 
 	func getAircraft() -> Void {
 		Alamofire.request(Router.getAircraft()).responseJSON { response in
@@ -80,7 +79,7 @@ class API: NSObject {
 	}
 	
 	func getDropzones() -> Void {
-		Alamofire.request(baseURL + "dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
+		Alamofire.request(Router.baseURL + "/dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
 			if let result = response.result.value {
 				let items = result as! NSArray
 				
@@ -109,7 +108,7 @@ class API: NSObject {
 
 	
 	func getDropzoneImages(dropzone: Dropzone!) {
-		let url = baseURL + "dropzone/" + dropzone.id.stringValue + "/images"
+		let url = Router.baseURL + "/dropzone/" + dropzone.id.stringValue + "/images"
 		
 		Alamofire.request(url, headers: headerss).responseJSON { response in
 			if let result = response.result.value {
@@ -133,7 +132,7 @@ class API: NSObject {
 	}
 	
 	func getDropzoneServices(dropzone: Dropzone!) {
-		let url = baseURL + "dropzone/" + dropzone.id.stringValue + "/services"
+		let url = Router.baseURL + "/dropzone/" + dropzone.id.stringValue + "/services"
 		
 		Alamofire.request(url, headers: headerss).responseJSON { response in
 			if let result = response.result.value {

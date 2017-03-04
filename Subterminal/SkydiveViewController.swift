@@ -28,11 +28,11 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 			skydiveView.skydiveDescription.sizeToFit()
 			
 			if let exitAltitude = item.exit_altitude {
-				skydiveView.exitAlt.text = String(describing: exitAltitude)
+				skydiveView.exitAlt.text = Subterminal.convertToDefaultUnit(distance: Double(exitAltitude), fromUnit: Int(item.height_unit))
 			}
 			
 			if let deployAlt = item.deploy_altidude {
-				skydiveView.deployAlt.text = String(describing: deployAlt)
+				skydiveView.deployAlt.text = Subterminal.convertToDefaultUnit(distance: Double(deployAlt), fromUnit: Int(item.height_unit))
 			}
 			
 			if let delay = item.delay {
