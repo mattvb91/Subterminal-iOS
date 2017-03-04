@@ -25,6 +25,15 @@ class ExitViewController: UIViewController {
 			self.navigationItem.rightBarButtonItem = editButton
 		}
 		
+		if item.isGlobal() == false {
+			exitView.detailView.removeFromSuperview()
+		} else {
+			//Assign difficulty values
+			let test = item.getDetails()?.rules
+			exitView.exitRules.text = item.getDetails()?.rules
+			exitView.exitRules.sizeToFit()
+		}
+		
 		exitView.exitInfo.text = item.exit_description
 		exitView.exitInfo.sizeToFit()
 		
@@ -54,6 +63,5 @@ class ExitViewController: UIViewController {
 		
 		self.navigationController?.pushViewController(formController, animated: true)
 	}
-	
 }
 

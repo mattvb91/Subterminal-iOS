@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import SharkORM
 
 class ExitsTableController: TableController {
+	
+	var publicExits: SRKResultSet = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,11 +27,23 @@ class ExitsTableController: TableController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 1 {
+		if section == 0 {
 			return items.count
 		}
 		
-		return items.count
+		return publicExits.count
+	}
+	
+	//Fetch public exits seperately
+	override func loadData(notification: NSNotification?) {
+		self.publicExits = Exit.query().where(withFormat: "global_id IS NOT NULL", withParameters: []).fetch()
+		
+		return super.loadData(notification: nil)
+	}
+	
+	//Fetch user exits
+	override func fetchQuery() -> SRKQuery {
+		return type(of: getAssignedModel()).query().where(withFormat: "global_id IS NULL", withParameters: [])
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -40,13 +55,6 @@ class ExitsTableController: TableController {
 		default:
 			return ""
 		}
-	}
-	
-	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let exitController = ExitViewController()
-		exitController.item = items.object(at: indexPath.row) as? Exit
-		
-		self.navigationController?.pushViewController(exitController, animated: true)
 	}
 	
 	override func getNotificationName() -> String {
@@ -68,6 +76,35 @@ class ExitsTableController: TableController {
 	override func assignModelToController(controller: UIViewController) {
 		let controller = controller as! ExitForm
 		controller.item = self.getAssignedModel()
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		var model: Model?
+		var cell: UITableViewCell!
+		
+		cell = tableView.dequeueReusableCell(withIdentifier: self.getViewCellIdentifier(), for: indexPath)
+
+		if indexPath.section == 0 {
+			model = items.object(at: indexPath.row) as! Model
+		}else {
+			model = publicExits.object(at: indexPath.row) as! Model
+		}
+		
+		self.configureViewCell(cell: cell, item: model!)
+		
+		return cell
+	}
+	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let controller = ExitViewController()
+		
+		if indexPath.section == 0 {
+			controller.item = items.object(at: indexPath.row) as? Exit
+		} else {
+			controller.item = publicExits.object(at: indexPath.row) as? Exit
+		}
+		
+		self.navigationController?.pushViewController(controller, animated: true)
 	}
 	
 	override func configureViewCell(cell: UITableViewCell, item: Model) {

@@ -644,8 +644,7 @@
 				TargetAttributes = {
 					8FF31AA21E4DE7AD003F3CFF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MZQBFTP2DE;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					8FF31AB81E4DE7AD003F3CFF = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1155,10 +1154,11 @@
 			baseConfigurationReference = CE12793D9BB4E6DA2C24DB37 /* Pods-Subterminal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MZQBFTP2DE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Subterminal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mavonie.Subterminal;
+				PRODUCT_BUNDLE_IDENTIFIER = ie.mavon.subterminal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1169,11 +1169,14 @@
 			baseConfigurationReference = EF6240588169FAC4C352DF88 /* Pods-Subterminal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MZQBFTP2DE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 76UE9GJSTL;
 				INFOPLIST_FILE = Subterminal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mavonie.Subterminal;
+				PRODUCT_BUNDLE_IDENTIFIER = ie.mavon.subterminal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8f2708aa-63c2-4553-bf55-93f5437ca1d2";
+				PROVISIONING_PROFILE_SPECIFIER = "Subterminal Distribution";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

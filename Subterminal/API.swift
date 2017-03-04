@@ -101,9 +101,7 @@ class API: NSObject {
 				
 				for item in items as! [NSDictionary] {
 					let exit = Exit.build(json: JSON(item))
-					if exit.save() {
-						//exit.updateDetails(json: JSON(item))
-					}
+					exit.createOrUpdatePublicExit()
 				}
 			}
 		}

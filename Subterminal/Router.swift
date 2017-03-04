@@ -21,7 +21,7 @@ enum Router: URLRequestConvertible {
 	
 	case updateUser()
 	
-	static let baseURL = "http://192.168.1.5/api"
+	static let baseURL = Subterminal.getKey(key: "api_url")
 	
 	var method: HTTPMethod {
 		switch self {
