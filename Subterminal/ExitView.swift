@@ -182,7 +182,7 @@ class ExitView: UIView {
 			rockdropLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 20)
 			
 			rockdrop.autoPinEdge(.top, to: .top, of: rockdropLabel)
-			rockdrop.autoPinEdge(.right, to: .right, of: shadowView, withOffset: -25)
+			rockdrop.autoPinEdge(.right, to: .right, of: shadowView, withOffset: -50)
 			
 			rockdropTimeLabel.autoPinEdge(.top, to: .bottom, of: rockdropLabel, withOffset: 5)
 			rockdropTimeLabel.autoPinEdge(.left, to: .left, of: rockdropLabel)
@@ -204,16 +204,20 @@ class ExitView: UIView {
 			exitInfo.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
 			exitInfo.autoPinEdge(.left, to: .left, of: exitInfoLabel)
 			
-			exitRulesLabel.autoPinEdge(.top, to: .bottom, of: exitInfo, withOffset: 20)
-			exitRulesLabel.autoPinEdge(.left, to: .left, of: exitInfoLabel)
+			if exitRules.superview == contentView {
+				exitRulesLabel.autoPinEdge(.top, to: .bottom, of: exitInfo, withOffset: 20)
+				exitRulesLabel.autoPinEdge(.left, to: .left, of: exitInfoLabel)
 			
-			exitRules.autoPinEdge(.top, to: .bottom, of: exitRulesLabel, withOffset: 5)
-			exitRules.autoPinEdge(.left, to: .left, of: exitRulesLabel)
-			exitRules.autoSetDimension(.height, toSize: exitRules.contentSize.height)
-			exitRules.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
+				exitRules.autoPinEdge(.top, to: .bottom, of: exitRulesLabel, withOffset: 5)
+				exitRules.autoPinEdge(.left, to: .left, of: exitRulesLabel)
+				exitRules.autoSetDimension(.height, toSize: exitRules.contentSize.height)
+				exitRules.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
+				shadowView.autoPinEdge(.bottom, to: .bottom, of: exitRules, withOffset: 10)
+			} else {
+				shadowView.autoPinEdge(.bottom, to: .bottom, of: exitInfo, withOffset: 10)
+			}
 			
 			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 15)
-			shadowView.autoPinEdge(.bottom, to: .bottom, of: exitRules, withOffset: 10)
 			shadowView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 8)
 			shadowView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -8)
 			

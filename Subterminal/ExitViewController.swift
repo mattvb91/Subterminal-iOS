@@ -27,6 +27,8 @@ class ExitViewController: UIViewController {
 		
 		if item.isGlobal() == false {
 			exitView.detailView.removeFromSuperview()
+			exitView.exitRulesLabel.removeFromSuperview()
+			exitView.exitRules.removeFromSuperview()
 		} else {
 			//Assign difficulty values
 			let test = item.getDetails()?.rules
