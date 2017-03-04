@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DropDown
 
 class SuitFormView: UIView, GMDatePickerDelegate {
 	
@@ -25,6 +26,10 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 	var manufacturer = UITextField()
 	var model = UITextField()
 	var serial = UITextField()
+	var type = UILabel()
+	var typeDropdown = DropDown()
+	
+	var arrow = UIImageView(image: UIImage(named: "arrow_down"))
 	
 	var datePicker = GMDatePicker()
 	
@@ -37,16 +42,30 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 		datePicker.config.startDate = NSDate() as Date
 		dateField.text = DateHelper.dateToString(date: Date())
 
-		let dateGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		let dateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
 		dateGesture.numberOfTapsRequired = 1
 		dateField.isUserInteractionEnabled =  true
 		dateField.addGestureRecognizer(dateGesture)
 
+		typeDropdown.dataSource = Suit.getTypesForSelect()
+		typeDropdown.anchorView = type
+		
+		let typeGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapType))
+		typeGesture.numberOfTapsRequired = 1
+		type.isUserInteractionEnabled =  true
+		type.addGestureRecognizer(typeGesture)
+		
+		typeDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.type.text = item
+		}
+		
 		scrollView.addSubview(labelType)
 		scrollView.addSubview(labelDate)
 		scrollView.addSubview(labelManufacturer)
 		scrollView.addSubview(labelModel)
 		scrollView.addSubview(labelSerial)
+		scrollView.addSubview(type)
+		scrollView.addSubview(arrow)
 		
 		manufacturer.setBottomBorder()
 		model.setBottomBorder()
@@ -83,6 +102,12 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 			labelType.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 10)
 			labelType.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 10)
 			
+			type.autoPinEdge(.left, to: .left, of: labelType)
+			type.autoPinEdge(.top, to: .bottom, of: labelType, withOffset: 8)
+			
+			arrow.autoPinEdge(.left, to: .right, of: type, withOffset: 5)
+			arrow.autoPinEdge(.top, to: .top, of: type, withOffset: 10)
+			
 			labelDate.autoPinEdge(.top, to: .top, of: labelType)
 			labelDate.autoPinEdge(.left, to: .right, of: labelType, withOffset: 160)
 			
@@ -114,6 +139,10 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 		}
 		
 		super.updateConstraints()
+	}
+	
+	func tapType(recognizer: UITapGestureRecognizer) {
+		self.typeDropdown.show()
 	}
 	
 	func tapDate(recognizer: UITapGestureRecognizer) {

@@ -16,6 +16,7 @@ class SuitForm: Form {
 		super.viewDidLoad()
 				
 		self.formView = SuitFormView.newAutoLayout()
+		self.navigationItem.title = "Edit Suit"
 		
 		if getItem().id != nil {
 			getFormView().manufacturer.text = getItem().manufacturer
@@ -26,6 +27,10 @@ class SuitForm: Form {
 				getFormView().dateField.text = DateHelper.dateToString(date: getItem().date_in_use!)
 				getFormView().datePicker.config.startDate = getItem().date_in_use
 			}
+			
+			getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Int(getItem().type!), data: Suit.types, label: getFormView().type)
+		} else {
+			getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Suit.TYPE_TRACKING, data: Suit.types, label: getFormView().type)
 		}
 		
 		self.view.addSubview(getFormView())
@@ -44,6 +49,7 @@ class SuitForm: Form {
 		getItem().manufacturer = getFormView().manufacturer.text
 		getItem().serial = getFormView().serial.text
 		getItem().date_in_use = DateHelper.stringToDate(string: getFormView().dateField.text!)
+		getItem().type = NSNumber(value: getFormView().typeDropdown.getKeyForDataFromSelectedRow(data: Suit.types)!)
 	}
 	
 	override func getFormView() -> SuitFormView {

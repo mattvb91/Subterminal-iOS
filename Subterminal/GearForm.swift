@@ -17,6 +17,7 @@ class GearForm: Form {
         super.viewDidLoad()
 		
 		self.formView = GearFormView.newAutoLayout()
+		self.navigationItem.title = "Edit Rig"
 		
 		if getItem().id != nil {
 			getFormView().containerManufacturer.text = getItem().container_manufacturer

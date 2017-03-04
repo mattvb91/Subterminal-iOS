@@ -27,6 +27,16 @@ class Suit: Synchronizable {
 		TYPE_TRACKING: "Tracking",
 	]
 	
+	static func getTypesForSelect() -> [String] {
+		var res = [String]()
+		
+		for type in types {
+			res.append(type.value)
+		}
+		
+		return res
+	}
+	
 	override func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
 	}
