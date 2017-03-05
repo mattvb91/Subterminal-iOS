@@ -187,9 +187,9 @@ class SkydiveView: UIView {
 			delay.autoPinEdge(.top, to: .bottom, of: delayLabel, withOffset: 10)
 			
 			skydiveDescription.autoPinEdge(.top, to: .bottom, of: delayLabel, withOffset: 40)
+			skydiveDescription.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			skydiveDescription.autoSetDimension(.height, toSize: skydiveDescription.contentSize.height)
-			skydiveDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
-			skydiveDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
+			skydiveDescription.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 40)
 			
 			shadowView.autoPinEdge(.bottom, to: .bottom, of: skydiveDescription, withOffset: 20)
 			

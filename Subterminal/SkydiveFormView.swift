@@ -48,6 +48,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	var dropzone = SearchTextField()
 	
+	var heightUnit = HeightUnitView()
+	
 	var scrollView = UIScrollView()
 	
 	override init(frame: CGRect) {
@@ -137,6 +139,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		scrollView.addSubview(delayLabel)
 		scrollView.addSubview(descriptionLabel)
 		
+		scrollView.addSubview(heightUnit)
+		
 		scrollView.addSubview(exitAlt)
 		scrollView.addSubview(deployAlt)
 		scrollView.addSubview(delay)
@@ -200,6 +204,9 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			heightUnitLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 40)
 			heightUnitLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			heightUnitLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
+			
+			heightUnit.autoPinEdge(.left, to: .left, of: heightUnitLabel)
+			heightUnit.autoPinEdge(.top, to: .bottom, of: heightUnitLabel, withOffset: 8)
 
 			cutawayLabel.autoPinEdge(.left, to: .left, of: typeLabel)
 			cutawayLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 40)

@@ -16,6 +16,7 @@ class SkydiveForm: Form {
         super.viewDidLoad()
 
 		self.formView = SkydiveFormView.newAutoLayout()
+		self.navigationItem.title = "Edit Skydive"
 		
 		if getItem().id != nil {
 			
@@ -26,11 +27,13 @@ class SkydiveForm: Form {
 			
 			getFormView().dateSelectedLabel.text = DateHelper.dateToString(date: getItem().date!)
 			getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
-			getFormView().typeLabel.text = getItem().getFormattedType()
 			getFormView().exitAlt.text = getItem().exit_altitude?.description
 			getFormView().deployAlt.text = getItem().deploy_altidude?.description
 			getFormView().delay.text = getItem().delay?.description
 			getFormView().descriptionInput.text = getItem().skydive_description
+			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: getFormView().typeSelectedLabel)
+		} else {
+			getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
 		}
 		
 		self.view.addSubview(self.formView!)

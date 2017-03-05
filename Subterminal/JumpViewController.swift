@@ -23,17 +23,16 @@ class JumpViewController: UIViewController, ImagePickerDelegate {
 		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
 		self.navigationItem.rightBarButtonItem = editButton
 		
-		if let item = item {
-			jumpView.exit.text = item.exit()?.name
-			jumpView.delay.text = item.delay?.description
-			jumpView.pc.text = item.pc_size?.description
-			jumpView.slider.text = item.getFormattedSlider()
-			jumpView.jumpDescription.text = item.jump_description
-			jumpView.jumpDescription.sizeToFit()
-			jumpView.type.text = item.getFormattedType()
+		jumpView.exit.text = item.exit()?.name
+		jumpView.delay.text = item.delay?.description
+		jumpView.pc.text = item.pc_size?.description
+		jumpView.slider.text = item.getFormattedSlider()
+		jumpView.jumpDescription.text = item.jump_description
+		jumpView.jumpDescription.sizeToFit()
+		jumpView.type.text = item.getFormattedType()
+		jumpView.jump = item
 			
-			loadImages()
-		}
+		loadImages()
 		
 		self.view.addSubview(jumpView)
 	}

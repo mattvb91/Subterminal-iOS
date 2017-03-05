@@ -74,10 +74,12 @@ class JumpTableController: TableController {
 			cell.thumb.image = image.getUIImage().thumbnailImage(50, transparentBorder:1, cornerRadius:5,interpolationQuality:CGInterpolationQuality.low)
 		}
 		
+		cell.delay.text = nil
 		if jump.delay != nil {
 			cell.delay.text = "Delay: " + (jump.delay?.description)! + "s"
 		}
 		
+		cell.slider.text = nil
 		if jump.slider != nil {
 			cell.slider.text = "Slider: " + jump.getFormattedSlider()!
 		}

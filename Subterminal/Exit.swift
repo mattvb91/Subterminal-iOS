@@ -20,8 +20,9 @@ class Exit: Synchronizable {
 	
 	dynamic var rockdrop_distance,
 		altitude_to_landing,
-		object_type,
-		height_unit: NSNumber?
+		object_type: NSNumber?
+	
+	dynamic var height_unit = NSNumber(value: Subterminal.HEIGHT_UNIT_IMPERIAL)
 	
 	dynamic var latitude: Double = 0.0
 	dynamic var longtitude: Double = 0.0

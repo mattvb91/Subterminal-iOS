@@ -17,7 +17,7 @@ class JumpForm: Form {
 		
 		self.formView = JumpFormView.newAutoLayout()
 		
-		self.title = "Edit Exit"
+		self.navigationItem.title = "Edit Jump"
 		
 		if getItem().id != nil {
 			self.getFormView().date.text = DateHelper.dateToString(date: self.getItem().date!)

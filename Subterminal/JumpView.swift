@@ -69,6 +69,8 @@ class JumpView: UIView {
 		scrollView.addSubview(pcLabel)
 		scrollView.addSubview(sliderLabel)
 		
+		exit.textColor = self.tintColor
+		
 		scrollView.addSubview(exit)
 		scrollView.addSubview(rig)
 		scrollView.addSubview(type)
@@ -80,6 +82,10 @@ class JumpView: UIView {
 		
 		scrollView.addSubview(shadowView)
 		scrollView.sendSubview(toBack: shadowView)
+		
+		let exitTap = UITapGestureRecognizer(target: self, action: #selector(openExit))
+		exit.isUserInteractionEnabled = true
+		exit.addGestureRecognizer(exitTap)
 		
 		imageButton.setTitle("Add Image", for: .normal)
 		let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageSelect))
@@ -108,6 +114,12 @@ class JumpView: UIView {
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	func openExit(sender:UITapGestureRecognizer) {
+		let exitController = ExitViewController()
+		exitController.item = self.jump.exit()
+		superview?.viewController()?.navigationController?.show(exitController, sender: nil)
 	}
 	
 	override func updateConstraints() {
@@ -157,8 +169,10 @@ class JumpView: UIView {
 			
 			jumpDescription.autoPinEdge(.top, to: .bottom, of: type, withOffset: 20)
 			jumpDescription.autoPinEdge(.left, to: .left, of: exitLabel)
+			jumpDescription.autoSetDimension(.height, toSize: jumpDescription.contentSize.height)
+			jumpDescription.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 40)
 
-			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
+			shadowView.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 5)
 			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 5)
 			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 5)
 			shadowView.autoPinEdge(.bottom, to: .bottom, of: jumpDescription, withOffset: 20)

@@ -26,7 +26,7 @@ class Skydive: Synchronizable {
         suid_id: NSNumber?
 	
 	dynamic var cutaway: NSNumber = 0
-    dynamic var height_unit: NSNumber = 0
+	dynamic var height_unit = NSNumber(value: Subterminal.HEIGHT_UNIT_IMPERIAL)
 	
 	//Skydive Types
 	static let SKYDIVE_TYPE_BELLY = 1;

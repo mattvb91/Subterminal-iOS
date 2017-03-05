@@ -39,7 +39,6 @@ class SkydiveTableViewController: TableController {
 		} else {
 			position = items.count - position
 		}
-
 		
         // Configure the cell...
 		cell?.dropzone.text = item?.dropzone()?.name
@@ -50,6 +49,7 @@ class SkydiveTableViewController: TableController {
 			cell?.thumb.image = image.getUIImage().thumbnailImage(50, transparentBorder:1, cornerRadius:5,interpolationQuality:CGInterpolationQuality.low)
 		}
 		
+		cell?.delay.text = nil
 		if item?.delay != nil {
 			cell?.delay.text = (item?.delay?.stringValue)! + "s"
 		}
@@ -72,7 +72,7 @@ class SkydiveTableViewController: TableController {
 		return SkydiveForm.NOTIFICATION_NAME
 	}
 	
-	override func getAssignedModel() -> Model {
+	override func getAssignedModel() -> Skydive {
 		return Skydive()
 	}
 	

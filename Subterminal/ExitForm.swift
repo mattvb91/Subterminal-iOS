@@ -21,6 +21,7 @@ class ExitForm: Form, CLLocationManagerDelegate {
 		super.viewDidLoad()
 		
 		self.formView = ExitFormView.newAutoLayout()
+		self.navigationItem.title = "Edit Exit"
 		
 		let gpsTap = UITapGestureRecognizer(target: self, action: #selector(gpsAction))
 		self.getFormView().coordinatesButton.addGestureRecognizer(gpsTap)
@@ -62,7 +63,7 @@ class ExitForm: Form, CLLocationManagerDelegate {
 	
 	override func assignFormToEntity() {
 		self.getItem().name = self.getFormView().name.text
-		self.getItem().height_unit = self.getFormView().heightUnit.heightUnit as NSNumber?
+		self.getItem().height_unit = (self.getFormView().heightUnit.heightUnit as NSNumber?)!
 		
 		if self.getFormView().rockdrop.text?.isEmpty == false {
 			self.getItem().rockdrop_distance = NSNumber(value: Int(self.getFormView().rockdrop.text!)!)
