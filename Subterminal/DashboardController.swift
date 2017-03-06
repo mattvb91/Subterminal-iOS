@@ -111,6 +111,8 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		//4 - pass our months in for our x-axis label value along with our dataSets
 		let data = LineChartData(dataSet: set1)
 		data.setValueTextColor(UIColor.white)
+	
+		set1.colors = [self.view.tintColor]
 		
 		//5 - finally set our data
 		self.dashboardView.pullheight.data = data

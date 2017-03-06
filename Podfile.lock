@@ -50,7 +50,6 @@ PODS:
     - Realm (= 1.1.0)
   - SearchTextField (1.0.4)
   - SharkORM (2.1.1)
-  - Stripe (9.4.0)
   - SwiftSpinner (1.1.0)
   - SwiftyJSON (3.1.4)
 
@@ -71,7 +70,6 @@ DEPENDENCIES:
   - RAMAnimatedTabBarController (~> 2.0.13)
   - SearchTextField
   - SharkORM
-  - Stripe
   - SwiftSpinner
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -108,10 +106,9 @@ SPEC CHECKSUMS:
   RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   SearchTextField: 211b82b521d867d609a4df07f47e0bcc65b1559d
   SharkORM: 272d0e4fa7ecd0dd4ee20a1ab040ca5a3be18949
-  Stripe: 0957cc85df5c3df153e6fb44d307ea4b778b6bd1
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 3c6d12f37fcdeb90ceddcba0cc2b2db6927cc028
+PODFILE CHECKSUM: 74356954ec59fa2230f8e04161eae97515a82664
 
 COCOAPODS: 1.2.0

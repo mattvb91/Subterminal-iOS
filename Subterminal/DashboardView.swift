@@ -25,6 +25,9 @@ class DashboardView: UIView {
 	var shadowViewDropzones = ShadowView()
 	var shadowViewExits = ShadowView()
 	
+	var shadowViewSkydiveStats = ShadowView()
+	var shadowViewBaseStats = ShadowView()
+
 	var skydiveCount = UILabel()
 	var baseCount = UILabel()
 	var dropzonesCount = UILabel()
@@ -40,6 +43,7 @@ class DashboardView: UIView {
 
 	var pullheight = LineChartView()
 	var exitTypes = PieChartView()
+	var favouriteExits = BarChartView()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -76,8 +80,8 @@ class DashboardView: UIView {
 		shadowViewExits.addSubview(exitLabel)
 		
 		pullheight.noDataText = "No jumps to chart"
-		scrollView.addSubview(skydiveFreefallTime)
-		scrollView.addSubview(baseFreefallTime)
+		shadowViewSkydiveStats.addSubview(skydiveFreefallTime)
+		shadowViewBaseStats.addSubview(baseFreefallTime)
 
 		pullheight.xAxis.drawLabelsEnabled = false
 		pullheight.rightAxis.drawLabelsEnabled = false
@@ -90,10 +94,17 @@ class DashboardView: UIView {
 		exitTypes.drawCenterTextEnabled = true
 		exitTypes.noDataText = "No exits to chart"
 		
+		favouriteExits.noDataText = "No jumped exits to chart"
 		
-		scrollView.addSubview(pullheight)
-		scrollView.addSubview(exitTypes)
+		shadowViewSkydiveStats.addSubview(pullheight)
+		shadowViewBaseStats.addSubview(exitTypes)
+		shadowViewBaseStats.addSubview(favouriteExits)
 		
+		scrollView.sendSubview(toBack: shadowViewSkydiveStats)
+		scrollView.addSubview(shadowViewSkydiveStats)
+		
+		scrollView.sendSubview(toBack: shadowViewBaseStats)
+		scrollView.addSubview(shadowViewBaseStats)
 		/*
 		if (FBSDKAccessToken.current() != nil) {
 			// User is already logged in, do work such as go to next view controller.
@@ -170,11 +181,24 @@ class DashboardView: UIView {
 			pullheight.autoPinEdge(.top, to: .bottom, of: skydiveFreefallTime, withOffset: 20)
 			pullheight.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 200))
 			
-			baseFreefallTime.autoPinEdge(.top, to: .bottom, of: pullheight, withOffset: 20)
+			shadowViewSkydiveStats.autoPinEdge(.top, to: .bottom, of: shadowViewBase, withOffset: 10)
+			shadowViewSkydiveStats.autoPinEdge(.bottom, to: .bottom, of: pullheight, withOffset: 20)
+			shadowViewSkydiveStats.autoPinEdge(.left, to: .left, of: pullheight)
+			shadowViewSkydiveStats.autoPinEdge(.right, to: .right, of: pullheight)
+
+			baseFreefallTime.autoPinEdge(.top, to: .bottom, of: shadowViewSkydiveStats, withOffset: 20)
 			baseFreefallTime.autoPinEdge(.left, to: .left, of: shadowViewSkydives, withOffset: 40)
 			
 			exitTypes.autoPinEdge(.top, to: .bottom, of: baseFreefallTime)
 			exitTypes.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width / 2, height: 200))
+			
+			favouriteExits.autoPinEdge(.top, to: .bottom, of: baseFreefallTime)
+			favouriteExits.autoPinEdge(.left, to: .right, of: exitTypes)
+			exitTypes.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width / 2, height: 200))
+			
+			shadowViewBaseStats.autoPinEdge(.top, to: .bottom, of: shadowViewSkydiveStats, withOffset: 10)
+			shadowViewBaseStats.autoPinEdge(.bottom, to: .bottom, of: exitTypes, withOffset: 20)
+			shadowViewBaseStats.autoSetDimension(.width, toSize: UIScreen.main.bounds.width)
 
 			self.didSetupConstraints = true
 		}

@@ -34,7 +34,7 @@ target 'Subterminal' do
   #pod 'FBSDKLoginKit'
   #pod 'FBSDKShareKit'
   pod 'SearchTextField'
-  pod 'Stripe'
+  #pod 'Stripe'
   pod 'SwiftSpinner'
   pod 'IQKeyboardManagerSwift'
   pod 'ImagePicker'

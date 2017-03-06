@@ -12,7 +12,7 @@ import Firebase
 import SwiftyJSON
 import DropDown
 //import FBSDKLoginKit
-import Stripe
+//import Stripe
 import IQKeyboardManagerSwift
 import GoogleMobileAds
 
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 
 		IQKeyboardManager.sharedManager().enable = true
 		
-		STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
-		STPPaymentConfiguration.shared().smsAutofillDisabled = true
+		//STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
+		//STPPaymentConfiguration.shared().smsAutofillDisabled = true
 		
 		GADMobileAds.configure(withApplicationID: Subterminal.getKey(key: "admob_appid"))
 

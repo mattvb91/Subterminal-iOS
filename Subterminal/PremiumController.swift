@@ -5,12 +5,12 @@
 //  Created by Matthias von Bargen on 24/02/2017.
 //  Copyright © 2017 Matthias von Bargen. All rights reserved.
 //
-
+/*
 import Foundation
 import UIKit
 import WebKit
 import Alamofire
-import Stripe
+//import Stripe
 import SwiftSpinner
 
 class PremiumController: UIViewController, WKNavigationDelegate, STPAddCardViewControllerDelegate {
@@ -105,4 +105,4 @@ class PremiumController: UIViewController, WKNavigationDelegate, STPAddCardViewC
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		print("finish to load")
 	}
-}
+}*/
