@@ -172,11 +172,10 @@ class JumpView: UIView {
 			jumpDescription.autoSetDimension(.height, toSize: jumpDescription.contentSize.height)
 			jumpDescription.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 40)
 
-			shadowView.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 5)
-			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 5)
-			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 5)
-			shadowView.autoPinEdge(.bottom, to: .bottom, of: jumpDescription, withOffset: 20)
-
+			shadowView.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 10)
+			shadowView.autoPinEdge(.bottom, to: .bottom, of: jumpDescription)
+			shadowView.autoSetDimension(.width, toSize: UIScreen.main.bounds.width)
+		
 			imageButton.autoPinEdge(.top, to: .bottom, of: shadowView, withOffset: 20)
 			imageButton.autoPinEdge(.left, to: .left, of: exitLabel)
 			imageButton.autoSetDimensions(to: CGSize(width: 100, height: 30))

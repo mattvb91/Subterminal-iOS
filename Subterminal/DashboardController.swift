@@ -83,14 +83,16 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		if other > 0 {
 			vals.append(PieChartDataEntry(value: Double(other), label: "Other"))
 		}
-
-		let dataSet = PieChartDataSet(values: vals, label: "")
-		dataSet.colors = ChartColorTemplates.material()
 		
-		let pieData = PieChartData(dataSet: dataSet)
+		if vals.isEmpty == false {
+			let dataSet = PieChartDataSet(values: vals, label: "")
+			dataSet.colors = ChartColorTemplates.material()
 		
-		self.dashboardView.exitTypes.data = pieData
-		self.dashboardView.exitTypes.notifyDataSetChanged()
+			let pieData = PieChartData(dataSet: dataSet)
+		
+			self.dashboardView.exitTypes.data = pieData
+			self.dashboardView.exitTypes.notifyDataSetChanged()
+		}
 	}
 	
 	func setPullheightData() {
@@ -105,18 +107,18 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 			i += 1
 		}
 		
-		// 2 - create a data set with our array
-		let set1 = LineChartDataSet(values: yVals, label: "Pull height (Last 10 skydives)")
+		if yVals.isEmpty == false {
+			let set1 = LineChartDataSet(values: yVals, label: "Pull height (Last 10 skydives)")
 		
-		//4 - pass our months in for our x-axis label value along with our dataSets
-		let data = LineChartData(dataSet: set1)
-		data.setValueTextColor(UIColor.white)
+			let data = LineChartData(dataSet: set1)
+			data.setValueTextColor(UIColor.white)
 	
-		set1.colors = [self.view.tintColor]
+			set1.colors = [self.view.tintColor]
 		
-		//5 - finally set our data
-		self.dashboardView.pullheight.data = data
-		self.dashboardView.pullheight.notifyDataSetChanged()
+			self.dashboardView.pullheight.data = data
+			self.dashboardView.pullheight.notifyDataSetChanged()
+		}
+		
 	}
 	
 	/*

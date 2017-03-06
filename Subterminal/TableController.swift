@@ -57,7 +57,7 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 			
 			self.navigationItem.rightBarButtonItem = add
 		}
-		
+		tableView.tableFooterView = UIView()
 		loadData(notification: nil);
 		
 		if items.count > 4 {
