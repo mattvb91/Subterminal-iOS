@@ -30,13 +30,14 @@ target 'Subterminal' do
   pod 'HTagView'
   pod 'DropDown'
   pod 'RAMAnimatedTabBarController', '~> 2.0.13'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  #pod 'FBSDKCoreKit'
+  #pod 'FBSDKLoginKit'
+  #pod 'FBSDKShareKit'
   pod 'SearchTextField'
   pod 'Stripe'
   pod 'SwiftSpinner'
   pod 'IQKeyboardManagerSwift'
   pod 'ImagePicker'
+  pod 'Charts/Realm'
 
 end
