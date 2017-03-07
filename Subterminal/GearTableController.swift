@@ -15,8 +15,20 @@ class GearTableController: TableController {
 	
 	var suits: SRKResultSet = []
 	
+	
     override func viewDidLoad() {
+		self.canEditItems = false
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: SuitForm.NOTIFICATION_NAME), object: nil)
+
         super.viewDidLoad()
+		
+		self.navigationItem.title = "Gear"
+		
+		let addRig = UIBarButtonItem(title: "Add Rig", style: .plain, target: self, action: #selector(addTapped))
+		let addSuit = UIBarButtonItem(title: "Add Suit", style: .plain, target: self, action: #selector(addSuitTapped))
+		
+		self.navigationItem.rightBarButtonItem = addRig
+		self.navigationItem.leftBarButtonItem = addSuit
 		
 		self.tableView.rowHeight = 60
     }
@@ -149,6 +161,25 @@ class GearTableController: TableController {
 			suits = Suit.query().fetch()
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
+	}
+	
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+		return UITableViewCellEditingStyle.delete
+	}
+	
+	//The user pressed the add button
+	func addSuitTapped() {
+		let transition = CATransition()
+		transition.duration = 0.5
+		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		transition.type = kCATransitionPush;
+		transition.subtype = kCATransitionFromTop
+		
+		let controller = SuitForm()
+		controller.item = Suit()
+		
+		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+		self.navigationController?.pushViewController(controller,animated: false)
 	}
 	
 }

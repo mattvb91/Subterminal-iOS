@@ -12,11 +12,25 @@ import UIKit
 
 class BaseGearTableController: TableController {
 	
-	
 	var suits: SRKResultSet = []
 	
 	override func viewDidLoad() {
+
+		self.canEditItems = false
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: SuitForm.NOTIFICATION_NAME), object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: self.getNotificationName()), object: nil)
+		
 		super.viewDidLoad()
+		
+		self.canEditItems = true
+		
+		let addRig = UIBarButtonItem(title: "Add Rig", style: .plain, target: self, action: #selector(addTapped))
+		let addSuit = UIBarButtonItem(title: "Add Suit", style: .plain, target: self, action: #selector(addSuitTapped))
+		
+		self.navigationItem.rightBarButtonItem = addRig
+		self.navigationItem.leftBarButtonItem = addSuit
+
 		
 		self.tableView.rowHeight = 60
 	}
@@ -74,7 +88,7 @@ class BaseGearTableController: TableController {
 	}
 	
 	override func getNotificationName() -> String {
-		return GearForm.NOTIFICATION_NAME
+		return RigForm.NOTIFICATION_NAME
 	}
 	
 	override func getViewCellIdentifier() -> String {
@@ -85,8 +99,8 @@ class BaseGearTableController: TableController {
 		return BASERig()
 	}
 	
-	override func getAssignedController() -> UIViewController {
-		return GearForm()
+	override func getAssignedController() -> RigForm {
+		return RigForm()
 	}
 	
 	override func getViewCellClass() -> RigTableViewCell {
@@ -94,8 +108,8 @@ class BaseGearTableController: TableController {
 	}
 	
 	override func assignModelToController(controller: UIViewController) {
-		let controller = controller as? GearForm
-		controller?.item = getAssignedModel()
+		let controller = controller as! RigForm
+		controller.item = self.getAssignedModel()
 	}
 	
 	//Configure suit or rig viewcell
@@ -120,8 +134,8 @@ class BaseGearTableController: TableController {
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		if indexPath.section == 0 {
-			let rigForm = GearForm()
-			rigForm.item = items.object(at: indexPath.row) as? Rig
+			let rigForm = self.getAssignedController()
+			rigForm.item = items.object(at: indexPath.row) as? BASERig
 			
 			self.navigationController?.pushViewController(rigForm, animated: true)
 		} else {
@@ -151,5 +165,18 @@ class BaseGearTableController: TableController {
 		}
 	}
 	
-	
+	//The user pressed the add button
+	func addSuitTapped() {
+		let transition = CATransition()
+		transition.duration = 0.5
+		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+		transition.type = kCATransitionPush;
+		transition.subtype = kCATransitionFromTop
+		
+		let controller = SuitForm()
+		controller.item = Suit()
+		
+		self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+		self.navigationController?.pushViewController(controller,animated: false)
+	}
 }
