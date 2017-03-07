@@ -39,5 +39,6 @@ target 'Subterminal' do
   pod 'IQKeyboardManagerSwift'
   pod 'ImagePicker'
   pod 'Charts/Realm'
+  pod 'UITextField+Shake', '~> 1.1'
 
 end

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UITextField_Shake
 
 class FormValidator {
 	
@@ -26,6 +27,7 @@ class FormValidator {
 				self.valid = false
 				
 				field.layer.shadowColor = UIColor.red.cgColor
+				field.shake()
 			}
 		}
 	}

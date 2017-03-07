@@ -52,6 +52,7 @@ PODS:
   - SharkORM (2.1.1)
   - SwiftSpinner (1.1.0)
   - SwiftyJSON (3.1.4)
+  - UITextField+Shake (1.1.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - SharkORM
   - SwiftSpinner
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - UITextField+Shake (~> 1.1)
 
 EXTERNAL SOURCES:
   SwiftyJSON:
@@ -108,7 +110,8 @@ SPEC CHECKSUMS:
   SharkORM: 272d0e4fa7ecd0dd4ee20a1ab040ca5a3be18949
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+  UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
 
-PODFILE CHECKSUM: 74356954ec59fa2230f8e04161eae97515a82664
+PODFILE CHECKSUM: e768f360fb2aa9e2f23b4687f7ba05c2ff24b9c5
 
 COCOAPODS: 1.2.0
