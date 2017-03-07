@@ -18,9 +18,9 @@ class ExitForm: Form, CLLocationManagerDelegate {
 	var locationManager: CLLocationManager?
 	
 	override func viewDidLoad() {
+		self.formView = ExitFormView.newAutoLayout()
 		super.viewDidLoad()
 		
-		self.formView = ExitFormView.newAutoLayout()
 		self.navigationItem.title = "Edit Exit"
 		
 		let gpsTap = UITapGestureRecognizer(target: self, action: #selector(gpsAction))
@@ -41,6 +41,10 @@ class ExitForm: Form, CLLocationManagerDelegate {
 		self.view.addSubview(getFormView())
 	}
 	
+	override func initFormValidation() {
+		self.validator.addRequiredField(field: self.getFormView().name)
+	}
+	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 		SwiftSpinner.hide()
 		debugPrint(error)
@@ -55,10 +59,6 @@ class ExitForm: Form, CLLocationManagerDelegate {
 		
 		getFormView().latitude.text = currentLocation.coordinate.latitude.description
 		getFormView().longtitude.text = currentLocation.coordinate.longitude.description
-	}
-	
-	override func formIsValid() -> Bool {
-		return true
 	}
 	
 	override func assignFormToEntity() {

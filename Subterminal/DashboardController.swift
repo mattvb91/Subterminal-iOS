@@ -28,7 +28,7 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		
 		dashboardView.skydiveCount.text = Skydive.query().count().description
 		dashboardView.baseCount.text = Jump.query().count().description
-		dashboardView.dropzonesCount.text = "2"
+		dashboardView.dropzonesCount.text = Dropzone.query().count().description
 		dashboardView.exitCount.text = Exit.query().count().description
 
 		self.setPullheightData()
@@ -103,8 +103,10 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		
 		var i = 0
 		for skydive in (skydives?.reversed())! {
-			yVals.append(ChartDataEntry(x: Double(i), y: Double((skydive as! Skydive).deploy_altidude!)))
-			i += 1
+			if (skydive as! Skydive).deploy_altidude != nil {
+				yVals.append(ChartDataEntry(x: Double(i), y: Double((skydive as! Skydive).deploy_altidude!)))
+				i += 1
+			}
 		}
 		
 		if yVals.isEmpty == false {

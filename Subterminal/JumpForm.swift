@@ -13,9 +13,8 @@ class JumpForm: Form {
 	public static let NOTIFICATION_NAME = "jump_data_changed"
 	
 	override func viewDidLoad() {
-		super.viewDidLoad()
-		
 		self.formView = JumpFormView.newAutoLayout()
+		super.viewDidLoad()
 		
 		self.navigationItem.title = "Edit Jump"
 		
@@ -37,8 +36,8 @@ class JumpForm: Form {
 		self.view.addSubview(getFormView())
 	}
 	
-	override func formIsValid() -> Bool {
-		return true
+	override func initFormValidation() {
+		self.validator.addRequiredField(field: self.getFormView().exit)
 	}
 	
 	override func assignFormToEntity() {

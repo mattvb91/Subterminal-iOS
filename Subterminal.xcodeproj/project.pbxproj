@@ -40,6 +40,9 @@
 		8F92B8911E5B6CFC00E749A8 /* GMDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */; };
 		8F92B8921E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */; };
 		8F92B8931E5B6CFF00E749A8 /* GMDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */; };
+		8F92E8821E6EFC90007BC746 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92E8811E6EFC90007BC746 /* FormValidator.swift */; };
+		8F92E8831E6EFC90007BC746 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92E8811E6EFC90007BC746 /* FormValidator.swift */; };
+		8F92E8841E6EFC90007BC746 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92E8811E6EFC90007BC746 /* FormValidator.swift */; };
 		8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */; };
 		8F980D5D1E55DD4800CDC497 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FA07F911E67136800841BB5 /* JumpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA07F901E67136800841BB5 /* JumpForm.swift */; };
@@ -217,6 +220,7 @@
 		8F90E6481E636C4500CAF8A3 /* SuitForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitForm.swift; sourceTree = "<group>"; };
 		8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subterminal.swift; sourceTree = "<group>"; };
 		8F92B8901E5B6CFC00E749A8 /* GMDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMDatePicker.swift; sourceTree = "<group>"; };
+		8F92E8811E6EFC90007BC746 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		8F980D5A1E55CB9B00CDC497 /* UITextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldStyle.swift; sourceTree = "<group>"; };
 		8F980D5C1E55DD4800CDC497 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		8FA07F901E67136800841BB5 /* JumpForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpForm.swift; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				8FAD28CC1E52066F00E88E97 /* TabBarController.swift */,
 				8FDBAB8A1E549B74005543C1 /* TableController.swift */,
 				8FDCFA8E1E60871D00BE92C5 /* PremiumController.swift */,
+				8F92E8811E6EFC90007BC746 /* FormValidator.swift */,
 			);
 			name = _base;
 			sourceTree = "<group>";
@@ -894,6 +899,7 @@
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
 				8FF31ADA1E4E0BA0003F3CFF /* SkydiveTableViewCell.swift in Sources */,
 				8F8C148B1E59B23800AC4856 /* Aircraft.swift in Sources */,
+				8F92E8821E6EFC90007BC746 /* FormValidator.swift in Sources */,
 				8FB490581E65F5CB00CB89DF /* JumpTableController.swift in Sources */,
 				8FB3D9E91E5D98A80085263A /* Synchronizable.swift in Sources */,
 				8FF31AE71E4E2B53003F3CFF /* Form.swift in Sources */,
@@ -977,6 +983,7 @@
 				8FCE364D1E5C480E00B03F67 /* DateHelper.swift in Sources */,
 				8FB15FA01E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8FB4903B1E65863400CB89DF /* TableController.swift in Sources */,
+				8F92E8831E6EFC90007BC746 /* FormValidator.swift in Sources */,
 				8F6D71F61E589113002846B9 /* Dropzone.swift in Sources */,
 				8FBA1A5F1E68E1F7009EA0A2 /* HeightUnitView.swift in Sources */,
 				8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */,
@@ -1035,6 +1042,7 @@
 				8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */,
 				8FB15FA11E64A8B700685A53 /* ExitsTableController.swift in Sources */,
 				8FB4903C1E65863400CB89DF /* TableController.swift in Sources */,
+				8F92E8841E6EFC90007BC746 /* FormValidator.swift in Sources */,
 				8F6D71F71E589114002846B9 /* Dropzone.swift in Sources */,
 				8FBA1A601E68E1F7009EA0A2 /* HeightUnitView.swift in Sources */,
 				8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */,
@@ -1178,6 +1186,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ie.mavon.subterminal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1196,6 +1205,7 @@
 				PROVISIONING_PROFILE = "8f2708aa-63c2-4553-bf55-93f5437ca1d2";
 				PROVISIONING_PROFILE_SPECIFIER = "Subterminal Distribution";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -13,9 +13,10 @@ class SuitForm: Form {
 	public static let NOTIFICATION_NAME = "gear_data_changed"
 	
 	override func viewDidLoad() {
+		self.formView = SuitFormView.newAutoLayout()
+
 		super.viewDidLoad()
 				
-		self.formView = SuitFormView.newAutoLayout()
 		self.navigationItem.title = "Edit Suit"
 		
 		if getItem().id != nil {
@@ -36,12 +37,12 @@ class SuitForm: Form {
 		self.view.addSubview(getFormView())
 	}
 	
-	override func getItem() -> Suit {
-		return (super.getItem() as? Suit)!
+	override func initFormValidation() {
+		self.validator.addRequiredField(field: self.getFormView().manufacturer)
 	}
 	
-	override func formIsValid() -> Bool {
-		return true
+	override func getItem() -> Suit {
+		return (super.getItem() as? Suit)!
 	}
 	
 	override func assignFormToEntity() {

@@ -13,9 +13,9 @@ class RigForm: Form {
 	public static let NOTIFICATION_NAME = "rig_data_changed"
 	
 	override func viewDidLoad() {
-		super.viewDidLoad()
-		
 		self.formView = RigFormView.newAutoLayout()
+
+		super.viewDidLoad()
 		
 		if getItem().id != nil {
 			getFormView().containerModel.text = self.getItem().container_type
@@ -38,8 +38,9 @@ class RigForm: Form {
 		self.view.addSubview(self.getFormView())
 	}
 	
-	override func formIsValid() -> Bool {
-		return true
+	override func initFormValidation() {
+		self.validator.addRequiredField(field: self.getFormView().containerManufacturer)
+		self.validator.addRequiredField(field: self.getFormView().mainManufacturer)
 	}
 	
 	override func assignFormToEntity() {

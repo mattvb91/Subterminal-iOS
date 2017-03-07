@@ -12,7 +12,8 @@ import os.log
 class Form: UIViewController, UITextFieldDelegate {
 
     var item: Model?
-	var formView: UIView?
+	var formView: UIView!
+	var validator: FormValidator = FormValidator()
 	
 	/*
 	 * Add cancel/save buttons
@@ -25,13 +26,18 @@ class Form: UIViewController, UITextFieldDelegate {
 		
 		self.navigationItem.rightBarButtonItem = saveButton
 		self.navigationItem.leftBarButtonItem = cancelButton
+		
+		self.initFormValidation()
     }
+	
+	//Override to add required validation fields
+	func initFormValidation() {}
 	
 	/*
 	 * Check form is valid, Assign form to entity, save the entity
 	 */
 	func saveAction() {
-		if formIsValid() {
+		if self.validator.isValid() {
 			assignFormToEntity()
 			self.getItem().save()
 			

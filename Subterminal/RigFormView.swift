@@ -15,6 +15,7 @@ class RigFormView: UIView, UITextFieldDelegate {
 	var didSetupConstraints: Bool = false
 	var scrollView = UIScrollView.newAutoLayout()
 	var requiredBlock:((_: [Error]) -> Void)?
+	var validator = FormValidator()
 
 	//MARK: Properties
 	var containerManufacturer = TextFieldValidator()
@@ -73,6 +74,9 @@ class RigFormView: UIView, UITextFieldDelegate {
 		mainModel.setBottomBorder()
 		mainSerial.setBottomBorder()
 		mainDateInUse.setBottomBorder()
+		
+		validator.addRequiredField(field: containerManufacturer)
+		validator.addRequiredField(field: mainManufacturer)
 		
 		mainManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		mainModel.clearButtonMode = UITextFieldViewMode.whileEditing

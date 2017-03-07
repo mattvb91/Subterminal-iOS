@@ -14,9 +14,10 @@ class GearForm: Form {
 	public static let NOTIFICATION_NAME = "gear_data_changed"
 	
     override func viewDidLoad() {
-        super.viewDidLoad()
 		
 		self.formView = GearFormView.newAutoLayout()
+        super.viewDidLoad()
+		
 		self.navigationItem.title = "Edit Rig"
 		
 		if getItem().id != nil {
@@ -44,12 +45,13 @@ class GearForm: Form {
 		self.view.addSubview(getFormView())
     }
 	
-	override func getItem() -> Rig {
-		return (super.getItem() as? Rig)!
+	override func initFormValidation() {
+		self.validator.addRequiredField(field: self.getFormView().mainManufacturer)
+		self.validator.addRequiredField(field: self.getFormView().containerManufacturer)
 	}
 	
-	override func formIsValid() -> Bool {
-		return true
+	override func getItem() -> Rig {
+		return (super.getItem() as? Rig)!
 	}
 	
 	override func assignFormToEntity() {

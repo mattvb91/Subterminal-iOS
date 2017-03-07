@@ -15,8 +15,6 @@ import DropDown
 class JumpFormView: UIView, GMDatePickerDelegate {
 	
 	var didSetupConstraints: Bool = false
-	var requiredBlock:((_: [Error]) -> Void)?
-	
 	var scrollView = UIScrollView.newAutoLayout()
 	
 	var exitLabel = Label(text: "Exit")
@@ -65,14 +63,6 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 		datePicker.delegate = self
 		datePicker.config.startDate = NSDate() as Date
 		
-		requiredBlock = { [weak self] (errors: [Error]) -> Void in
-			if errors.first != nil {
-				//self?.containerManufacturer.layer.shadowColor = UIColor.red.cgColor
-			} else {
-				//self?.containerManufacturer.layer.shadowColor = UIColor.gray.cgColor
-			}
-		}
-		
 		exit.placeholder = "Search exits..."
 		exit.filterItems(Exit.getOptionsForSelect())
 		exit.maxNumberOfResults = 10
@@ -97,7 +87,6 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 		date.isUserInteractionEnabled =  true
 		date.addGestureRecognizer(dateGesture)
 
-		
 		delay.setBottomBorder()
 		delay.keyboardType = UIKeyboardType.numberPad
 		delay.placeholder = "5"
