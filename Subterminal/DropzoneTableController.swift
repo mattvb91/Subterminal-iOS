@@ -18,6 +18,8 @@ class DropzoneTableController: TableController, UISearchResultsUpdating, UISearc
 		self.canEditItems = false
 		self.tableView.rowHeight = 70
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: Dropzone.getNotificationName()), object: nil)
+		
 		configureSearchController()
 		
         super.viewDidLoad()

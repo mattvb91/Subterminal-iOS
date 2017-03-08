@@ -48,7 +48,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 		
 		images.contentScaleMode = UIViewContentMode.scaleAspectFill
 		images.slideshowInterval = 5
-		contentView.addSubview(images)
+		scrollView.addSubview(images)
 		
 		websiteLabel.text = "Website:"
 		websiteLabel.font = UIFont.boldSystemFont(ofSize: 16)
@@ -74,14 +74,14 @@ class DropzoneView: UIView, HTagViewDataSource {
 		dropzoneDescription.font = UIFont.systemFont(ofSize: 16)
 		
 		contentView.addSubview(dropzoneDescription)
-		contentView.addSubview(map)
+		scrollView.addSubview(map)
 		
 		tagview.dataSource = self
 		tagview.tagSecondBackColor = UIColor(red: 121/255, green: 196/255, blue: 1, alpha: 1)
 		
 		contentView.addSubview(tagview)
-		contentView.addSubview(shadowView)
-		contentView.sendSubview(toBack: shadowView)
+		scrollView.addSubview(shadowView)
+		scrollView.sendSubview(toBack: shadowView)
 		
 		contentView.isUserInteractionEnabled = true
 		scrollView.addSubview(contentView)
@@ -97,11 +97,18 @@ class DropzoneView: UIView, HTagViewDataSource {
 			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 
-			let size = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+			let fixedWidth = dropzoneDescription.frame.size.width
+			dropzoneDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			let newSize = dropzoneDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			var newFrame = dropzoneDescription.frame
+			newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+			dropzoneDescription.frame = newFrame;
+			
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 800 + newFrame.height)
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
-
-			if(images.superview === contentView) {
+			
+			if(images.superview === scrollView) {
 				images.autoPinEdge(.top, to: .top, of: contentView)
 				images.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 240))
 				websiteLabel.autoPinEdge(.top, to: .bottom, of: images, withOffset: 20)
@@ -133,7 +140,6 @@ class DropzoneView: UIView, HTagViewDataSource {
 			aircraft.autoPinEdge(.top, to: .top, of: aircraftLabel)
 			
 			dropzoneDescription.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 20)
-			dropzoneDescription.autoSetDimension(.height, toSize: dropzoneDescription.contentSize.height)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			dropzoneDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 10)
 			

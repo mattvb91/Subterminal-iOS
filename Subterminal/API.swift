@@ -89,6 +89,8 @@ class API: NSObject {
 						dropzone.updateAircraft(json: JSON(item))
 					}
 				}
+				
+				NotificationCenter.default.post(name: NSNotification.Name(rawValue: Dropzone.getNotificationName()), object: nil)
 			}
 		}
 	}
