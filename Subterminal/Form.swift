@@ -41,8 +41,7 @@ class Form: UIViewController, UITextFieldDelegate {
 			assignFormToEntity()
 			_ = self.getItem().save()
 			
-			let notificationName = type(of: self.getItem()).getNotificationName()
-			NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationName), object: nil)
+			self.getItem().sendModelNotification()
 			
 			cancelAction()
 		}
@@ -90,9 +89,5 @@ class Form: UIViewController, UITextFieldDelegate {
 	 */
 	func assignFormToEntity() {
 		fatalError("assignFormToEntity() not implemented")
-	}
-	
-	func getNotificationName() -> String {
-		fatalError("getNotificationName() not implemented")
 	}
 }

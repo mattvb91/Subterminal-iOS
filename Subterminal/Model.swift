@@ -17,7 +17,12 @@ class Model: SRKObject {
     }
 	
 	//Use this for subscribing to update events
-	static func getNotificationName() -> String {
-		return String(describing: type(of: self)) + "_notification"
+	class func getNotificationName() -> String {
+		return NSStringFromClass(self) + "_notification"
+	}
+	
+	func sendModelNotification() {
+		let notificationName = type(of: self).getNotificationName()
+		NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationName), object: nil)
 	}
 }

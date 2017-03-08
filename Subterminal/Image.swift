@@ -33,6 +33,8 @@ class Image: Synchronizable {
 			try? data.write(to: path)
 			image.filename = filename
 			_ = image.save()
+			
+			entity.sendModelNotification()
 		}
 	}
 	

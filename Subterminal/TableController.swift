@@ -147,10 +147,6 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 	func assignModelToController(controller: UIViewController) {
 		fatalError("assignModelToController() not implemented")
 	}
-
-	func getNotificationName() -> String {
-		fatalError("getNotificationName() not implemented")
-	}
 	
 	func getAssignedController() -> UIViewController {
 		fatalError("getAssignedController() not implemented")
