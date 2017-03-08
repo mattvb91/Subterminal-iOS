@@ -33,8 +33,10 @@ class SkydiveForm: Form {
 			getFormView().delay.text = getItem().delay?.description
 			getFormView().descriptionInput.text = getItem().skydive_description
 			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: getFormView().typeSelectedLabel)
+			getFormView().heightUnit.selectedSegmentIndex = Int(getItem().height_unit)
 		} else {
 			getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
+			getFormView().heightUnit.selectedSegmentIndex = Subterminal.heightUnit
 		}
 		
 		self.view.addSubview(self.formView!)
@@ -75,6 +77,8 @@ class SkydiveForm: Form {
 			getItem().jump_type = NSNumber(value: type)
 		}
 		
+		getItem().height_unit = getFormView().heightUnit.selectedSegmentIndex as! NSNumber
+	
 		getItem().cutaway = getFormView().cutaway.isOn ? 1 : 0
 		
 		let date = DateHelper.stringToDate(string: getFormView().dateSelectedLabel.text!)

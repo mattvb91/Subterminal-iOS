@@ -48,7 +48,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	var dropzone = SearchTextField()
 	
-	var heightUnit = HeightUnitView()
+	var heightUnit = UISegmentedControl(items: ["Metric (m)", "Imperial (ft)"])
 	
 	var scrollView = UIScrollView()
 	
@@ -139,8 +139,9 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		scrollView.addSubview(delayLabel)
 		scrollView.addSubview(descriptionLabel)
 		
+		heightUnit.selectedSegmentIndex = Subterminal.heightUnit
 		scrollView.addSubview(heightUnit)
-		
+
 		scrollView.addSubview(exitAlt)
 		scrollView.addSubview(deployAlt)
 		scrollView.addSubview(delay)

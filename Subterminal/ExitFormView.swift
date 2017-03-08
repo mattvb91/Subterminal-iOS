@@ -33,7 +33,7 @@ class ExitFormView: UIView {
 	
 	var name = UITextField()
 	var type = UILabel()
-	var heightUnit = HeightUnitView()
+	var heightUnit = UISegmentedControl(items: ["Metric (m)", "Imperial (ft)"])
 	var rockdrop = UITextField()
 	var altitudeToLanding = UITextField()
 	var exitDescription = UITextView()
@@ -86,6 +86,8 @@ class ExitFormView: UIView {
 		scrollView.addSubview(name)
 		scrollView.addSubview(type)
 		scrollView.addSubview(typeArrow)
+		
+		heightUnit.selectedSegmentIndex = Subterminal.heightUnit
 		scrollView.addSubview(heightUnit)
 		
 		exitDescription.font = UIFont.systemFont(ofSize: 16)
