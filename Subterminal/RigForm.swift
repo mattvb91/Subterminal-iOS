@@ -10,8 +10,6 @@ import Foundation
 
 class RigForm: Form {
 	
-	public static let NOTIFICATION_NAME = "rig_data_changed"
-	
 	override func viewDidLoad() {
 		self.formView = RigFormView.newAutoLayout()
 
@@ -59,10 +57,6 @@ class RigForm: Form {
 		if self.getFormView().mainDateInUse.text?.isEmpty == false {
 			self.getItem().canopy_date_in_use = DateHelper.stringToDate(string: self.getFormView().mainDateInUse.text!)
 		}
-	}
-	
-	override func getNotificationName() -> String {
-		return RigForm.NOTIFICATION_NAME
 	}
 	
 	override func getItem() -> BASERig {

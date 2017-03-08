@@ -10,8 +10,6 @@ import UIKit
 
 class SkydiveForm: Form {
 
-	public static let NOTIFICATION_NAME = "skydive_data_changed"
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,9 +90,5 @@ class SkydiveForm: Form {
 	
 	override func getFormView() -> SkydiveFormView {
 		return (super.getFormView() as? SkydiveFormView)!
-	}
-	
-	override func getNotificationName() -> String {
-		return SkydiveForm.NOTIFICATION_NAME
 	}
 }

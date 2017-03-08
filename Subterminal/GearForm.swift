@@ -11,8 +11,6 @@ import os.log
 
 class GearForm: Form {
 	
-	public static let NOTIFICATION_NAME = "gear_data_changed"
-	
     override func viewDidLoad() {
 		
 		self.formView = GearFormView.newAutoLayout()
@@ -74,9 +72,5 @@ class GearForm: Form {
 	
 	override func getFormView() -> GearFormView {
 		return super.getFormView() as! GearFormView
-	}
-	
-	override func getNotificationName() -> String {
-		return GearForm.NOTIFICATION_NAME
 	}
 }

@@ -18,7 +18,8 @@ class GearTableController: TableController {
 	
     override func viewDidLoad() {
 		self.canEditItems = false
-		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: SuitForm.NOTIFICATION_NAME), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: Suit.getNotificationName()), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: Rig.getNotificationName()), object: nil)
 
         super.viewDidLoad()
 		
@@ -84,11 +85,7 @@ class GearTableController: TableController {
 		
 		return super.loadData(notification: nil)
 	}
-	
-	override func getNotificationName() -> String {
-		return GearForm.NOTIFICATION_NAME
-	}
-	
+
 	override func getViewCellIdentifier() -> String {
 		return "rigTableViewCell"
 	}

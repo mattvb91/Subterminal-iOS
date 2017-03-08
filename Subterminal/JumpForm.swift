@@ -10,8 +10,6 @@ import Foundation
 
 class JumpForm: Form {
 	
-	public static let NOTIFICATION_NAME = "jump_data_changed"
-	
 	override func viewDidLoad() {
 		self.formView = JumpFormView.newAutoLayout()
 		super.viewDidLoad()
@@ -66,9 +64,4 @@ class JumpForm: Form {
 	override func getFormView() -> JumpFormView {
 		return (super.getFormView() as? JumpFormView)!
 	}
-	
-	override func getNotificationName() -> String {
-		return JumpForm.NOTIFICATION_NAME
-	}
-
 }

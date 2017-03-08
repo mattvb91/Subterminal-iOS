@@ -13,8 +13,6 @@ import SwiftSpinner
 
 class ExitForm: Form, CLLocationManagerDelegate {
 	
-	public static let NOTIFICATION_NAME = "exit_data_changed"
-	
 	var locationManager: CLLocationManager?
 	
 	override func viewDidLoad() {
@@ -96,12 +94,7 @@ class ExitForm: Form, CLLocationManagerDelegate {
 	
 	override func getFormView() -> ExitFormView {
 		return (super.getFormView() as? ExitFormView)!
-	}
-	
-	override func getNotificationName() -> String {
-		return ExitForm.NOTIFICATION_NAME
-	}
-	
+	}	
 	
 	func gpsAction(sender:UITapGestureRecognizer) {
 		locationManager = CLLocationManager()

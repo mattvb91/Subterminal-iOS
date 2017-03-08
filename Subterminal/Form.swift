@@ -39,9 +39,10 @@ class Form: UIViewController, UITextFieldDelegate {
 	func saveAction() {
 		if self.validator.isValid() {
 			assignFormToEntity()
-			self.getItem().save()
+			_ = self.getItem().save()
 			
-			NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.getNotificationName()), object: nil)
+			let notificationName = type(of: self.getItem()).getNotificationName()
+			NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationName), object: nil)
 			
 			cancelAction()
 		}

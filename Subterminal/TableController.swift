@@ -51,7 +51,8 @@ class TableController: UITableViewController, GADBannerViewDelegate {
         super.viewDidLoad()
 		
 		if(canEditItems) {
-			NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: self.getNotificationName()), object: nil)
+			let notificationName = type(of: self.getAssignedModel()).getNotificationName()
+			NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: notificationName), object: nil)
 			
 			let add = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
 			

@@ -17,9 +17,9 @@ class BaseGearTableController: TableController {
 	override func viewDidLoad() {
 
 		self.canEditItems = false
-		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: SuitForm.NOTIFICATION_NAME), object: nil)
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: self.getNotificationName()), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: Suit.getNotificationName()), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.loadData), name: NSNotification.Name(rawValue: BASERig.getNotificationName()), object: nil)
 		
 		super.viewDidLoad()
 		
@@ -86,11 +86,7 @@ class BaseGearTableController: TableController {
 		
 		return super.loadData(notification: nil)
 	}
-	
-	override func getNotificationName() -> String {
-		return RigForm.NOTIFICATION_NAME
-	}
-	
+
 	override func getViewCellIdentifier() -> String {
 		return "rigTableViewCell"
 	}

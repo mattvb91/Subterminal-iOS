@@ -57,10 +57,6 @@ class ExitsTableController: TableController {
 		}
 	}
 	
-	override func getNotificationName() -> String {
-		return ExitForm.NOTIFICATION_NAME
-	}
-	
 	override func getAssignedModel() -> Exit {
 		return Exit()
 	}

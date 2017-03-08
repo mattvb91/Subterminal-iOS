@@ -68,10 +68,6 @@ class SkydiveTableViewController: TableController {
 		self.navigationController?.pushViewController(skydiveController, animated: true)
 	}
 	
-	override func getNotificationName() -> String {
-		return SkydiveForm.NOTIFICATION_NAME
-	}
-	
 	override func getAssignedModel() -> Skydive {
 		return Skydive()
 	}

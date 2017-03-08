@@ -15,5 +15,9 @@ class Model: SRKObject {
     open func save() -> Bool {
         return super.commit()
     }
-    
+	
+	//Use this for subscribing to update events
+	static func getNotificationName() -> String {
+		return String(describing: type(of: self)) + "_notification"
+	}
 }

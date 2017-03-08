@@ -10,8 +10,6 @@ import Foundation
 
 class SuitForm: Form {
 	
-	public static let NOTIFICATION_NAME = "gear_data_changed"
-	
 	override func viewDidLoad() {
 		self.formView = SuitFormView.newAutoLayout()
 
@@ -55,9 +53,5 @@ class SuitForm: Form {
 	
 	override func getFormView() -> SuitFormView {
 		return super.getFormView() as! SuitFormView
-	}
-	
-	override func getNotificationName() -> String {
-		return GearForm.NOTIFICATION_NAME
 	}
 }

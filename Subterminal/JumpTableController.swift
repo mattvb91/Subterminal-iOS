@@ -38,10 +38,6 @@ class JumpTableController: TableController {
 		jumpForm?.item = self.getAssignedModel()
 	}
 	
-	override func getNotificationName() -> String {
-		return JumpForm.NOTIFICATION_NAME
-	}
-	
 	override func getAssignedController() -> JumpForm {
 		return JumpForm()
 	}
