@@ -29,6 +29,7 @@ class SkydiveForm: Form {
 			getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
 			getFormView().exitAlt.text = getItem().exit_altitude?.description
 			getFormView().deployAlt.text = getItem().deploy_altidude?.description
+			getFormView().cutaway.isOn = Bool(getItem().cutaway)
 			getFormView().delay.text = getItem().delay?.description
 			getFormView().descriptionInput.text = getItem().skydive_description
 			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: getFormView().typeSelectedLabel)
@@ -74,9 +75,7 @@ class SkydiveForm: Form {
 			getItem().jump_type = NSNumber(value: type)
 		}
 		
-		if getFormView().cutaway.isOn {
-			getItem().cutaway = 1
-		}
+		getItem().cutaway = getFormView().cutaway.isOn ? 1 : 0
 		
 		let date = DateHelper.stringToDate(string: getFormView().dateSelectedLabel.text!)
 		
