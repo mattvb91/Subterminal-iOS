@@ -84,25 +84,25 @@ class ExitView: UIView {
 		exitRules.isUserInteractionEnabled = false
 		exitRules.font = UIFont.systemFont(ofSize: 16)
 
-		contentView.addSubview(rockdropLabel)
-		contentView.addSubview(rockdropTimeLabel)
-		contentView.addSubview(altitudeToLandingLabel)
+		scrollView.addSubview(rockdropLabel)
+		scrollView.addSubview(rockdropTimeLabel)
+		scrollView.addSubview(altitudeToLandingLabel)
 		
 		rockdrop.font = UIFont.boldSystemFont(ofSize: 16)
 		rockdropTime.font = UIFont.boldSystemFont(ofSize: 16)
 		altitudeToLanding.font = UIFont.boldSystemFont(ofSize: 16)
 
-		contentView.addSubview(rockdrop)
-		contentView.addSubview(rockdropTime)
-		contentView.addSubview(altitudeToLanding)
+		scrollView.addSubview(rockdrop)
+		scrollView.addSubview(rockdropTime)
+		scrollView.addSubview(altitudeToLanding)
 
-		contentView.addSubview(exitInfo)
-		contentView.addSubview(exitRules)
+		scrollView.addSubview(exitInfo)
+		scrollView.addSubview(exitRules)
 		
-		contentView.addSubview(exitInfoLabel)
-		contentView.addSubview(exitRulesLabel)
+		scrollView.addSubview(exitInfoLabel)
+		scrollView.addSubview(exitRulesLabel)
 
-		contentView.addSubview(shadowView)
+		scrollView.addSubview(shadowView)
 		
 		trackingTitle.text = "Difficulty Tracking"
 		trackingTitle.font = UIFont.boldSystemFont(ofSize: 14)
@@ -142,15 +142,15 @@ class ExitView: UIView {
 		detailView.addSubview(difficultyWingsuitOverall)
 		detailView.addSubview(difficultyWingsuitOverallValue)
 		
-		contentView.addSubview(detailView)
-		contentView.addSubview(map)
-		contentView.sendSubview(toBack: shadowView)
+		scrollView.addSubview(detailView)
+		scrollView.addSubview(map)
+		scrollView.sendSubview(toBack: shadowView)
 
 		scrollView.alwaysBounceVertical = true
 		scrollView.isScrollEnabled = true
 		scrollView.isUserInteractionEnabled = true
-		contentView.isUserInteractionEnabled = true
 		scrollView.addSubview(contentView)
+		scrollView.sendSubview(toBack: contentView)
 
 		self.addSubview(scrollView)
 		
@@ -166,15 +166,30 @@ class ExitView: UIView {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+
+			let fixedWidth = exitRules.frame.size.width
+			exitRules.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			let newSize = exitRules.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			var newFrame = exitRules.frame
+			newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+			exitRules.frame = newFrame;
 			
-			if detailView.superview == contentView {
-				let size = CGSize(width: UIScreen.main.bounds.width, height: 900)
+			let fixedWidthInfo = exitInfo.frame.size.width
+			exitInfo.sizeThatFits(CGSize(width: fixedWidthInfo, height: CGFloat.greatestFiniteMagnitude))
+			let newSizeInfo = exitInfo.sizeThatFits(CGSize(width: fixedWidthInfo, height: CGFloat.greatestFiniteMagnitude))
+			var newFrameInfo = exitInfo.frame
+			newFrameInfo.size = CGSize(width: max(newSizeInfo.width, fixedWidthInfo), height: newSizeInfo.height)
+			exitInfo.frame = newFrameInfo;
+
+			if detailView.superview == scrollView {
+				let size = CGSize(width: UIScreen.main.bounds.width, height: 900 + newFrame.height)
 				scrollView.contentSize = size
 				contentView.autoSetDimensions(to: size)
 				scrollView.autoSetDimensions(to: size)
 			} else {
-				let size = CGSize(width: UIScreen.main.bounds.width, height: 700)
+				let size = CGSize(width: UIScreen.main.bounds.width, height: 700 + newFrame.height)
 				scrollView.contentSize = size
+				contentView.autoSetDimensions(to: size)
 				scrollView.autoSetDimensions(to: size)
 			}
 			
@@ -204,7 +219,7 @@ class ExitView: UIView {
 			exitInfo.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
 			exitInfo.autoPinEdge(.left, to: .left, of: exitInfoLabel)
 			
-			if exitRules.superview == contentView {
+			if exitRules.superview == scrollView {
 				exitRulesLabel.autoPinEdge(.top, to: .bottom, of: exitInfo, withOffset: 20)
 				exitRulesLabel.autoPinEdge(.left, to: .left, of: exitInfoLabel)
 			
@@ -218,17 +233,17 @@ class ExitView: UIView {
 			}
 			
 			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 15)
-			shadowView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 8)
-			shadowView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -8)
+			shadowView.autoPinEdge(.left, to: .left, of: self.superview!, withOffset: 8)
+			shadowView.autoPinEdge(.right, to: .right, of: self.superview!, withOffset: -8)
 			
-			if detailView.superview == contentView {
+			if detailView.superview == scrollView {
 				detailView.autoPinEdge(.top, to: .bottom, of: shadowView, withOffset: 20)
 				detailView.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width, height: 320))
 				
 				detailShadowView.autoPinEdge(.top, to: .top, of: detailView)
 				detailShadowView.autoPinEdge(.bottom, to: .bottom, of: detailView)
-				detailShadowView.autoPinEdge(.left, to: .left, of: contentView, withOffset: 8)
-				detailShadowView.autoPinEdge(.right, to: .right, of: contentView, withOffset: -8)
+				detailShadowView.autoPinEdge(.left, to: .left, of: self.superview!, withOffset: 8)
+				detailShadowView.autoPinEdge(.right, to: .right, of: self.superview!, withOffset: -8)
 				
 				trackingTitle.autoPinEdge(.top, to: .top, of: detailShadowView, withOffset: 20)
 				trackingTitle.autoPinEdge(.left, to: .left, of: detailShadowView, withOffset: 20)
