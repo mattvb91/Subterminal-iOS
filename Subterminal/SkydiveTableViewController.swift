@@ -21,7 +21,7 @@ class SkydiveTableViewController: TableController {
     }
 
 	override func fetchQuery() -> SRKQuery {
-		return super.fetchQuery().order(byDescending: "date")
+		return super.fetchQuery().order(byDescending: "date, id")
 	}
 
 	override func getViewCellIdentifier() -> String {

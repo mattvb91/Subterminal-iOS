@@ -67,11 +67,11 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 	func setExitsData() {
 		var vals = [PieChartDataEntry]()
 		
-		let buildings = Exit.query().where(withFormat: "object_type = %@", withParameters: [Exit.TYPE_BUILDING]).count()
-		let antenna = Exit.query().where(withFormat: "object_type = %@", withParameters: [Exit.TYPE_ANTENNA]).count()
-		let span = Exit.query().where(withFormat: "object_type = %@", withParameters: [Exit.TYPE_SPAN]).count()
-		let earth = Exit.query().where(withFormat: "object_type = %@", withParameters: [Exit.TYPE_EARTH]).count()
-		let other = Exit.query().where(withFormat: "object_type = %@", withParameters: [Exit.TYPE_OTHER]).count()
+		let buildings = Exit.query().where(withFormat: "object_type = %@ AND global_id IS NULL", withParameters: [Exit.TYPE_BUILDING]).count()
+		let antenna = Exit.query().where(withFormat: "object_type = %@  AND global_id IS NULL", withParameters: [Exit.TYPE_ANTENNA]).count()
+		let span = Exit.query().where(withFormat: "object_type = %@  AND global_id IS NULL", withParameters: [Exit.TYPE_SPAN]).count()
+		let earth = Exit.query().where(withFormat: "object_type = %@  AND global_id IS NULL", withParameters: [Exit.TYPE_EARTH]).count()
+		let other = Exit.query().where(withFormat: "object_type = %@  AND global_id IS NULL", withParameters: [Exit.TYPE_OTHER]).count()
 		
 		if buildings > 0 {
 			vals.append(PieChartDataEntry(value: Double(buildings), label: "Buildings"))
