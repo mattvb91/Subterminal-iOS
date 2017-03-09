@@ -32,7 +32,7 @@ class Dropzone: Model {
 	var services: [String]?
 	
 	class func build(json: JSON) -> Dropzone {
-		var dropzone = Dropzone()
+		let dropzone = Dropzone()
 		
 		dropzone.id = json["id"].intValue as NSNumber!
 		dropzone.dropzone_description = json["description"].string
@@ -45,12 +45,13 @@ class Dropzone: Model {
 		dropzone.country = json["country"].string
 		dropzone.latitude = json["latitude"].doubleValue
 		dropzone.longtitude = json["longtitude"].doubleValue
+		dropzone.featured = json["featured"].numberValue
 		
 		return dropzone
 	}
 	
 	func updateAircraft(json: JSON) {
-		var items = json["dropzone_aircraft"].array
+		let items = json["dropzone_aircraft"].array
 		
 		for item in items! {
 			let aircraft_id = item["aircraft_id"].intValue
@@ -59,7 +60,7 @@ class Dropzone: Model {
 				let dzAircraft = DzAircraft()
 				dzAircraft.dropzone_id = self.id
 				dzAircraft.aircraft_id = aircraft_id as NSNumber?
-				dzAircraft.save()
+				_ = dzAircraft.save()
 			}
 		}
 	}

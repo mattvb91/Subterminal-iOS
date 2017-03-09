@@ -132,7 +132,7 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 			let item = items.object(at: indexPath.row) as? Model
 			item?.remove()
 			
-			items = type(of: getAssignedModel()).query().fetch()
+			items = self.fetchQuery().fetch()
 			tableView.deleteRows(at: [indexPath], with: .fade)
 			
 		} else if editingStyle == .insert {
