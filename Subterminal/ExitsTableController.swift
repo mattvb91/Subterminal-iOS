@@ -91,6 +91,14 @@ class ExitsTableController: TableController {
 		return cell
 	}
 	
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+		if self.canEditItems && indexPath.section == 0 {
+			return UITableViewCellEditingStyle.delete
+		}
+		
+		return UITableViewCellEditingStyle.none
+	}
+	
 	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let controller = ExitViewController()
 		

@@ -70,7 +70,7 @@ class Dropzone: Model {
 	}
 	
 	func getFormattedAircrafts() -> String {
-		let dzAircrafts = DzAircraft.query().where(withFormat: "dropzone_id = %@", withParameters: [self.id]).fetch() as? SRKResultSet
+		let dzAircrafts = DzAircraft.query().where(withFormat: "dropzone_id = %@", withParameters: [self.id]).fetch()
 		
 		var result = ""
 		for dzAircraft in dzAircrafts! {
@@ -87,7 +87,7 @@ class Dropzone: Model {
 		var results = [SearchTextFieldItem]()
 		
 		for item in Dropzone.query().fetch() as SRKResultSet {
-			var item = item as! Dropzone
+			let item = item as! Dropzone
 			results.append(SearchTextFieldItem(title: item.name!, subtitle: item.id.description))
 		}
 		
