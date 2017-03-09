@@ -9,6 +9,7 @@
 import UIKit
 //import FBSDKLoginKit
 import Charts
+import SharkORM
 
 class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 
@@ -19,6 +20,10 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		
 		self.view.backgroundColor = UIColor.lightGray
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Skydive.getNotificationName()), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Jump.getNotificationName()), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Exit.getNotificationName()), object: nil)
+
 		/*
 		dashboardView.loginView.readPermissions = ["public_profile", "email", "user_friends"]
 		dashboardView.loginView.delegate = self
@@ -28,8 +33,8 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		
 		dashboardView.skydiveCount.text = Skydive.query().count().description
 		dashboardView.baseCount.text = Jump.query().count().description
-		dashboardView.dropzonesCount.text = Dropzone.query().count().description
-		dashboardView.exitCount.text = Exit.query().count().description
+		dashboardView.dropzonesCount.text = Skydive.query().group(by:"dropzone_id").count.description
+		dashboardView.exitCount.text = Exit.query().where("global_id IS NULL").count().description
 
 		self.setPullheightData()
 		self.setExitsData()
