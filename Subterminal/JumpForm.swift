@@ -42,6 +42,24 @@ class JumpForm: Form {
 		
 		if getFormView().exitId != nil {
 			self.getItem().exit_id = NSNumber(value: getFormView().exitId!)
+			
+			let exit = Exit.object(withPrimaryKeyValue: getFormView().exitId as NSObject!) as! Exit
+			
+			if exit.isGlobal() {
+				exit.global_id = nil
+				_ = exit.save()
+				
+				exit.sendModelNotification()
+			}
+		} else {
+			let exit = Exit()
+			exit.name = getFormView().exit.text
+			exit.object_type = Exit.TYPE_OTHER as NSNumber?
+			_ = exit.save()
+			
+			exit.sendModelNotification()
+
+			self.getItem().exit_id = exit.id
 		}
 		
 		self.getItem().type = NSNumber(value: getFormView().typeDropdown.getKeyForDataFromSelectedRow(data: Jump.jump_type)!)

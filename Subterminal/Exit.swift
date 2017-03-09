@@ -183,4 +183,29 @@ class Exit: Synchronizable {
 		
 		return self.details
 	}
+	
+	private var _jumps: SRKResultSet?
+	
+	func getJumps() -> SRKResultSet {
+		if self._jumps == nil {
+			self._jumps = Jump.query().where(withFormat: "exit_id = %@", withParameters: [self.id]).fetch()
+		}
+		
+		return self._jumps!
+	}
+	
+	//Make sure we update any associated jumps
+	override func remove() -> Bool {
+		for jump in self.getJumps() {
+			let jump = jump as! Jump
+			jump.exit_id = nil
+			_ = jump.save()
+		}
+		
+		if getJumps().count > 0 {
+			(self.getJumps()[0] as! Jump).sendModelNotification()
+		}
+		
+		return super.remove()
+	}
 }
