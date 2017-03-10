@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import SharkORM
 
 class Suit: Synchronizable {
 	
@@ -75,6 +76,19 @@ class Suit: Synchronizable {
 		return Suit.types[(self.type?.intValue)!]!
 	}
 	
+	//Return all available suits for
+	static func getOptionsForSelect(type: Int) -> [String] {
+		let suits = Suit.query().where(withFormat: "type = %@", withParameters: [type]).fetch() as SRKResultSet
+		
+		var res = [String]()
+		for suit in suits {
+			let suit = suit as! Suit
+			let viewString = suit.manufacturer! + " / " + suit.model!
+			res.append(suit.id.description + " - " + viewString)
+		}
+
+		return res
+	}
 	
 
 }

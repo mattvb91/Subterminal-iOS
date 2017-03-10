@@ -29,4 +29,15 @@ extension DropDown {
 		
 		return nil
 	}
+	
+	func parseIdFromSelection() -> Int {
+		var item = self.selectedItem?.components(separatedBy: "-")[0]
+		item = item?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+		
+		return Int(item!)!
+	}
+}
+
+class DropdownKeyCell: DropDownCell {
+	var key: Int?
 }

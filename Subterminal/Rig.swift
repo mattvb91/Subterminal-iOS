@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SharkORM
 
 class Rig: Synchronizable {
 	
@@ -74,5 +75,58 @@ class Rig: Synchronizable {
 
 		return rig
 	}
+	
+	static func getRigs() -> [Int: String] {
+		let rigs = Rig.query().fetch() as SRKResultSet
+
+		var res = [Int: String]()
+		
+		for rig in rigs {
+			let rig = rig as! Rig
+			let displayString = rig.container_manufacturer! + " / " + rig.main_manufacturer! + " " + rig.main_model!
+			res[Int(rig.id)] = rig.id.description + " - " + displayString
+		}
+		
+		return res
+	}
+	
+	//Return all available rigs
+	static func getOptionsForSelect() -> [String] {
+		let rigs = getRigs()
+		
+		var res = [String]()
+		res.append(" - ")
+		for rig in rigs as NSDictionary {
+			res.append(rig.value as! String)
+		}
+		
+		return res
+	}
+	
+	private var _skydives: SRKResultSet?
+	
+	func getSkydives() -> SRKResultSet {
+		if self._skydives == nil {
+			self._skydives = Skydive.query().where(withFormat: "rig_id = %@", withParameters: [self.id]).fetch()
+		}
+		
+		return self._skydives!
+	}
+	
+	//Make sure we update any associated jumps
+	override func remove() -> Bool {
+		for skydive in self.getSkydives() {
+			let skydive = skydive as! Skydive
+			skydive.rig_id = nil
+			_ = skydive.save()
+		}
+		
+		if getSkydives().count > 0 {
+			(self.getSkydives()[0] as! Skydive).sendModelNotification()
+		}
+		
+		return super.remove()
+	}
+
 	
 }

@@ -24,7 +24,11 @@ class SkydiveForm: Form {
 			}
 			
 			getFormView().dateSelectedLabel.text = DateHelper.dateToString(date: getItem().date!)
-			getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
+			
+			if getItem().aircraft_id != nil {
+				getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
+			}
+			
 			getFormView().exitAlt.text = getItem().exit_altitude?.description
 			getFormView().deployAlt.text = getItem().deploy_altidude?.description
 			getFormView().cutaway.isOn = Bool(getItem().cutaway)
@@ -32,6 +36,11 @@ class SkydiveForm: Form {
 			getFormView().descriptionInput.text = getItem().skydive_description
 			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: getFormView().typeSelectedLabel)
 			getFormView().heightUnit.selectedSegmentIndex = Int(getItem().height_unit)
+			
+			if getItem().rig_id != nil {
+				getFormView().rig.selectRowForDataSourceWithKey(key: Int(getItem().rig_id!), data: Rig.getRigs(), label: getFormView().rigSelectedLabel)
+			}
+			
 		} else {
 			getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
 			getFormView().heightUnit.selectedSegmentIndex = Subterminal.heightUnit
@@ -73,6 +82,12 @@ class SkydiveForm: Form {
 			let type = Skydive.getKeysForTypes()[selectedType!]
 			
 			getItem().jump_type = NSNumber(value: type)
+		}
+		
+		if getFormView().rig.indexForSelectedRow != nil && getFormView().rig.selectedItem != " - " {
+			getItem().rig_id = getFormView().rig.parseIdFromSelection() as NSNumber?
+		} else {
+			getItem().rig_id = nil
 		}
 		
 		getItem().height_unit = getFormView().heightUnit.selectedSegmentIndex as! NSNumber

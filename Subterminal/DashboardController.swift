@@ -107,7 +107,7 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		var yVals = [ChartDataEntry]()
 		
 		var i = 0
-		for skydive in (skydives?.reversed())! {
+		for skydive in skydives! {
 			if (skydive as! Skydive).deploy_altidude != nil {
 				yVals.append(ChartDataEntry(x: Double(i), y: Double((skydive as! Skydive).deploy_altidude!)))
 				i += 1

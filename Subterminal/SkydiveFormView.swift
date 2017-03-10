@@ -29,11 +29,13 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	var aircraft = DropDown()
 	var type = DropDown()
+	var rig = DropDown()
 	
 	var dropzoneId: Int?
 	
 	var aircraftSelectedLabel = UILabel()
 	var typeSelectedLabel = UILabel()
+	var rigSelectedLabel = UILabel()
 
 	var exitAlt = UITextField()
 	var deployAlt = UITextField()
@@ -52,6 +54,11 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	var scrollView = UIScrollView()
 	
+	var arrow = UIImage(named: "arrow_down")
+	var aircraftArrow = UIImageView()
+	var typeArrow = UIImageView()
+	var rigArrow = UIImageView()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -64,6 +71,14 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		delay.setBottomBorder()
 		delay.placeholder = "60"
 		
+		aircraftArrow.image = arrow
+		typeArrow.image = arrow
+		rigArrow.image = arrow
+		
+		scrollView.addSubview(aircraftArrow)
+		scrollView.addSubview(typeArrow)
+		scrollView.addSubview(rigArrow)
+
 		datePicker.delegate = self
 		datePicker.config.startDate = NSDate() as Date
 		
@@ -107,7 +122,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		aircraftSelectedLabel.addGestureRecognizer(tapGesture)
 		
 		typeSelectedLabel.text = " - select -"
-		
+
 		type.selectionAction = { [unowned self] (index: Int, item: String) in
 			self.typeSelectedLabel.text = self.type.selectedItem
 		}
@@ -118,6 +133,19 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		typeSelectedLabel.addGestureRecognizer(typeGesture)
 		type.dataSource = Skydive.getTypesForSelect()
 		type.anchorView = typeSelectedLabel
+		
+		rig.anchorView = rigSelectedLabel
+		rig.dataSource = Rig.getOptionsForSelect()
+		
+		rig.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.rigSelectedLabel.text = item
+		}
+		
+		rigSelectedLabel.text = rig.dataSource[0]
+		let rigGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapRig))
+		rigGesture.numberOfTapsRequired = 1
+		rigSelectedLabel.isUserInteractionEnabled =  true
+		rigSelectedLabel.addGestureRecognizer(rigGesture)
 		
 		exitAlt.keyboardType = UIKeyboardType.numberPad
 		deployAlt.keyboardType = UIKeyboardType.numberPad
@@ -131,6 +159,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		scrollView.addSubview(dateLabel)
 		scrollView.addSubview(aircraftLabel)
 		scrollView.addSubview(rigLabel)
+		scrollView.addSubview(rigSelectedLabel)
 		scrollView.addSubview(typeLabel)
 		scrollView.addSubview(heightUnitLabel)
 		scrollView.addSubview(cutawayLabel)
@@ -191,17 +220,26 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			aircraftSelectedLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 8)
 			aircraftSelectedLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
+			aircraftArrow.autoPinEdge(.left, to: .right, of: aircraftSelectedLabel, withOffset: 5)
+			aircraftArrow.autoPinEdge(.top, to: .top, of: aircraftSelectedLabel, withOffset: 10)
 			
 			rigLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 40)
 			rigLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			rigLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
+			
+			rigSelectedLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 8)
+			rigSelectedLabel.autoPinEdge(.left, to: .left, of: rigLabel)
+			rigArrow.autoPinEdge(.left, to: .right, of: rigSelectedLabel, withOffset: 5)
+			rigArrow.autoPinEdge(.top, to: .top, of: rigSelectedLabel, withOffset: 10)
 			
 			typeLabel.autoPinEdge(.left, to: .left, of: aircraftLabel)
 			typeLabel.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 40)
 			
 			typeSelectedLabel.autoPinEdge(.left, to: .left, of: typeLabel)
 			typeSelectedLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 8)
-			
+			typeArrow.autoPinEdge(.left, to: .right, of: typeSelectedLabel, withOffset: 5)
+			typeArrow.autoPinEdge(.top, to: .top, of: typeSelectedLabel, withOffset: 10)
+
 			heightUnitLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 40)
 			heightUnitLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)
 			heightUnitLabel.autoSetDimensions(to: CGSize(width: 100, height: 22))
@@ -255,6 +293,10 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 	
 	func tapType(recognizer: UITapGestureRecognizer) {
 		type.show()
+	}
+	
+	func tapRig(recognizer: UITapGestureRecognizer) {
+		rig.show()
 	}
 	
 	func tapDate(recognizer: UITapGestureRecognizer) {
