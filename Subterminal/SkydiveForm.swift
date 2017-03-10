@@ -26,7 +26,7 @@ class SkydiveForm: Form {
 			getFormView().dateSelectedLabel.text = DateHelper.dateToString(date: getItem().date!)
 			
 			if getItem().aircraft_id != nil {
-				getFormView().aircraftSelectedLabel.text = getItem().aircraft()?.name
+				getFormView().aircraft.selectRowForDataSourceWithKey(key: Int(getItem().aircraft_id!), data: Aircraft.getAircrafts(), label: getFormView().aircraftSelectedLabel)
 			}
 			
 			getFormView().exitAlt.text = getItem().exit_altitude?.description
@@ -69,9 +69,9 @@ class SkydiveForm: Form {
 		
 		getItem().skydive_description = getFormView().descriptionInput.text
 		
-		let aircraft = getFormView().aircraft.selectedItem
-		let aircraftDB = Aircraft.query().where(withFormat: "name = %@", withParameters: [aircraft]).fetch().firstObject as? Aircraft
-		getItem().aircraft_id = aircraftDB?.id
+		if getFormView().aircraft.indexForSelectedRow != nil {
+			getItem().aircraft_id = getFormView().aircraft.getKeyForDataFromSelectedRow(data: Aircraft.getAircrafts()) as NSNumber?
+		}
 		
 		if getFormView().dropzoneId != nil {
 			getItem().dropzone_id = NSNumber(value: getFormView().dropzoneId!)

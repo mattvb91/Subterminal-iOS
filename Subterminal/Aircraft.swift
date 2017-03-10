@@ -12,14 +12,23 @@ import SharkORM
 class Aircraft: Model {
 	dynamic var name: String?
 	
+	static func getAircrafts() -> [Int: String] {
+		let aircrafts = Aircraft.query().fetch()
+		var res = [Int: String]()
+		
+		for aircraft in aircrafts! {
+			let aircraft = aircraft as! Aircraft
+			res[Int(aircraft.id)] = aircraft.name
+		}
+		
+		return res
+	}
+	
 	static func getForSelect() -> [String] {
-		
 		var results = [String]()
-		let items = Aircraft.query().fetch()
 		
-		for item in items! {
-			let item = item as? Aircraft
-			results.append((item?.name!)!)
+		for item in getAircrafts() {
+			results.append(item.value)
 		}
 		
 		return results
