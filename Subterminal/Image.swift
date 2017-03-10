@@ -27,8 +27,10 @@ class Image: Synchronizable {
 		image.entity_id = entity.id
 		
 		if let data = UIImagePNGRepresentation(uiImage) {
+			let randomNum:UInt32 = arc4random_uniform(1000)
+
 			let docDir = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-			let filename = entity.id.description + "_" + (image.entity_type?.description)! + ".copy.png"
+			let filename = entity.id.description + "_" + (image.entity_type?.description)! + "_" + Int(randomNum).description + ".png"
 			let path = docDir.appendingPathComponent(filename)
 			try? data.write(to: path)
 			image.filename = filename

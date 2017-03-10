@@ -15,6 +15,7 @@ class SkydiveView: UIView {
 	var skydive: Skydive?
 	
 	var didSetupConstraints: Bool = false
+	var scrollView = UIScrollView()
 
 	var shadowView = ShadowView()
 
@@ -83,28 +84,28 @@ class SkydiveView: UIView {
 		imageButton.layer.cornerRadius = 5
 		imageButton.layer.borderColor = UIColor.lightGray.cgColor
 		imageButton.addGestureRecognizer(imageTap)
-		self.addSubview(imageButton)
+		scrollView.addSubview(imageButton)
 		
-		self.addSubview(dropzoneLabel)
-		self.addSubview(rigLabel)
-		self.addSubview(aircraftLabel)
-		self.addSubview(typeLabel)
-		self.addSubview(exitAltLabel)
-		self.addSubview(deployAltLabel)
-		self.addSubview(delayLabel)
+		scrollView.addSubview(dropzoneLabel)
+		scrollView.addSubview(rigLabel)
+		scrollView.addSubview(aircraftLabel)
+		scrollView.addSubview(typeLabel)
+		scrollView.addSubview(exitAltLabel)
+		scrollView.addSubview(deployAltLabel)
+		scrollView.addSubview(delayLabel)
 		
-		self.addSubview(aircraft)
-		self.addSubview(exitAlt)
-		self.addSubview(deployAlt)
-		self.addSubview(delay)
-		self.addSubview(type)
-		self.addSubview(dropzone)
-		self.addSubview(rig)
+		scrollView.addSubview(aircraft)
+		scrollView.addSubview(exitAlt)
+		scrollView.addSubview(deployAlt)
+		scrollView.addSubview(delay)
+		scrollView.addSubview(type)
+		scrollView.addSubview(dropzone)
+		scrollView.addSubview(rig)
 
-		self.addSubview(skydiveDescription)
+		scrollView.addSubview(skydiveDescription)
 		
-		self.addSubview(shadowView)
-		self.sendSubview(toBack: shadowView)
+		scrollView.addSubview(shadowView)
+		scrollView.sendSubview(toBack: shadowView)
 		
 		images.contentScaleMode = UIViewContentMode.scaleAspectFill
 		images.slideshowInterval = 5
@@ -112,6 +113,9 @@ class SkydiveView: UIView {
 		let imageFullscreen = UITapGestureRecognizer(target: self, action: #selector(openImageFullscreen))
 		images.addGestureRecognizer(imageFullscreen)
 		
+		scrollView.isUserInteractionEnabled = true
+		scrollView.alwaysBounceVertical = true
+		self.addSubview(scrollView)
 		
 		self.setNeedsUpdateConstraints()
 	}
@@ -139,10 +143,15 @@ class SkydiveView: UIView {
 	override func updateConstraints() {
 		if(!didSetupConstraints) {
 			self.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
+			
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 750)
+			scrollView.contentSize = size
+			scrollView.autoSetDimensions(to: size)
 
-			shadowView.autoPinEdge(toSuperviewEdge: .top, withInset: 75)
-			shadowView.autoPinEdge(toSuperviewEdge: .left, withInset: 5)
-			shadowView.autoPinEdge(toSuperviewEdge: .right, withInset: 5)
+			shadowView.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 20)
+			shadowView.autoPinEdge(.left, to: .left, of: superview!, withOffset: 5)
+			shadowView.autoPinEdge(.right, to: .right, of: superview!, withOffset: 5)
 			
 			dropzoneLabel.autoPinEdge(.top, to: .top, of: shadowView, withOffset: 15)
 			dropzoneLabel.autoPinEdge(.left, to: .left, of: shadowView, withOffset: 10)
