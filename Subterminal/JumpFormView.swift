@@ -154,6 +154,16 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 		sliderDropdown.anchorView = slider
 
 		rig.text = "- Select - "
+		rigDropdown.selectionAction = { [unowned self] (index: Int, item: String) in
+			self.rig.text = item
+		}
+		
+		let rigGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapRig))
+		rigGesture.numberOfTapsRequired = 1
+		rig.isUserInteractionEnabled =  true
+		rig.addGestureRecognizer(rigGesture)
+		rigDropdown.dataSource = BASERig.getOptionsForSelect()
+		rigDropdown.anchorView = rig
 
 		scrollView.addSubview(type)
 		scrollView.addSubview(pc)
@@ -259,6 +269,10 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 	
 	func tapSlider(recognizer: UITapGestureRecognizer) {
 		sliderDropdown.show()
+	}
+
+	func tapRig(recognizer: UITapGestureRecognizer) {
+		rigDropdown.show()
 	}
 
 	func tapDate(recognizer: UITapGestureRecognizer) {

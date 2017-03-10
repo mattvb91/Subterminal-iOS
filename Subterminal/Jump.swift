@@ -132,4 +132,11 @@ class Jump: Synchronizable {
 		return nil
 	}
 
+	func rig() -> BASERig? {
+		if self.gear_id != nil, self.gear_id?.intValue != 0 {
+			return BASERig.object(withPrimaryKeyValue: self.gear_id) as! BASERig
+		}
+		
+		return nil
+	}
 }

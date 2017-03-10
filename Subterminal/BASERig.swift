@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import SharkORM
 
 class BASERig: Synchronizable {
 	
@@ -53,6 +54,62 @@ class BASERig: Synchronizable {
 		rig.canopy_date_in_use = DateHelper.stringToDate(string: json["canopy_date_in_use"].string!)
 
 		return rig
+	}
+	
+	func getDisplayString() -> String {
+		return self.container_manufacturer! + " / " + self.canopy_manufacturer! + " " + self.canopy_type!
+	}
+
+	static func getRigs() -> [Int: String] {
+		let rigs = BASERig.query().fetch() as SRKResultSet
+		
+		var res = [Int: String]()
+		
+		for rig in rigs {
+			let rig = rig as! BASERig
+			let displayString = rig.container_manufacturer! + " / " + rig.canopy_manufacturer! + " " + rig.canopy_type!
+			res[Int(rig.id)] = rig.id.description + " - " + displayString
+		}
+		
+		return res
+	}
+	
+	//Return all available rigs
+	static func getOptionsForSelect() -> [String] {
+		let rigs = getRigs()
+		
+		var res = [String]()
+		res.append(" - ")
+		for rig in rigs as NSDictionary {
+			res.append(rig.value as! String)
+		}
+		
+		return res
+	}
+	
+	private var _jumps: SRKResultSet?
+	
+	func getJumps() -> SRKResultSet {
+		if self._jumps == nil {
+			self._jumps = Jump.query().where(withFormat: "gear_id = %@", withParameters: [self.id]).fetch()
+		}
+		
+		return self._jumps!
+	}
+	
+	//Make sure we update any associated jumps
+	override func remove() -> Bool {
+		for jump in self.getJumps() {
+			let jump = jump as! Jump
+			jump.gear_id = nil
+			_ = jump.save()
+		}
+		
+		if getJumps().count > 0 {
+			(self.getJumps()[0] as! Jump).sendModelNotification()
+		}
+		
+		return super.remove()
 	}
 
 }

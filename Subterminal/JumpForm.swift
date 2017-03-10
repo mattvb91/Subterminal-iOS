@@ -26,6 +26,11 @@ class JumpForm: Form {
 
 			self.getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Int(getItem().type!), data: Jump.jump_type, label: getFormView().type)
 			self.getFormView().sliderDropdown.selectRowForDataSourceWithKey(key: Int(getItem().slider!), data: Jump.slider_config, label: getFormView().slider)
+			
+			if getItem().gear_id != nil {
+				self.getFormView().rigDropdown.selectRowForDataSourceWithKey(key: Int(getItem().gear_id!), data: BASERig.getRigs(), label: getFormView().rig)
+			}
+			
 		} else {
 			self.getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Jump.TYPE_SLICK, data: Jump.jump_type, label: getFormView().type)
 			self.getFormView().sliderDropdown.selectRowForDataSourceWithKey(key: Jump.SLIDER_UP, data: Jump.slider_config, label: getFormView().slider)
@@ -70,6 +75,12 @@ class JumpForm: Form {
 		
 		if getFormView().delay.text?.isEmpty == false {
 			self.getItem().delay = NSNumber(value: Int(getFormView().delay.text!)!)
+		}
+		
+		if getFormView().rigDropdown.indexForSelectedRow != nil && getFormView().rigDropdown.selectedItem != " - " {
+			getItem().gear_id = getFormView().rigDropdown.parseIdFromSelection() as NSNumber?
+		} else {
+			getItem().gear_id = nil
 		}
 		
 		self.getItem().jump_description = getFormView().jumpDescription.text

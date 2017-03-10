@@ -31,7 +31,8 @@ class JumpViewController: UIViewController, ImagePickerDelegate {
 		jumpView.jumpDescription.sizeToFit()
 		jumpView.type.text = item.getFormattedType()
 		jumpView.jump = item
-			
+		jumpView.rig.text = item.rig()?.getDisplayString()
+		
 		loadImages()
 		
 		self.view.addSubview(jumpView)
