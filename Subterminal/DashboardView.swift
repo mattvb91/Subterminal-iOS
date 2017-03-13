@@ -51,13 +51,13 @@ class DashboardView: UIView {
 		self.backgroundColor = UIColor.white
 		
 		skydiveLabel.text = "Skydives"
-		skydiveLabel.font = UIFont.boldSystemFont(ofSize: 14)
+		skydiveLabel.font = UIFont.boldSystemFont(ofSize: 13)
 		baseLabel.text = "B.A.S.E"
-		baseLabel.font = UIFont.boldSystemFont(ofSize: 14)
+		baseLabel.font = UIFont.boldSystemFont(ofSize: 13)
 		dropzoneLabel.text = "Dropzones"
-		dropzoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
+		dropzoneLabel.font = UIFont.boldSystemFont(ofSize: 13)
 		exitLabel.text = "Exits"
-		exitLabel.font = UIFont.boldSystemFont(ofSize: 14)
+		exitLabel.font = UIFont.boldSystemFont(ofSize: 13)
 		
 		skydiveCount.font = UIFont.boldSystemFont(ofSize: 30)
 		baseCount.font = UIFont.boldSystemFont(ofSize: 30)
@@ -135,9 +135,9 @@ class DashboardView: UIView {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			var shadowSizes = CGSize(width: 75, height: 60)
+			let shadowSizes = CGSize(width: UIScreen.main.bounds.width / 5, height: 60)
 			
-			shadowViewSkydives.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 20)
+			shadowViewSkydives.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 10)
 			shadowViewSkydives.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 20)
 
 			skydiveCount.autoCenterInSuperviewMargins()
