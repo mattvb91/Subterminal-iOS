@@ -34,6 +34,21 @@ class JumpForm: Form {
 		} else {
 			self.getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Jump.TYPE_SLICK, data: Jump.jump_type, label: getFormView().type)
 			self.getFormView().sliderDropdown.selectRowForDataSourceWithKey(key: Jump.SLIDER_UP, data: Jump.slider_config, label: getFormView().slider)
+			
+			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_BASE_TYPE) != nil {
+				let key = Array(Jump.jump_type.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_TYPE)]
+				getFormView().typeDropdown.selectRowForDataSourceWithKey(key: key, data: Jump.jump_type, label: getFormView().type)
+			}
+			
+			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_BASE_PC) != nil {
+				self.getFormView().pcDropdown.selectRow(at: UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_PC))
+				self.getFormView().pc.text = Jump.pc_sizes[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_PC)]
+			}
+			
+			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_BASE_SLIDER) != nil {
+				let key = Array(Jump.slider_config.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_SLIDER)]
+				self.getFormView().sliderDropdown.selectRowForDataSourceWithKey(key: key, data: Jump.slider_config, label: getFormView().slider)
+			}
 		}
 		
 		self.view.addSubview(getFormView())

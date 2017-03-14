@@ -34,7 +34,7 @@ class SkydiveForm: Form {
 			getFormView().cutaway.isOn = Bool(getItem().cutaway)
 			getFormView().delay.text = getItem().delay?.description
 			getFormView().descriptionInput.text = getItem().skydive_description
-			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: getFormView().typeSelectedLabel)
+			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: self.getFormView().typeSelectedLabel)
 			getFormView().heightUnit.selectedSegmentIndex = Int(getItem().height_unit)
 			
 			if getItem().rig_id != nil {
@@ -42,8 +42,19 @@ class SkydiveForm: Form {
 			}
 			
 		} else {
-			getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
 			getFormView().heightUnit.selectedSegmentIndex = Subterminal.heightUnit
+			
+			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE) != nil {
+				let key = Array(Skydive.types.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE)]
+				getFormView().type.selectRowForDataSourceWithKey(key: key, data: Skydive.types, label: getFormView().typeSelectedLabel)
+			} else {
+				getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
+			}
+			
+			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT) != nil {
+				let key = Array(Aircraft.getAircrafts().keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT)]
+				getFormView().aircraft.selectRowForDataSourceWithKey(key: key, data: Aircraft.getAircrafts(), label: getFormView().aircraftSelectedLabel)
+			}
 		}
 		
 		self.view.addSubview(self.formView!)
