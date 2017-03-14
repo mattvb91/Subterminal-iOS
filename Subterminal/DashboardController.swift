@@ -31,6 +31,9 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		dashboardView.premiumButton.addTarget(self, action: #selector(self.premium(_:)), for: .touchUpInside)
 		*/
 		
+		let settings = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsTapped))
+		self.navigationItem.leftBarButtonItem = settings
+		
 		dashboardView.skydiveCount.text = Skydive.query().count().description
 		dashboardView.baseCount.text = Jump.query().count().description
 		dashboardView.dropzonesCount.text = Skydive.query().group(by:"dropzone_id").count.description
@@ -63,6 +66,12 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 	@objc func changeMode(segment: UISegmentedControl) {
 		Subterminal.changeMode(mode: (segment.selectedSegmentIndex))
 	}
+	
+	//The user pressed the add button
+	func settingsTapped() {
+		self.navigationController?.pushViewController(SettingsController(), animated: true)
+	}
+
 	
 	func setExitsData() {
 		var vals = [PieChartDataEntry]()

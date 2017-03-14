@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - Bohr (3.0.0)
   - Charts/Core (3.0.1)
   - Charts/Realm (3.0.1):
     - Charts/Core
@@ -57,6 +58,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - AlamofireImage (~> 3.1)
+  - Bohr
   - Charts/Realm
   - DropDown
   - ElValidator
@@ -87,6 +89,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  Bohr: 17b150766e54e1fb8ff417d85b830c7caafa8b4a
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   ElValidator: ee1cc9daba7bc816691d717e29bd528bc6eff967
@@ -112,6 +115,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
   UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
 
-PODFILE CHECKSUM: e768f360fb2aa9e2f23b4687f7ba05c2ff24b9c5
+PODFILE CHECKSUM: 50677da9b5d8d2b086f37aab13c23b3cbcab0aa1
 
 COCOAPODS: 1.2.0
