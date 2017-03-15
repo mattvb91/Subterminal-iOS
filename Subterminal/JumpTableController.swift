@@ -61,6 +61,10 @@ class JumpTableController: TableController {
 		} else {
 			position = items.count - position
 		}
+		
+		if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_BASE_COUNT) != nil {
+			position += UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_COUNT) - 1
+		}
 	
 		cell.thumb.image = nil
 		cell.count.text = "#" + position.description

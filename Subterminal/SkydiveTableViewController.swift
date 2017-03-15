@@ -40,6 +40,10 @@ class SkydiveTableViewController: TableController {
 			position = items.count - position
 		}
 		
+		if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_COUNT) != nil {
+			position += UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_COUNT) - 1
+		}
+		
         // Configure the cell...
 		cell?.dropzone.text = item?.dropzone()?.name
 		cell?.aircraft.text = item?.aircraft()?.name
