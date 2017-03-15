@@ -18,7 +18,6 @@ class Subterminal {
 	static let HEIGHT_UNIT_IMPERIAL = 1
 	
 	public static var mode = Subterminal.MODE_SKYDIVE
-	public static var heightUnit = Subterminal.HEIGHT_UNIT_IMPERIAL
 	
 	static var units = [
 		Subterminal.HEIGHT_UNIT_METRIC: UnitLength.meters,
@@ -45,7 +44,7 @@ class Subterminal {
 	
 	static func convertToDefaultUnit(distance: Double, fromUnit: Int) -> String {
 		var distance = Measurement(value: distance, unit: Subterminal.units[fromUnit]!)
-		let toUnit = Subterminal.units[Subterminal.heightUnit]! as UnitLength
+		let toUnit = Subterminal.units[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)]! as UnitLength
 		distance.convert(to: toUnit)
 		
 		let height = Int(distance.value)

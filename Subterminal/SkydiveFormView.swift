@@ -168,7 +168,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		scrollView.addSubview(delayLabel)
 		scrollView.addSubview(descriptionLabel)
 		
-		heightUnit.selectedSegmentIndex = Subterminal.heightUnit
+		heightUnit.selectedSegmentIndex = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)
 		scrollView.addSubview(heightUnit)
 
 		scrollView.addSubview(exitAlt)

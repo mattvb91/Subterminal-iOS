@@ -20,6 +20,8 @@ class SettingsController: BOTableViewController {
 	static let DEFAULT_BASE_COUNT = "setting_base_start_count"
 	static let DEFAULT_BASE_PC = "setting_pc_size"
 	static let DEFAULT_BASE_SLIDER = "setting_base_slider"
+	
+	static let DEFAULT_HEIGHT_UNIT = "settings_height_unit"
 
 	override func setup() {
 		
@@ -34,7 +36,7 @@ class SettingsController: BOTableViewController {
 			UIApplication.shared.open(NSURL(string:"https://subterminal.eu") as! URL, options: [:], completionHandler: nil)
 		}
 		
-		let heightUnitCell = BOChoiceTableViewCell(title: "Height Unit:", key: "heightUnit", handler: nil)
+		let heightUnitCell = BOChoiceTableViewCell(title: "Height Unit:", key: SettingsController.DEFAULT_HEIGHT_UNIT, handler: nil)
 		heightUnitCell?.options = ["Metric (m)", "Imperial (ft)"]
 	
 		section.addCell(heightUnitCell)

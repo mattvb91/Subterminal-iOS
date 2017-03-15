@@ -87,7 +87,7 @@ class ExitFormView: UIView {
 		scrollView.addSubview(type)
 		scrollView.addSubview(typeArrow)
 		
-		heightUnit.selectedSegmentIndex = Subterminal.heightUnit
+		heightUnit.selectedSegmentIndex = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)
 		scrollView.addSubview(heightUnit)
 		
 		exitDescription.font = UIFont.systemFont(ofSize: 16)

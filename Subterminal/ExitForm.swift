@@ -35,7 +35,7 @@ class ExitForm: Form, CLLocationManagerDelegate {
 			getFormView().heightUnit.selectedSegmentIndex = Int(getItem().height_unit)
 		} else {
 			getFormView().typeDropdown.selectRowForDataSourceWithKey(key: Exit.TYPE_BUILDING, data: Exit.types, label: getFormView().type)
-			getFormView().heightUnit.selectedSegmentIndex = Subterminal.heightUnit
+			getFormView().heightUnit.selectedSegmentIndex = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)
 		}
 		
 		self.view.addSubview(getFormView())

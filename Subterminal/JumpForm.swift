@@ -75,6 +75,7 @@ class JumpForm: Form {
 			let exit = Exit()
 			exit.name = getFormView().exit.text
 			exit.object_type = Exit.TYPE_OTHER as NSNumber?
+			exit.height_unit = NSNumber(value: UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT))
 			_ = exit.save()
 			
 			exit.sendModelNotification()

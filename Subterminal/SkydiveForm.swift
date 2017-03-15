@@ -42,7 +42,7 @@ class SkydiveForm: Form {
 			}
 			
 		} else {
-			getFormView().heightUnit.selectedSegmentIndex = Subterminal.heightUnit
+			getFormView().heightUnit.selectedSegmentIndex = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)
 			
 			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE) != nil {
 				let key = Array(Skydive.types.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE)]
