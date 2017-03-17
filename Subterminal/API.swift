@@ -13,6 +13,8 @@ import ImageSlideshow
 
 class API: NSObject {
 	
+	static let LAST_DROPZONE_REQUEST = "last_dropzone_request"
+	
 	let headerss: HTTPHeaders = [
 		"accept": Subterminal.getKey(key: "apiaccept"),
 		"apiappkey": Subterminal.getKey(key: "apikey")
@@ -79,7 +81,7 @@ class API: NSObject {
 	}
 	
 	func getDropzones() -> Void {
-		Alamofire.request(Router.baseURL + "/dropzone", parameters: ["last_sync": "2000-01-01"], headers: headerss).responseJSON { response in
+		Alamofire.request(Router.baseURL + "/dropzone", parameters: ["last_sync": API.getLastRequestTime(requestName: API.LAST_DROPZONE_REQUEST)], headers: headerss).responseJSON { response in
 			if let result = response.result.value {
 				let items = result as! NSArray
 				
@@ -89,6 +91,8 @@ class API: NSObject {
 						dropzone.updateAircraft(json: JSON(item))
 					}
 				}
+				
+				API.setLastRequestTime(name: API.LAST_DROPZONE_REQUEST, time: response.response?.allHeaderFields["server_time"] as! String)
 				
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: Dropzone.getNotificationName()), object: nil)
 			}
@@ -146,5 +150,17 @@ class API: NSObject {
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
 			}
 		}
+	}
+	
+	static func setLastRequestTime(name: String, time: String) {
+		UserDefaults.standard.setValue(time, forKey: name)
+	}
+	
+	static func getLastRequestTime(requestName: String) -> String {
+		if UserDefaults.standard.string(forKey: requestName) != nil {
+			return UserDefaults.standard.string(forKey: requestName)!
+		}
+		
+		return "2000-01-01"
 	}
 }
