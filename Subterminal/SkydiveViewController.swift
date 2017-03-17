@@ -22,6 +22,8 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 		self.navigationItem.rightBarButtonItem = editButton
 
 		if let item = item {
+			NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Skydive.getNotificationName()), object: nil)
+
 			skydiveView.skydive = item
 			
 			skydiveView.skydiveDescription.text = item.skydive_description

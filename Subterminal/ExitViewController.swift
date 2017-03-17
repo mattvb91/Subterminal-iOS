@@ -20,6 +20,8 @@ class ExitViewController: UIViewController {
 		
 		self.title = item.name
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Exit.getNotificationName()), object: nil)
+
 		if !item.isGlobal() {
 			let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
 			self.navigationItem.rightBarButtonItem = editButton

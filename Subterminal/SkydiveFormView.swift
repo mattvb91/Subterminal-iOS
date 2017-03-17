@@ -106,6 +106,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 		descriptionInput.layer.borderColor = UIColor.gray.cgColor
 		descriptionInput.layer.borderWidth = 1
 		descriptionInput.layer.cornerRadius = 5
+		descriptionInput.font = UIFont.systemFont(ofSize: 16)
 
 		aircraft.anchorView = aircraftSelectedLabel
 		aircraft.dataSource = Aircraft.getForSelect()

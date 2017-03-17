@@ -23,6 +23,8 @@ class JumpViewController: UIViewController, ImagePickerDelegate {
 		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction))
 		self.navigationItem.rightBarButtonItem = editButton
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Jump.getNotificationName()), object: nil)
+
 		jumpView.exit.text = item.exit()?.name
 		jumpView.delay.text = item.delay?.description
 		jumpView.pc.text = item.pc_size?.description
