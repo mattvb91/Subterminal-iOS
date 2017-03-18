@@ -9,7 +9,7 @@
 import UIKit
 import ElValidator
 
-class GearFormView: UIView, UITextFieldDelegate {
+class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	
 	var didSetupConstraints: Bool = false
 	var requiredBlock:((_: [Error]) -> Void)?
@@ -18,7 +18,7 @@ class GearFormView: UIView, UITextFieldDelegate {
 	var containerManufacturer = TextFieldValidator()
 	var containerModel = UITextField()
 	var containerSerial = UITextField()
-	var containerDateInUse = UITextField()
+	var containerDateInUse = UILabel()
 	
 	var containerTitle = UILabel()
 	var labelContainerManufacturer = Label(text: "Manufacturer")
@@ -35,7 +35,7 @@ class GearFormView: UIView, UITextFieldDelegate {
 	var mainManufacturer = TextFieldValidator()
 	var mainModel = UITextField()
 	var mainSerial = UITextField()
-	var mainDateInUse = UITextField()
+	var mainDateInUse = UILabel()
 	
 	var reserveTitle = UILabel()
 	var labelReserveManufacturer = Label(text: "Manufacturer")
@@ -46,7 +46,7 @@ class GearFormView: UIView, UITextFieldDelegate {
 	var reserveManufacturer = TextFieldValidator()
 	var reserveModel = UITextField()
 	var reserveSerial = UITextField()
-	var reserveDateInUse = UITextField()
+	var reserveDateInUse = UILabel()
 	
 	var aadTitle = UILabel()
 	var labelAadManufacturer = Label(text: "Manufacturer")
@@ -57,9 +57,12 @@ class GearFormView: UIView, UITextFieldDelegate {
 	var aadManufacturer = TextFieldValidator()
 	var aadModel = UITextField()
 	var aadSerial = UITextField()
-	var aadDateInUse = UITextField()
+	var aadDateInUse = UILabel()
 	
+	var datePicker = GMDatePicker()
 	var scrollView = UIScrollView()
+	
+	var activeDateView: UIView?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -74,6 +77,9 @@ class GearFormView: UIView, UITextFieldDelegate {
 			}
 		}
 		
+		datePicker.delegate = self
+		datePicker.config.startDate = NSDate() as Date
+
 		containerManufacturer.delegate = self
 		containerManufacturer.add(validator: LenghtValidator(validationEvent: .perCharacter, min: 1))
 		containerManufacturer.validationBlock = requiredBlock
@@ -83,7 +89,15 @@ class GearFormView: UIView, UITextFieldDelegate {
 		containerManufacturer.setBottomBorder()
 		containerModel.setBottomBorder()
 		containerSerial.setBottomBorder()
-		containerDateInUse.setBottomBorder()
+		containerDateInUse.text = DateHelper.dateToString(date: Date())
+		
+		let containerDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		let mainDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		let reserveDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		let aadDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+
+		containerDateInUse.isUserInteractionEnabled =  true
+		containerDateInUse.addGestureRecognizer(containerDateGesture)
 		
 		containerManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		containerModel.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -94,7 +108,9 @@ class GearFormView: UIView, UITextFieldDelegate {
 		mainManufacturer.setBottomBorder()
 		mainModel.setBottomBorder()
 		mainSerial.setBottomBorder()
-		mainDateInUse.setBottomBorder()
+		mainDateInUse.text = DateHelper.dateToString(date: Date())
+		mainDateInUse.isUserInteractionEnabled =  true
+		mainDateInUse.addGestureRecognizer(mainDateGesture)
 		
 		mainManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		mainModel.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -105,8 +121,10 @@ class GearFormView: UIView, UITextFieldDelegate {
 		reserveManufacturer.setBottomBorder()
 		reserveModel.setBottomBorder()
 		reserveSerial.setBottomBorder()
-		reserveDateInUse.setBottomBorder()
-		
+		reserveDateInUse.text = DateHelper.dateToString(date: Date())
+		reserveDateInUse.isUserInteractionEnabled =  true
+		reserveDateInUse.addGestureRecognizer(reserveDateGesture)
+
 		reserveManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		reserveModel.clearButtonMode = UITextFieldViewMode.whileEditing
 		reserveSerial.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -116,8 +134,10 @@ class GearFormView: UIView, UITextFieldDelegate {
 		aadManufacturer.setBottomBorder()
 		aadModel.setBottomBorder()
 		aadSerial.setBottomBorder()
-		aadDateInUse.setBottomBorder()
-		
+		aadDateInUse.text = DateHelper.dateToString(date: Date())
+		aadDateInUse.isUserInteractionEnabled =  true
+		aadDateInUse.addGestureRecognizer(aadDateGesture)
+
 		aadManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		aadModel.clearButtonMode = UITextFieldViewMode.whileEditing
 		aadSerial.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -319,4 +339,20 @@ class GearFormView: UIView, UITextFieldDelegate {
 		
 		super.updateConstraints()
 	}
+	
+	func tapDate(recognizer: UITapGestureRecognizer) {
+		datePicker.show(inVC: (self.window?.rootViewController)!)
+		
+		self.activeDateView = recognizer.view
+	}
+	
+	func gmDatePicker(_ gmDatePicker: GMDatePicker, didSelect date: Date) {
+		let activeView = self.activeDateView as! UILabel
+		activeView.text = DateHelper.dateToString(date: date)
+	}
+	
+	func gmDatePickerDidCancelSelection(_ gmDatePicker: GMDatePicker) {
+		// Do something then user tapped the cancel button
+	}
+
 }
