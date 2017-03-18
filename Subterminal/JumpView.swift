@@ -167,6 +167,13 @@ class JumpView: UIView {
 			slider.autoPinEdge(.top, to: .top, of: type)
 			slider.autoPinEdge(.left, to: .left, of: sliderLabel, withOffset: 10)
 			
+			let fixedWidth = jumpDescription.frame.size.width
+			jumpDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			let newSize = jumpDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+			var newFrame = jumpDescription.frame
+			newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+			jumpDescription.frame = newFrame;
+			
 			jumpDescription.autoPinEdge(.top, to: .bottom, of: type, withOffset: 20)
 			jumpDescription.autoPinEdge(.left, to: .left, of: exitLabel)
 			jumpDescription.autoSetDimension(.height, toSize: jumpDescription.contentSize.height)
