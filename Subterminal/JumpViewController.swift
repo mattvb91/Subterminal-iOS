@@ -15,7 +15,11 @@ import ImageSlideshow
 class JumpViewController: UIViewController, ImagePickerDelegate {
 	
 	var item: Jump!
-	let jumpView = JumpView.newAutoLayout()
+	var jumpView = JumpView.newAutoLayout()
+	
+	deinit {
+		self.jumpView.images.setImageInputs([])
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

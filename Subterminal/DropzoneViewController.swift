@@ -18,7 +18,7 @@ class DropzoneViewController: UIViewController {
 		Subterminal.getMap().delegate = nil
 		Subterminal.clearMap()
 		
-		dropzoneView.images.gestureRecognizers?.removeAll()
+		dropzoneView.images.setImageInputs([])
 	}
 	
     override func viewDidLoad() {
@@ -41,9 +41,7 @@ class DropzoneViewController: UIViewController {
 		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageFullSize))
 		dropzoneView.images.addGestureRecognizer(gestureRecognizer)
 		
-		
 		let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
-		
 		let pin = MKPointAnnotation()
 		pin.coordinate = location
 		pin.title = item.name

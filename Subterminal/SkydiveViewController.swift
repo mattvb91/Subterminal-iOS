@@ -15,6 +15,10 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 	var item: Skydive?
 	let skydiveView = SkydiveView.newAutoLayout()
 
+	deinit {
+		self.skydiveView.images.setImageInputs([])
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
