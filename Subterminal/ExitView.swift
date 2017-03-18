@@ -54,7 +54,7 @@ class ExitView: UIView {
 	var difficultyWingsuitOverall = UILabel()
 	var difficultyWingsuitOverallValue = UILabel()
 
-	var map = MKMapView()
+	var map = Subterminal.getMap()
 	
 	var trackingTitle = UILabel()
 	var wingsuitTitle = UILabel()

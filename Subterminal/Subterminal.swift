@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Subterminal {
 	
@@ -16,6 +17,8 @@ class Subterminal {
 	
 	static let HEIGHT_UNIT_METRIC = 0
 	static let HEIGHT_UNIT_IMPERIAL = 1
+	
+	private static var map: MKMapView? = nil
 	
 	public static var mode = Subterminal.MODE_SKYDIVE
 	
@@ -56,6 +59,28 @@ class Subterminal {
 	
 	static func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
 		return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+	}
+	
+	static func getMap() -> MKMapView {
+		if map == nil {
+			map = MKMapView()
+		}
+		
+		return map!
+	}
+	
+	static func clearMap() {
+		let annotations = self.getMap().annotations
+		if !annotations.isEmpty {
+			for _annotation in annotations {
+				if let annotation = _annotation as? MKAnnotation
+				{
+					self.getMap().removeAnnotation(annotation)
+				}
+			}
+		}
+		
+		self.getMap().removeOverlays(self.getMap().overlays)
 	}
 }
 

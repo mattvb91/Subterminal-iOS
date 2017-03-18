@@ -15,6 +15,11 @@ class ExitViewController: UIViewController {
 	var item: Exit!
 	let exitView = ExitView.newAutoLayout()
 
+	deinit {
+		Subterminal.getMap().delegate = nil
+		Subterminal.clearMap()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		

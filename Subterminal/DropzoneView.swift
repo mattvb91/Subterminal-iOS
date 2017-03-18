@@ -21,7 +21,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 	var website: UILabel = UILabel()
 	var phone: UILabel = UILabel()
 	var email: UILabel = UILabel()
-	var map: MKMapView = MKMapView()
+	var map = Subterminal.getMap()
 	var aircraft = UILabel()
 	
 	var websiteLabel = UILabel()
@@ -35,9 +35,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 	var tagview = HTagView()
 	
 	var tagview_data = [String]()
-	
-	var dropzone: Dropzone?
-	
+		
 	var scrollView = UIScrollView.newAutoLayout()
 	var contentView = UIView()
 	
@@ -68,7 +66,6 @@ class DropzoneView: UIView, HTagViewDataSource {
 		contentView.addSubview(aircraftLabel)
 		contentView.addSubview(aircraft)
 		
-		dropzoneDescription.text = dropzone?.dropzone_description
 		dropzoneDescription.isScrollEnabled = false
 		dropzoneDescription.isUserInteractionEnabled = false
 		dropzoneDescription.font = UIFont.systemFont(ofSize: 16)

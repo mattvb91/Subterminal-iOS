@@ -11,51 +11,53 @@ import MapKit
 
 class DropzoneViewController: UIViewController {
 
-	var item: Dropzone?
-	
+	var item: Dropzone!
 	let dropzoneView = DropzoneView.newAutoLayout()
 
+	deinit {
+		Subterminal.getMap().delegate = nil
+		Subterminal.clearMap()
+		
+		dropzoneView.images.gestureRecognizers?.removeAll()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		NotificationCenter.default.addObserver(self, selector: #selector(self.updateImages), name: NSNotification.Name(rawValue: "dropzoneImages"), object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(self.updateServices), name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
+					
+		API.instance.getDropzoneImages(dropzone: item)
+		API.instance.getDropzoneServices(dropzone: item)
+			
+		dropzoneView.dropzoneDescription.text = item.dropzone_description
+		dropzoneView.dropzoneDescription.sizeToFit()
+		dropzoneView.website.text = item.website
+		dropzoneView.phone.text = item.phone
+		dropzoneView.email.text = item.email
+			
+		dropzoneView.aircraft.text = item.getFormattedAircrafts()
+			
+		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageFullSize))
+		dropzoneView.images.addGestureRecognizer(gestureRecognizer)
 		
-		if let item = item {
-			dropzoneView.dropzone = item
-			
-			API.instance.getDropzoneImages(dropzone: item)
-			API.instance.getDropzoneServices(dropzone: item)
-			
-			dropzoneView.dropzoneDescription.text = item.dropzone_description
-			dropzoneView.dropzoneDescription.sizeToFit()
-			dropzoneView.website.text = item.website
-			dropzoneView.phone.text = item.phone
-			dropzoneView.email.text = item.email
-			
-			dropzoneView.aircraft.text = item.getFormattedAircrafts()
-			
-			let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageFullSize))
-			dropzoneView.images.addGestureRecognizer(gestureRecognizer)
-			
-			let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
 		
-			let pin = MKPointAnnotation()
-			pin.coordinate = location
-			pin.title = item.name
+		let location = CLLocationCoordinate2DMake(item.latitude, item.longtitude)
+		
+		let pin = MKPointAnnotation()
+		pin.coordinate = location
+		pin.title = item.name
 			
-			dropzoneView.map.mapType = MKMapType.satellite
-			dropzoneView.map.addAnnotation(pin)
-			dropzoneView.map.centerCoordinate = location
-			let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-			let region = MKCoordinateRegion(center: pin.coordinate, span: span)
-			dropzoneView.map.setRegion(region, animated: true)
+		dropzoneView.map.mapType = MKMapType.satellite
+		dropzoneView.map.addAnnotation(pin)
+		dropzoneView.map.centerCoordinate = location
+		let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+		let region = MKCoordinateRegion(center: pin.coordinate, span: span)
+		dropzoneView.map.setRegion(region, animated: true)
 			
-			navigationItem.title = item.name
+		navigationItem.title = item.name
 			
-			self.view.addSubview(dropzoneView)
-		}
-	
+		self.view.addSubview(dropzoneView)
     }
 	
 	func imageFullSize() {
@@ -65,7 +67,7 @@ class DropzoneViewController: UIViewController {
 	func updateImages() {
 		dropzoneView.didSetupConstraints = false
 		
-		if((item?.images?.count)! > 0) {
+		if((item.images?.count)! > 0) {
 			dropzoneView.images.setImageInputs((item?.images)!)
 		}else {
 			dropzoneView.images.removeFromSuperview()
@@ -75,7 +77,7 @@ class DropzoneViewController: UIViewController {
 	}
 	
 	func updateServices() {
-		if((item?.services?.count)! > 0) {
+		if((item.services?.count)! > 0) {
 			dropzoneView.tagview_data = (item?.services)!
 			dropzoneView.tagview.reloadData()
 		}
