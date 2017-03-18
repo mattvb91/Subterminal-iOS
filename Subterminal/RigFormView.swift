@@ -8,20 +8,18 @@
 
 import Foundation
 import UIKit
-import ElValidator
 
-class RigFormView: UIView, UITextFieldDelegate {
+class RigFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	
 	var didSetupConstraints: Bool = false
 	var scrollView = UIScrollView.newAutoLayout()
-	var requiredBlock:((_: [Error]) -> Void)?
 	var validator = FormValidator()
 
 	//MARK: Properties
-	var containerManufacturer = TextFieldValidator()
+	var containerManufacturer = UITextField()
 	var containerModel = UITextField()
 	var containerSerial = UITextField()
-	var containerDateInUse = UITextField()
+	var containerDateInUse = UILabel()
 	
 	var containerTitle = UILabel()
 	var labelContainerManufacturer = Label(text: "Manufacturer")
@@ -35,35 +33,29 @@ class RigFormView: UIView, UITextFieldDelegate {
 	var labelMainSerial = Label(text: "Serial")
 	var labelMainDateInUse = Label(text: "Date in Use")
 	
-	var mainManufacturer = TextFieldValidator()
+	var mainManufacturer = UITextField()
 	var mainModel = UITextField()
 	var mainSerial = UITextField()
-	var mainDateInUse = UITextField()
+	var mainDateInUse = UILabel()
+
+	var datePicker = GMDatePicker()
+	var activeDateView: UIView?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		self.backgroundColor = UIColor.white
 		
-		requiredBlock = { [weak self] (errors: [Error]) -> Void in
-			if errors.first != nil {
-				self?.containerManufacturer.layer.shadowColor = UIColor.red.cgColor
-			} else {
-				self?.containerManufacturer.layer.shadowColor = UIColor.gray.cgColor
-			}
-		}
-		
-		containerManufacturer.delegate = self
-		containerManufacturer.add(validator: LenghtValidator(validationEvent: .perCharacter, min: 1))
-		containerManufacturer.validationBlock = requiredBlock
+		datePicker.delegate = self
+		datePicker.config.startDate = NSDate() as Date
 		
 		containerTitle.text = "Container"
 		containerTitle.font = UIFont.boldSystemFont(ofSize: 16)
 		containerManufacturer.setBottomBorder()
 		containerModel.setBottomBorder()
 		containerSerial.setBottomBorder()
-		containerDateInUse.setBottomBorder()
-		
+		containerDateInUse.text = DateHelper.dateToString(date: Date())
+
 		containerManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		containerModel.clearButtonMode = UITextFieldViewMode.whileEditing
 		containerSerial.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -73,14 +65,22 @@ class RigFormView: UIView, UITextFieldDelegate {
 		mainManufacturer.setBottomBorder()
 		mainModel.setBottomBorder()
 		mainSerial.setBottomBorder()
-		mainDateInUse.setBottomBorder()
-		
+		mainDateInUse.text = DateHelper.dateToString(date: Date())
+
 		validator.addRequiredField(field: containerManufacturer)
 		validator.addRequiredField(field: mainManufacturer)
 		
 		mainManufacturer.clearButtonMode = UITextFieldViewMode.whileEditing
 		mainModel.clearButtonMode = UITextFieldViewMode.whileEditing
 		mainSerial.clearButtonMode = UITextFieldViewMode.whileEditing
+		
+		let containerDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		let mainDateGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapDate))
+		
+		containerDateInUse.isUserInteractionEnabled =  true
+		containerDateInUse.addGestureRecognizer(containerDateGesture)
+		mainDateInUse.isUserInteractionEnabled =  true
+		mainDateInUse.addGestureRecognizer(mainDateGesture)
 
 		scrollView.addSubview(containerTitle)
 		scrollView.addSubview(containerManufacturer)
@@ -191,4 +191,20 @@ class RigFormView: UIView, UITextFieldDelegate {
 		
 		super.updateConstraints()
 	}
+	
+	func tapDate(recognizer: UITapGestureRecognizer) {
+		datePicker.show(inVC: (self.window?.rootViewController)!)
+		
+		self.activeDateView = recognizer.view
+	}
+	
+	func gmDatePicker(_ gmDatePicker: GMDatePicker, didSelect date: Date) {
+		let activeView = self.activeDateView as! UILabel
+		activeView.text = DateHelper.dateToString(date: date)
+	}
+	
+	func gmDatePickerDidCancelSelection(_ gmDatePicker: GMDatePicker) {
+		// Do something then user tapped the cancel button
+	}
+
 }

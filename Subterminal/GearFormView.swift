@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import ElValidator
 
 class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	
 	var didSetupConstraints: Bool = false
-	var requiredBlock:((_: [Error]) -> Void)?
 
 	//MARK: Properties
-	var containerManufacturer = TextFieldValidator()
+	var containerManufacturer = UITextField()
 	var containerModel = UITextField()
 	var containerSerial = UITextField()
 	var containerDateInUse = UILabel()
@@ -32,7 +30,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	var labelMainSerial = Label(text: "Serial")
 	var labelMainDateInUse = Label(text: "Date in Use")
 	
-	var mainManufacturer = TextFieldValidator()
+	var mainManufacturer = UITextField()
 	var mainModel = UITextField()
 	var mainSerial = UITextField()
 	var mainDateInUse = UILabel()
@@ -43,7 +41,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	var labelReserveSerial = Label(text: "Serial")
 	var labelReserveDateInUse = Label(text: "Date in Use")
 	
-	var reserveManufacturer = TextFieldValidator()
+	var reserveManufacturer = UITextField()
 	var reserveModel = UITextField()
 	var reserveSerial = UITextField()
 	var reserveDateInUse = UILabel()
@@ -54,7 +52,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 	var labelAadSerial = Label(text: "Serial")
 	var labelAadDateInUse = Label(text: "Date in Use")
 	
-	var aadManufacturer = TextFieldValidator()
+	var aadManufacturer = UITextField()
 	var aadModel = UITextField()
 	var aadSerial = UITextField()
 	var aadDateInUse = UILabel()
@@ -69,20 +67,8 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 		
 		self.backgroundColor = UIColor.white
 		
-		requiredBlock = { [weak self] (errors: [Error]) -> Void in
-			if errors.first != nil {
-				self?.containerManufacturer.layer.shadowColor = UIColor.red.cgColor
-			} else {
-				self?.containerManufacturer.layer.shadowColor = UIColor.gray.cgColor
-			}
-		}
-		
 		datePicker.delegate = self
 		datePicker.config.startDate = NSDate() as Date
-
-		containerManufacturer.delegate = self
-		containerManufacturer.add(validator: LenghtValidator(validationEvent: .perCharacter, min: 1))
-		containerManufacturer.validationBlock = requiredBlock
 
 		containerTitle.text = "Container"
 		containerTitle.font = UIFont.boldSystemFont(ofSize: 16)

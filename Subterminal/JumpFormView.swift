@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import ElValidator
 import SearchTextField
 import DropDown
 

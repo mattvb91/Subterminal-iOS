@@ -23,7 +23,6 @@ target 'Subterminal' do
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Alamofire', '~> 4.3'
   pod 'PureLayout', '~> 3.0.2'
-  pod 'ElValidator'
   pod 'ImageSlideshow', '~> 1.0.0'
   pod 'AlamofireImage', '~> 3.1'
   pod 'ImageSlideshow/Alamofire'
