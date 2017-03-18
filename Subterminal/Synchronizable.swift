@@ -18,6 +18,10 @@ class Synchronizable: Model, SyncProtocol {
 	static let SYNC_COMPLETED: NSNumber = 1
 	static let SYNC_REQUIRED: NSNumber = 0
 	
+	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
+		return ["synced": 0, "deleted": 0]
+	}
+	
 	func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
 	}
