@@ -41,6 +41,7 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 
 		self.setPullheightData()
 		self.setExitsData()
+		self.setFavouriteExitsData()
 		
 		var (h, m, s) = Subterminal.secondsToHoursMinutesSeconds(seconds: Int(Skydive.query().sum(of: "delay")))
 		dashboardView.skydiveFreefallTime.text = "Skydive total freefall: \(h)h \(m)m \(s)s"
@@ -72,6 +73,48 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		self.navigationController?.pushViewController(SettingsController(), animated: true)
 	}
 
+	func setFavouriteExitsData() {
+		
+		self.dashboardView.favouriteExits.chartDescription?.enabled = false
+		self.dashboardView.favouriteExits.xAxis.enabled = false
+		self.dashboardView.favouriteExits.leftAxis.enabled = true
+		self.dashboardView.favouriteExits.rightAxis.enabled = false
+		
+		let l = self.dashboardView.favouriteExits.legend
+		l.verticalAlignment = Legend.VerticalAlignment.bottom
+		l.horizontalAlignment = Legend.HorizontalAlignment.left
+		l.orientation = Legend.Orientation.horizontal
+		l.drawInside = false
+		l.form = Legend.Form.none
+		
+		var yVals = [BarChartDataEntry]()
+		
+		let sql = SharkORM.rawQuery("SELECT exit_id, count(exit_id) as total_count FROM Jump GROUP BY exit_id ORDER BY total_count DESC LIMIT 3") as SRKRawResults
+		
+		var values = [String]()
+		
+		var i = 1
+		for results in sql.rawResults {
+			let results = results as! NSDictionary
+			let count = results["total_count"] as! Double
+			let exitId = results["exit_id"] as! NSNumber
+			let exit = Exit.object(withPrimaryKeyValue: exitId) as! Exit
+			yVals.append(BarChartDataEntry(x: Double(i), y: count, data: exit.name as AnyObject?))
+			i += 1
+			values.append(exit.name!)
+		}
+		
+		let set = BarChartDataSet(values: yVals, label: "Favourite Exits")
+		set.colors = ChartColorTemplates.material()
+		set.valueFont = UIFont.systemFont(ofSize: 12)
+		
+		set.valueFormatter = BarFormatter(values: values)
+		
+		let barData = BarChartData(dataSet: set)
+		
+		self.dashboardView.favouriteExits.data = barData
+		self.dashboardView.favouriteExits.notifyDataSetChanged()
+	}
 	
 	func setExitsData() {
 		var vals = [PieChartDataEntry]()
@@ -99,11 +142,18 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		}
 		
 		if vals.isEmpty == false {
+			let formatter = NumberFormatter()
+			formatter.numberStyle = .none
+			formatter.maximumFractionDigits = 0
+			
 			let dataSet = PieChartDataSet(values: vals, label: "")
 			dataSet.colors = ChartColorTemplates.material()
-		
+			
 			let pieData = PieChartData(dataSet: dataSet)
-		
+			pieData.setValueFont(UIFont.systemFont(ofSize: 12))
+			pieData.setValueTextColor(NSUIColor.black)
+			pieData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+			
 			self.dashboardView.exitTypes.data = pieData
 			self.dashboardView.exitTypes.notifyDataSetChanged()
 		}
@@ -163,4 +213,17 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 	func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
 		debugPrint("User Logged Out")
 	}*/
+}
+
+class BarFormatter: NSObject, IValueFormatter {
+
+	var stringsValues:[String] = []
+	
+	init(values:[String]) {
+		stringsValues = values
+	}
+	
+	public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+		return self.stringsValues[Int(entry.x - 1)]
+	}
 }

@@ -194,7 +194,7 @@ class DashboardView: UIView {
 			
 			favouriteExits.autoPinEdge(.top, to: .bottom, of: baseFreefallTime)
 			favouriteExits.autoPinEdge(.left, to: .right, of: exitTypes)
-			exitTypes.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width / 2, height: 200))
+			favouriteExits.autoSetDimensions(to: CGSize(width: UIScreen.main.bounds.width / 2, height: 200))
 			
 			shadowViewBaseStats.autoPinEdge(.top, to: .bottom, of: shadowViewSkydiveStats, withOffset: 10)
 			shadowViewBaseStats.autoPinEdge(.bottom, to: .bottom, of: exitTypes, withOffset: 20)
