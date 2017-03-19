@@ -66,9 +66,8 @@ class DropzoneViewController: UIViewController {
 		dropzoneView.didSetupConstraints = false
 		
 		if((item.images?.count)! > 0) {
+			dropzoneView.scrollView.addSubview(dropzoneView.images)
 			dropzoneView.images.setImageInputs((item?.images)!)
-		}else {
-			dropzoneView.images.removeFromSuperview()
 		}
 		
 		dropzoneView.setNeedsUpdateConstraints()

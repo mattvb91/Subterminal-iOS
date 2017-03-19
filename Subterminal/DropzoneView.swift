@@ -46,7 +46,6 @@ class DropzoneView: UIView, HTagViewDataSource {
 		
 		images.contentScaleMode = UIViewContentMode.scaleAspectFill
 		images.slideshowInterval = 5
-		scrollView.addSubview(images)
 		
 		websiteLabel.text = "Website:"
 		websiteLabel.font = UIFont.boldSystemFont(ofSize: 16)
@@ -82,6 +81,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 		
 		contentView.isUserInteractionEnabled = true
 		scrollView.addSubview(contentView)
+		scrollView.alwaysBounceVertical = true
 		self.addSubview(scrollView)
 
 		self.setNeedsUpdateConstraints()
