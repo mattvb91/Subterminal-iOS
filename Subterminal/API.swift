@@ -40,17 +40,19 @@ class API: NSObject {
 	}
 	
 	static func initAPI() {
-		API.instance.getAircraft()
-		API.instance.getDropzones()
-		API.instance.getPublicExits()
+		DispatchQueue.global(qos: .background).async {
+			API.instance.getAircraft()
+			API.instance.getDropzones()
+			API.instance.getPublicExits()
 		
-		if Subterminal.user.isLoggedIn() {
-			API.instance.downloadModel(model: Rig())
-			API.instance.downloadModel(model: Skydive())
-			API.instance.downloadModel(model: Suit())
-			API.instance.downloadModel(model: Exit())
-			API.instance.downloadModel(model: BASERig())
-			API.instance.downloadModel(model: Jump())
+			if Subterminal.user.isLoggedIn() {
+				API.instance.downloadModel(model: Rig())
+				API.instance.downloadModel(model: Skydive())
+				API.instance.downloadModel(model: Suit())
+				API.instance.downloadModel(model: Exit())
+				API.instance.downloadModel(model: BASERig())
+				API.instance.downloadModel(model: Jump())
+			}
 		}
 	}
 	
