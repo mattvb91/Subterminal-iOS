@@ -19,7 +19,7 @@ class JumpTableController: TableController {
 	}
 
 	override func fetchQuery() -> SRKQuery {
-		return super.fetchQuery().order(byDescending: "date, id")
+		return super.fetchQuery().order(by: "date DESC,id DESC")
 	}
 	
 	override func getViewCellClass() -> JumpTableViewCell {

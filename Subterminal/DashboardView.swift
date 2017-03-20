@@ -80,6 +80,7 @@ class DashboardView: UIView {
 		shadowViewExits.addSubview(exitLabel)
 		
 		pullheight.noDataText = "No jumps to chart"
+		pullheight.chartDescription?.text = ""
 		shadowViewSkydiveStats.addSubview(skydiveFreefallTime)
 		shadowViewBaseStats.addSubview(baseFreefallTime)
 

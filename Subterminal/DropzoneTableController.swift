@@ -47,7 +47,7 @@ class DropzoneTableController: TableController, UISearchResultsUpdating, UISearc
 	}
 	
 	override func fetchQuery() -> SRKQuery {
-		return type(of: getAssignedModel()).query().order(byDescending: "featured")
+		return type(of: getAssignedModel()).query().order(by: "featured DESC, name ASC")
 	}
 	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
