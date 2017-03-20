@@ -89,7 +89,7 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		
 		var yVals = [BarChartDataEntry]()
 		
-		let sql = SharkORM.rawQuery("SELECT exit_id, count(exit_id) as total_count FROM Jump GROUP BY exit_id ORDER BY total_count DESC LIMIT 3") as SRKRawResults
+		let sql = SharkORM.rawQuery("SELECT exit_id, count(exit_id) as total_count FROM Jump WHERE exit_id IS NOT NULL GROUP BY exit_id ORDER BY total_count DESC LIMIT 3") as SRKRawResults
 		
 		var values = [String]()
 		

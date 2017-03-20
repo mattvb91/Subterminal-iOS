@@ -14,6 +14,8 @@ class ChoiceTableViewCell: BOChoiceTableViewCell {
 	var keyValueOptions: [Int: String]!
 	
 	override open func settingValueDidChange() -> Void {
-		self.detailTextLabel?.text = self.keyValueOptions[self.setting.value as! Int]
+		if self.setting.value != nil {
+			self.detailTextLabel?.text = self.keyValueOptions[self.setting.value as! Int]
+		}
 	}
 }

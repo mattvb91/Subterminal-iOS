@@ -168,26 +168,24 @@ class ExitView: UIView {
 			contentView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero)
 
 			let fixedWidth = exitRules.frame.size.width
-			exitRules.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
 			let newSize = exitRules.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
 			var newFrame = exitRules.frame
 			newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
 			exitRules.frame = newFrame;
 			
 			let fixedWidthInfo = exitInfo.frame.size.width
-			exitInfo.sizeThatFits(CGSize(width: fixedWidthInfo, height: CGFloat.greatestFiniteMagnitude))
 			let newSizeInfo = exitInfo.sizeThatFits(CGSize(width: fixedWidthInfo, height: CGFloat.greatestFiniteMagnitude))
 			var newFrameInfo = exitInfo.frame
 			newFrameInfo.size = CGSize(width: max(newSizeInfo.width, fixedWidthInfo), height: newSizeInfo.height)
 			exitInfo.frame = newFrameInfo;
 
 			if detailView.superview == scrollView {
-				let size = CGSize(width: UIScreen.main.bounds.width, height: 900 + newFrame.height)
+				let size = CGSize(width: UIScreen.main.bounds.width, height: 900 + newFrame.height + newFrameInfo.height)
 				scrollView.contentSize = size
 				contentView.autoSetDimensions(to: size)
 				scrollView.autoSetDimensions(to: size)
 			} else {
-				let size = CGSize(width: UIScreen.main.bounds.width, height: 700 + newFrame.height)
+				let size = CGSize(width: UIScreen.main.bounds.width, height: 700 + newFrame.height + newFrameInfo.height)
 				scrollView.contentSize = size
 				contentView.autoSetDimensions(to: size)
 				scrollView.autoSetDimensions(to: size)
@@ -215,7 +213,6 @@ class ExitView: UIView {
 			exitInfoLabel.autoPinEdge(.left, to: .left, of: altitudeToLandingLabel)
 		
 			exitInfo.autoPinEdge(.top, to: .bottom, of: exitInfoLabel, withOffset: 5)
-			exitInfo.autoSetDimension(.height, toSize: exitInfo.contentSize.height)
 			exitInfo.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
 			exitInfo.autoPinEdge(.left, to: .left, of: exitInfoLabel)
 			
@@ -225,7 +222,6 @@ class ExitView: UIView {
 			
 				exitRules.autoPinEdge(.top, to: .bottom, of: exitRulesLabel, withOffset: 5)
 				exitRules.autoPinEdge(.left, to: .left, of: exitRulesLabel)
-				exitRules.autoSetDimension(.height, toSize: exitRules.contentSize.height)
 				exitRules.autoSetDimension(.width, toSize: UIScreen.main.bounds.width - 35)
 				shadowView.autoPinEdge(.bottom, to: .bottom, of: exitRules, withOffset: 10)
 			} else {
