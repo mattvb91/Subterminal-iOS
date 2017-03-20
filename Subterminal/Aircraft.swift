@@ -31,6 +31,8 @@ class Aircraft: Model {
 			results.append(item.value)
 		}
 		
+		results = results.sorted {$0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending}
+		
 		return results
 	}
 }

@@ -65,6 +65,9 @@
 		8FA277031E6ECF0D00931977 /* RigFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA277021E6ECF0D00931977 /* RigFormView.swift */; };
 		8FA277041E6ECF0D00931977 /* RigFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA277021E6ECF0D00931977 /* RigFormView.swift */; };
 		8FA277051E6ECF0D00931977 /* RigFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA277021E6ECF0D00931977 /* RigFormView.swift */; };
+		8FA4A3181E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */; };
+		8FA4A3191E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */; };
+		8FA4A31A1E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */; };
 		8FA4A8D71E5F29CA00DDB962 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A8D61E5F29CA00DDB962 /* Suit.swift */; };
 		8FA4A8D81E5F29CA00DDB962 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A8D61E5F29CA00DDB962 /* Suit.swift */; };
 		8FA4A8D91E5F29CA00DDB962 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A8D61E5F29CA00DDB962 /* Suit.swift */; };
@@ -234,6 +237,7 @@
 		8FA07F961E6713FB00841BB5 /* JumpFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpFormView.swift; sourceTree = "<group>"; };
 		8FA276FE1E6ECDC300931977 /* RigForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigForm.swift; sourceTree = "<group>"; };
 		8FA277021E6ECF0D00931977 /* RigFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigFormView.swift; sourceTree = "<group>"; };
+		8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		8FA4A8D61E5F29CA00DDB962 /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		8FA4A8DA1E5F308600DDB962 /* SuitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitTableViewCell.swift; sourceTree = "<group>"; };
 		8FA4E8BA1E5DE29B0015549A /* SyncProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncProtocol.swift; sourceTree = "<group>"; };
@@ -428,6 +432,7 @@
 				8FDCFA881E6080CA00BE92C5 /* DashboardView.swift */,
 				8F90E6401E634AD400CAF8A3 /* UIImageResize.swift */,
 				8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */,
+				8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -893,6 +898,7 @@
 				8FA4A8D71E5F29CA00DDB962 /* Suit.swift in Sources */,
 				8F90E63D1E632DAF00CAF8A3 /* Image.swift in Sources */,
 				8FBA1A561E68DA35009EA0A2 /* ExitForm.swift in Sources */,
+				8FA4A3181E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */,
 				8FDBAB8D1E54EF79005543C1 /* SkydiveFormView.swift in Sources */,
 				8FB4904C1E65D30600CB89DF /* BaseGearTableController.swift in Sources */,
 				8FF31AF31E4E5DA3003F3CFF /* RigTableViewCell.swift in Sources */,
@@ -989,6 +995,7 @@
 				8FA07F921E67136800841BB5 /* JumpForm.swift in Sources */,
 				8FB490591E65F5CB00CB89DF /* JumpTableController.swift in Sources */,
 				8FCD0B811E78054A00254B75 /* Skydive.swift in Sources */,
+				8FA4A3191E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */,
 				8FDCFA901E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 				8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */,
@@ -1050,6 +1057,7 @@
 				8FA07F931E67136800841BB5 /* JumpForm.swift in Sources */,
 				8FB4905A1E65F5CB00CB89DF /* JumpTableController.swift in Sources */,
 				8FCD0B821E78054A00254B75 /* Skydive.swift in Sources */,
+				8FA4A31A1E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */,
 				8FDCFA911E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,
 				8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */,

@@ -45,14 +45,14 @@ class SkydiveForm: Form {
 			getFormView().heightUnit.selectedSegmentIndex = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_HEIGHT_UNIT)
 			
 			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE) != nil {
-				let key = Array(Skydive.types.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE)]
+				let key = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_TYPE)
 				getFormView().type.selectRowForDataSourceWithKey(key: key, data: Skydive.types, label: getFormView().typeSelectedLabel)
 			} else {
 				getFormView().type.selectRowForDataSourceWithKey(key: Skydive.SKYDIVE_TYPE_BELLY, data: Skydive.types, label: getFormView().typeSelectedLabel)
 			}
 			
 			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT) != nil {
-				let key = Array(Aircraft.getAircrafts().keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT)]
+				let key = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT)
 				getFormView().aircraft.selectRowForDataSourceWithKey(key: key, data: Aircraft.getAircrafts(), label: getFormView().aircraftSelectedLabel)
 			}
 		}
@@ -89,10 +89,7 @@ class SkydiveForm: Form {
 		}
 		
 		if getFormView().type.indexForSelectedRow != nil {
-			let selectedType = getFormView().type.indexForSelectedRow
-			let type = Skydive.getKeysForTypes()[selectedType!]
-			
-			getItem().jump_type = NSNumber(value: type)
+			getItem().jump_type = getFormView().type.getKeyForDataFromSelectedRow(data: Skydive.types) as NSNumber?
 		}
 		
 		if getFormView().rig.indexForSelectedRow != nil && getFormView().rig.selectedItem != " - " {

@@ -50,17 +50,19 @@ class SettingsController: BOTableViewController {
 		
 		sectionSkydiving?.addCell(skydiveStartNo)
 		
-		let defaultAircraft = BOChoiceTableViewCell(title: "Default Aircraft", key: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT, handler: nil)
+		let defaultAircraft = ChoiceTableViewCell(title: "Default Aircraft", key: SettingsController.DEFAULT_SKYDIVE_AIRCRAFT, handler: nil)
+		defaultAircraft?.keyValueOptions = Aircraft.getAircrafts()
 		let aircraftController = SettingsOptionsController(options: Aircraft.getAircrafts(), title: "Default Aircraft", key: (defaultAircraft?.key)!)
 		defaultAircraft?.destinationViewController = aircraftController
-		defaultAircraft?.options = Aircraft.getForSelect()
-	
+		defaultAircraft?.options = Array(Aircraft.getAircrafts().values)
+		
 		sectionSkydiving?.addCell(defaultAircraft)
 		
-		let defaultJumpType = BOChoiceTableViewCell(title: "Default Type", key: SettingsController.DEFAULT_SKYDIVE_TYPE, handler: nil)
+		let defaultJumpType = ChoiceTableViewCell(title: "Default Type", key: SettingsController.DEFAULT_SKYDIVE_TYPE, handler: nil)
+		defaultJumpType?.keyValueOptions = Skydive.types
 		let jumpTypeController = SettingsOptionsController(options: Skydive.types, title: "Default Type", key: (defaultJumpType?.key)!)
 		defaultJumpType?.destinationViewController = jumpTypeController
-		defaultJumpType?.options = Skydive.getTypesForSelect()
+		defaultJumpType?.options = Array(Skydive.types.values)
 		sectionSkydiving?.addCell(defaultJumpType)
 		
 		self.addSection(sectionSkydiving)
@@ -71,7 +73,8 @@ class SettingsController: BOTableViewController {
 		let baseStartNo = BONumberTableViewCell(title: "Start jump #", key: SettingsController.DEFAULT_BASE_COUNT, handler: nil)
 		baseStartNo?.textField.placeholder = "0"
 		
-		let defaultBaseType = BOChoiceTableViewCell(title: "Default Type", key: SettingsController.DEFAULT_BASE_TYPE, handler: nil)
+		let defaultBaseType = ChoiceTableViewCell(title: "Default Type", key: SettingsController.DEFAULT_BASE_TYPE, handler: nil)
+		defaultBaseType?.keyValueOptions = Jump.jump_type
 		let baseTypeController = SettingsOptionsController(options: Jump.jump_type, title: "Default Type", key: (defaultBaseType?.key)!)
 		defaultBaseType?.destinationViewController = baseTypeController
 		defaultBaseType?.options = Jump.getTypesForSelect()

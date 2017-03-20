@@ -149,6 +149,8 @@ class Skydive: Synchronizable {
 			results.append(type.value)
 		}
 		
+		results = results.sorted {$0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending}
+		
 		return results
 	}
 	

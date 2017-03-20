@@ -36,7 +36,7 @@ class JumpForm: Form {
 			self.getFormView().sliderDropdown.selectRowForDataSourceWithKey(key: Jump.SLIDER_UP, data: Jump.slider_config, label: getFormView().slider)
 			
 			if UserDefaults.standard.object(forKey: SettingsController.DEFAULT_BASE_TYPE) != nil {
-				let key = Array(Jump.jump_type.keys)[UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_TYPE)]
+				let key = UserDefaults.standard.integer(forKey: SettingsController.DEFAULT_BASE_TYPE)
 				getFormView().typeDropdown.selectRowForDataSourceWithKey(key: key, data: Jump.jump_type, label: getFormView().type)
 			}
 			

@@ -37,10 +37,10 @@ class SettingsOptionsController: BOTableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let cell = tableView.cellForRow(at: indexPath) as! BOTableViewCell
+		let key = Array(self.options.keys)[indexPath.row]
 		
-		UserDefaults.standard.setValue(indexPath.row, forKey: self.settingKey)
-		
+		UserDefaults.standard.setValue(key, forKey: self.settingKey)
+	
 		self.navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)
 	}

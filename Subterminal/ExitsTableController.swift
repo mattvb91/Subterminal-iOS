@@ -36,14 +36,14 @@ class ExitsTableController: TableController {
 	
 	//Fetch public exits seperately
 	override func loadData(notification: NSNotification?) {
-		self.publicExits = Exit.query().where(withFormat: "global_id IS NOT NULL", withParameters: []).fetch()
+		self.publicExits = Exit.query().where(withFormat: "global_id IS NOT NULL", withParameters: []).order(by: "name ASC").fetch()
 		
 		return super.loadData(notification: nil)
 	}
 	
 	//Fetch user exits
 	override func fetchQuery() -> SRKQuery {
-		return type(of: getAssignedModel()).query().where(withFormat: "global_id IS NULL", withParameters: [])
+		return type(of: getAssignedModel()).query().where(withFormat: "global_id IS NULL", withParameters: []).order(by: "name ASC")
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -116,6 +116,8 @@ class ExitsTableController: TableController {
 		let cell = cell as? ExitTableViewCell
 		
 		cell?.name.text = exit?.name
+		cell?.height.text = "Rockdrop: "
+		cell?.time.text = "Rockdrop Time: "
 		
 		if exit?.rockdrop_distance != nil {
 			cell?.height.text = "Rockdrop: " + Subterminal.convertToDefaultUnit(distance: exit?.rockdrop_distance as! Double, fromUnit: exit!.height_unit as! Int)
