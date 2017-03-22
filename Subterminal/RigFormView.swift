@@ -126,7 +126,7 @@ class RigFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			if Display.typeIsLike == DisplayType.iphone5 {
 				textFieldSize = CGSize(width: 140, height: 31)
 			} else {
-				textFieldSize = CGSize(width: 180, height: 31)
+				textFieldSize = CGSize(width: 160, height: 31)
 			}
 			
 			//Container
