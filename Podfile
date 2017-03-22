@@ -8,12 +8,12 @@ target 'Subterminal' do
   # Pods for Subterminal
 
   target 'SubterminalTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 
   target 'SubterminalUITests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 
