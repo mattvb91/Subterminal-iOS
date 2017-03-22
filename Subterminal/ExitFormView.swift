@@ -156,7 +156,7 @@ class ExitFormView: UIView {
 			typeArrow.autoPinEdge(.left, to: .right, of: type, withOffset: 5)
 			typeArrow.autoPinEdge(.top, to: .top, of: type, withOffset: 10)
 			
-			unitLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 160)
+			unitLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			unitLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
 			heightUnit.autoPinEdge(.left, to: .left, of: unitLabel, withOffset: -40)

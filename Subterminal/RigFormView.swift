@@ -167,7 +167,7 @@ class RigFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelMainManufacturer.autoPinEdge(.top, to: .bottom, of: mainTitle, withOffset: 8)
 			labelMainManufacturer.autoPinEdge(.left, to: .left, of: mainTitle)
 			
-			labelMainModel.autoPinEdge(.left, to: .right, of: labelMainManufacturer, withOffset: 100)
+			labelMainModel.autoPinEdge(.left, to: .left, of: labelContainerModel)
 			labelMainModel.autoPinEdge(.top, to: .top, of: labelMainManufacturer)
 			
 			mainManufacturer.autoPinEdge(.top, to: .bottom, of: labelMainManufacturer, withOffset: 8)

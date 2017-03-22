@@ -18,9 +18,9 @@ class DropzoneView: UIView, HTagViewDataSource {
 	var didSetupConstraints: Bool = false
 	
 	var dropzoneDescription: UITextView = UITextView()
-	var website: UILabel = UILabel()
-	var phone: UILabel = UILabel()
-	var email: UILabel = UILabel()
+	var website: UITextView = UITextView()
+	var phone: UITextView = UITextView()
+	var email: UITextView = UITextView()
 	var map = Subterminal.getMap()
 	var aircraft = UILabel()
 	
@@ -55,13 +55,37 @@ class DropzoneView: UIView, HTagViewDataSource {
 		phoneLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		aircraftLabel.text = "Aircraft:"
 		aircraftLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		
+		website.font = UIFont.systemFont(ofSize: 14)
+		website.textContainer.lineFragmentPadding = 0
+		website.textContainerInset = UIEdgeInsets.zero
+		website.textContainer.maximumNumberOfLines = 1
+		website.textContainer.lineBreakMode = .byTruncatingTail
+		website.isEditable = false
+		website.dataDetectorTypes = .all
+		
+		email.font = UIFont.systemFont(ofSize: 14)
+		email.textContainer.lineFragmentPadding = 0
+		email.textContainerInset = UIEdgeInsets.zero
+		email.textContainer.maximumNumberOfLines = 1
+		email.textContainer.lineBreakMode = .byTruncatingTail
+		email.isEditable = false
+		email.dataDetectorTypes = .all
+
+		phone.font = UIFont.systemFont(ofSize: 14)
+		phone.textContainer.lineFragmentPadding = 0
+		phone.textContainerInset = UIEdgeInsets.zero
+		phone.textContainer.maximumNumberOfLines = 1
+		phone.textContainer.lineBreakMode = .byTruncatingTail
+		phone.isEditable = false
+		phone.dataDetectorTypes = .all
 
 		contentView.addSubview(websiteLabel)
-		contentView.addSubview(website)
+		scrollView.addSubview(website)
 		contentView.addSubview(emailLabel)
-		contentView.addSubview(email)
+		scrollView.addSubview(email)
 		contentView.addSubview(phoneLabel)
-		contentView.addSubview(phone)
+		scrollView.addSubview(phone)
 		contentView.addSubview(aircraftLabel)
 		contentView.addSubview(aircraft)
 		
@@ -119,17 +143,19 @@ class DropzoneView: UIView, HTagViewDataSource {
 			phoneLabel.autoPinEdge(.top, to: .bottom, of: emailLabel, withOffset: 10)
 			phoneLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
 			
+			let linkSizes = CGSize(width: (size.width - website.frame.minX) - 20, height: 31)
+			
 			website.autoPinEdge(.left, to: .right, of: websiteLabel, withOffset: 20)
 			website.autoPinEdge(.top, to: .top, of: websiteLabel, withOffset: 0)
-			website.autoSetDimension(.height, toSize: 25.0)
-			
+			website.autoSetDimensions(to: linkSizes)
+
 			email.autoPinEdge(.left, to: .left, of: website)
 			email.autoPinEdge(.top, to: .top, of: emailLabel)
-			email.autoSetDimension(.height, toSize: 25.0)
+			email.autoSetDimensions(to: linkSizes)
 
 			phone.autoPinEdge(.left, to: .left, of: website)
 			phone.autoPinEdge(.top, to: .top, of: phoneLabel)
-			phone.autoSetDimension(.height, toSize: 25.0)
+			phone.autoSetDimensions(to: linkSizes)
 			
 			aircraftLabel.autoPinEdge(.left, to: .left, of: phoneLabel)
 			aircraftLabel.autoPinEdge(.top, to: .bottom, of: phoneLabel, withOffset: 10)
