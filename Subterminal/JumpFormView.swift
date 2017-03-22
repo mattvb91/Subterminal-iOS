@@ -188,21 +188,17 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			let textFieldSize = CGSize(width: 120, height: 31)
-
 			exitLabel.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 20)
 			exitLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 10)
 			
 			exit.autoPinEdge(.left, to: .left, of: exitLabel)
 			exit.autoPinEdge(.top, to: .bottom, of: exitLabel, withOffset: 8)
-			exit.autoSetDimensions(to: CGSize(width: 200, height: 31))
 
-			dateLabel.autoPinEdge(.left, to: .right, of: exitLabel, withOffset: 200)
+			dateLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			dateLabel.autoPinEdge(.top, to: .top, of: exitLabel)
 			
 			date.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 8)
 			date.autoPinEdge(.left, to: .left, of: dateLabel)
-			date.autoSetDimensions(to: textFieldSize)
 			dateArrow.autoPinEdge(.top, to: .top, of: date, withOffset: 8)
 			dateArrow.autoPinEdge(.left, to: .right, of: date, withOffset: 5)
 			
@@ -214,7 +210,7 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 			typeArrow.autoPinEdge(.top, to: .top, of: type, withOffset: 8)
 			typeArrow.autoPinEdge(.left, to: .right, of: type, withOffset: 5)
 			
-			pcLabel.autoPinEdge(.left, to: .right, of: typeLabel, withOffset: 80)
+			pcLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 3)
 			pcLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
 			pc.autoPinEdge(.top, to: .bottom, of: pcLabel, withOffset: 8)
@@ -222,7 +218,7 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 			pcArrow.autoPinEdge(.top, to: .top, of: pc, withOffset: 8)
 			pcArrow.autoPinEdge(.left, to: .right, of: pc, withOffset: 5)
 			
-			sliderLabel.autoPinEdge(.left, to: .right, of: pcLabel, withOffset: 80)
+			sliderLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: (size.width / 3) * 2)
 			sliderLabel.autoPinEdge(.top, to: .top, of: typeLabel)
 			
 			slider.autoPinEdge(.top, to: .bottom, of: sliderLabel, withOffset: 8)
@@ -239,11 +235,11 @@ class JumpFormView: UIView, GMDatePickerDelegate {
 			rigArrow.autoPinEdge(.left, to: .right, of: rig, withOffset: 5)
 
 			delayLabel.autoPinEdge(.top, to: .top, of: rigLabel)
-			delayLabel.autoPinEdge(.left, to: .right, of: rigLabel, withOffset: 200)
+			delayLabel.autoPinEdge(.left, to: .left, of: dateLabel)
 			
 			delay.autoPinEdge(.top, to: .bottom, of: delayLabel, withOffset: 8)
 			delay.autoPinEdge(.left, to: .left, of: delayLabel)
-			delay.autoSetDimensions(to: textFieldSize)
+			delay.autoSetDimensions(to: CGSize(width: 50, height: 31))
 			
 			descriptionLabel.autoPinEdge(.top, to: .bottom, of: rigLabel, withOffset: 50)
 			descriptionLabel.autoPinEdge(.left, to: .left, of: rigLabel)

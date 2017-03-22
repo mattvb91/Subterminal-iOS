@@ -191,7 +191,13 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 		
-			let textFieldSize = CGSize(width: 180, height: 31)
+			let textFieldSize: CGSize
+			
+			if Display.typeIsLike == DisplayType.iphone5 {
+				textFieldSize = CGSize(width: 140, height: 31)
+			} else {
+				textFieldSize = CGSize(width: 180, height: 31)
+			}
 			
 			//Container
 			containerTitle.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
@@ -199,7 +205,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelContainerManufacturer.autoPinEdge(.top, to: .bottom, of: containerTitle, withOffset: 8)
 			labelContainerManufacturer.autoPinEdge(.left, to: .left, of: containerTitle)
 			
-			labelContainerModel.autoPinEdge(.left, to: .right, of: labelContainerManufacturer, withOffset: 100)
+			labelContainerModel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			labelContainerModel.autoPinEdge(.top, to: .top, of: labelContainerManufacturer)
 			
 			containerManufacturer.autoPinEdge(.top, to: .bottom, of: labelContainerManufacturer, withOffset: 8)
@@ -231,7 +237,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelMainManufacturer.autoPinEdge(.top, to: .bottom, of: mainTitle, withOffset: 8)
 			labelMainManufacturer.autoPinEdge(.left, to: .left, of: mainTitle)
 			
-			labelMainModel.autoPinEdge(.left, to: .right, of: labelMainManufacturer, withOffset: 100)
+			labelMainModel.autoPinEdge(.left, to: .left, of: labelContainerModel)
 			labelMainModel.autoPinEdge(.top, to: .top, of: labelMainManufacturer)
 			
 			mainManufacturer.autoPinEdge(.top, to: .bottom, of: labelMainManufacturer, withOffset: 8)
@@ -263,7 +269,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelReserveManufacturer.autoPinEdge(.top, to: .bottom, of: reserveTitle, withOffset: 8)
 			labelReserveManufacturer.autoPinEdge(.left, to: .left, of: reserveTitle)
 			
-			labelReserveModel.autoPinEdge(.left, to: .right, of: labelReserveManufacturer, withOffset: 100)
+			labelReserveModel.autoPinEdge(.left, to: .left, of: labelContainerModel)
 			labelReserveModel.autoPinEdge(.top, to: .top, of: labelReserveManufacturer)
 			
 			reserveManufacturer.autoPinEdge(.top, to: .bottom, of: labelReserveManufacturer, withOffset: 8)
@@ -295,7 +301,7 @@ class GearFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelAadManufacturer.autoPinEdge(.top, to: .bottom, of: aadTitle, withOffset: 8)
 			labelAadManufacturer.autoPinEdge(.left, to: .left, of: aadTitle)
 			
-			labelAadModel.autoPinEdge(.left, to: .right, of: labelAadManufacturer, withOffset: 100)
+			labelAadModel.autoPinEdge(.left, to: .left, of: labelContainerModel)
 			labelAadModel.autoPinEdge(.top, to: .top, of: labelAadManufacturer)
 			
 			aadManufacturer.autoPinEdge(.top, to: .bottom, of: labelAadManufacturer, withOffset: 8)

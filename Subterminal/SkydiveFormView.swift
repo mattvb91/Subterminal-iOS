@@ -214,7 +214,7 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			dateSelectedLabel.autoPinEdge(.top, to: .bottom, of: dateLabel, withOffset: 8)
 			
 			aircraftLabel.autoPinEdge(.top, to: .top, of: dateLabel)
-			aircraftLabel.autoPinEdge(.left, to: .right, of: dateLabel, withOffset: 120)
+			aircraftLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			
 			aircraft.autoPinEdge(.top, to: .bottom, of: aircraftLabel, withOffset: 10)
 			aircraft.autoPinEdge(.left, to: .left, of: aircraftLabel)
@@ -248,8 +248,8 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			heightUnit.autoPinEdge(.left, to: .left, of: heightUnitLabel)
 			heightUnit.autoPinEdge(.top, to: .bottom, of: heightUnitLabel, withOffset: 8)
 
-			cutawayLabel.autoPinEdge(.left, to: .left, of: typeLabel)
-			cutawayLabel.autoPinEdge(.top, to: .bottom, of: typeLabel, withOffset: 40)
+			cutawayLabel.autoPinEdge(.left, to: .left, of: typeLabel, withOffset: 50)
+			cutawayLabel.autoPinEdge(.top, to: .top, of: heightUnitLabel)
 			
 			cutaway.autoPinEdge(.top, to: .bottom, of: cutawayLabel, withOffset: 8)
 			cutaway.autoPinEdge(.left, to: .left, of: cutawayLabel)
@@ -259,21 +259,21 @@ class SkydiveFormView: UIView, GMDatePickerDelegate {
 			
 			exitAlt.autoPinEdge(.top, to: .bottom, of: exitAltitudeLabel, withOffset: 4)
 			exitAlt.autoPinEdge(.left, to: .left, of: exitAltitudeLabel)
-			exitAlt.autoSetDimensions(to: CGSize(width: 100, height: 31))
+			exitAlt.autoSetDimensions(to: CGSize(width: 80, height: 31))
 
 			deployAltitudeLabel.autoPinEdge(.top, to: .top, of: exitAltitudeLabel)
-			deployAltitudeLabel.autoPinEdge(.left, to: .right, of: exitAlt, withOffset: 50)
+			deployAltitudeLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: (size.width / 3) + 10)
 			
 			deployAlt.autoPinEdge(.top, to: .bottom, of: deployAltitudeLabel, withOffset: 4)
 			deployAlt.autoPinEdge(.left, to: .left, of: deployAltitudeLabel)
-			deployAlt.autoSetDimensions(to: CGSize(width: 100, height: 31))
+			deployAlt.autoSetDimensions(to: CGSize(width: 80, height: 31))
 
 			delayLabel.autoPinEdge(.top, to: .top, of: exitAltitudeLabel)
-			delayLabel.autoPinEdge(.left, to: .right, of: deployAltitudeLabel, withOffset: 70)
+			delayLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: ((size.width / 3) * 2) + 10)
 			
 			delay.autoPinEdge(.top, to: .bottom, of: delayLabel, withOffset: 4)
 			delay.autoPinEdge(.left, to: .left, of: delayLabel)
-			delay.autoSetDimensions(to: CGSize(width: 70, height: 31))
+			delay.autoSetDimensions(to: CGSize(width: 50, height: 31))
 
 			descriptionLabel.autoPinEdge(.top, to: .bottom, of: exitAltitudeLabel, withOffset: 50)
 			descriptionLabel.autoPinEdge(.left, to: .left, of: dropzoneLabel)

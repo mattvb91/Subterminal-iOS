@@ -183,13 +183,13 @@ class SkydiveView: UIView {
 			exitAlt.autoPinEdge(.left, to: .left, of: exitAltLabel)
 			exitAlt.autoPinEdge(.top, to: .bottom, of: exitAltLabel, withOffset: 10)
 			
-			deployAltLabel.autoPinEdge(.left, to: .right, of: exitAltLabel, withOffset: 80)
+			deployAltLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 3)
 			deployAltLabel.autoPinEdge(.top, to: .top, of: exitAltLabel)
 			
 			deployAlt.autoPinEdge(.left, to: .left, of: deployAltLabel)
 			deployAlt.autoPinEdge(.top, to: .bottom, of: deployAltLabel, withOffset: 10)
 
-			delayLabel.autoPinEdge(.left, to: .right, of: deployAltLabel, withOffset: 80)
+			delayLabel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: (size.width / 3) * 2)
 			delayLabel.autoPinEdge(.top, to: .top, of: deployAltLabel)
 			
 			delay.autoPinEdge(.left, to: .left, of: delayLabel)

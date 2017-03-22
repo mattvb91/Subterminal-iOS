@@ -158,6 +158,9 @@
 		8FCE364E1E5C480E00B03F67 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE364B1E5C465D00B03F67 /* DateHelper.swift */; };
 		8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
+		8FD7B63B1E82CA8B00298CA3 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7B63A1E82CA8B00298CA3 /* Display.swift */; };
+		8FD7B63C1E82CA8B00298CA3 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7B63A1E82CA8B00298CA3 /* Display.swift */; };
+		8FD7B63D1E82CA8B00298CA3 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7B63A1E82CA8B00298CA3 /* Display.swift */; };
 		8FDADDAE1E4F9E7C00A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB21E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
 		8FDADDB31E4FA10300A33F59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADDAD1E4F9E7C00A33F59 /* API.swift */; };
@@ -269,6 +272,7 @@
 		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		8FD7B63A1E82CA8B00298CA3 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		8FDBAB8C1E54EF79005543C1 /* SkydiveFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveFormView.swift; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 				8F8C14861E59AE8A00AC4856 /* Router.swift */,
 				8F92B88C1E5B5F3000E749A8 /* Subterminal.swift */,
 				8FCE364B1E5C465D00B03F67 /* DateHelper.swift */,
+				8FD7B63A1E82CA8B00298CA3 /* Display.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -915,6 +920,7 @@
 				8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */,
 				8FA7396B1E50B60800A08D6A /* DropzoneTableController.swift in Sources */,
 				8FB490641E6610DF00CB89DF /* JumpView.swift in Sources */,
+				8FD7B63B1E82CA8B00298CA3 /* Display.swift in Sources */,
 				8FA739711E50BE6200A08D6A /* DropzoneViewController.swift in Sources */,
 				8FDCFA891E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8FAD28CF1E52169F00E88E97 /* DropzoneView.swift in Sources */,
@@ -991,6 +997,7 @@
 				8FA4E8B61E5DE1E20015549A /* Rig.swift in Sources */,
 				8FDCFA8A1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64A1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
+				8FD7B63C1E82CA8B00298CA3 /* Display.swift in Sources */,
 				8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FA07F921E67136800841BB5 /* JumpForm.swift in Sources */,
 				8FB490591E65F5CB00CB89DF /* JumpTableController.swift in Sources */,
@@ -1053,6 +1060,7 @@
 				8FA4E8B71E5DE1E30015549A /* Rig.swift in Sources */,
 				8FDCFA8B1E6080CA00BE92C5 /* DashboardView.swift in Sources */,
 				8F90E64B1E636C4500CAF8A3 /* SuitForm.swift in Sources */,
+				8FD7B63D1E82CA8B00298CA3 /* Display.swift in Sources */,
 				8F8C148D1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FA07F931E67136800841BB5 /* JumpForm.swift in Sources */,
 				8FB4905A1E65F5CB00CB89DF /* JumpTableController.swift in Sources */,

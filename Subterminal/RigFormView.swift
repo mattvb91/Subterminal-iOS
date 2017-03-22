@@ -121,7 +121,13 @@ class RigFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			let textFieldSize = CGSize(width: 180, height: 31)
+			let textFieldSize: CGSize
+			
+			if Display.typeIsLike == DisplayType.iphone5 {
+				textFieldSize = CGSize(width: 140, height: 31)
+			} else {
+				textFieldSize = CGSize(width: 180, height: 31)
+			}
 			
 			//Container
 			containerTitle.autoPinEdge(toSuperviewEdge: .left, withInset: 10)
@@ -129,7 +135,7 @@ class RigFormView: UIView, UITextFieldDelegate, GMDatePickerDelegate {
 			labelContainerManufacturer.autoPinEdge(.top, to: .bottom, of: containerTitle, withOffset: 8)
 			labelContainerManufacturer.autoPinEdge(.left, to: .left, of: containerTitle)
 			
-			labelContainerModel.autoPinEdge(.left, to: .right, of: labelContainerManufacturer, withOffset: 100)
+			labelContainerModel.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			labelContainerModel.autoPinEdge(.top, to: .top, of: labelContainerManufacturer)
 			
 			containerManufacturer.autoPinEdge(.top, to: .bottom, of: labelContainerManufacturer, withOffset: 8)

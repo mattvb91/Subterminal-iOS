@@ -97,7 +97,13 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
-			let textFieldSize = CGSize(width: 160, height: 31)
+			let textFieldSize: CGSize
+			
+			if Display.typeIsLike == DisplayType.iphone5 {
+				textFieldSize = CGSize(width: 140, height: 31)
+			} else {
+				textFieldSize = CGSize(width: 160, height: 31)
+			}
 			
 			labelType.autoPinEdge(.top, to: .top, of: scrollView, withOffset: 10)
 			labelType.autoPinEdge(.left, to: .left, of: scrollView, withOffset: 10)
@@ -109,7 +115,7 @@ class SuitFormView: UIView, GMDatePickerDelegate {
 			arrow.autoPinEdge(.top, to: .top, of: type, withOffset: 10)
 			
 			labelDate.autoPinEdge(.top, to: .top, of: labelType)
-			labelDate.autoPinEdge(.left, to: .right, of: labelType, withOffset: 160)
+			labelDate.autoPinEdge(.left, to: .left, of: scrollView, withOffset: size.width / 2)
 			
 			dateField.autoPinEdge(.left, to: .left, of: labelDate)
 			dateField.autoPinEdge(.top, to: .bottom, of: labelDate, withOffset: 8)
