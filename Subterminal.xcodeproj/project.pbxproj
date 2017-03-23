@@ -188,6 +188,7 @@
 		8FCFDE161E8324C400CA82FD /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
 		8FCFDE171E8324C500CA82FD /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
 		8FCFDE1D1E83294700CA82FD /* DropzoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */; };
+		8FCFDE1F1E83348B00CA82FD /* RigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCFDE1E1E83348B00CA82FD /* RigTests.swift */; };
 		8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FD7B63B1E82CA8B00298CA3 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7B63A1E82CA8B00298CA3 /* Display.swift */; };
@@ -309,6 +310,7 @@
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTests.swift; sourceTree = "<group>"; };
+		8FCFDE1E1E83348B00CA82FD /* RigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigTests.swift; sourceTree = "<group>"; };
 		8FD7B63A1E82CA8B00298CA3 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */,
+				8FCFDE1E1E83348B00CA82FD /* RigTests.swift */,
 			);
 			name = Skydive;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				8F8C148C1E59B27800AC4856 /* Aircraft.swift in Sources */,
 				8FA07F921E67136800841BB5 /* JumpForm.swift in Sources */,
 				8FB490591E65F5CB00CB89DF /* JumpTableController.swift in Sources */,
+				8FCFDE1F1E83348B00CA82FD /* RigTests.swift in Sources */,
 				8FCD0B811E78054A00254B75 /* Skydive.swift in Sources */,
 				8FA4A3191E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */,
 				8FDCFA901E60871D00BE92C5 /* PremiumController.swift in Sources */,

@@ -9,16 +9,6 @@
 import XCTest
 
 class DropzoneTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
 	
 	static func createDropzone() -> Dropzone {
 		let dropzone = Dropzone()
@@ -36,20 +26,18 @@ class DropzoneTests: XCTestCase {
 		return dropzone
 	}
 	
-	func testSaveToDb() {
+	static func createAircraft() -> Aircraft {
+		let aircraft = Aircraft()
+		aircraft.name = "Test Aircraft"
 		
+		_ = aircraft.save()
+		
+		return aircraft
 	}
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+	
+	func testSaveToDb() {
+		let dropzone = DropzoneTests.createDropzone()
+	
+		XCTAssertNotNil(dropzone.id)
+	}
 }

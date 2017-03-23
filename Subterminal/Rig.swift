@@ -129,6 +129,30 @@ class Rig: Synchronizable {
 		
 		return super.remove()
 	}
+	
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? Rig {
+		return
+			container_manufacturer == object.container_manufacturer &&
+			container_model == object.container_model &&
+			container_serial == object.container_serial &&
+			main_manufacturer == object.main_manufacturer &&
+			main_model == object.main_model &&
+			main_serial == object.main_serial &&
+			reserve_manufacturer == object.reserve_manufacturer &&
+			reserve_model == object.reserve_model &&
+			reserve_serial == object.reserve_serial &&
+			aad_manufacturer == object.aad_manufacturer &&
+			aad_model == object.aad_model &&
+			aad_serial == object.aad_serial &&
+			container_date_in_use == object.container_date_in_use &&
+			main_date_in_use == object.main_date_in_use &&
+			reserve_date_in_use == object.reserve_date_in_use &&
+			aad_date_in_use == object.aad_date_in_use
+		} else {
+			return false
+		}
+	}
 
 	
 }
