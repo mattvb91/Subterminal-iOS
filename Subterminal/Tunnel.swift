@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Tunnel: Model {
 	
@@ -27,6 +28,27 @@ class Tunnel: Model {
 	dynamic var tunnel_diameter: Double = 0.00
 	dynamic var	tunnel_height: Double = 0.00
 
+	class func build(json: JSON) -> Tunnel {
+		let tunnel = Tunnel()
+		
+		tunnel.id = json["id"].intValue as NSNumber!
+		tunnel.tunnel_description = json["description"].string
+		tunnel.name = json["name"].string
+		tunnel.website = json["website"].string
+		tunnel.phone = json["phone"].string
+		tunnel.email = json["email"].string
+		tunnel.formatted_address = json["formatted_address"].string
+		tunnel.local = json["local"].string
+		tunnel.country = json["country"].string
+		tunnel.latitude = json["latitude"].doubleValue
+		tunnel.longtitude = json["longtitude"].doubleValue
+		tunnel.featured = json["featured"].numberValue
+		tunnel.tunnel_diameter = json["tunnel_diameter"].doubleValue
+		tunnel.tunnel_height = json["tunnel_height"].doubleValue
+		
+		return tunnel
+	}
+	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
 		return [
 			"featured": 0,

@@ -45,7 +45,14 @@ class TabBarController: RAMAnimatedTabBarController {
 			tabBarIconDropzone.animation = RAMBounceAnimation()
 			dropzoneController.tabBarItem = tabBarIconDropzone
 			
-			viewControllers = [dashboardNavController, skydiveNavController, gearNavController, dropzoneNavController]
+			let tunnelController = TunnelTableController()
+			tunnelController.title = "Tunnels"
+			let tunnelNavController = UINavigationController(rootViewController: tunnelController)
+			let tabBarIconTunnel: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Tunnels", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
+			tabBarIconTunnel.animation = RAMBounceAnimation()
+			tunnelNavController.tabBarItem = tabBarIconTunnel
+			
+			viewControllers = [dashboardNavController, skydiveNavController, gearNavController, dropzoneNavController, tunnelNavController]
 		} else {
 			
 			let exitsController = ExitsTableController()

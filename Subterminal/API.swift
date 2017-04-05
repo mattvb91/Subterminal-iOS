@@ -14,7 +14,8 @@ import ImageSlideshow
 class API: NSObject {
 	
 	static let LAST_DROPZONE_REQUEST = "last_dropzone_request"
-	
+	static let LAST_TUNNEL_REQUEST = "last_tunnel_request"
+
 	let headerss: HTTPHeaders = [
 		"accept": Subterminal.getKey(key: "apiaccept"),
 		"apiappkey": Subterminal.getKey(key: "apikey")
@@ -44,6 +45,7 @@ class API: NSObject {
 			API.instance.getAircraft()
 			API.instance.getDropzones()
 			API.instance.getPublicExits()
+			API.instance.getTunnels()
 		
 			if Subterminal.user.isLoggedIn() {
 				API.instance.downloadModel(model: Rig())
@@ -95,8 +97,23 @@ class API: NSObject {
 				}
 				
 				API.setLastRequestTime(name: API.LAST_DROPZONE_REQUEST, time: response.response?.allHeaderFields["server_time"] as! String)
-				
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: Dropzone.getNotificationName()), object: nil)
+			}
+		}
+	}
+	
+	func getTunnels() -> Void {
+		Alamofire.request(Router.baseURL + "/tunnel", parameters: ["last_sync": API.getLastRequestTime(requestName: API.LAST_TUNNEL_REQUEST)], headers: headerss).responseJSON { response in
+			if let result = response.result.value {
+				let items = result as! NSArray
+				
+				for item in items as! [NSDictionary] {
+					let tunnel = Tunnel.build(json: JSON(item))
+					_ = tunnel.save()
+				}
+				
+				API.setLastRequestTime(name: API.LAST_TUNNEL_REQUEST, time: response.response?.allHeaderFields["server_time"] as! String)
+				NotificationCenter.default.post(name: NSNotification.Name(rawValue: Tunnel.getNotificationName()), object: nil)
 			}
 		}
 	}
