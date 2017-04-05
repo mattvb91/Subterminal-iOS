@@ -12,6 +12,14 @@ import SharkORM
 class Aircraft: Model {
 	dynamic var name: String?
 	
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? Aircraft {
+			return name == object.name
+		} else {
+			return false
+		}
+	}
+	
 	static func getAircrafts() -> [Int: String] {
 		let aircrafts = Aircraft.query().fetch()
 		var res = [Int: String]()

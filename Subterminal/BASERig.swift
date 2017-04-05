@@ -112,4 +112,20 @@ class BASERig: Synchronizable {
 		return super.remove()
 	}
 
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? BASERig {
+			return
+				container_manufacturer == object.container_manufacturer &&
+				container_type == object.container_type &&
+				container_serial == object.container_serial &&
+				container_date_in_use?.description == object.container_date_in_use?.description &&
+				canopy_manufacturer == object.canopy_manufacturer &&
+				canopy_type == object.canopy_type &&
+				canopy_serial == object.canopy_serial &&
+				canopy_date_in_use?.description == object.canopy_date_in_use?.description
+		}
+		
+		return false
+	}
+
 }

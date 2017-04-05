@@ -16,6 +16,7 @@
 		8F1CA5FF1E771D11006D925D /* SettingsOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1CA5FE1E771D11006D925D /* SettingsOptionsController.swift */; };
 		8F1CA6001E771D11006D925D /* SettingsOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1CA5FE1E771D11006D925D /* SettingsOptionsController.swift */; };
 		8F1CA6011E771D11006D925D /* SettingsOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1CA5FE1E771D11006D925D /* SettingsOptionsController.swift */; };
+		8F20552E1E87AE73005CBA67 /* BASERigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F20552D1E87AE73005CBA67 /* BASERigTests.swift */; };
 		8F49B1BD1E5F538100AA5179 /* DzAircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49B1BC1E5F538100AA5179 /* DzAircraft.swift */; };
 		8F49B1BE1E5F538100AA5179 /* DzAircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49B1BC1E5F538100AA5179 /* DzAircraft.swift */; };
 		8F49B1BF1E5F538100AA5179 /* DzAircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49B1BC1E5F538100AA5179 /* DzAircraft.swift */; };
@@ -189,6 +190,7 @@
 		8FCFDE171E8324C500CA82FD /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
 		8FCFDE1D1E83294700CA82FD /* DropzoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */; };
 		8FCFDE1F1E83348B00CA82FD /* RigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCFDE1E1E83348B00CA82FD /* RigTests.swift */; };
+		8FD092CB1E844C6B00179AD9 /* SkydiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD092CA1E844C6B00179AD9 /* SkydiveTests.swift */; };
 		8FD6F5F21E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FD6F5F31E61B6CA0099AF98 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F980D5C1E55DD4800CDC497 /* Label.swift */; };
 		8FD7B63B1E82CA8B00298CA3 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD7B63A1E82CA8B00298CA3 /* Display.swift */; };
@@ -210,6 +212,7 @@
 		8FDE7B4E1E51F09E00140144 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE7B4D1E51F09E00140144 /* DashboardController.swift */; };
 		8FE80AB71E56304F0081EA56 /* SkydiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */; };
 		8FE80AB91E56311A0081EA56 /* SkydiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE80AB81E56311A0081EA56 /* SkydiveView.swift */; };
+		8FEFBC151E8795B400A806A5 /* ExitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEFBC141E8795B400A806A5 /* ExitTests.swift */; };
 		8FF31AA71E4DE7AD003F3CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */; };
 		8FF31AB01E4DE7AD003F3CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */; };
 		8FF31AB31E4DE7AD003F3CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FF31AB11E4DE7AD003F3CFF /* LaunchScreen.storyboard */; };
@@ -261,6 +264,7 @@
 		8F180C511E5795FE006966A2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8F1CA5FA1E770650006D925D /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		8F1CA5FE1E771D11006D925D /* SettingsOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOptionsController.swift; sourceTree = "<group>"; };
+		8F20552D1E87AE73005CBA67 /* BASERigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BASERigTests.swift; sourceTree = "<group>"; };
 		8F49B1BC1E5F538100AA5179 /* DzAircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DzAircraft.swift; sourceTree = "<group>"; };
 		8F8C14861E59AE8A00AC4856 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8F8C148A1E59B23800AC4856 /* Aircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropzoneTests.swift; sourceTree = "<group>"; };
 		8FCFDE1E1E83348B00CA82FD /* RigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RigTests.swift; sourceTree = "<group>"; };
+		8FD092CA1E844C6B00179AD9 /* SkydiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveTests.swift; sourceTree = "<group>"; };
 		8FD7B63A1E82CA8B00298CA3 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		8FDADDAD1E4F9E7C00A33F59 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8FDBAB8A1E549B74005543C1 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
@@ -320,6 +325,7 @@
 		8FDE7B4D1E51F09E00140144 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		8FE80AB61E56304F0081EA56 /* SkydiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveViewController.swift; sourceTree = "<group>"; };
 		8FE80AB81E56311A0081EA56 /* SkydiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkydiveView.swift; sourceTree = "<group>"; };
+		8FEFBC141E8795B400A806A5 /* ExitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitTests.swift; sourceTree = "<group>"; };
 		8FF31AA31E4DE7AD003F3CFF /* Subterminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subterminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF31AA61E4DE7AD003F3CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FF31AAF1E4DE7AD003F3CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -492,6 +498,7 @@
 			children = (
 				8FCFDE181E8328A500CA82FD /* DropzoneTests.swift */,
 				8FCFDE1E1E83348B00CA82FD /* RigTests.swift */,
+				8FD092CA1E844C6B00179AD9 /* SkydiveTests.swift */,
 			);
 			name = Skydive;
 			sourceTree = "<group>";
@@ -506,6 +513,15 @@
 				8FD7B63A1E82CA8B00298CA3 /* Display.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		8FEFBC131E87957100A806A5 /* BASE */ = {
+			isa = PBXGroup;
+			children = (
+				8FEFBC141E8795B400A806A5 /* ExitTests.swift */,
+				8F20552D1E87AE73005CBA67 /* BASERigTests.swift */,
+			);
+			name = BASE;
 			sourceTree = "<group>";
 		};
 		8FF31A9A1E4DE7AD003F3CFF = {
@@ -550,6 +566,7 @@
 		8FF31ABC1E4DE7AD003F3CFF /* SubterminalTests */ = {
 			isa = PBXGroup;
 			children = (
+				8FEFBC131E87957100A806A5 /* BASE */,
 				8FCFDE1A1E8328AD00CA82FD /* Skydive */,
 				8FF31ABD1E4DE7AD003F3CFF /* SubterminalTests.swift */,
 				8FF31ABF1E4DE7AD003F3CFF /* Info.plist */,
@@ -1028,12 +1045,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA4E8C01E5E0BA60015549A /* User.swift in Sources */,
+				8F20552E1E87AE73005CBA67 /* BASERigTests.swift in Sources */,
 				8FB15FA91E64ACCC00685A53 /* ExitTableViewCell.swift in Sources */,
 				8FCFDE041E83241500CA82FD /* GearForm.swift in Sources */,
 				8FB490431E65875C00CB89DF /* ExitView.swift in Sources */,
 				8FCFDE121E83247900CA82FD /* DropzoneView.swift in Sources */,
 				8FB490551E65F28700CB89DF /* Jump.swift in Sources */,
 				8FCFDE141E83249900CA82FD /* SkydiveViewController.swift in Sources */,
+				8FD092CB1E844C6B00179AD9 /* SkydiveTests.swift in Sources */,
 				8FA277041E6ECF0D00931977 /* RigFormView.swift in Sources */,
 				8FB15F9A1E649F9400685A53 /* TabBarController.swift in Sources */,
 				8FCFDE161E8324C400CA82FD /* SkydiveView.swift in Sources */,
@@ -1082,6 +1101,7 @@
 				8FCFDE061E83243000CA82FD /* GearFormView.swift in Sources */,
 				8FF31ABE1E4DE7AD003F3CFF /* SubterminalTests.swift in Sources */,
 				8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */,
+				8FEFBC151E8795B400A806A5 /* ExitTests.swift in Sources */,
 				8FBA1A571E68DA35009EA0A2 /* ExitForm.swift in Sources */,
 				8FB4904D1E65D30600CB89DF /* BaseGearTableController.swift in Sources */,
 				8FA4E8B81E5DE22B0015549A /* Synchronizable.swift in Sources */,

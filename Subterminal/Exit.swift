@@ -22,7 +22,7 @@ class Exit: Synchronizable {
 		altitude_to_landing,
 		object_type: NSNumber?
 	
-	dynamic var height_unit = NSNumber(value: Subterminal.HEIGHT_UNIT_IMPERIAL)
+	dynamic var height_unit: NSNumber!
 	
 	dynamic var latitude: Double = 0.0
 	dynamic var longtitude: Double = 0.0
@@ -82,6 +82,16 @@ class Exit: Synchronizable {
 		fatalError("not implemented")
 	}
 	
+	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
+		var defaults = [
+			"height_unit": Subterminal.HEIGHT_UNIT_IMPERIAL
+		]
+		
+		defaults.merge(other: super.defaultValuesForEntity() as! Dictionary<String, Int>)
+		
+		return defaults
+	}
+
 	
 	override class func build(json: JSON) -> Exit {
 		let exit = Exit()
@@ -107,17 +117,20 @@ class Exit: Synchronizable {
 		return exit
 	}
 	
-	func equals(exit: Exit) -> Bool {
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? Exit {
+			return name == object.name &&
+				global_id == object.global_id &&
+				exit_description == object.exit_description &&
+				rockdrop_distance == object.rockdrop_distance &&
+				altitude_to_landing == object.altitude_to_landing &&
+				object_type == object.object_type &&
+				height_unit == object.height_unit &&
+				latitude == object.latitude &&
+				longtitude == object.longtitude
+		}
 		
-		return self.name == exit.name &&
-			self.global_id == exit.global_id &&
-			self.exit_description == exit.exit_description &&
-			self.rockdrop_distance == exit.rockdrop_distance &&
-			self.altitude_to_landing == exit.altitude_to_landing &&
-			self.object_type == exit.object_type &&
-			self.height_unit == exit.height_unit &&
-			self.latitude == exit.latitude &&
-			self.longtitude == exit.longtitude
+		return false
 	}
 	
 	//Check if we already have a matching exit
@@ -136,7 +149,7 @@ class Exit: Synchronizable {
 			let publicExit = publicRes[0] as! Exit
 			self.id = publicExit.id
 			
-			if self.equals(exit: publicExit) == true {
+			if self.isEqual(publicExit) == true {
 				return
 			}
 		}

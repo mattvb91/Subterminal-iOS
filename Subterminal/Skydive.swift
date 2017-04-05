@@ -25,8 +25,8 @@ class Skydive: Synchronizable {
         rig_id,
         suid_id: NSNumber?
 	
-	dynamic var cutaway: NSNumber = 0
-	dynamic var height_unit = NSNumber(value: Subterminal.HEIGHT_UNIT_IMPERIAL)
+	dynamic var cutaway,
+		height_unit: NSNumber!
 	
 	//Skydive Types
 	static let SKYDIVE_TYPE_BELLY = 1;
@@ -205,7 +205,39 @@ class Skydive: Synchronizable {
 		skydive.height_unit = json["height_unit"].intValue as NSNumber!
 		skydive.suid_id = json["suit_id"].intValue as NSNumber!
 		skydive.skydive_description = json["description"].stringValue
+		skydive.cutaway = json["cutaway"].intValue as NSNumber!
 
 		return skydive
+	}
+	
+	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
+		var defaults = [
+			"cutaway": 0,
+			"height_unit": Subterminal.HEIGHT_UNIT_IMPERIAL
+		]
+		
+		defaults.merge(other: super.defaultValuesForEntity() as! Dictionary<String, Int>)
+		
+		return defaults
+	}
+	
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? Skydive {
+			return
+				//date == object.date &&
+				//dropzone_id == object.dropzone_id &&
+				//exit_altitude == object.exit_altitude &&
+				//deploy_altidude == object.deploy_altidude &&
+				//delay == object.delay &&
+				//jump_type == object.jump_type &&
+				//aircraft_id == object.aircraft_id &&
+				//rig_id == object.rig_id &&
+				//height_unit == object.height_unit &&
+				//suid_id == object.suid_id &&
+				//cutaway == object.cutaway &&
+				skydive_description == object.skydive_description
+		}
+		
+		return false
 	}
 }

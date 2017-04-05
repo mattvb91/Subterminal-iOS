@@ -31,7 +31,7 @@ class SkydiveForm: Form {
 			
 			getFormView().exitAlt.text = getItem().exit_altitude?.description
 			getFormView().deployAlt.text = getItem().deploy_altidude?.description
-			getFormView().cutaway.isOn = Bool(getItem().cutaway)
+			getFormView().cutaway.isOn = Bool(getItem().cutaway!)
 			getFormView().delay.text = getItem().delay?.description
 			getFormView().descriptionInput.text = getItem().skydive_description
 			getFormView().type.selectRowForDataSourceWithKey(key: Int(getItem().jump_type!), data: Skydive.types, label: self.getFormView().typeSelectedLabel)

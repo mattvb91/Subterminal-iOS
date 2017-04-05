@@ -94,4 +94,22 @@ class Dropzone: Model {
 		return results
 	}
 	
+	override func isEqual(_ object: Any?) -> Bool {
+		if let object = object as? Dropzone {
+			return
+				dropzone_description == object.dropzone_description &&
+				name == object.name &&
+				website == object.website &&
+				phone == object.phone &&
+				email == object.email &&
+				formatted_address == object.formatted_address &&
+				local == object.local &&
+				country == object.country &&
+				latitude == object.latitude &&
+				longtitude == object.longtitude
+		} else {
+			return false
+		}
+	}
+	
 }

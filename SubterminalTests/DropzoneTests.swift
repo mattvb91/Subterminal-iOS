@@ -35,9 +35,22 @@ class DropzoneTests: XCTestCase {
 		return aircraft
 	}
 	
+	func testSaveAircraftToDb() {
+		let aircraft = DropzoneTests.createAircraft()
+		XCTAssertNotNil(aircraft.id)
+		
+		let dbAircraft = Aircraft.object(withPrimaryKeyValue: aircraft.id)
+		XCTAssertTrue(aircraft.isEqual(dbAircraft))
+	}
+	
 	func testSaveToDb() {
 		let dropzone = DropzoneTests.createDropzone()
-	
 		XCTAssertNotNil(dropzone.id)
+		
+		let dbDropzone = Dropzone.object(withPrimaryKeyValue: dropzone.id)
+		XCTAssertTrue(dropzone.isEqual(dbDropzone))
+		
+		dropzone.country = "different"
+		XCTAssertFalse(dropzone.isEqual(dbDropzone))
 	}
 }

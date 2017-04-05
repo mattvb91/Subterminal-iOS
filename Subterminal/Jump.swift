@@ -101,11 +101,6 @@ class Jump: Synchronizable {
 		fatalError("not implemented")
 	}
 	
-	override class func build(json: JSON) -> Synchronizable {
-		fatalError("not implemented")
-	}
-	
-	
 	override class func build(json: JSON) -> Jump {
 		let jump = Jump()
 		
@@ -119,6 +114,8 @@ class Jump: Synchronizable {
 		jump.suit_id = json["suit_id"].number
 		jump.pc_size = json["pc_size"].number
 		jump.slider = json["slider"].number
+		
+		super.build(json: json)
 
 		return jump
 
