@@ -84,8 +84,10 @@ class Exit: Synchronizable {
 	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
 		var defaults = [
-			"height_unit": Subterminal.HEIGHT_UNIT_IMPERIAL
-		]
+			"height_unit": Subterminal.HEIGHT_UNIT_IMPERIAL,
+			"latitude": 0.0,
+			"longtitude": 0.0
+		] as [String : Any]
 		
 		defaults.merge(other: super.defaultValuesForEntity() as! Dictionary<String, Int>)
 		

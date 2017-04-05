@@ -26,6 +26,23 @@ class DropzoneTests: XCTestCase {
 		return dropzone
 	}
 	
+	static func createTunnel() -> Tunnel {
+		let tunnel = Tunnel()
+		
+		tunnel.name = "Tunnel 1"
+		tunnel.country = "Ireland"
+		tunnel.local = "Co. Louth"
+		tunnel.tunnel_description = "Tunnel Description"
+		tunnel.latitude = 1.2
+		tunnel.longtitude = 2.1
+		tunnel.tunnel_diameter = 4.3
+		tunnel.tunnel_height = 16.4
+		
+		_ = tunnel.save()
+		
+		return tunnel
+	}
+	
 	static func createAircraft() -> Aircraft {
 		let aircraft = Aircraft()
 		aircraft.name = "Test Aircraft"
@@ -33,6 +50,14 @@ class DropzoneTests: XCTestCase {
 		_ = aircraft.save()
 		
 		return aircraft
+	}
+	
+	func testTunnelToDb() {
+		let tunnel = DropzoneTests.createTunnel()
+		XCTAssertNotNil(tunnel.id)
+		
+		let dbTunnel = Tunnel.init(primaryKeyValue: tunnel.id)
+		XCTAssertTrue(tunnel.isEqual(dbTunnel))
 	}
 	
 	func testSaveAircraftToDb() {

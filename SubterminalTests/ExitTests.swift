@@ -15,6 +15,7 @@ class ExitTests: XCTestCase {
 		exit.name = "Test exit"
 		exit.altitude_to_landing = 1111
 		exit.rockdrop_distance = 145
+		exit.global_id = nil
 		exit.exit_description = "Exit description"
 		exit.latitude = 2.1334
 		exit.longtitude = -1.3455
