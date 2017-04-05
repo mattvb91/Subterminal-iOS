@@ -75,8 +75,8 @@ class Dropzone: Model {
 		var result = ""
 		for dzAircraft in dzAircrafts! {
 			let dzAircraft = dzAircraft as? DzAircraft
-			let aircraft = Aircraft.object(withPrimaryKeyValue: dzAircraft?.aircraft_id) as? Aircraft
-			result = result + (aircraft?.name!)! + ", "
+			let aircraft = Aircraft.init(primaryKeyValue: dzAircraft?.aircraft_id)!
+			result = result + aircraft.name! + ", "
 		}
 		
 		return result

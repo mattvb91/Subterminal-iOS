@@ -39,7 +39,7 @@ class DropzoneTests: XCTestCase {
 		let aircraft = DropzoneTests.createAircraft()
 		XCTAssertNotNil(aircraft.id)
 		
-		let dbAircraft = Aircraft.object(withPrimaryKeyValue: aircraft.id)
+		let dbAircraft = Aircraft.init(primaryKeyValue: aircraft.id)
 		XCTAssertTrue(aircraft.isEqual(dbAircraft))
 	}
 	
@@ -47,7 +47,7 @@ class DropzoneTests: XCTestCase {
 		let dropzone = DropzoneTests.createDropzone()
 		XCTAssertNotNil(dropzone.id)
 		
-		let dbDropzone = Dropzone.object(withPrimaryKeyValue: dropzone.id)
+		let dbDropzone = Dropzone.init(primaryKeyValue: dropzone.id)
 		XCTAssertTrue(dropzone.isEqual(dbDropzone))
 		
 		dropzone.country = "different"

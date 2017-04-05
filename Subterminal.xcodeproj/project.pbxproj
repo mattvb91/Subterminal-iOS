@@ -1395,7 +1395,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CFCFC2EE84DB12EA7F90D0E4 /* Pods-Subterminal-SubterminalUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				INFOPLIST_FILE = SubterminalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mavonie.SubterminalUITests;
@@ -1409,7 +1409,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB2DDD8328B63DF575B470F1 /* Pods-Subterminal-SubterminalUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				INFOPLIST_FILE = SubterminalUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mavonie.SubterminalUITests;

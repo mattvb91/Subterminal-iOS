@@ -28,8 +28,10 @@ class ExitTests: XCTestCase {
 	func testSaveExitToDb() {
 		let exit = ExitTests.createExit()
 		XCTAssertNotNil(exit.id)
+		debugPrint(exit)
 		
-		let dbExit = Exit.object(withPrimaryKeyValue: exit.id)
+		let dbExit = Exit.init(primaryKeyValue: exit.id)
+		debugPrint(dbExit)
 		XCTAssertTrue(exit.isEqual(dbExit))
 	}
 }

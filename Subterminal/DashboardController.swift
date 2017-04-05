@@ -98,7 +98,7 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 			let results = results as! NSDictionary
 			let count = results["total_count"] as! Double
 			let exitId = results["exit_id"] as! NSNumber
-			let exit = Exit.object(withPrimaryKeyValue: exitId) as! Exit
+			let exit = Exit.init(primaryKeyValue: exitId)!
 			yVals.append(BarChartDataEntry(x: Double(i), y: count, data: exit.name as AnyObject?))
 			i += 1
 			values.append(exit.name!)

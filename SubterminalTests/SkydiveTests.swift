@@ -35,10 +35,7 @@ class SkydiveTests: XCTestCase {
 		XCTAssertNotNil(skydive.dropzone_id)
 		XCTAssertNotNil(skydive.delay)
 		
-		debugPrint(skydive)
-	
-		let dbSkydive = Skydive.object(withPrimaryKeyValue: skydive.id)
-		debugPrint(dbSkydive)
+		let dbSkydive = Skydive.init(primaryKeyValue: skydive.id)!
 		XCTAssertTrue(skydive.isEqual(dbSkydive))
 		
 		skydive.skydive_description = "Another description"

@@ -119,7 +119,7 @@ class Skydive: Synchronizable {
 	
 	func aircraft() -> Aircraft? {
 		if self.aircraft_id != nil {
-			return (Aircraft.object(withPrimaryKeyValue: self.aircraft_id) as? Aircraft)!
+			return Aircraft.init(primaryKeyValue: self.aircraft_id)!
 		}
 		
 		return nil
@@ -127,7 +127,7 @@ class Skydive: Synchronizable {
 	
 	func dropzone() -> Dropzone? {
 		if self.dropzone_id != nil {
-			return (Dropzone.object(withPrimaryKeyValue: self.dropzone_id) as? Dropzone)!
+			return Dropzone.init(primaryKeyValue: self.dropzone_id)!
 		}
 		
 		return nil
@@ -135,7 +135,7 @@ class Skydive: Synchronizable {
 	
 	func rig() -> Rig? {
 		if self.rig_id != nil, self.rig_id?.intValue != 0 {
-			return (Rig.object(withPrimaryKeyValue: self.rig_id) as? Rig)!
+			return Rig.init(primaryKeyValue: self.rig_id)!
 		}
 		
 		return nil
@@ -225,7 +225,7 @@ class Skydive: Synchronizable {
 		if let object = object as? Skydive {
 			return
 				//date == object.date &&
-				//dropzone_id == object.dropzone_id &&
+				dropzone_id == object.dropzone_id
 				//exit_altitude == object.exit_altitude &&
 				//deploy_altidude == object.deploy_altidude &&
 				//delay == object.delay &&
@@ -235,7 +235,7 @@ class Skydive: Synchronizable {
 				//height_unit == object.height_unit &&
 				//suid_id == object.suid_id &&
 				//cutaway == object.cutaway &&
-				skydive_description == object.skydive_description
+				//skydive_description == object.skydive_description
 		}
 		
 		return false

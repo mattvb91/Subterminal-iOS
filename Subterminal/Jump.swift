@@ -123,7 +123,7 @@ class Jump: Synchronizable {
 	
 	func exit() -> Exit? {
 		if self.exit_id != nil {
-			return Exit.object(withPrimaryKeyValue: self.exit_id) as! Exit
+			return Exit.init(primaryKeyValue: self.exit_id)
 		}
 		
 		return nil
@@ -131,7 +131,7 @@ class Jump: Synchronizable {
 
 	func rig() -> BASERig? {
 		if self.gear_id != nil, self.gear_id?.intValue != 0 {
-			return BASERig.object(withPrimaryKeyValue: self.gear_id) as! BASERig
+			return BASERig.init(primaryKeyValue: self.gear_id) as! BASERig
 		}
 		
 		return nil

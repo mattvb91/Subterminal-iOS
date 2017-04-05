@@ -31,7 +31,7 @@ class BASERigTests: XCTestCase {
 		let rig = BASERigTests.createBaseRig()
 		XCTAssertNotNil(rig.id)
 		
-		let dbRig = BASERig.object(withPrimaryKeyValue: rig.id) as? BASERig
+		let dbRig = BASERig.init(primaryKeyValue: rig.id)
 		XCTAssertTrue(rig.isEqual(dbRig))
 	}
 }

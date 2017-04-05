@@ -63,7 +63,7 @@ class JumpForm: Form {
 		if getFormView().exitId != nil {
 			self.getItem().exit_id = NSNumber(value: getFormView().exitId!)
 			
-			let exit = Exit.object(withPrimaryKeyValue: getFormView().exitId as NSObject!) as! Exit
+			let exit = Exit.init(primaryKeyValue: getFormView().exitId as NSObject!)!
 			
 			if exit.isGlobal() {
 				exit.global_id = nil

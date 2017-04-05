@@ -17,7 +17,7 @@ target 'Subterminal' do
     # Pods for testing
   end
 
-  pod 'SharkORM'
+  pod 'SharkORM', '~> 2.1.3'
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'

@@ -43,7 +43,7 @@ class RigTests: XCTestCase {
 		XCTAssertNotNil(rig.id)
 		
 		//Check retrieved object is the same
-		let dbRig = Rig.object(withPrimaryKeyValue: rig.id) as? Rig
+		let dbRig = Rig.init(primaryKeyValue: rig.id)
 		XCTAssertTrue(rig.isEqual(dbRig))
 		
 		//Make sure if we change something it triggers isEqual false
