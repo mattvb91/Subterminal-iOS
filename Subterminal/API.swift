@@ -156,6 +156,30 @@ class API: NSObject {
 		}
 	}
 	
+	func getTunnelImages(tunnel: Tunnel!) {
+		let url = Router.baseURL + "/tunnel/" + tunnel.id.stringValue + "/images"
+		
+		Alamofire.request(url, headers: headerss).responseJSON { response in
+			if let result = response.result.value {
+				debugPrint(response)
+				let items = result as! NSArray
+				
+				var images = [AlamofireSource]()
+				for item in items as! [NSDictionary] {
+					debugPrint(item)
+					
+					let data = JSON(item)
+					let url = "https://skydivelocations.com/image/" + data["filename"].string! + "?full=true"
+					
+					images.append(AlamofireSource(urlString: url)!)
+				}
+				
+				tunnel.images = images
+				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tunnelImages"), object: nil)
+			}
+		}
+	}
+	
 	func getDropzoneServices(dropzone: Dropzone!) {
 		let url = Router.baseURL + "/dropzone/" + dropzone.id.stringValue + "/services"
 		

@@ -27,6 +27,13 @@ class TunnelTableController: TableController {
 		return TunnelTableViewCell()
 	}
 	
+	override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let tunnelController = TunnelViewController()
+		tunnelController.item = items.object(at: indexPath.row) as? Tunnel
+		
+		self.navigationController?.pushViewController(tunnelController, animated: true)
+	}
+	
 	override func assignModelToController(controller: UIViewController) {
 		fatalError("assignModelToController() not implemented")
 	}

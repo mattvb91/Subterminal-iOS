@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import ImageSlideshow
 
 class Tunnel: Model {
 	
@@ -27,6 +28,8 @@ class Tunnel: Model {
 	dynamic var longtitude : Double = 0.00
 	dynamic var tunnel_diameter: Double = 0.00
 	dynamic var	tunnel_height: Double = 0.00
+
+	var images: [AlamofireSource]?
 
 	class func build(json: JSON) -> Tunnel {
 		let tunnel = Tunnel()
