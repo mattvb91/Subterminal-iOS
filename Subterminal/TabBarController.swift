@@ -48,7 +48,7 @@ class TabBarController: RAMAnimatedTabBarController {
 			let tunnelController = TunnelTableController()
 			tunnelController.title = "Tunnels"
 			let tunnelNavController = UINavigationController(rootViewController: tunnelController)
-			let tabBarIconTunnel: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Tunnels", image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
+			let tabBarIconTunnel: RAMAnimatedTabBarItem = RAMAnimatedTabBarItem(title: "Tunnels", image: #imageLiteral(resourceName: "tunnel").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "map"))
 			tabBarIconTunnel.animation = RAMBounceAnimation()
 			tunnelNavController.tabBarItem = tabBarIconTunnel
 			
