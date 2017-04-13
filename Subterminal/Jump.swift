@@ -115,8 +115,6 @@ class Jump: Synchronizable {
 		jump.pc_size = json["pc_size"].number
 		jump.slider = json["slider"].number
 		
-		super.build(json: json)
-
 		return jump
 
 	}

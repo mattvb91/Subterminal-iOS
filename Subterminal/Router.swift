@@ -100,9 +100,9 @@ enum Router: URLRequestConvertible {
 		urlRequest.setValue(Subterminal.getKey(key: "apiaccept"), forHTTPHeaderField: "accept")
 		urlRequest.setValue(Subterminal.getKey(key: "apikey"), forHTTPHeaderField: "apiappkey")
 		
-		/*if(Subterminal.user.isLoggedIn()) {
+		if(Subterminal.user.isLoggedIn()) {
 			urlRequest.setValue(Subterminal.user.facebook_token, forHTTPHeaderField: "sessionToken")
-		}*/
+		}
 		
 		return urlRequest
 	}

@@ -3,11 +3,21 @@ PODS:
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
   - Bohr (3.0.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - Charts/Core (3.0.1)
   - Charts/Realm (3.0.1):
     - Charts/Core
     - RealmSwift (~> 1.1)
   - DropDown (2)
+  - FBSDKCoreKit (4.20.2):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.20.2):
+    - FBSDKCoreKit
   - Firebase/AdMob (3.12.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.17.0)
@@ -60,6 +70,8 @@ DEPENDENCIES:
   - Bohr
   - Charts/Realm
   - DropDown
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase/AdMob
   - Firebase/Core
   - HTagView
@@ -88,8 +100,11 @@ SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Bohr: 17b150766e54e1fb8ff417d85b830c7caafa8b4a
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
+  FBSDKCoreKit: 82eac696eb6157da5f4266c3a241f00e9bd72471
+  FBSDKLoginKit: 2211bede07c83391349eacc1fd86cf6d9289ce38
   Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
@@ -112,6 +127,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
   UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
 
-PODFILE CHECKSUM: 6a76c1804690e313bd3be57ea52d3333044b8da3
+PODFILE CHECKSUM: 77c304407bc8e4505ec4552ce97ef4a7bbe4b439
 
 COCOAPODS: 1.2.0

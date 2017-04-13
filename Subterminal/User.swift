@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import FBSDKLoginKit
+import FBSDKLoginKit
 
 class User {
 	
@@ -16,7 +16,6 @@ class User {
 	var facebook_token: String?
 	var name: String?
 	
-	/*
 	let facebookPermissions = ["public_profile", "email", "user_friends"]
 	
 	func setFacebookUserData()
@@ -41,13 +40,13 @@ class User {
 			}
 		})
 	}
-	*/
+	
 	
 	//Check is the user currently logged in
 	func isLoggedIn() -> Bool {
-		//if FBSDKAccessToken.current() != nil, FBSDKAccessToken.current().tokenString != nil {
-		//	return FBSDKAccessToken.current().expirationDate > Date()
-		//}
+		if FBSDKAccessToken.current() != nil, FBSDKAccessToken.current().tokenString != nil {
+			return FBSDKAccessToken.current().expirationDate > Date()
+		}
 		
 		return false
 	}

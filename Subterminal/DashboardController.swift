@@ -34,6 +34,11 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		let settings = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsTapped))
 		self.navigationItem.leftBarButtonItem = settings
 		
+		if Subterminal.user.isLoggedIn() == false {
+			let signIn = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(signInTapped))
+			self.navigationItem.rightBarButtonItem = signIn
+		}
+		
 		dashboardView.skydiveCount.text = Skydive.query().count().description
 		dashboardView.baseCount.text = Jump.query().count().description
 		dashboardView.dropzonesCount.text = Skydive.query().group(by:"dropzone_id").count.description
@@ -68,9 +73,12 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		Subterminal.changeMode(mode: (segment.selectedSegmentIndex))
 	}
 	
-	//The user pressed the add button
 	func settingsTapped() {
 		self.navigationController?.pushViewController(SettingsController(), animated: true)
+	}
+	
+	func signInTapped() {
+		self.navigationController?.pushViewController(LoginController(), animated: true)
 	}
 
 	func setFavouriteExitsData() {

@@ -12,6 +12,7 @@ class ExitTests: XCTestCase {
 	
 	static func createExit() -> Exit {
 		let exit = Exit()
+		
 		exit.name = "Test exit"
 		exit.altitude_to_landing = 1111
 		exit.rockdrop_distance = 145

@@ -58,22 +58,30 @@ class Rig: Synchronizable {
 		rig.container_manufacturer = json["container_manufacturer"].string
 		rig.container_model = json["container_model"].string
 		rig.container_serial = json["container_serial"].string
-		rig.container_date_in_use = DateHelper.stringToDate(string: json["container_date_in_use"].string!)
+		if json["container_date_in_use"].string?.isEmpty == false {
+			rig.container_date_in_use = DateHelper.stringToDate(string: json["container_date_in_use"].string!)
+		}
 
 		rig.main_manufacturer = json["main_manufacturer"].string
 		rig.main_model = json["main_model"].string
 		rig.main_serial = json["main_serial"].string
-		rig.main_date_in_use = DateHelper.stringToDate(string: json["main_date_in_use"].string!)
+		if json["main_date_in_use"].string?.isEmpty == false {
+			rig.main_date_in_use = DateHelper.stringToDate(string: json["main_date_in_use"].string!)
+		}
 
 		rig.reserve_manufacturer = json["reserve_manufacturer"].string
 		rig.reserve_model = json["reserve_model"].string
 		rig.reserve_serial = json["reserve_serial"].string
-		rig.reserve_date_in_use = DateHelper.stringToDate(string: json["reserve_date_in_use"].string!)
+		if json["reserve_date_in_use"].string?.isEmpty == false {
+			rig.reserve_date_in_use = DateHelper.stringToDate(string: json["reserve_date_in_use"].string!)
+		}
 		
 		rig.aad_manufacturer = json["aad_manufacturer"].string
 		rig.aad_model = json["aad_model"].string
 		rig.aad_serial = json["aad_serial"].string
-		rig.aad_date_in_use = DateHelper.stringToDate(string: json["aad_date_in_use"].string!)
+		if json["aad_date_in_use"].string?.isEmpty == false {
+			rig.aad_date_in_use = DateHelper.stringToDate(string: json["aad_date_in_use"].string!)
+		}
 
 		return rig
 	}
