@@ -34,7 +34,7 @@ class Rig: Synchronizable {
 
 	
 	override internal func getSyncIdentifier() -> String {
-		return ""
+		return "SYNC_SKYDIVE_RIGS"
 	}
 
 	override internal func getDownloadEndpoint() -> URLRequestConvertible {
@@ -48,7 +48,7 @@ class Rig: Synchronizable {
 
 	
 	override internal func getSyncEndpoint() -> URLRequestConvertible {
-		return Router.getSkyGear()
+		return Router.syncSkydiveRig(model: self)
 	}
 
 	override class func build(json: JSON) -> Rig {
@@ -84,6 +84,34 @@ class Rig: Synchronizable {
 		}
 
 		return rig
+	}
+	
+	override func toJSON() -> [String : Any] {
+		var values = [
+			"container_manufacturer": container_manufacturer,
+			"container_model": container_model,
+			"container_serial": container_serial,
+			"container_date_in_use": DateHelper.dateToString(date: container_date_in_use!),
+			
+			"main_manufacturer": main_manufacturer,
+			"main_model": main_model,
+			"main_serial": main_serial,
+			"main_date_in_use": DateHelper.dateToString(date: main_date_in_use!),
+			
+			"reserve_manufacturer": reserve_manufacturer,
+			"reserve_model": reserve_model,
+			"reserve_serial": reserve_serial,
+			"reserve_date_in_use": DateHelper.dateToString(date: reserve_date_in_use!),
+			
+			"aad_manufacturer": aad_manufacturer,
+			"aad_model": aad_model,
+			"aad_serial": aad_serial,
+			"aad_date_in_use": DateHelper.dateToString(date: aad_date_in_use!)
+		] as [String : Any]
+		
+		values.merge(other: super.toJSON())
+		
+		return values
 	}
 	
 	static func getRigs() -> [Int: String] {

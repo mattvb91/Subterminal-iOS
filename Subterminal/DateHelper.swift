@@ -15,7 +15,12 @@ class DateHelper {
 	static var dateFormat = "yyyy-MM-dd"
 	
 	//Format a string to a date object
-	static func stringToDate(string: String) -> Date {
+	static func stringToDate(string: String) -> Date? {
+	
+		if string.isEmpty == true {
+			return nil
+		}
+		
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = dateFormat
 		let string = string.substring(to: string.index(string.startIndex, offsetBy: 10))

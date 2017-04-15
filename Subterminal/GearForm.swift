@@ -22,22 +22,30 @@ class GearForm: Form {
 			getFormView().containerManufacturer.text = getItem().container_manufacturer
 			getFormView().containerModel.text = getItem().container_model
 			getFormView().containerSerial.text = getItem().container_serial
-			getFormView().containerDateInUse.text = DateHelper.dateToString(date: getItem().container_date_in_use!)
+			if getItem().container_date_in_use != nil {
+				getFormView().containerDateInUse.text = DateHelper.dateToString(date: getItem().container_date_in_use!)
+			}
 			
 			getFormView().mainManufacturer.text = getItem().main_manufacturer
 			getFormView().mainModel.text = getItem().main_model
 			getFormView().mainSerial.text = getItem().main_serial
-			getFormView().mainDateInUse.text = DateHelper.dateToString(date: getItem().main_date_in_use!)
+			if getItem().main_date_in_use != nil {
+				getFormView().mainDateInUse.text = DateHelper.dateToString(date: getItem().main_date_in_use!)
+			}
 
 			getFormView().reserveManufacturer.text = getItem().reserve_manufacturer
 			getFormView().reserveModel.text = getItem().reserve_model
 			getFormView().reserveSerial.text = getItem().reserve_serial
-			getFormView().reserveDateInUse.text = DateHelper.dateToString(date: getItem().reserve_date_in_use!)
+			if getItem().reserve_date_in_use != nil {
+				getFormView().reserveDateInUse.text = DateHelper.dateToString(date: getItem().reserve_date_in_use!)
+			}
 			
 			getFormView().aadManufacturer.text = getItem().aad_manufacturer
 			getFormView().aadModel.text = getItem().aad_model
 			getFormView().aadSerial.text = getItem().aad_serial
-			getFormView().aadDateInUse.text = DateHelper.dateToString(date: getItem().aad_date_in_use!)
+			if getItem().aad_date_in_use != nil {
+				getFormView().aadDateInUse.text = DateHelper.dateToString(date: getItem().aad_date_in_use!)
+			}
 		}
 		
 		self.view.addSubview(getFormView())
