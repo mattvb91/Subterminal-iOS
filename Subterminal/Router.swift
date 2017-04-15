@@ -19,16 +19,22 @@ enum Router: URLRequestConvertible {
 	case payment(token: String)
 	case getPublicExits()
 	
+	case syncSkydive(model: Skydive)
+	
 	case updateUser()
 	
 	static let baseURL = Subterminal.getKey(key: "api_url")
 	
 	var method: HTTPMethod {
 		switch self {
-		case .getAircraft, .getSkyGear, .getSkydives, .getSuits, .getPublicExits, .getExits, .getBaseGear, .getJumps:
-			return .get
-		case .updateUser, .payment:
-			return .post
+			case .getAircraft, .getSkyGear, .getSkydives, .getSuits, .getPublicExits, .getExits, .getBaseGear, .getJumps:
+				return .get
+			
+			case .updateUser, .payment:
+				return .post
+
+			case .syncSkydive(let _):
+				return .post
 		}
 	}
 	
@@ -61,8 +67,11 @@ enum Router: URLRequestConvertible {
 		case .updateUser():
 			return "/user"
 			
-		case .payment(let token):
+		case .payment(let _):
 			return "/payment"
+			
+		case .syncSkydive(let _):
+			return "/skydive"
 		}
 	}
 	
@@ -91,6 +100,10 @@ enum Router: URLRequestConvertible {
 			
 		case .payment(let token):
 			let data = try JSONSerialization.data(withJSONObject: ["id": token], options: [])
+			urlRequest.httpBody = data
+			
+		case .syncSkydive(let model):
+			let data = try JSONSerialization.data(withJSONObject: model.toJSON(), options: [])
 			urlRequest.httpBody = data
 			
 		default:

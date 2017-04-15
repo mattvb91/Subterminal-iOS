@@ -175,7 +175,7 @@ class Skydive: Synchronizable {
 	}
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
-		return Router.getSkydives()
+		return Router.syncSkydive(model: self)
 	}
 	
 	override  func getDeleteEndpoint() -> URLRequestConvertible {
@@ -187,7 +187,7 @@ class Skydive: Synchronizable {
 	}
 	
 	override  func getSyncIdentifier() -> String {
-		fatalError("not implemented")
+		return "SYNC_SKYDIVES"
 	}
 	
 	override  class func build(json: JSON) -> Skydive {
@@ -208,6 +208,24 @@ class Skydive: Synchronizable {
 		skydive.cutaway = json["cutaway"].intValue as NSNumber!
 
 		return skydive
+	}
+	
+	override func toJSON() -> [String: Any] {
+		return [
+			"_id": id,
+			"date": DateHelper.dateToString(date: date!),
+			"dropzone_id": dropzone_id,
+			"exit_altitude": exit_altitude,
+			"deploy_altitude": deploy_altidude,
+			"delay": delay,
+			"jump_type": jump_type,
+			"aircraft_id": aircraft_id,
+			"rig_id": rig_id,
+			"height_unit": height_unit,
+			"suit_id": suid_id,
+			"description": skydive_description,
+			"cutaway": cutaway
+		]
 	}
 	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {

@@ -22,6 +22,18 @@ class Synchronizable: Model, SyncProtocol {
 		return ["synced": 0, "deleted": 0]
 	}
 	
+	override func save() -> Bool {
+		synced = Synchronizable.SYNC_REQUIRED
+		
+		let res = super.save()
+		
+		if Subterminal.user.isLoggedIn() == true && Subterminal.user.is_premium == true {
+			API.instance.syncModel(model: self)
+		}
+		
+		return res
+	}
+	
 	func getSyncEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
 	}
@@ -44,8 +56,27 @@ class Synchronizable: Model, SyncProtocol {
 		fatalError("not implemented")
 	}
 	
+	func toJSON() -> [String: Any] {
+		fatalError("not implemented")
+	}
+	
 	func markSynced() -> Bool {
 		self.synced = Synchronizable.SYNC_COMPLETED
 		return super.save()
+	}
+	
+	/*
+	func getForSync() -> Synchronizable {
+		let model = type(of: self) as Synchronizable.Type
+		
+		model.query().whereWithFormat
+		
+		return
+	}*/
+	
+	//Sync all required entities up to the server
+	func syncEntities() -> Void {
+		//let exits = Exit.getForSync()
+		
 	}
 }

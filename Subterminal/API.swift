@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 import ImageSlideshow
+import ReachabilitySwift
 
 class API: NSObject {
 	
@@ -22,6 +23,7 @@ class API: NSObject {
 	]
 	
 	static let instance = API()
+	static let reachability = Reachability()!
 
 	func getAircraft() -> Void {
 		Alamofire.request(Router.getAircraft()).responseJSON { response in
@@ -41,19 +43,27 @@ class API: NSObject {
 	}
 	
 	static func initAPI() {
+		
+		if reachability.isReachable == false {
+			return
+		}
+		
 		DispatchQueue.global(qos: .background).async {
 			API.instance.getAircraft()
 			API.instance.getDropzones()
 			API.instance.getPublicExits()
 			API.instance.getTunnels()
 		
-			if Subterminal.user.isLoggedIn() {
+			if Subterminal.user.isLoggedIn() && Subterminal.user.is_premium == true {
 				API.instance.downloadModel(model: Rig())
 				API.instance.downloadModel(model: Skydive())
 				API.instance.downloadModel(model: Suit())
 				API.instance.downloadModel(model: Exit())
 				API.instance.downloadModel(model: BASERig())
 				API.instance.downloadModel(model: Jump())
+				
+				//Synchronizable.syncEntities()
+			
 			}
 		}
 	}
@@ -78,7 +88,10 @@ class API: NSObject {
 	
 	func createOrUpdateRemoveUser() {
 		Alamofire.request(Router.updateUser()).responseJSON { response in
-			if response.result.isSuccess, let _ = response.result.value {
+			if response.result.isSuccess, let result = response.result.value {
+				let result = JSON(result)
+				Subterminal.user.is_premium = result["user"]["is_premium"].intValue == 1 ? true : false
+				
 				API.initAPI()
 			}
 		}
@@ -191,6 +204,15 @@ class API: NSObject {
 				dropzone.services = items as? [String]
 
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dropzoneServices"), object: nil)
+			}
+		}
+	}
+	
+	func syncModel(model:Synchronizable!) {
+		Alamofire.request(model.getSyncEndpoint()).responseJSON { response in
+			if response.response?.statusCode == 201 {
+				_ = model.markSynced()
+				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
 			}
 		}
 	}

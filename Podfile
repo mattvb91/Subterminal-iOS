@@ -40,5 +40,6 @@ target 'Subterminal' do
   pod 'Charts/Realm'
   pod 'UITextField+Shake', '~> 1.1'
   pod 'Bohr'
+  pod 'ReachabilitySwift', '~> 3'
 
 end
