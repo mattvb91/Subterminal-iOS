@@ -90,7 +90,7 @@ class API: NSObject {
 		Alamofire.request(Router.updateUser()).responseJSON { response in
 			if response.result.isSuccess, let result = response.result.value {
 				let result = JSON(result)
-				Subterminal.user.is_premium = result["user"]["is_premium"].intValue == 1 ? true : false
+				UserDefaults.standard.set(result["user"]["is_premium"].intValue == 1 ? true : false, forKey: "user_premium")
 				
 				API.initAPI()
 			}

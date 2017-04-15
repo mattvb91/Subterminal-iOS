@@ -27,7 +27,7 @@ class Synchronizable: Model, SyncProtocol {
 		
 		let res = super.save()
 		
-		if Subterminal.user.isLoggedIn() == true && Subterminal.user.is_premium == true {
+		if Subterminal.user.isLoggedIn() == true && Subterminal.user.isPremium() == true {
 			API.instance.syncModel(model: self)
 		}
 		
@@ -57,7 +57,7 @@ class Synchronizable: Model, SyncProtocol {
 	}
 	
 	func toJSON() -> [String: Any] {
-		fatalError("not implemented")
+		return ["_id": id]
 	}
 	
 	func markSynced() -> Bool {

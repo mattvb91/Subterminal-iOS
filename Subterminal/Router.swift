@@ -19,7 +19,7 @@ enum Router: URLRequestConvertible {
 	case payment(token: String)
 	case getPublicExits()
 	
-	case syncSkydive(model: Skydive)
+	case syncSkydive(model: Synchronizable), syncExit(model: Synchronizable)
 	
 	case updateUser()
 	
@@ -33,7 +33,7 @@ enum Router: URLRequestConvertible {
 			case .updateUser, .payment:
 				return .post
 
-			case .syncSkydive(let _):
+			case .syncSkydive( _), .syncExit( _):
 				return .post
 		}
 	}
@@ -70,8 +70,11 @@ enum Router: URLRequestConvertible {
 		case .payment(let _):
 			return "/payment"
 			
-		case .syncSkydive(let _):
+		case .syncSkydive( _):
 			return "/skydive"
+			
+		case .syncExit( _):
+			return "/exit"
 		}
 	}
 	
@@ -102,7 +105,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: ["id": token], options: [])
 			urlRequest.httpBody = data
 			
-		case .syncSkydive(let model):
+		case .syncSkydive(let model), .syncExit(let model):
 			let data = try JSONSerialization.data(withJSONObject: model.toJSON(), options: [])
 			urlRequest.httpBody = data
 			

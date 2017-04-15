@@ -66,7 +66,7 @@ class Exit: Synchronizable {
 	}
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.syncExit(model: self)
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
@@ -79,7 +79,7 @@ class Exit: Synchronizable {
 	}
 	
 	override func getSyncIdentifier() -> String {
-		fatalError("not implemented")
+		return "SYNC_EXITS"
 	}
 	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
@@ -117,6 +117,23 @@ class Exit: Synchronizable {
 		}
 		
 		return exit
+	}
+	
+	override func toJSON() -> [String: Any] {
+		var values = [
+			"name": name,
+			"description": exit_description,
+			"rockdrop_distance": rockdrop_distance,
+			"altitude_to_landing": altitude_to_landing,
+			"object_type": object_type,
+			"height_unit": height_unit,
+			"latitude": latitude,
+			"longtitude": longtitude
+		] as [String : Any]
+		
+		values.merge(other: super.toJSON())
+		
+		return values
 	}
 	
 	override func isEqual(_ object: Any?) -> Bool {

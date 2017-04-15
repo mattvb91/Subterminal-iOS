@@ -50,5 +50,9 @@ class User {
 		
 		return false
 	}
+	
+	func isPremium() -> Bool {
+		return UserDefaults.standard.bool(forKey: "user_premium")
+	}
 
 }
