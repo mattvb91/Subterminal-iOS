@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
 		IQKeyboardManager.sharedManager().enable = true
 		
 		//STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
