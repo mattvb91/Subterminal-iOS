@@ -39,7 +39,7 @@ class Suit: Synchronizable {
 	}
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.syncSuit(model: self)
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
@@ -52,7 +52,7 @@ class Suit: Synchronizable {
 	}
 	
 	override func getSyncIdentifier() -> String {
-		fatalError("not implemented")
+		return "SYNC_SUIT"
 	}
 	
 	override class func build(json: JSON) -> Suit {
@@ -69,7 +69,20 @@ class Suit: Synchronizable {
 		}
 
 		return suit
-
+	}
+	
+	override func toJSON() -> [String : Any] {
+		var values = [
+			"manufacturer": manufacturer,
+			"model": model,
+			"serial": serial,
+			"type": type,
+			"date_in_use": DateHelper.dateToString(date: date_in_use!)
+			] as [String: Any]
+		
+		values.merge(other: super.toJSON())
+		
+		return values
 	}
 	
 	func getFormattedType() -> String? {
