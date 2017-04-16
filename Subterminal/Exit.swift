@@ -71,11 +71,10 @@ class Exit: Synchronizable {
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
 		fatalError("not implemented")
-		
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
-		return Router.getExits()		
+		return Router.getExits(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
 	
 	override func getSyncIdentifier() -> String {

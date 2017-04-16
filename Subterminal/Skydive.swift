@@ -179,11 +179,11 @@ class Skydive: Synchronizable {
 	}
 	
 	override  func getDeleteEndpoint() -> URLRequestConvertible {
-		return Router.getSkydives()
+		fatalError("not implemented")
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
-		return Router.getSkydives()
+		return Router.getSkydives(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
 	
 	override  func getSyncIdentifier() -> String {

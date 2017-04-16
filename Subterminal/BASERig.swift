@@ -34,7 +34,7 @@ class BASERig: Synchronizable {
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
-		return Router.getBaseGear()
+		return Router.getBaseGear(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
 	
 	override func getSyncIdentifier() -> String {

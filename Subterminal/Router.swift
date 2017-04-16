@@ -10,12 +10,10 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
 	case getAircraft()
-	case getSkyGear()
-	case getBaseGear()
-	case getSkydives()
-	case getSuits()
-	case getJumps()
-	case getExits()
+	
+	case getSkyGear(lastSync: String), getBaseGear(lastSync: String), getSkydives(lastSync: String), getSuits(lastSync: String),
+		getJumps(lastSync: String), getExits(lastSync: String)
+	
 	case payment(token: String)
 	case getPublicExits()
 	
@@ -44,22 +42,22 @@ enum Router: URLRequestConvertible {
 		case .getAircraft():
 			return "/aircraft"
 			
-		case .getSkyGear():
+		case .getSkyGear( _):
 			return "/user/rigs"
 			
-		case .getBaseGear():
+		case .getBaseGear( _):
 			return "user/gear"
 			
-		case .getSkydives():
+		case .getSkydives( _):
 			return "/user/skydives"
 		
-		case .getSuits():
+		case .getSuits( _):
 			return "/user/suits"
 			
-		case .getExits():
+		case .getExits( _):
 			return "/user/exits"
 			
-		case .getJumps():
+		case .getJumps( _):
 			return "/user/jumps"
 		
 		case .getPublicExits():
@@ -110,8 +108,8 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: ["token": Subterminal.user.facebook_token], options: [])
 			urlRequest.httpBody = data
 			
-		case .getSkyGear(), .getSkydives(), .getSuits(), .getExits(), .getBaseGear(), .getJumps():
-			urlRequest = try URLEncoding.default.encode(urlRequest, with: ["last_sync": "2001-01-01"])
+		case .getSkyGear(let lastSync), .getSkydives(let lastSync), .getSuits(let lastSync), .getExits(let lastSync), .getBaseGear(let lastSync), .getJumps(let lastSync):
+			urlRequest = try URLEncoding.default.encode(urlRequest, with: ["last_sync": lastSync])
 			
 		case .payment(let token):
 			let data = try JSONSerialization.data(withJSONObject: ["id": token], options: [])

@@ -54,7 +54,7 @@ class API: NSObject {
 			API.instance.getPublicExits()
 			API.instance.getTunnels()
 		
-			if Subterminal.user.isLoggedIn() && Subterminal.user.is_premium == true {
+			if Subterminal.user.isLoggedIn() && Subterminal.user.isPremium() == true {
 				API.instance.downloadModel(model: Rig())
 				API.instance.downloadModel(model: Skydive())
 				API.instance.downloadModel(model: Suit())
@@ -80,6 +80,9 @@ class API: NSObject {
 					let syncItem = syncClass.build(json: JSON(item))
 					_ = syncItem.markSynced()
 				}
+				
+				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
+
 			} else {
 				debugPrint("Request Failed")
 			}

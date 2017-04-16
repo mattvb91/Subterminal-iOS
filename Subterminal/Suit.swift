@@ -48,7 +48,7 @@ class Suit: Synchronizable {
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
-		return Router.getSuits()
+		return Router.getSuits(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
 	
 	override func getSyncIdentifier() -> String {

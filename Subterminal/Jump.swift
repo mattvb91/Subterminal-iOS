@@ -94,7 +94,7 @@ class Jump: Synchronizable {
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
-		return Router.getJumps()
+		return Router.getJumps(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
 	
 	override func getSyncIdentifier() -> String {
