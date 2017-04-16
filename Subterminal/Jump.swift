@@ -85,7 +85,7 @@ class Jump: Synchronizable {
 	static let pc_sizes = ["32", "36", "38", "40", "42", "46", "48"]
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.syncJump(model: self)
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
@@ -98,7 +98,7 @@ class Jump: Synchronizable {
 	}
 	
 	override func getSyncIdentifier() -> String {
-		fatalError("not implemented")
+		return "SYNC_JUMP"
 	}
 	
 	override class func build(json: JSON) -> Jump {
@@ -116,7 +116,24 @@ class Jump: Synchronizable {
 		jump.slider = json["slider"].number
 		
 		return jump
-
+	}
+	
+	override func toJSON() -> [String : Any] {
+		var values = [
+			"description": jump_description,
+			"date": DateHelper.dateToString(date: date!),
+			"gear_id": gear_id,
+			"exit_id": exit_id,
+			"delay": delay,
+			"type": type,
+			"suit_id": suit_id,
+			"pc_size": pc_size,
+			"slider": slider
+			] as [String: Any]
+		
+		values.merge(other: super.toJSON())
+		
+		return values
 	}
 	
 	func exit() -> Exit? {
@@ -129,7 +146,7 @@ class Jump: Synchronizable {
 
 	func rig() -> BASERig? {
 		if self.gear_id != nil, self.gear_id?.intValue != 0 {
-			return BASERig.init(primaryKeyValue: self.gear_id) as! BASERig
+			return BASERig.init(primaryKeyValue: self.gear_id)!
 		}
 		
 		return nil

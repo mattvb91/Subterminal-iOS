@@ -57,7 +57,17 @@ class BASERig: Synchronizable {
 	}
 	
 	func getDisplayString() -> String {
-		return self.container_manufacturer! + " / " + self.canopy_manufacturer! + " " + self.canopy_type!
+		var res = self.container_manufacturer!
+			
+		if self.canopy_manufacturer != nil {
+			res += " / " + self.canopy_manufacturer!
+		}
+		
+		if self.canopy_type != nil {
+			res += " " + self.canopy_type!
+		}
+		
+		return res
 	}
 
 	static func getRigs() -> [Int: String] {
@@ -67,8 +77,7 @@ class BASERig: Synchronizable {
 		
 		for rig in rigs {
 			let rig = rig as! BASERig
-			let displayString = rig.container_manufacturer! + " / " + rig.canopy_manufacturer! + " " + rig.canopy_type!
-			res[Int(rig.id)] = rig.id.description + " - " + displayString
+			res[Int(rig.id)] = rig.id.description + " - " + rig.getDisplayString()
 		}
 		
 		return res
