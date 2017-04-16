@@ -26,7 +26,7 @@ class BASERig: Synchronizable {
 		container_date_in_use: Date?
 	
 	override func getSyncEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.syncBaseRig(model: self)
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
@@ -38,7 +38,7 @@ class BASERig: Synchronizable {
 	}
 	
 	override func getSyncIdentifier() -> String {
-		fatalError("not implemented")
+		return "SYNC_BASE_RIGS"
 	}
 	
 	override class func build(json: JSON) -> BASERig {
@@ -49,6 +49,7 @@ class BASERig: Synchronizable {
 		rig.container_type = json["container_type"].string
 		rig.container_serial = json["container_serial"].string
 		rig.container_date_in_use = DateHelper.stringToDate(string: json["container_date_in_use"].string!)
+		rig.canopy_manufacturer = json["canopy_manufacturer"].string
 		rig.canopy_type = json["canopy_type"].string
 		rig.canopy_serial = json["canopy_serial"].string
 		rig.canopy_date_in_use = DateHelper.stringToDate(string: json["canopy_date_in_use"].string!)
@@ -68,6 +69,23 @@ class BASERig: Synchronizable {
 		}
 		
 		return res
+	}
+	
+	override func toJSON() -> [String : Any] {
+		var values = [
+			"container_manufacturer": container_manufacturer,
+			"container_type": container_type,
+			"container_serial": container_serial,
+			"container_date_in_use": DateHelper.dateToString(date: container_date_in_use!),
+			"canopy_manufacturer": canopy_manufacturer,
+			"canopy_type": canopy_type,
+			"canopy_serial": canopy_serial,
+			"canopy_date_in_use": DateHelper.dateToString(date: canopy_date_in_use!)
+			] as [String: Any]
+		
+		values.merge(other: super.toJSON())
+		
+		return values
 	}
 
 	static func getRigs() -> [Int: String] {
