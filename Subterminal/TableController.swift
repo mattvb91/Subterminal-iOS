@@ -89,6 +89,10 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 	}
 	
 	func fetchQuery() -> SRKQuery {
+		if type(of: getAssignedModel()) is Synchronizable.Type {
+			return type(of: getAssignedModel()).query().where("deleted = 0")
+		}
+		
 		return type(of: getAssignedModel()).query()
 	}
 	

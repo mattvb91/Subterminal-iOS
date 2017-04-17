@@ -18,6 +18,9 @@ class Synchronizable: Model, SyncProtocol {
 	static let SYNC_COMPLETED: NSNumber = 1
 	static let SYNC_REQUIRED: NSNumber = 0
 	
+	static let DELETED_TRUE: NSNumber = 1
+	static let DELETED_FALSE: NSNumber = 0
+	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
 		return ["synced": 0, "deleted": 0]
 	}
@@ -32,6 +35,29 @@ class Synchronizable: Model, SyncProtocol {
 		}
 		
 		return res
+	}
+	
+	/*
+	 * Remove entity & synchronize to server
+	 */
+	override func remove() -> Bool {
+		if self.deleted == Synchronizable.DELETED_FALSE {
+			self.deleted = Synchronizable.DELETED_TRUE
+			
+			let res = super.save()
+			
+			if Subterminal.user.isLoggedIn() == true && Subterminal.user.isPremium() == true {
+				API.instance.deleteModel(model: self)
+			}
+			
+			return res
+		} else {
+			return super.remove()
+		}
+	}
+	
+	override func entityDidDelete() {
+		super.entityDidDelete()
 	}
 	
 	func getSyncEndpoint() -> URLRequestConvertible {

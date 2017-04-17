@@ -225,6 +225,19 @@ class API: NSObject {
 		}
 	}
 	
+	func deleteModel(model: Synchronizable) {
+		Alamofire.request(model.getDeleteEndpoint()).responseJSON { response in
+			if response.response?.statusCode == 204 || response.response?.statusCode == 403 {
+				_ = model.remove()
+			}
+			
+			//Not authorized. Update logged in
+			if response.response?.statusCode == 401 {
+				Subterminal.user.logout()
+			}
+		}
+	}
+	
 	static func setLastRequestTime(name: String, time: String) {
 		UserDefaults.standard.setValue(time, forKey: name)
 	}

@@ -179,7 +179,7 @@ class Skydive: Synchronizable {
 	}
 	
 	override  func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.deleteSkydive(model: self)
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
