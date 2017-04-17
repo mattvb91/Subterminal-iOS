@@ -217,6 +217,11 @@ class API: NSObject {
 				_ = model.markSynced()
 				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
 			}
+			
+			//Not authorized. Update logged in
+			if response.response?.statusCode == 401 {
+				Subterminal.user.logout()
+			}
 		}
 	}
 	

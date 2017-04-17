@@ -17,6 +17,8 @@ class SkydiveTableViewCell: BaseTableCell {
 
 	var timeAgo = UILabel()
 	
+	var synced = SyncIcon()
+	
 	var aircraftLabel = Label(text: "Aircraft:")
 	var delayLabel = Label(text: "Delay:")
 	
@@ -34,6 +36,7 @@ class SkydiveTableViewCell: BaseTableCell {
 		self.contentView.addSubview(delayLabel)
 		self.contentView.addSubview(timeAgo)
 		self.contentView.addSubview(thumb)
+		self.contentView.addSubview(synced)
 
 		dropzone.font = UIFont.boldSystemFont(ofSize: 16)
 		
@@ -78,8 +81,11 @@ class SkydiveTableViewCell: BaseTableCell {
 		delay.autoPinEdge(.left, to: .left, of: aircraft)
 		delay.autoPinEdge(.top, to: .top, of: delayLabel)
 		
-		timeAgo.autoPinEdge(.top, to: .top, of: delay)
+		timeAgo.autoPinEdge(.top, to: .top, of: dropzone)
 		timeAgo.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
+		
+		synced.autoPinEdge(.bottom, to: .bottom, of: delay)
+		synced.autoPinEdge(.right, to: .right, of: timeAgo)
 	}
 
 }

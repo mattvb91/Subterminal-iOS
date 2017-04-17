@@ -62,6 +62,8 @@ class SkydiveTableViewController: TableController {
 			cell?.timeAgo.text = DateHelper.timeAgoSince(date: (item?.date)!)
 		}
 		
+		cell?.synced.setSyncedStatus(status: (item?.synced)!)
+		
 		return cell!
     }
 	

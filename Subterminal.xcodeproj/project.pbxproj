@@ -172,6 +172,9 @@
 		8FBA1A5C1E68DAC8009EA0A2 /* ExitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA1A591E68DAC8009EA0A2 /* ExitFormView.swift */; };
 		8FBDCEC91E62F0E50051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
 		8FBDCECA1E62F0E60051DEB4 /* SkydiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADC1E4E0E67003F3CFF /* SkydiveTableViewController.swift */; };
+		8FC8ABC91EA3F158006B14D6 /* SyncIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC8ABC81EA3F158006B14D6 /* SyncIcon.swift */; };
+		8FC8ABCA1EA3F158006B14D6 /* SyncIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC8ABC81EA3F158006B14D6 /* SyncIcon.swift */; };
+		8FC8ABCB1EA3F158006B14D6 /* SyncIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC8ABC81EA3F158006B14D6 /* SyncIcon.swift */; };
 		8FCA70711E5383C800CFC903 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70701E5383C800CFC903 /* BaseTableCell.swift */; };
 		8FCA70731E5394A200CFC903 /* GearFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA70721E5394A200CFC903 /* GearFormView.swift */; };
 		8FCD0B811E78054A00254B75 /* Skydive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF31ADF1E4E0EA9003F3CFF /* Skydive.swift */; };
@@ -338,6 +341,7 @@
 		8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownHelper.swift; sourceTree = "<group>"; };
 		8FBA1A551E68DA35009EA0A2 /* ExitForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitForm.swift; sourceTree = "<group>"; };
 		8FBA1A591E68DAC8009EA0A2 /* ExitFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitFormView.swift; sourceTree = "<group>"; };
+		8FC8ABC81EA3F158006B14D6 /* SyncIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncIcon.swift; sourceTree = "<group>"; };
 		8FCA70701E5383C800CFC903 /* BaseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		8FCA70721E5394A200CFC903 /* GearFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearFormView.swift; sourceTree = "<group>"; };
 		8FCE364B1E5C465D00B03F67 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -518,6 +522,7 @@
 				8FBA1A511E688987009EA0A2 /* DropdownHelper.swift */,
 				8FA4A3171E7FF87F00E63FF9 /* ChoiceTableViewCell.swift */,
 				8F6E12951E9900F800556904 /* LoginView.swift */,
+				8FC8ABC81EA3F158006B14D6 /* SyncIcon.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1059,6 +1064,7 @@
 				8FA276FF1E6ECDC300931977 /* RigForm.swift in Sources */,
 				8F8C14871E59AE8A00AC4856 /* Router.swift in Sources */,
 				8FB8E8821E9527340039C2EC /* TunnelTableViewCell.swift in Sources */,
+				8FC8ABC91EA3F158006B14D6 /* SyncIcon.swift in Sources */,
 				8FDCFA8F1E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8F6E12921E9900C600556904 /* LoginController.swift in Sources */,
 				8F980D5B1E55CB9B00CDC497 /* UITextFieldStyle.swift in Sources */,
@@ -1125,6 +1131,7 @@
 				8FBA1A5B1E68DAC8009EA0A2 /* ExitFormView.swift in Sources */,
 				8F6E12971E9900F800556904 /* LoginView.swift in Sources */,
 				8FCFDDFC1E8323C200CA82FD /* Model.swift in Sources */,
+				8FC8ABCA1EA3F158006B14D6 /* SyncIcon.swift in Sources */,
 				8FB15FB01E64AE6800685A53 /* GearTableController.swift in Sources */,
 				8FCFDE101E83246700CA82FD /* DropzoneViewController.swift in Sources */,
 				8FB490611E660FD900CB89DF /* JumpViewController.swift in Sources */,
@@ -1232,6 +1239,7 @@
 				8FA4A31A1E7FF87F00E63FF9 /* ChoiceTableViewCell.swift in Sources */,
 				8FDCFA911E60871D00BE92C5 /* PremiumController.swift in Sources */,
 				8FCFDE0F1E83245E00CA82FD /* DropzoneTableViewCell.swift in Sources */,
+				8FC8ABCB1EA3F158006B14D6 /* SyncIcon.swift in Sources */,
 				8F6E12941E9900C600556904 /* LoginController.swift in Sources */,
 				8FCFDE071E83243100CA82FD /* GearFormView.swift in Sources */,
 				8FF31AC91E4DE7AD003F3CFF /* SubterminalUITests.swift in Sources */,

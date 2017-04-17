@@ -54,5 +54,10 @@ class User {
 	func isPremium() -> Bool {
 		return UserDefaults.standard.bool(forKey: "user_premium")
 	}
+	
+	//Log user out
+	func logout() -> Void {
+		return FBSDKLoginManager().logOut()
+	}
 
 }
