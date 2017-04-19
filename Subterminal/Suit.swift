@@ -43,8 +43,7 @@ class Suit: Synchronizable {
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
-		
+		return Router.deleteSuit(model: self)
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {

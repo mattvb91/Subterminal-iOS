@@ -22,7 +22,7 @@ class Synchronizable: Model, SyncProtocol {
 	static let DELETED_FALSE: NSNumber = 0
 	
 	override class func defaultValuesForEntity() -> [AnyHashable: Any] {
-		return ["synced": 0, "deleted": 0]
+		return ["synced": SYNC_REQUIRED, "deleted": DELETED_FALSE]
 	}
 	
 	override func save() -> Bool {
@@ -54,10 +54,6 @@ class Synchronizable: Model, SyncProtocol {
 		} else {
 			return super.remove()
 		}
-	}
-	
-	override func entityDidDelete() {
-		super.entityDidDelete()
 	}
 	
 	func getSyncEndpoint() -> URLRequestConvertible {
