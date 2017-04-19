@@ -70,7 +70,7 @@ class Exit: Synchronizable {
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.deleteExit(model: self)
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {

@@ -43,7 +43,7 @@ class ExitsTableController: TableController {
 	
 	//Fetch user exits
 	override func fetchQuery() -> SRKQuery {
-		return type(of: getAssignedModel()).query().where(withFormat: "global_id IS NULL", withParameters: []).order(by: "name ASC")
+		return type(of: getAssignedModel()).query().where("deleted = 0 AND global_id IS NULL").order(by: "name ASC")
 	}
 
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
