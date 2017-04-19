@@ -30,7 +30,7 @@ class BASERig: Synchronizable {
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.deleteBaseRig(model: self)
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {

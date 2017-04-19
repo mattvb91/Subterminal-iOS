@@ -21,7 +21,7 @@ enum Router: URLRequestConvertible {
 	syncJump(model: Synchronizable), syncBaseRig(model: Synchronizable)
 	
 	case deleteSkydive(model: Synchronizable), deleteSuit(model: Synchronizable), deleteExit(model: Synchronizable), deleteJump(model: Synchronizable),
-	deleteSkydiveGear(model: Synchronizable)
+	deleteSkydiveGear(model: Synchronizable), deleteBaseRig(model: Synchronizable)
 	
 	case updateUser()
 	
@@ -38,7 +38,7 @@ enum Router: URLRequestConvertible {
 			case .syncSkydive( _), .syncExit( _), .syncSkydiveRig( _), .syncSuit( _), .syncJump( _), .syncBaseRig( _):
 				return .post
 			
-			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _), .deleteJump( _), .deleteSkydiveGear( _):
+			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _), .deleteJump( _), .deleteSkydiveGear( _), .deleteBaseRig( _):
 				return .delete
 		}
 	}
@@ -57,9 +57,6 @@ enum Router: URLRequestConvertible {
 			
 		case .deleteSkydiveGear( _):
 			return "/user/rigs/"
-			
-		case .getBaseGear( _):
-			return "user/gear"
 			
 		//Skydives
 		case .getSkydives( _):
@@ -110,9 +107,15 @@ enum Router: URLRequestConvertible {
 		case .payment(let _):
 			return "/payment"
 			
+		//BASE Gear
 		case .syncBaseRig( _):
 			return "/gear"
 			
+		case .getBaseGear( _):
+			return "user/gear"
+			
+		case .deleteBaseRig( _):
+			return "/user/gear/"
 		}
 	}
 	
@@ -147,7 +150,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: model.toJSON(), options: [])
 			urlRequest.httpBody = data
 			
-		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model), .deleteJump(let model), .deleteSkydiveGear(let model):
+		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model), .deleteJump(let model), .deleteSkydiveGear(let model), .deleteBaseRig(let model):
 			urlRequest.url?.appendPathComponent(model.id.description)
 			
 		default:

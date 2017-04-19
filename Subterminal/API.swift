@@ -215,6 +215,8 @@ class API: NSObject {
 		Alamofire.request(model.getSyncEndpoint()).responseJSON { response in
 			if response.response?.statusCode == 201 {
 				_ = model.markSynced()
+				
+				model.sendModelNotification()
 				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
 			}
 			

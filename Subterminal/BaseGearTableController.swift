@@ -82,7 +82,7 @@ class BaseGearTableController: TableController {
 	}
 	
 	override func loadData(notification: NSNotification?) {
-		self.suits = Suit.query().fetch()
+		self.suits = Suit.query().where("deleted = 0").fetch()
 		
 		return super.loadData(notification: nil)
 	}
@@ -155,8 +155,9 @@ class BaseGearTableController: TableController {
 			}
 			item?.remove()
 			
-			items = type(of: getAssignedModel()).query().fetch()
-			suits = Suit.query().fetch()
+			items = type(of: getAssignedModel()).query().where("deleted = 0").fetch()
+			suits = Suit.query().where("deleted = 0").fetch()
+			
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}

@@ -84,8 +84,8 @@ class SkydiveTableViewCell: BaseTableCell {
 		timeAgo.autoPinEdge(.top, to: .top, of: dropzone)
 		timeAgo.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
 		
-		synced.autoPinEdge(.bottom, to: .bottom, of: delay)
-		synced.autoPinEdge(.right, to: .right, of: timeAgo)
+		synced.autoPinEdge(.bottom, to: .bottom, of: self.contentView, withOffset: -15)
+		synced.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
 	}
 
 }
