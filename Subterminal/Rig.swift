@@ -40,13 +40,11 @@ class Rig: Synchronizable {
 	override internal func getDownloadEndpoint() -> URLRequestConvertible {
 		return Router.getSkyGear(lastSync: API.getLastRequestTime(requestName: self.getSyncIdentifier()))
 	}
-
 	
 	override internal func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
+		return Router.deleteSkydiveGear(model: self)
 	}
 
-	
 	override internal func getSyncEndpoint() -> URLRequestConvertible {
 		return Router.syncSkydiveRig(model: self)
 	}

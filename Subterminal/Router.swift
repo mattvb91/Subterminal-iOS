@@ -20,7 +20,8 @@ enum Router: URLRequestConvertible {
 	case syncSkydive(model: Synchronizable), syncExit(model: Synchronizable), syncSkydiveRig(model: Synchronizable), syncSuit(model: Synchronizable),
 	syncJump(model: Synchronizable), syncBaseRig(model: Synchronizable)
 	
-	case deleteSkydive(model: Synchronizable), deleteSuit(model: Synchronizable), deleteExit(model: Synchronizable), deleteJump(model: Synchronizable)
+	case deleteSkydive(model: Synchronizable), deleteSuit(model: Synchronizable), deleteExit(model: Synchronizable), deleteJump(model: Synchronizable),
+	deleteSkydiveGear(model: Synchronizable)
 	
 	case updateUser()
 	
@@ -37,7 +38,7 @@ enum Router: URLRequestConvertible {
 			case .syncSkydive( _), .syncExit( _), .syncSkydiveRig( _), .syncSuit( _), .syncJump( _), .syncBaseRig( _):
 				return .post
 			
-			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _), .deleteJump( _):
+			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _), .deleteJump( _), .deleteSkydiveGear( _):
 				return .delete
 		}
 	}
@@ -46,9 +47,16 @@ enum Router: URLRequestConvertible {
 		switch self {
 		case .getAircraft():
 			return "/aircraft"
-			
+		
+		//Skydive gear
 		case .getSkyGear( _):
 			return "/user/rigs"
+			
+		case .syncSkydiveRig( _):
+			return "/rig"
+			
+		case .deleteSkydiveGear( _):
+			return "/user/rigs/"
 			
 		case .getBaseGear( _):
 			return "user/gear"
@@ -102,9 +110,6 @@ enum Router: URLRequestConvertible {
 		case .payment(let _):
 			return "/payment"
 			
-		case .syncSkydiveRig( _):
-			return "/rig"
-			
 		case .syncBaseRig( _):
 			return "/gear"
 			
@@ -142,7 +147,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: model.toJSON(), options: [])
 			urlRequest.httpBody = data
 			
-		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model), .deleteJump(let model):
+		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model), .deleteJump(let model), .deleteSkydiveGear(let model):
 			urlRequest.url?.appendPathComponent(model.id.description)
 			
 		default:
