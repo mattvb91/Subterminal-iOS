@@ -20,7 +20,7 @@ enum Router: URLRequestConvertible {
 	case syncSkydive(model: Synchronizable), syncExit(model: Synchronizable), syncSkydiveRig(model: Synchronizable), syncSuit(model: Synchronizable),
 	syncJump(model: Synchronizable), syncBaseRig(model: Synchronizable)
 	
-	case deleteSkydive(model: Synchronizable), deleteSuit(model: Synchronizable), deleteExit(model: Synchronizable)
+	case deleteSkydive(model: Synchronizable), deleteSuit(model: Synchronizable), deleteExit(model: Synchronizable), deleteJump(model: Synchronizable)
 	
 	case updateUser()
 	
@@ -37,7 +37,7 @@ enum Router: URLRequestConvertible {
 			case .syncSkydive( _), .syncExit( _), .syncSkydiveRig( _), .syncSuit( _), .syncJump( _), .syncBaseRig( _):
 				return .post
 			
-			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _):
+			case .deleteSkydive( _), .deleteSuit( _), .deleteExit( _), .deleteJump( _):
 				return .delete
 		}
 	}
@@ -86,6 +86,12 @@ enum Router: URLRequestConvertible {
 		//Jumps
 		case .getJumps( _):
 			return "/user/jumps"
+			
+		case .syncJump( _):
+			return "/jump"
+			
+		case .deleteJump( _):
+			return "/user/jump/"
 		
 		case .getPublicExits():
 			return "exit"
@@ -98,9 +104,6 @@ enum Router: URLRequestConvertible {
 			
 		case .syncSkydiveRig( _):
 			return "/rig"
-		
-		case .syncJump( _):
-			return "/jump"
 			
 		case .syncBaseRig( _):
 			return "/gear"
@@ -139,7 +142,7 @@ enum Router: URLRequestConvertible {
 			let data = try JSONSerialization.data(withJSONObject: model.toJSON(), options: [])
 			urlRequest.httpBody = data
 			
-		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model):
+		case .deleteSkydive(let model), .deleteSuit(let model), .deleteExit(let model), .deleteJump(let model):
 			urlRequest.url?.appendPathComponent(model.id.description)
 			
 		default:

@@ -89,8 +89,7 @@ class Jump: Synchronizable {
 	}
 	
 	override func getDeleteEndpoint() -> URLRequestConvertible {
-		fatalError("not implemented")
-		
+		return Router.deleteJump(model: self)
 	}
 	
 	override func getDownloadEndpoint() -> URLRequestConvertible {
