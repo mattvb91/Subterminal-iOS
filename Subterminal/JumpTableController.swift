@@ -88,6 +88,8 @@ class JumpTableController: TableController {
 			cell.timeAgo.text = DateHelper.timeAgoSince(date: jump.date!)
 		}
 		
+		cell.synced.setSyncedStatus(status: jump.synced)
+		
 		return cell
 	}
 }

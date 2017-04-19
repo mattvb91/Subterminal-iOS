@@ -19,6 +19,7 @@ class JumpTableViewCell: BaseTableCell {
 	var timeAgo = UILabel()
 	
 	var thumb = UIImageView()
+	var synced = SyncIcon()
 
 	override func addSubviews() {
 		
@@ -35,6 +36,7 @@ class JumpTableViewCell: BaseTableCell {
 		self.contentView.addSubview(slider)
 		self.contentView.addSubview(timeAgo)
 		self.contentView.addSubview(thumb)
+		self.contentView.addSubview(synced)
 	}
 	
 	override func prepareForReuse() {
@@ -65,5 +67,8 @@ class JumpTableViewCell: BaseTableCell {
 		
 		timeAgo.autoPinEdge(.right, to: .right, of: self, withOffset: -20)
 		timeAgo.autoPinEdge(.top, to: .top, of: exitName)
+		
+		synced.autoPinEdge(.bottom, to: .bottom, of: self.contentView, withOffset: -15)
+		synced.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
 	}
 }

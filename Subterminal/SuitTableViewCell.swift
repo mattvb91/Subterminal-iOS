@@ -15,12 +15,15 @@ class SuitTableViewCell: BaseTableCell {
 	var manufacturerLabel = UILabel()
 	var type = UILabel()
 	
+	var synced = SyncIcon()
+	
 	override func addSubviews() {
 		type.font = UIFont.boldSystemFont(ofSize: 16)
 		
 		self.contentView.addSubview(modelLabel)
 		self.contentView.addSubview(manufacturerLabel)
 		self.contentView.addSubview(type)
+		self.contentView.addSubview(synced)
 	}
 	
 	override func setupConstraints() {
@@ -32,5 +35,8 @@ class SuitTableViewCell: BaseTableCell {
 		
 		modelLabel.autoPinEdge(.left, to: .left, of: manufacturerLabel)
 		modelLabel.autoPinEdge(.top, to: .bottom, of: manufacturerLabel, withOffset: 5)
+		
+		synced.autoPinEdge(.bottom, to: .bottom, of: self.contentView, withOffset: -15)
+		synced.autoPinEdge(.right, to: .right, of: self.contentView, withOffset: -20)
 	}
 }

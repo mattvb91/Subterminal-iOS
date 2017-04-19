@@ -125,6 +125,7 @@ class ExitsTableController: TableController {
 		}
 	
 		cell?.objectType.text = exit?.getFormattedType()
+		cell?.synced.setSyncedStatus(status: (exit?.synced)!)
 	}
 	
 	override func getAssignedController() -> ExitForm {

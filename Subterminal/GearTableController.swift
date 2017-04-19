@@ -116,6 +116,9 @@ class GearTableController: TableController {
 		
 			cell?.containerModelLabel.text = rig?.container_model
 			cell?.containerManufacturerLabel.text = rig?.container_manufacturer
+			
+			cell?.synced.setSyncedStatus(status: (rig?.synced)!)
+
 		} else {
 			let suit = item as? Suit
 			let cell = cell as? SuitTableViewCell
@@ -123,6 +126,7 @@ class GearTableController: TableController {
 			cell?.type.text = suit?.getFormattedType()
 			cell?.modelLabel.text = suit?.model
 			cell?.manufacturerLabel.text = suit?.manufacturer
+			cell?.synced.setSyncedStatus(status: (suit?.synced)!)
 		}
     }
 	
