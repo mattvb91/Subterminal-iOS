@@ -172,10 +172,10 @@ class Exit: Synchronizable {
 			}
 		}
 		
-		if self.save() {
+		if self.markSynced() {
 			if self.details != nil {
 				self.details?.exit_id = self.id
-				self.details?.save()
+				_ = self.details?.save()
 			}
 		}
 	}

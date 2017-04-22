@@ -61,7 +61,7 @@ class TableController: UITableViewController, GADBannerViewDelegate {
 		tableView.tableFooterView = UIView()
 		loadData(notification: nil);
 		
-		if items.count > 4 {
+		if items.count > 4 && Subterminal.user.isPremium() == false {
 			adBannerView.load(GADRequest())
 		}
 	}

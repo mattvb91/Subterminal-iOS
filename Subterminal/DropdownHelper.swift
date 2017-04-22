@@ -13,11 +13,11 @@ extension DropDown {
 	
 	//Get an index for the Key from the dataSource values
 	func selectRowForDataSourceWithKey(key: Int, data: [Int: Any], label: UILabel) {
-		let value = data[key] as! String
-		let index = self.dataSource.index(of: value)
-		label.text = value
-		
-		self.selectRow(at: index)
+		if let value = data[key] {
+			let index = self.dataSource.index(of: value as! String)
+			label.text = value as? String
+			self.selectRow(at: index)
+		}
 	}
 	
 	func getKeyForDataFromSelectedRow(data: [Int: Any]) -> Int? {

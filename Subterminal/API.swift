@@ -11,6 +11,7 @@ import SwiftyJSON
 import Alamofire
 import ImageSlideshow
 import ReachabilitySwift
+import SharkORM
 
 class API: NSObject {
 	
@@ -62,8 +63,7 @@ class API: NSObject {
 				API.instance.downloadModel(model: BASERig())
 				API.instance.downloadModel(model: Jump())
 				
-				//Synchronizable.syncEntities()
-			
+				Synchronizable.syncEntities()
 			}
 		}
 	}
@@ -71,20 +71,31 @@ class API: NSObject {
 	//Download the data for passed in model
 	func downloadModel(model: Synchronizable) -> Void {
 		
+		if Subterminal.user.isLoggedIn() == false {
+			return
+		}
+		
 		Alamofire.request(model.getDownloadEndpoint()).responseJSON { response in
 			if response.result.isSuccess, let result = response.result.value {
+
 				let items = result as! NSArray
 				
-				for item in items as! [NSDictionary] {
-					let syncClass = type(of: model)
-					let syncItem = syncClass.build(json: JSON(item))
-					_ = syncItem.markSynced()
+				SRKTransaction.transaction({
+					for item in items as! [NSDictionary] {
+						let syncClass = type(of: model)
+						let syncItem = syncClass.build(json: JSON(item))
+						_ = syncItem.markSynced()
+					}
+				}) {
+					//Failed
+					return
 				}
 				
 				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
 
-			} else {
-				debugPrint("Request Failed")
+			} else if response.response?.statusCode == 401 {
+				Subterminal.user.logout()
+				return
 			}
 		}
 	}
@@ -105,13 +116,18 @@ class API: NSObject {
 			if let result = response.result.value {
 				let items = result as! NSArray
 				
-				for item in items as! [NSDictionary] {
-					let dropzone = Dropzone.build(json: JSON(item))
-					if dropzone.save() {
-						dropzone.updateAircraft(json: JSON(item))
+				SRKTransaction.transaction({
+					for item in items as! [NSDictionary] {
+						let dropzone = Dropzone.build(json: JSON(item))
+						if dropzone.save() {
+							dropzone.updateAircraft(json: JSON(item))
+						}
 					}
+				}) {
+					//Failed
+					return
 				}
-				
+		
 				API.setLastRequestTime(name: API.LAST_DROPZONE_REQUEST, time: response.response?.allHeaderFields["server_time"] as! String)
 				NotificationCenter.default.post(name: NSNotification.Name(rawValue: Dropzone.getNotificationName()), object: nil)
 			}

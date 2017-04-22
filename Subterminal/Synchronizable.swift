@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SharkORM
 
 class Synchronizable: Model, SyncProtocol {
 	
@@ -87,18 +88,65 @@ class Synchronizable: Model, SyncProtocol {
 		return super.save()
 	}
 	
-	/*
-	func getForSync() -> Synchronizable {
-		let model = type(of: self) as Synchronizable.Type
-		
-		model.query().whereWithFormat
-		
-		return
-	}*/
+	//Fetch all items that need to be synchronized
+	static func getForSync() -> SRKResultSet {
+		return self.query().where("synced = 0").fetch()
+	}
+	
+	//Fetch all items that need to be deleted
+	static func getForDelete() -> SRKResultSet {
+		return self.query().where("deleted = 1").fetch()
+	}
 	
 	//Sync all required entities up to the server
-	func syncEntities() -> Void {
-		//let exits = Exit.getForSync()
+	static func syncEntities() -> Void {
 		
+		for exit in Exit.getForSync() {
+			API.instance.syncModel(model: exit as! Exit)
+		}
+		
+		for exit in Exit.getForDelete() {
+			API.instance.deleteModel(model: exit as! Exit)
+		}
+		
+		for rig in BASERig.getForSync() {
+			API.instance.syncModel(model: rig as! BASERig)
+		}
+		
+		for rig in BASERig.getForDelete() {
+			API.instance.deleteModel(model: rig as! BASERig)
+		}
+		
+		for suit in Suit.getForSync() {
+			API.instance.syncModel(model: suit as! Suit)
+		}
+		
+		for suit in Suit.getForDelete() {
+			API.instance.deleteModel(model: suit as! Suit)
+		}
+		
+		for jump in Jump.getForSync() {
+			API.instance.syncModel(model: jump as! Jump)
+		}
+		
+		for jump in Jump.getForDelete() {
+			API.instance.deleteModel(model: jump as! Jump)
+		}
+		
+		for rig in Rig.getForSync() {
+			API.instance.syncModel(model: rig as! Rig)
+		}
+		
+		for rig in Rig.getForDelete() {
+			API.instance.deleteModel(model: rig as! Rig)
+		}
+		
+		for skydive in Skydive.getForSync() {
+			API.instance.syncModel(model: skydive as! Skydive)
+		}
+		
+		for skydive in Skydive.getForDelete() {
+			API.instance.deleteModel(model: skydive as! Skydive)
+		}
 	}
 }
