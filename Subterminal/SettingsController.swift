@@ -33,7 +33,7 @@ class SettingsController: BOTableViewController {
 		let websiteCell = BOButtonTableViewCell(title: "Visit Website", key: nil, handler: nil)
 		websiteCell?.placeholderText = "https://subterminal.eu"
 		websiteCell?.actionBlock = {
-			UIApplication.shared.open(NSURL(string:"https://subterminal.eu") as! URL, options: [:], completionHandler: nil)
+			UIApplication.shared.open(NSURL(string:"https://subterminal.eu")! as URL, options: [:], completionHandler: nil)
 		}
 		
 		let heightUnitCell = BOChoiceTableViewCell(title: "Height Unit:", key: SettingsController.DEFAULT_HEIGHT_UNIT, handler: nil)

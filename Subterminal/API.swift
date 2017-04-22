@@ -107,6 +107,9 @@ class API: NSObject {
 				UserDefaults.standard.set(result["user"]["is_premium"].intValue == 1 ? true : false, forKey: "user_premium")
 				
 				API.initAPI()
+				
+				//Refresh back to dashboard
+				Subterminal.changeMode(mode: Subterminal.mode)
 			}
 		}
 	}

@@ -22,9 +22,16 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 		loginView.facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
 		loginView.facebookButton.delegate = self
 		
+		let registerAction = UITapGestureRecognizer(target: self, action: #selector(register))
+		loginView.registerButton.addGestureRecognizer(registerAction)
+		
 		self.view.addSubview(loginView)
 	}
 	
+	func register(sender:UITapGestureRecognizer) {
+		UIApplication.shared.open(NSURL(string:"https://subterminal.eu/register")! as URL, options: [:], completionHandler: nil)
+	}
+
 	func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
 		debugPrint("User Logged In")
 		

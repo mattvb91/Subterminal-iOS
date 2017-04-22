@@ -20,8 +20,8 @@ class LoginView: UIView {
 	var username = UITextField()
 	var password = UITextField()
 	
-	var loginButton = UIButton()
-	var registerButton = UIButton()
+	var loginButton = UIButton(type: UIButtonType.roundedRect)
+	var registerButton = UIButton(type: UIButtonType.roundedRect)
 	
 	var loginDescription = Label(text: "Or username & password:")
 
@@ -33,12 +33,25 @@ class LoginView: UIView {
 		self.backgroundColor = UIColor.white
 		seperator.backgroundColor = UIColor.gray
 		
-		username.placeholder = "Username"
+		username.placeholder = "Email Address"
 		password.placeholder = "Password"
 		password.isSecureTextEntry = true
 		
 		username.setBottomBorder()
 		password.setBottomBorder()
+		
+		loginButton.setTitle("Login", for: .normal)
+		loginButton.isUserInteractionEnabled = true
+		loginButton.layer.borderWidth = 1
+		loginButton.layer.cornerRadius = 5
+		loginButton.layer.borderColor = UIColor.lightGray.cgColor
+		
+		registerButton.setTitle("Register", for: .normal)
+		registerButton.isUserInteractionEnabled = true
+		registerButton.layer.borderWidth = 1
+		registerButton.layer.cornerRadius = 5
+		registerButton.layer.borderColor = UIColor.lightGray.cgColor
+
 
 		self.addSubview(facebookButton)
 		self.addSubview(seperator)
@@ -66,7 +79,7 @@ class LoginView: UIView {
 			facebookButton.autoPinEdge(.top, to: .top, of: self, withOffset: 80)
 			
 			loginDescription.autoAlignAxis(.vertical, toSameAxisOf: self)
-			loginDescription.autoPinEdge(.top, to: .bottom, of: facebookButton, withOffset: 20)
+			loginDescription.autoPinEdge(.top, to: .bottom, of: facebookButton, withOffset: 50)
 			
 			seperator.autoAlignAxis(.vertical, toSameAxisOf: self)
 			seperator.autoSetDimensions(to: CGSize(width: 250, height: 1))
@@ -80,6 +93,14 @@ class LoginView: UIView {
 			password.autoAlignAxis(.vertical, toSameAxisOf: self)
 			password.autoSetDimensions(to: inputSize)
 			password.autoPinEdge(.top, to: .bottom, of: username, withOffset: 20)
+			
+			loginButton.autoPinEdge(.left, to: .left, of: username)
+			loginButton.autoPinEdge(.top, to: .bottom, of: password, withOffset: 20)
+			loginButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
+
+			registerButton.autoPinEdge(.top, to: .top, of: loginButton)
+			registerButton.autoPinEdge(.left, to: .right, of: loginButton, withOffset: 20)
+			registerButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
 
 			self.didSetupConstraints = true
 		}
