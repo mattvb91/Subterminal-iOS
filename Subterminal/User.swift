@@ -48,7 +48,11 @@ class User {
 			return FBSDKAccessToken.current().expirationDate > Date()
 		}
 		
-		return false
+		if facebook_token == nil {
+			return false
+		}
+		
+		return true
 	}
 	
 	func isPremium() -> Bool {

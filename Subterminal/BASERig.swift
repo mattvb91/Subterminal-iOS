@@ -48,11 +48,18 @@ class BASERig: Synchronizable {
 		rig.container_manufacturer = json["container_manufacturer"].string
 		rig.container_type = json["container_type"].string
 		rig.container_serial = json["container_serial"].string
-		rig.container_date_in_use = DateHelper.stringToDate(string: json["container_date_in_use"].string!)
+		
+		if json["container_date_in_use"].string?.isEmpty == false {
+			rig.container_date_in_use = DateHelper.stringToDate(string: json["container_date_in_use"].string!)
+		}
+		
 		rig.canopy_manufacturer = json["canopy_manufacturer"].string
 		rig.canopy_type = json["canopy_type"].string
 		rig.canopy_serial = json["canopy_serial"].string
-		rig.canopy_date_in_use = DateHelper.stringToDate(string: json["canopy_date_in_use"].string!)
+		
+		if json["canopy_date_in_use"].string?.isEmpty == false {
+			rig.canopy_date_in_use = DateHelper.stringToDate(string: json["canopy_date_in_use"].string!)
+		}
 
 		return rig
 	}

@@ -24,12 +24,13 @@ enum Router: URLRequestConvertible {
 	deleteSkydiveGear(model: Synchronizable), deleteBaseRig(model: Synchronizable)
 	
 	case updateUser()
+	case getUser()
 	
 	static let baseURL = Subterminal.getKey(key: "api_url")
 	
 	var method: HTTPMethod {
 		switch self {
-			case .getAircraft, .getSkyGear, .getSkydives, .getSuits, .getPublicExits, .getExits, .getBaseGear, .getJumps:
+			case .getAircraft, .getSkyGear, .getSkydives, .getSuits, .getPublicExits, .getExits, .getBaseGear, .getJumps, .getUser:
 				return .get
 			
 			case .updateUser, .payment:
@@ -47,7 +48,10 @@ enum Router: URLRequestConvertible {
 		switch self {
 		case .getAircraft():
 			return "/aircraft"
-		
+			
+		case .getUser():
+			return "/user"
+			
 		//Skydive gear
 		case .getSkyGear( _):
 			return "/user/rigs"
@@ -132,7 +136,7 @@ enum Router: URLRequestConvertible {
 		urlRequest.httpMethod = method.rawValue
 		
 		switch self {
-		case .getAircraft():
+		case .getAircraft(), .getUser():
 			urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
 			
 		case .updateUser():

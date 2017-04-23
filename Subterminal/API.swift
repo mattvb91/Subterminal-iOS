@@ -114,6 +114,31 @@ class API: NSObject {
 		}
 	}
 	
+	func getUser() {
+		Alamofire.request(Router.getUser()).responseJSON { response in
+			if response.result.isSuccess, let result = response.result.value {
+				let result = JSON(result)
+				UserDefaults.standard.set(result["is_premium"].intValue == 1 ? true : false, forKey: "user_premium")
+				
+				API.initAPI()
+				
+				//Refresh back to dashboard
+				Subterminal.changeMode(mode: Subterminal.mode)
+			}
+		}
+	}
+	
+	func authenticate(email: String, password: String) {
+		Alamofire.request(Router.baseURL + "/auth", method: .post, parameters: ["email": email, "password": password], headers: headerss).responseJSON { response in
+			if response.response?.statusCode == 200, let result = response.result.value {
+				let result = JSON(result)
+				Subterminal.user.facebook_token = result["token"].stringValue
+				
+				self.getUser()
+			}
+		}
+	}
+	
 	func getDropzones() -> Void {
 		Alamofire.request(Router.baseURL + "/dropzone", parameters: ["last_sync": API.getLastRequestTime(requestName: API.LAST_DROPZONE_REQUEST)], headers: headerss).responseJSON { response in
 			if let result = response.result.value {
