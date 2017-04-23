@@ -12,6 +12,7 @@ import Alamofire
 import ImageSlideshow
 import ReachabilitySwift
 import SharkORM
+import SwiftSpinner
 
 class API: NSObject {
 	
@@ -136,6 +137,8 @@ class API: NSObject {
 				
 				self.getUser()
 			}
+			
+			SwiftSpinner.hide()
 		}
 	}
 	

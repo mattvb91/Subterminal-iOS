@@ -38,6 +38,8 @@ class LoginView: UIView {
 		password.isSecureTextEntry = true
 		
 		username.setBottomBorder()
+		username.keyboardType = .emailAddress
+		
 		password.setBottomBorder()
 		
 		loginButton.setTitle("Login", for: .normal)

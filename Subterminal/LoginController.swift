@@ -9,6 +9,7 @@
 import Foundation
 import FBSDKLoginKit
 import UIKit
+import SwiftSpinner
 
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 	
@@ -36,6 +37,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 	}
 	
 	func login(sender:UITapGestureRecognizer) {
+		SwiftSpinner.show("Authenticating...")
 		API.instance.authenticate(email: loginView.username.text!, password: loginView.password.text!)
 	}
 
