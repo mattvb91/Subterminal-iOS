@@ -262,13 +262,6 @@ class API: NSObject {
 		Alamofire.request(model.getSyncEndpoint()).responseJSON { response in
 			if response.response?.statusCode == 201 {
 				_ = model.markSynced()
-				
-				//We only want to send the notification when all have been updated
-				let res = SharkORM.rawQuery("SELECT COUNT(*) as count FROM " + model.classForCoder.description() + " where synced = 0") as SRKRawResults
-				if (res.value(forColumn: "count", atRow: 0) as! NSNumber) == 0 {
-					model.sendModelNotification()
-				}
-				
 				API.setLastRequestTime(name: model.getSyncIdentifier(), time: response.response?.allHeaderFields["server_time"] as! String)
 			}
 			
