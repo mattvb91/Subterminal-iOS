@@ -60,7 +60,7 @@ enum Router: URLRequestConvertible {
 			return "/rig"
 			
 		case .deleteSkydiveGear( _):
-			return "/user/rigs/"
+			return "/user/rig/"
 			
 		//Skydives
 		case .getSkydives( _):
