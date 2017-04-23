@@ -46,7 +46,7 @@ class SkydiveViewController: UIViewController, ImagePickerDelegate {
 			}
 			
 			if item.rig() != nil {
-				skydiveView.rig.text = (item.rig()?.container_manufacturer!)! + " - " + (item.rig()?.container_model!)!
+				skydiveView.rig.text = item.rig()?.getDisplayString()
 			}
 			skydiveView.dropzone.text = item.dropzone()?.name
 			skydiveView.aircraft.text = item.aircraft()?.name

@@ -119,8 +119,7 @@ class Rig: Synchronizable {
 		
 		for rig in rigs {
 			let rig = rig as! Rig
-			let displayString = rig.container_manufacturer! + " / " + rig.main_manufacturer! + " " + rig.main_model!
-			res[Int(rig.id)] = rig.id.description + " - " + displayString
+			res[Int(rig.id)] = rig.id.description + " - " + rig.getDisplayString()
 		}
 		
 		return res
@@ -134,6 +133,20 @@ class Rig: Synchronizable {
 		res.append(" - ")
 		for rig in rigs as NSDictionary {
 			res.append(rig.value as! String)
+		}
+		
+		return res
+	}
+	
+	func getDisplayString() -> String {
+		var res = self.container_manufacturer!
+		
+		if self.main_manufacturer != nil {
+			res += " / " + self.main_manufacturer!
+		}
+		
+		if self.main_model != nil {
+			res += " " + self.main_model!
 		}
 		
 		return res

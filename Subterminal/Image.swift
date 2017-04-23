@@ -40,6 +40,13 @@ class Image: Synchronizable {
 		}
 	}
 	
+	//We dont post images yet, implement later on
+	override func save() -> Bool {
+		synced = Synchronizable.SYNC_REQUIRED
+		return self.commit()
+	}
+	
+	
 	//Check the instance type and return
 	static func getEntityTypeFromModel(entity: Model) -> Int {
 		if entity is Skydive {
