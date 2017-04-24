@@ -57,6 +57,13 @@ class Subterminal {
 		return numberFormatter.string(from: NSNumber(value: height))! + toUnit.symbol
 	}
 	
+	static func convertToUnit(distance: Double, fromUnit: Int, toUnit: UnitLength) -> Int {
+		var distance = Measurement(value: distance, unit: Subterminal.units[fromUnit]!)
+		distance.convert(to: toUnit)
+		
+		return Int(distance.value)
+	}
+	
 	static func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
 		return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
 	}

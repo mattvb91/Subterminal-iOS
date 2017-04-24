@@ -59,8 +59,9 @@ class Exit: Synchronizable {
 			return ""
 		}
 		
-		let time = sqrt(2 * Double(self.rockdrop_distance!) / 9.8) as Double
-
+		//Convert everything to meter first
+		let convertedDistance = Subterminal.convertToUnit(distance: Double(self.rockdrop_distance!), fromUnit: Int(self.height_unit), toUnit: UnitLength.meters)
+		let time = sqrt(2 * Double(convertedDistance) / 9.8) as Double
 		
 		return time.roundTo(places: 1).description + "s"
 	}
