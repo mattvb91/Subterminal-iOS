@@ -101,7 +101,8 @@ class Synchronizable: Model, SyncProtocol {
 	//Sync all required entities up to the server
 	static func syncEntities() -> Void {
 		
-		for exit in Exit.getForSync() {
+		//We only want to sync the local exits
+		for exit in Exit.query().where("synced = 0 AND global_id IS NULL").fetch() {
 			API.instance.syncModel(model: exit as! Exit)
 		}
 		
