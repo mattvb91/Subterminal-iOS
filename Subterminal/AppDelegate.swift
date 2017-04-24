@@ -44,6 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		
 		API.initAPI()
 		
+		//Init the user once
+		if(Subterminal.user.isLoggedIn()) {
+			API.instance.getUser()
+		}
+		
 		DropDown.startListeningToKeyboard()
 		
         return true

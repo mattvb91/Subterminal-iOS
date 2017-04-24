@@ -23,7 +23,7 @@ class LoginView: UIView {
 	var loginButton = UIButton(type: UIButtonType.roundedRect)
 	var registerButton = UIButton(type: UIButtonType.roundedRect)
 	
-	var loginDescription = Label(text: "Or username & password:")
+	var loginDescription = Label(text: "Or Email & Password:")
 	var resetPassword = Label(text: "Reset Password")
 
 	var facebookButton = FBSDKLoginButton()
