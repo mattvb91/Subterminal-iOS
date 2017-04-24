@@ -133,7 +133,7 @@ class API: NSObject {
 		Alamofire.request(Router.baseURL + "/auth", method: .post, parameters: ["email": email, "password": password], headers: headerss).responseJSON { response in
 			if response.response?.statusCode == 200, let result = response.result.value {
 				let result = JSON(result)
-				Subterminal.user.facebook_token = result["token"].stringValue
+				Subterminal.user.setToken(token: result["token"].stringValue)
 				
 				self.getUser()
 			}

@@ -29,11 +29,18 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 		let loginAction = UITapGestureRecognizer(target: self, action: #selector(login))
 		loginView.loginButton.addGestureRecognizer(loginAction)
 		
+		let resetAction = UITapGestureRecognizer(target: self, action: #selector(resetPassword))
+		loginView.resetPassword.addGestureRecognizer(resetAction)
+		
 		self.view.addSubview(loginView)
 	}
 	
 	func register(sender:UITapGestureRecognizer) {
 		UIApplication.shared.open(NSURL(string:"https://subterminal.eu/register")! as URL, options: [:], completionHandler: nil)
+	}
+	
+	func resetPassword(sender:UITapGestureRecognizer) {
+		UIApplication.shared.open(NSURL(string:"https://subterminal.eu/password/reset")! as URL, options: [:], completionHandler: nil)
 	}
 	
 	func login(sender:UITapGestureRecognizer) {

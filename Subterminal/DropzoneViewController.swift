@@ -77,6 +77,9 @@ class DropzoneViewController: UIViewController {
 		if((item.services?.count)! > 0) {
 			dropzoneView.tagview_data = (item?.services)!
 			dropzoneView.tagview.reloadData()
+			
+			dropzoneView.setNeedsUpdateConstraints()
+			dropzoneView.updateConstraints()
 		}
 	}	
 }

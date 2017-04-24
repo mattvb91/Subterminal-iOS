@@ -140,7 +140,7 @@ enum Router: URLRequestConvertible {
 			urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
 			
 		case .updateUser():
-			let data = try JSONSerialization.data(withJSONObject: ["token": Subterminal.user.facebook_token], options: [])
+			let data = try JSONSerialization.data(withJSONObject: ["token": Subterminal.user.getToken()], options: [])
 			urlRequest.httpBody = data
 			
 		case .getSkyGear(let lastSync), .getSkydives(let lastSync), .getSuits(let lastSync), .getExits(let lastSync), .getBaseGear(let lastSync), .getJumps(let lastSync):
@@ -165,7 +165,7 @@ enum Router: URLRequestConvertible {
 		urlRequest.setValue(Subterminal.getKey(key: "apikey"), forHTTPHeaderField: "apiappkey")
 		
 		if(Subterminal.user.isLoggedIn()) {
-			urlRequest.setValue(Subterminal.user.facebook_token, forHTTPHeaderField: "sessionToken")
+			urlRequest.setValue(Subterminal.user.getToken(), forHTTPHeaderField: "sessionToken")
 		}
 		
 		return urlRequest

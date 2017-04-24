@@ -24,6 +24,7 @@ class LoginView: UIView {
 	var registerButton = UIButton(type: UIButtonType.roundedRect)
 	
 	var loginDescription = Label(text: "Or username & password:")
+	var resetPassword = Label(text: "Reset Password")
 
 	var facebookButton = FBSDKLoginButton()
 
@@ -54,6 +55,8 @@ class LoginView: UIView {
 		registerButton.layer.cornerRadius = 5
 		registerButton.layer.borderColor = UIColor.lightGray.cgColor
 
+		resetPassword.textColor = self.tintColor
+		resetPassword.isUserInteractionEnabled = true
 
 		self.addSubview(facebookButton)
 		self.addSubview(seperator)
@@ -64,6 +67,8 @@ class LoginView: UIView {
 		
 		self.addSubview(loginButton)
 		self.addSubview(registerButton)
+		
+		self.addSubview(resetPassword)
 		
 		self.setNeedsUpdateConstraints()
 	}
@@ -103,6 +108,9 @@ class LoginView: UIView {
 			registerButton.autoPinEdge(.top, to: .top, of: loginButton)
 			registerButton.autoPinEdge(.left, to: .right, of: loginButton, withOffset: 20)
 			registerButton.autoSetDimensions(to: CGSize(width: 100, height: 30))
+			
+			resetPassword.autoAlignAxis(.vertical, toSameAxisOf: self)
+			resetPassword.autoPinEdge(.top, to: .bottom, of: loginButton, withOffset: 50)
 
 			self.didSetupConstraints = true
 		}

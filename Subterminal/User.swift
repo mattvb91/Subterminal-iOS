@@ -13,7 +13,7 @@ class User {
 	
 	var email: String?
 	var is_premium: Bool = false
-	var facebook_token: String?
+	var token: String?
 	var name: String?
 	
 	let facebookPermissions = ["public_profile", "email", "user_friends"]
@@ -34,13 +34,25 @@ class User {
 				
 				self.email = data.value(forKey: "email") as! String?
 				self.name = data.value(forKey: "name") as! String?
-				self.facebook_token = FBSDKAccessToken.current().tokenString
+				self.token = FBSDKAccessToken.current().tokenString
 				
 				API.instance.createOrUpdateRemoveUser()
 			}
 		})
 	}
 	
+	//Get facebook token or get our manual token
+	func getToken() -> String? {
+		if FBSDKAccessToken.current() != nil, FBSDKAccessToken.current().expirationDate > Date() {
+			return FBSDKAccessToken.current().tokenString
+		}
+		
+		return UserDefaults.standard.value(forKey: "USER_TOKEN") as? String
+	}
+	
+	func setToken(token: String) {
+		UserDefaults.standard.setValue(token, forKey: "USER_TOKEN")
+	}
 	
 	//Check is the user currently logged in
 	func isLoggedIn() -> Bool {
@@ -48,7 +60,7 @@ class User {
 			return FBSDKAccessToken.current().expirationDate > Date()
 		}
 		
-		if facebook_token == nil {
+		if getToken() == nil {
 			return false
 		}
 		
@@ -61,6 +73,7 @@ class User {
 	
 	//Log user out
 	func logout() -> Void {
+		UserDefaults.standard.removeObject(forKey: "USER_TOKEN")
 		return FBSDKLoginManager().logOut()
 	}
 

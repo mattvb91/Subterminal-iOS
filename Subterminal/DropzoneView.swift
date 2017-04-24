@@ -125,7 +125,7 @@ class DropzoneView: UIView, HTagViewDataSource {
 			newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
 			dropzoneDescription.frame = newFrame;
 			
-			let size = CGSize(width: UIScreen.main.bounds.width, height: 800 + newFrame.height)
+			let size = CGSize(width: UIScreen.main.bounds.width, height: 800 + newFrame.height + tagview.frame.height)
 			scrollView.contentSize = size
 			scrollView.autoSetDimensions(to: size)
 			
