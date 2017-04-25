@@ -10,8 +10,9 @@ import Foundation
 import FBSDKLoginKit
 import UIKit
 import SwiftSpinner
+import SafariServices
 
-class LoginController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginController: UIViewController, FBSDKLoginButtonDelegate, SFSafariViewControllerDelegate {
 	
 	let loginView = LoginView.newAutoLayout()
 	
@@ -35,12 +36,20 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 		self.view.addSubview(loginView)
 	}
 	
+	func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+		controller.dismiss(animated: true, completion: nil)
+	}
+	
 	func register(sender:UITapGestureRecognizer) {
-		UIApplication.shared.open(NSURL(string:"https://subterminal.eu/register")! as URL, options: [:], completionHandler: nil)
+		let safariVC = SFSafariViewController(url: NSURL(string: "https://subterminal.eu/register")! as URL)
+		self.present(safariVC, animated: true, completion: nil)
+		safariVC.delegate = self
 	}
 	
 	func resetPassword(sender:UITapGestureRecognizer) {
-		UIApplication.shared.open(NSURL(string:"https://subterminal.eu/password/reset")! as URL, options: [:], completionHandler: nil)
+		let safariVC = SFSafariViewController(url: NSURL(string: "https://subterminal.eu/password/reset")! as URL)
+		self.present(safariVC, animated: true, completion: nil)
+		safariVC.delegate = self
 	}
 	
 	func login(sender:UITapGestureRecognizer) {

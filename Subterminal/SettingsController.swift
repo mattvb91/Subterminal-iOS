@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import Bohr
+import SafariServices
 
-class SettingsController: BOTableViewController {
+class SettingsController: BOTableViewController, SFSafariViewControllerDelegate {
 	
 	static let DEFAULT_SKYDIVE_TYPE = "defaultSkydiveType"
 	static let DEFAULT_SKYDIVE_COUNT = "startSkydiveCount"
@@ -33,7 +34,9 @@ class SettingsController: BOTableViewController {
 		let websiteCell = BOButtonTableViewCell(title: "Visit Website", key: nil, handler: nil)
 		websiteCell?.placeholderText = "https://subterminal.eu"
 		websiteCell?.actionBlock = {
-			UIApplication.shared.open(NSURL(string:"https://subterminal.eu")! as URL, options: [:], completionHandler: nil)
+			let safariVC = SFSafariViewController(url: NSURL(string: "https://subterminal.eu")! as URL)
+			self.present(safariVC, animated: true, completion: nil)
+			safariVC.delegate = self
 		}
 		
 		let heightUnitCell = BOChoiceTableViewCell(title: "Height Unit:", key: SettingsController.DEFAULT_HEIGHT_UNIT, handler: nil)
@@ -89,5 +92,9 @@ class SettingsController: BOTableViewController {
 		sectionBASE?.addCell(defaultBaseType)
 		sectionBASE?.addCell(defaultPC)
 		sectionBASE?.addCell(defaultSlider)
+	}
+	
+	func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+		controller.dismiss(animated: true, completion: nil)
 	}
 }
