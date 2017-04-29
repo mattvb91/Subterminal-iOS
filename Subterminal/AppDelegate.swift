@@ -12,9 +12,9 @@ import Firebase
 import SwiftyJSON
 import DropDown
 import FBSDKLoginKit
-//import Stripe
 import IQKeyboardManagerSwift
 import GoogleMobileAds
+import SwiftyStoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
@@ -26,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 		IQKeyboardManager.sharedManager().enable = true
-		
-		//STPPaymentConfiguration.shared().publishableKey = Subterminal.getKey(key: "stripe_pk")
-		//STPPaymentConfiguration.shared().smsAutofillDisabled = true
 		
 		GADMobileAds.configure(withApplicationID: Subterminal.getKey(key: "admob_appid"))
 
@@ -47,6 +44,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SRKDelegate {
 		//Init the user once
 		if(Subterminal.user.isLoggedIn()) {
 			API.instance.getUser()
+		}
+		
+		SwiftyStoreKit.completeTransactions(atomically: false) { products in
+			for product in products {
+				if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
+					if product.needsFinishTransaction {
+						if let receiptData = SwiftyStoreKit.localReceiptData {
+							let receipt = receiptData.base64EncodedString()
+							API.instance.sendPurchaseReceipt(receipt: receipt)
+						}
+						
+						SwiftyStoreKit.finishTransaction(product.transaction)
+					}
+					print("purchased: \(product)")
+				}
+			}
 		}
 		
 		DropDown.startListeningToKeyboard()

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-//import FBSDKLoginKit
 import Charts
 import SharkORM
+import SwiftyStoreKit
 
-class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
+class DashboardController: UIViewController {
 
 	let dashboardView = DashboardView.newAutoLayout()
 
@@ -23,13 +23,6 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Skydive.getNotificationName()), object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Jump.getNotificationName()), object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(self.viewDidLoad), name: NSNotification.Name(rawValue: Exit.getNotificationName()), object: nil)
-
-		/*
-		dashboardView.loginView.readPermissions = ["public_profile", "email", "user_friends"]
-		dashboardView.loginView.delegate = self
-		
-		dashboardView.premiumButton.addTarget(self, action: #selector(self.premium(_:)), for: .touchUpInside)
-		*/
 		
 		let settings = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsTapped))
 		self.navigationItem.leftBarButtonItem = settings
@@ -37,6 +30,9 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		if Subterminal.user.isLoggedIn() == false {
 			let signIn = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(signInTapped))
 			self.navigationItem.rightBarButtonItem = signIn
+		} else if Subterminal.user.isPremium() == false {
+			let buyPremium = UIBarButtonItem(title: "Premium", style: .plain, target: self, action: #selector(buyPremiumTapped))
+			self.navigationItem.rightBarButtonItem = buyPremium
 		}
 		
 		dashboardView.skydiveCount.text = Skydive.query().count().description
@@ -64,11 +60,6 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		self.view.addSubview(dashboardView)
     }
 	
-	/*
-	@objc func premium(_ sender: AnyObject?) {
-		self.navigationController?.pushViewController(PremiumController(), animated: true)
-	}*/
-	
 	@objc func changeMode(segment: UISegmentedControl) {
 		Subterminal.changeMode(mode: (segment.selectedSegmentIndex))
 	}
@@ -79,6 +70,46 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 	
 	func signInTapped() {
 		self.navigationController?.pushViewController(LoginController(), animated: true)
+	}
+	
+	func buyPremiumTapped() {
+		SwiftyStoreKit.purchaseProduct("subterminal_premium", atomically: false) { result in
+			var title, message: String?
+			
+			switch result {
+				case .success(let product):
+		
+					if let receiptData = SwiftyStoreKit.localReceiptData {
+						let receipt = receiptData.base64EncodedString()
+						API.instance.sendPurchaseReceipt(receipt: receipt)
+					}
+					
+					// fetch content from your server, then:
+					if product.needsFinishTransaction {
+						SwiftyStoreKit.finishTransaction(product.transaction)
+					}
+					title = "Success"
+					message = "Premium Confirmed!"
+				
+				case .error(let error):
+					title = "Error"
+					switch error.code {
+					case .unknown: message = "Unknown error. Please contact support"
+					case .clientInvalid: message = "Not allowed to make the payment"
+					case .paymentCancelled: break
+					case .paymentInvalid: message = "The purchase identifier was invalid"
+					case .paymentNotAllowed: message = "The device is not allowed to make the payment"
+					case .storeProductNotAvailable: message = "The product is not available in the current storefront"
+					case .cloudServicePermissionDenied: message = "Access to cloud service information is not allowed"
+					case .cloudServiceNetworkConnectionFailed: message = "Could not connect to the network"
+					default: message = "Unknown error. Please contact support"
+				}
+			}
+			
+			let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+			alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
+		}
 	}
 
 	func setFavouriteExitsData() {
@@ -194,33 +225,6 @@ class DashboardController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 		}
 		
 	}
-	
-	/*
-	func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-		debugPrint("User Logged In")
-		
-		if ((error) != nil)
-		{
-			// Process error
-		}
-		else if result.isCancelled {
-			// Handle cancellations
-			debugPrint("Cancelled")
-		}
-		else {
-			// If you ask for multiple permissions at once, you
-			// should check if specific permissions missing
-			if result.grantedPermissions.contains("email")
-			{
-				// Do work
-				Subterminal.user.setFacebookUserData()
-			}
-		}
-	}
-	
-	func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-		debugPrint("User Logged Out")
-	}*/
 }
 
 class BarFormatter: NSObject, IValueFormatter {

@@ -129,6 +129,16 @@ class API: NSObject {
 		}
 	}
 	
+	//Send receipt to server & validate before updating user
+	func sendPurchaseReceipt(receipt: String) {
+		Alamofire.request(Router.receipt(receipt: receipt)).responseJSON { response in
+			if response.response?.statusCode == 201 {
+				//Successfully validated receipt. Get user again
+				self.getUser()
+			}
+		}
+	}
+	
 	func authenticate(email: String, password: String) {
 		Alamofire.request(Router.baseURL + "/auth", method: .post, parameters: ["email": email, "password": password], headers: headerss).responseJSON { response in
 			if response.response?.statusCode == 200, let result = response.result.value {

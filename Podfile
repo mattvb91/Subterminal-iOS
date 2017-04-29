@@ -41,5 +41,6 @@ target 'Subterminal' do
   pod 'UITextField+Shake', '~> 1.1'
   pod 'Bohr'
   pod 'ReachabilitySwift', '~> 3'
+  pod 'SwiftyStoreKit', '~> 0.8.6'
 
 end
