@@ -1,0 +1,14 @@
+language: objective-c
+
+branches:
+ only:
+ - master
+ - testing
+
+xcode_project: Subterminal.xcodeproj
+xcode_scheme: SubterminalTests
+osx_image: xcode9	
+xcode_sdk: iphonesimulator11.0
+
+script:
+- xcodebuild clean build test -project Subterminal.xcodeproj -scheme SubterminalTests
