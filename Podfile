@@ -37,10 +37,12 @@ target 'Subterminal' do
   pod 'SwiftSpinner'
   pod 'IQKeyboardManagerSwift'
   pod 'ImagePicker'
-  pod 'Charts/Realm'
+  pod 'Charts', '3.0.3'
   pod 'UITextField+Shake', '~> 1.1'
   pod 'Bohr'
   pod 'ReachabilitySwift', '~> 3'
   pod 'SwiftyStoreKit', '~> 0.8.6'
+  pod 'Realm'
+  pod 'RealmSwift'
 
 end
