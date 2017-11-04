@@ -53,7 +53,6 @@ class API: NSObject {
 		DispatchQueue.global(qos: .background).async {
 			API.instance.getAircraft()
 			API.instance.getDropzones()
-			API.instance.getPublicExits()
 			API.instance.getTunnels()
 		
 			if Subterminal.user.isLoggedIn() && Subterminal.user.isPremium() == true {
@@ -190,20 +189,6 @@ class API: NSObject {
 			}
 		}
 	}
-	
-	func getPublicExits() -> Void {
-		Alamofire.request(Router.getPublicExits()).responseJSON { response in
-			if let result = response.result.value {
-				let items = result as! NSArray
-				
-				for item in items as! [NSDictionary] {
-					let exit = Exit.build(json: JSON(item))
-					exit.createOrUpdatePublicExit()
-				}
-			}
-		}
-	}
-
 	
 	func getDropzoneImages(dropzone: Dropzone!) {
 		let url = Router.baseURL + "/dropzone/" + dropzone.id.stringValue + "/images"

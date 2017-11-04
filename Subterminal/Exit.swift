@@ -152,35 +152,6 @@ class Exit: Synchronizable {
 		return false
 	}
 	
-	//Check if we already have a matching exit
-	func createOrUpdatePublicExit() {
-		let privateRes = Exit.query().where(withFormat: "name = %@", withParameters: [self.name]).fetch() as SRKResultSet
-		if privateRes.count > 0 {
-			let privateExit = privateRes[0] as! Exit
-			
-			if privateExit.global_id == nil {
-				return
-			}
-		}
-		
-		let publicRes = Exit.query().where(withFormat: "global_id = %@", withParameters: [self.global_id]).fetch() as SRKResultSet
-		if publicRes.count > 0 {
-			let publicExit = publicRes[0] as! Exit
-			self.id = publicExit.id
-			
-			if self.isEqual(publicExit) == true {
-				return
-			}
-		}
-		
-		if self.markSynced() {
-			if self.details != nil {
-				self.details?.exit_id = self.id
-				_ = self.details?.save()
-			}
-		}
-	}
-	
 	func getFormattedType() -> String? {
 		//Get the formatted type string if we have an associated jump type value
 		if self.object_type != nil {
